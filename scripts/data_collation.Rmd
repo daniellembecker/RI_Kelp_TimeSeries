@@ -9,6 +9,7 @@ output: html_document
 
 # Load libraries 
 ```{r}
+library(plyr)
 library(dplyr)
 library(tidyverse)
 ```
@@ -23,74 +24,99 @@ directory <- "data/kelp_timeseries_data/"
 # List files in the directory
 files <- list.files(directory)
 
-# Define categories
-categories <- c("UPC", "swath", "Morph", "Site", "QUAD", "kelp", "fish", "COVER")
+# Initialize an empty list to store data frames
+data_frames <- list()
 
-# Initialize an empty list to store data frames for each category
-category_data_frames <- lapply(categories, function(cat) list())
-
-# Read files into R and store as data frames
-read_files <- function(files, category) {
-  data_frames <- list()
-  for (file in files) {
-    # Read each file
-    filepath <- file.path(directory, file)
-    # Assuming your files are CSV files, adjust accordingly if they're different
-    data <- tryCatch({
-      read.csv(filepath, stringsAsFactors = FALSE, fileEncoding = "UTF-8")
-    }, warning = function(w) {
-      # Print the warning message
-      print(paste("Warning while reading file:", filepath))
-      print(w)
-      # Return NULL if there's a warning
-      return(NULL)
-    }, error = function(e) {
-      # Print the error message
-      print(paste("Error reading file:", filepath))
-      print(e)
-      # Return NULL if there's an error
-      return(NULL)
-    })
-    
-    if (!is.null(data)) {
-      # Extract subject from the file name
-      subject <- gsub(".csv", "", file)  # Remove the file extension
-      subject <- gsub(paste0(category, "_"), "", subject, fixed = TRUE)  # Remove category prefix
-      
-      # Store each data frame with the subject name as the key
-      if (!subject %in% names(data_frames)) {
-        data_frames[[subject]] <- data
-      } else {
-        # If subject already exists, combine the data frames
-        data_frames[[subject]] <- rbind(data_frames[[subject]], data)
-      }
-    }
-  }
-  return(data_frames)
+# Loop through each file
+for (file in files) {
+    # Read the file into a data frame
+    # Adjust the read function according to your file type (e.g., read.csv, read.table)
+    # Specify other parameters as needed (e.g., header = TRUE)
+    file_path <- file.path(directory, file)
+    df_name <- gsub("\\..*", "", file)  # Extract file name without extension
+    assign(df_name, read.csv(file_path, stringsAsFactors = FALSE))
 }
 
-# Read files for each category into R and store as data frames
-for (category in categories) {
-  category_files <- files[grep(category, files)]
-  category_data_frames[[category]] <- read_files(category_files, category)
-}
+# Now, each file is a separate data frame with its own variable name
 
-# Now you have a list of lists of data frames for each category, combined by subjects in the title
-
-
-
-# Create individual data frames for each category
-UPC_df <- combined_data_frames[["UPC"]]
-swath_df <- combined_data_frames[["swath"]]
-Morph_df <- combined_data_frames[["Morph"]]
-Site_df <- combined_data_frames[["Site"]]
-QUAD_df <- combined_data_frames[["QUAD"]]
-kelp_df <- combined_data_frames[["kelp"]]
-fish_df <- combined_data_frames[["fish"]]
-COVER_df <- combined_data_frames[["COVER"]]
-
-
-
+# COVER data frame is its own category, is this supposed to combine with another? it was labeled, Kelp_COVER 
 
 ```
+
+# Combine fish dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes, fish, fish_Aggregated)
+
+```
+
+# Combine UPC dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+UPC_data <- rbind.fill(UPC, UPC_2017, UPC_2018, FtWeatherill_UPC_2016, FtWeatherill_UPC_2016_CT)
+
+```
+
+# Combine swath dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016)
+
+# the one swath data.frame has 115 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
+
+```
+
+# Combine Kelp_Morph dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+morph_data <- rbind.fill(Subsurface_Kelp_Morph_2017, Subsurface_Kelp_Morph_2018)
+
+```
+
+# Combine site.info dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
+
+```
+
+# Combine site.info dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
+
+```
+
+# Combine QUAD dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+QUAD_data <- rbind.fill(QUAD, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
+
+# the one QUAD data.frame has 130 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
+
+```
+
+# Combine kelp dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+kelp_data <- rbind.fill(kelp, FtWeatherill_kelp_2016)
+
+#delete repetative data collector columns
+kelp_data <- kelp_data[ -c(13:16) ]
+
+```
+
+
+
+
+
+
 
