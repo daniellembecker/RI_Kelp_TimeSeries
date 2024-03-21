@@ -1,0 +1,5 @@
+Team,Region,Site,Transect,Month,Day,Year,Date Sampled,Start Latitude,Start Longitude,End Latitude,End Longitude,Start Depth (m),End Depth (m),Visibility (m),Temperature (C),Notes
+Humphries,Rhode Island,FTWE,Transect 1,9,10,2018,9/10/18,41.4773,-71.36640278,41.47737222,-71.36640278,9,9,1,20,
+Humphries,Rhode Island,FTWE,Transect 2,9,10,2018,9/10/18,41.477025,-71.36355,41.47675,-71.36396667,7.5,7.5,1.5,20,
+Humphries,Rhode Island,FTWE,Transect 3,9,7,2018,9/7/18,41.47818611,-71.36166944,41.47782778,-71.3616,8,7,2.5,18.8889,
+Humphries,Rhode Island,FTWE,Transect 4,9,24,2018,9/24/18,41.47749722,-71.35941667,41.47716111,-71.35944167,8,8,2,18.8889,

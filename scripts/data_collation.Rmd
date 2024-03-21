@@ -1,0 +1,96 @@
+---
+title: "data_collation"
+author: "daniellembecker"
+date: "2024-03-21"
+output: html_document
+---
+
+# Use this script to clean and merge unique data types (e.g., swath, fish, UPC) from multiple years
+
+# Load libraries 
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+
+# Load all data files from multiple years and seperate them into specific categories: UPC, swath, Morph, Site, QUAD, kelp, fish, and COVER
+```{r}
+
+# Set your directory path
+directory <- "data/kelp_timeseries_data/"
+
+# List files in the directory
+files <- list.files(directory)
+
+# Define categories
+categories <- c("UPC", "swath", "Morph", "Site", "QUAD", "kelp", "fish", "COVER")
+
+# Initialize an empty list to store data frames for each category
+category_data_frames <- lapply(categories, function(cat) list())
+
+# Read files into R and store as data frames
+read_files <- function(files, category) {
+  data_frames <- list()
+  for (file in files) {
+    # Read each file
+    filepath <- file.path(directory, file)
+    # Assuming your files are CSV files, adjust accordingly if they're different
+    data <- tryCatch({
+      read.csv(filepath, stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+    }, warning = function(w) {
+      # Print the warning message
+      print(paste("Warning while reading file:", filepath))
+      print(w)
+      # Return NULL if there's a warning
+      return(NULL)
+    }, error = function(e) {
+      # Print the error message
+      print(paste("Error reading file:", filepath))
+      print(e)
+      # Return NULL if there's an error
+      return(NULL)
+    })
+    
+    if (!is.null(data)) {
+      # Extract subject from the file name
+      subject <- gsub(".csv", "", file)  # Remove the file extension
+      subject <- gsub(paste0(category, "_"), "", subject, fixed = TRUE)  # Remove category prefix
+      
+      # Store each data frame with the subject name as the key
+      if (!subject %in% names(data_frames)) {
+        data_frames[[subject]] <- data
+      } else {
+        # If subject already exists, combine the data frames
+        data_frames[[subject]] <- rbind(data_frames[[subject]], data)
+      }
+    }
+  }
+  return(data_frames)
+}
+
+# Read files for each category into R and store as data frames
+for (category in categories) {
+  category_files <- files[grep(category, files)]
+  category_data_frames[[category]] <- read_files(category_files, category)
+}
+
+# Now you have a list of lists of data frames for each category, combined by subjects in the title
+
+
+
+# Create individual data frames for each category
+UPC_df <- combined_data_frames[["UPC"]]
+swath_df <- combined_data_frames[["swath"]]
+Morph_df <- combined_data_frames[["Morph"]]
+Site_df <- combined_data_frames[["Site"]]
+QUAD_df <- combined_data_frames[["QUAD"]]
+kelp_df <- combined_data_frames[["kelp"]]
+fish_df <- combined_data_frames[["fish"]]
+COVER_df <- combined_data_frames[["COVER"]]
+
+
+
+
+```
+

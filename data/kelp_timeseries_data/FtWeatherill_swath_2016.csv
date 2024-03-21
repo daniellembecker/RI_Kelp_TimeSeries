@@ -1,0 +1,13 @@
+YEAR,MONTH,DATE,SITE,TRANSECT,SIDE,SP_CODE,COUNT,SIZE,OBSERVER,NOTES,ENTERED BY,CHECKED BY,VALIDATION
+2016,9,9/23/16,Ft.Weatherill,1,IN 20,ASFO,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/23/16,Ft.Weatherill,1,IN 40,HESA,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/23/16,Ft.Weatherill,1,OFF 40,CASA,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/23/16,Ft.Weatherill,1,OFF 20,HOAM,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/23/16,Ft.Weatherill,2,ON 20,HOAM,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/23/16,Ft.Weatherill,2,OFF 40,HOAM,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,3,IN 20,HOAM,2,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,3,OFF 40,ASFO,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,3,OFF 20,ASFO,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,3,OFF 20,MYSP,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,4,IN 20,HOAM,1,,Chris Paight,,Chris Paight,Austin Humphries,
+2016,9,9/24/16,Ft.Weatherill,4,IN 40,HOAM,1,,Chris Paight,,Chris Paight,Austin Humphries,
