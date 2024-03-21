@@ -49,6 +49,8 @@ for (file in files) {
 # use rbind.fill() method in R to combine data frames with different columns
 fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes, fish, fish_Aggregated)
 
+# fish dataframe has size in wide format, discuss I can change this to long is you want but wanted to make sure size classes matched
+
 ```
 
 # Combine UPC dataframes
