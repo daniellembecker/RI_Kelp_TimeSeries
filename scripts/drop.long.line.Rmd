@@ -1,0 +1,57 @@
+---
+title: "drop.long.line"
+author: "daniellembecker"
+date: "2024-03-29"
+output: html_document
+---
+
+# Load libraries 
+```{r}
+library(plyr)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+
+# Load dataframe
+boat_data <- read.csv("data/dropline.longline.csv")
+
+# Define the order of size categories
+boat_data$size_cat <- factor(boat_data$size.cat, levels = c('Nano', 'Small', 'Medium', 'Large'))
+
+# make stacked bar plot
+stacked <- ggplot(boat_data, aes(x = size_cat)) +
+  geom_bar(aes(y = dropline), fill = 'blue', width = 0.35, stat = "identity") +
+  geom_bar(aes(y = longline), fill = 'lightblue', width = 0.35, stat = "identity") +
+  labs(x = 'Size Category', y = 'Number of Boats', title = 'Number of Boats by Size Category') +
+  theme_classic() +
+  scale_y_continuous(expand = c(0, 0));stacked   # Remove space between bars and x-axis
+
+# Save the plot
+ggsave("output/stacked_plot.png", plot = stacked, width = 8, height = 6, dpi = 300)
+
+#make not stacked bar plot
+
+# Reshape the data from wide to long format
+library(reshape2)
+boat_data_long <- melt(boat_data, id.vars = "size_cat", measure.vars = c("dropline", "longline"))
+boat_data_long$variable <- factor(boat_data_long$variable, levels = c("dropline", "longline"))
+
+# Plot the data
+bar.plot <- ggplot(boat_data_long, aes(x = size_cat, y = value, fill = variable)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.4), width = 0.35) +
+  labs(x = 'Size Category', y = 'Number of Boats', title = 'Number of Boats by Size Category',
+       fill = "Boat Type") +
+  scale_fill_manual(values = c("blue", "lightblue"), labels = c("Dropline", "Longline")) +
+  theme_classic() +
+  scale_y_continuous(expand = c(0, 0)); bar.plot
+
+# Save the plot
+ggsave("output/unstacked.plot.png", plot = bar.plot, width = 8, height = 6, dpi = 300)
+
+
+
+```
+
