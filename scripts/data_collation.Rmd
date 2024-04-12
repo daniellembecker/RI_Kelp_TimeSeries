@@ -54,16 +54,28 @@ kelp_data <- kelp_data[ -c(11:17) ]
 
 ```
 
+# Combine Kelp_Morph dataframes
+```{r}
+
+# Morph data is cleaned and ready
+
+# use rbind.fill() method in R to combine data frames with different columns
+morph_data <- rbind.fill(Subsurface_Kelp_Morph_2017, Subsurface_Kelp_Morph_2018)
+
+# remove columns with observer and unneeded data
+morph_data <- morph_data[ -c(11:14) ]
+```
+
 # Combine fish dataframes
 ```{r}
 
 # use rbind.fill() method in R to combine data frames with different columns
-fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes, fish, fish_Aggregated)
+fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes)
 
 # remove columns with observer and unneeded data
 fish_data <- fish_data[ -c(10:13) ]
 
-# fish dataframe has size in wide format, discuss I can change this to long is you want but wanted to make sure size classes matched
+# look at fish_Aggregated later, this is kelp density possibly?
 
 ```
 
@@ -93,16 +105,6 @@ swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 
 ```
 
-# Combine Kelp_Morph dataframes
-```{r}
-
-# use rbind.fill() method in R to combine data frames with different columns
-morph_data <- rbind.fill(Subsurface_Kelp_Morph_2017, Subsurface_Kelp_Morph_2018)
-
-# remove columns with observer and unneeded data
-morph_data <- morph_data[ -c(11:14) ]
-```
-
 # Combine site.info dataframes
 ```{r}
 
@@ -121,7 +123,6 @@ QUAD_data <- rbind.fill(QUAD, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QU
 
 # Rename ft. wetherill to fort wetherill
 QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
-
 
 
 ```
