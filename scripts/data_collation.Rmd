@@ -44,6 +44,7 @@ for (file in files) {
 
 # Combine kelp dataframes
 ```{r}
+# Kelp data is cleaned and ready
 
 # use rbind.fill() method in R to combine data frames with different columns
 kelp_data <- rbind.fill(kelp, FtWeatherill_kelp_2016)
@@ -113,13 +114,15 @@ site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v
 # Combine QUAD dataframes
 ```{r}
 
+# To do: species codes transform
+
 # use rbind.fill() method in R to combine data frames with different columns
 QUAD_data <- rbind.fill(QUAD, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
 
 # Rename ft. wetherill to fort wetherill
 QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
 
-# the one QUAD data.frame has 130 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
+
 
 ```
 
