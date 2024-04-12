@@ -1,4 +1,4 @@
-YEAR,HABITAT,REGION,SITE,CONTROL,TRANSECT,substrate,cover
+YEAR,HABITAT,REGION,SITE,CONTROL,TRANSECT,SUBSTRATE,COVER
 2019,Kelp,Narragansett Bay,Fort Wetherill,0,1,B,0.040540541
 2019,Kelp,Narragansett Bay,Fort Wetherill,0,1,BM,0.216216216
 2019,Kelp,Narragansett Bay,Fort Wetherill,0,1,BS,0.337837838
