@@ -39,7 +39,17 @@ for (file in files) {
 
 # Now, each file is a separate data frame with its own variable name
 
-# COVER data frame is its own category, is this supposed to combine with another? it was labeled, Kelp_COVER 
+
+```
+
+# Combine kelp dataframes
+```{r}
+
+# use rbind.fill() method in R to combine data frames with different columns
+kelp_data <- rbind.fill(kelp, FtWeatherill_kelp_2016)
+
+#delete repetative data collector columns
+kelp_data <- kelp_data[ -c(11:17) ]
 
 ```
 
@@ -48,6 +58,9 @@ for (file in files) {
 
 # use rbind.fill() method in R to combine data frames with different columns
 fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes, fish, fish_Aggregated)
+
+# remove columns with observer and unneeded data
+fish_data <- fish_data[ -c(10:13) ]
 
 # fish dataframe has size in wide format, discuss I can change this to long is you want but wanted to make sure size classes matched
 
@@ -61,6 +74,9 @@ UPC_data <- rbind.fill(UPC, UPC_2017, UPC_2018, FtWeatherill_UPC_2016, FtWeather
 
 # Rename ft. wetherill to fort wetherill
 UPC_data$SITE[UPC_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
+
+# remove columns with observer and unneeded data
+UPC_data <- UPC_data[ -c(21:24) ]
 ```
 
 # Combine swath dataframes
@@ -68,6 +84,9 @@ UPC_data$SITE[UPC_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
 
 # use rbind.fill() method in R to combine data frames with different columns
 swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016)
+
+# Rename ft. wetherill to fort wetherill
+swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 
 # the one swath data.frame has 115 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
 
@@ -79,6 +98,7 @@ swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016
 # use rbind.fill() method in R to combine data frames with different columns
 morph_data <- rbind.fill(Subsurface_Kelp_Morph_2017, Subsurface_Kelp_Morph_2018)
 
+# remove columns with observer and unneeded data
 morph_data <- morph_data[ -c(11:14) ]
 ```
 
@@ -103,16 +123,6 @@ QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
 
 ```
 
-# Combine kelp dataframes
-```{r}
-
-# use rbind.fill() method in R to combine data frames with different columns
-kelp_data <- rbind.fill(kelp, FtWeatherill_kelp_2016)
-
-#delete repetative data collector columns
-kelp_data <- kelp_data[ -c(13:16) ]
-
-```
 
 
 
