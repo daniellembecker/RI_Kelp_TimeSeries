@@ -12,6 +12,7 @@ output: html_document
 library(plyr)
 library(dplyr)
 library(tidyverse)
+library(lubridate)
 ```
 
 
@@ -52,6 +53,14 @@ kelp_data <- rbind.fill(kelp, FtWeatherill_kelp_2016)
 #delete repetative data collector columns
 kelp_data <- kelp_data[ -c(11:17) ]
 
+# Use lubridate to format date to be consistent
+kelp_data$DATE <- mdy(kelp_data$DATE)
+
+# Rename King's Beach to Kings Beach
+kelp_data$SITE[kelp_data$SITE == "King's Beach"] <- "Kings Beach"
+
+# output updated dataframe
+write.csv(kelp_data, "output/cleaned_data/kelp.data.clean.csv", row.names = FALSE)
 ```
 
 # Combine Kelp_Morph dataframes
@@ -64,18 +73,45 @@ morph_data <- rbind.fill(Subsurface_Kelp_Morph_2017, Subsurface_Kelp_Morph_2018)
 
 # remove columns with observer and unneeded data
 morph_data <- morph_data[ -c(11:14) ]
+
+# Make all columns capitalized
+colnames(morph_data) <- toupper(colnames(morph_data))
+
+# Use lubridate to format date to be consistent
+morph_data$DATE <- mdy(morph_data$DATE)
+
+# output updated dataframe
+write.csv(morph_data, "output/cleaned_data/morph.data.clean.csv", row.names = FALSE)
 ```
 
 # Combine fish dataframes
 ```{r}
 
+# Fish data is cleaned and ready
+
 # use rbind.fill() method in R to combine data frames with different columns
 fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes)
 
 # remove columns with observer and unneeded data
-fish_data <- fish_data[ -c(10:13) ]
+fish_data <- fish_data[ -c(10:14) ]
 
-# look at fish_Aggregated later, this is kelp density possibly?
+# Use the actual size data to bin into the size classes to combine with other dataframe
+fish$SIZE <- cut(fish$actual_size, breaks = c(0, 10, 20, 30, 40, 50, 70, 100, Inf),
+               labels = c("< 10", "10_20", "20_30", "30_40", "40_50", "50_70", "70_100", "> 100"),include.lowest = TRUE, right = FALSE)
+
+# combine updated dataframes
+fish_data <- left_join(fish, fish_data)
+
+# remove columns with VIS
+fish_data <- fish_data[ -c(14) ]
+
+# Use lubridate to format date to be consistent
+fish_data$DATE <- mdy(fish_data$DATE)
+
+# output updated dataframe
+write.csv(fish_data, "output/cleaned_data/fish.data.clean.csv", row.names = FALSE)
+
+# look at fish_Aggregated later - Austin, this is kelp density possibly?
 
 ```
 
