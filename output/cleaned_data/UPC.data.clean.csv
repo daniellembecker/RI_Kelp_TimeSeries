@@ -1,0 +1,1216 @@
+"YEAR","HABITAT","REGION","SITE","CONTROL","TRANSECT","SUBSTRATE","COVER","MONTH","DAY","DATE","SIDE","DISTANCE","SP_CODE_0","SP_CODE_1","SP_CODE_2","SP_CODE_3","SP_CODE_4","SP_CODE_5","SUBSTRTE"
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"B",0.040540541,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BM",0.216216216,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BS",0.337837838,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"C",0.297297297,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"S",0.108108108,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"B",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BM",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BS",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"C",0.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"S",0.2125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BL",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BM",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BS",0.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"C",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"S",0.2625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"L",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"B",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BM",0.3125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BS",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"C",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"S",0.1875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"B",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BM",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BS",0.2625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"C",0.1625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"S",0.325,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"B",0.3125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BM",0.1375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BS",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"S",0.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"BL",0.575,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"BM",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"BS",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,1,"S",0.3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,2,"BL",0.7125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,2,"BM",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,2,"BS",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,2,"C",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,2,"S",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,3,"B",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,3,"BL",0.6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,3,"BM",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,3,"C",0.1375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,3,"S",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"B",0.1625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"BL",0.35,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"BM",0.1875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"BS",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"C",0.175,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,"Kelp","Narragansett Bay","King's Beach",0,4,"S",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BL",0.45,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BM",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BS",0.2375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"C",0.1625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"S",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BL",0.4375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BM",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BS",0.175,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"C",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"S",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BL",0.5125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"C",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"S",0.375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BL",0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BM",0.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BS",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"C",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"S",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BL",0.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BM",0.2375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BS",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"C",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"S",0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BL",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BM",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BS",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"C",0.2875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"S",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"B",0.4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"BL",0.1375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"BM",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"BS",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"C",0.2875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,2,"S",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,3,"B",0.325,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,3,"BL",0.625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,3,"C",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,3,"S",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"B",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"BL",0.321428571,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"BM",0.011904762,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"BS",0.047619048,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"C",0.107142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",0,4,"S",0.261904762,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"B",0.011904762,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"BL",0.357142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"BM",0.166666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"BS",0.166666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"C",0.05952381,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,1,"S",0.238095238,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,5,"BL",0.2375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,5,"BM",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,5,"BS",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,5,"C",0.5375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,"Kelp","Narragansett Bay","King's Beach",1,5,"S",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BL",0.307692308,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BM",0.358974359,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BS",0.128205128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"C",0.128205128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"S",0.076923077,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"B",0.064102564,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BL",0.282051282,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BM",0.243589744,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BS",0.205128205,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"C",0.102564103,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"S",0.102564103,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BL",0.474358974,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BM",0.025641026,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BS",0.179487179,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"C",0.051282051,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"S",0.269230769,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"B",0.012820513,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BL",0.858974359,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BM",0.051282051,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BS",0.038461538,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"S",0.038461538,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,5,"BL",0.972972973,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,5,"C",0.013513514,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",0,5,"S",0.013513514,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BL",0.225,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BS",0.6125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"C",0.125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"S",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,2,"BL",0.7375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,2,"BM",0.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,2,"BS",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,2,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,2,"S",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"BL",0.65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"BM",0.2375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"BS",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,3,"S",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,4,"B",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,4,"BL",0.5125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,4,"BM",0.3375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,4,"BS",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",0,4,"C",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,1,"BL",0.7375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,1,"BM",0.175,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,1,"BS",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,1,"S",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,5,"B",0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,5,"BL",0.4125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,5,"BM",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,"Kelp","Narragansett Bay","King's Beach",1,5,"C",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BL",0.9125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"S",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BL",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BL",0.3875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BM",0.425,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BS",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"C",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"S",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"L",0.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BL",0.566666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BM",0.166666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BS",0.083333333,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"C",0.016666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"S",0.016666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BL",0.5625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BM",0.1375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BS",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"C",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"S",0.1875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,5,NA,0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BL",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BM",0.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BS",0.4625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"C",0.1625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"S",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,2,"B",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,2,"BL",0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,2,"BM",0.1625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,2,"C",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,2,"S",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"B",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"BL",0.55,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"BM",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"BS",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"C",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,3,"S",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,4,"BL",0.8875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,4,"BM",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,4,"BS",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",0,4,"S",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,1,"BL",0.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,1,"BM",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,5,"BL",0.25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,5,"BM",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,5,"BS",0.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,5,"C",0.3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,"Kelp","Narragansett Bay","King's Beach",1,5,"S",0.275,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BL",0.9375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"BM",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,2,"S",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BL",0.9125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BM",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"BS",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,3,"S",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BL",0.95,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"BS",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",0,4,"S",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,5,"BL",1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BL",0.15,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BM",0.375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"BS",0.175,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"C",0.1375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,"S",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","Fort Wetherill",1,6,NA,0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,2,"BL",0.8375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,2,"BM",0.0875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,2,"BS",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,3,"BL",0.875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,3,"BM",0.0375,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,3,"BS",0.025,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,3,"C",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,4,"BL",0.75,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,4,"BM",0.2125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,4,"BS",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,4,"C",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",0,4,"RB",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,1,"BL",0.6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,1,"BM",0.2125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,1,"BS",0.05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,1,"C",0.075,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,1,"S",0.0625,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,5,"BL",0.5875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,5,"BM",0.0125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,5,"C",0.1125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2023,"Kelp","Narragansett Bay","King's Beach",1,5,"S",0.2875,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",1,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",1,"GRAM",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",2,"CLSP",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",2,"CLSP",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",3,".",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",3,"BUNE",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",4,".",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",4,"GRAM",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",5,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",5,"BUNE",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",6,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",6,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",7,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",7,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",8,"BUNE",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",8,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",9,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",9,"CLSP",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",10,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",10,"CLSP",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",11,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",11,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",12,"CLSP","MYED",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",12,".",".",".",".",".",".",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",13,"CLSP",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",13,"LADI","MYED",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",14,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",14,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",15,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",15,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",16,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",16,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",17,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",17,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",18,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",18,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",19,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",19,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",20,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",20,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",21,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",21,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",22,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",22,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",23,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",23,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",24,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",24,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",25,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",25,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",26,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",26,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",27,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",27,"MYED",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",28,"ASPO",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",28,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",29,"ECTO",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",29,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",30,"MYED",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",30,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",31,"COTR","MYED",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",31,"MYED",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",32,"MYED","HJ",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",32,"MYED",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",33,"MYED","HJ",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",33,"MYED","GRAM",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",34,"MYED","SL",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",34,"MYED",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",35,"MYED",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",35,"ECTO","MYED",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",36,"HJ","MYED",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",36,"HJ","MYED",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",37,"COTR","MYED",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",37,"HJ","MYED",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",38,"LADI",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",38,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",39,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",39,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"I",40,"DABA",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,29,2017-08-29,"O",40,"DABA","MYED",".",".",".",".","BS"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",1,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",1,"COTR","HJ",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",2,"ASPO",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",2,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",3,"GRAM",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",3,".",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",4,"UV","RAT",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",4,"CHCR","GRAM",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",5,".",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",5,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",6,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",6,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",7,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",7,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",8,"GRAM",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",8,"UV","COTR",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",9,"GRAM","RAT",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",9,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",10,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",10,"COTR",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",11,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",11,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",12,"COTR","RAT",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",12,"COTR","RAT",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",13,"COTR","RAT",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",13,"SL","COTR","RAT",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",14,"SL","COTR",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",14,"CLAD","RAT",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",15,"RAT","COTR",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",15,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",16,"RAT","CHAT","COTR",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",16,"RAT","COTR","RAT",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",17,"COTR",".",".",".",".",".","C"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",17,"RAT","COTR",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",18,"RAT","RAT",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",18,".",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",19,".",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",19,"RAT",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",20,"RAT",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",20,"RAT","COTR",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",21,"FUSP",".",".",".",".",".","C"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",21,".",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",22,"ZOMA",".",".",".",".",".","SS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",22,".",".",".",".",".",".","SS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",23,"GRAM","RAT","COTR",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",23,"",".",".",".",".",".","SS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",24,"ASPO",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",24,"RAT",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",25,"COTR","RAT",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",25,"CLAD","RAT",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",26,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",26,"COTR","RAT",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",27,"CF","COTR",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",27,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",28,"COTR",".",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",28,"COTR","RAT",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",29,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",29,"COTR","ASPO",".",".",".",".","BL"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",30,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",30,"GRAM","COTR",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",31,"CRSP",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",31,"RAT",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",32,"RAT",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",32,"RAT",".",".",".",".",".","SS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",33,"ASPO","COTR",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",33,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",34,"COTR","ASPO",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",34,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",35,"ASPO",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",35,"COTR","GRAM",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",36,"COTR",".",".",".",".",".","C"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",36,"COTR",".",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",37,"COTR","CF",".",".",".",".","BS"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",37,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",38,"COTR",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",38,"COTR",".",".",".",".",".","P"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",39,"MYED",".",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",39,"CLAD","COTR",".",".",".",".","BM"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"I",40,"COTR",".",".",".",".",".","SH"
+2017,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,29,2017-08-29,"O",40,"COTR",".",".",".",".",".","BL"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",1,"ASPO","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",1,"CF","COTR","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",2,"CF","HJ","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",2,"GRAM","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",3,"PAPA","COTR","HJ","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",3,"COTR","HJ","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",4,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",4,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",5,"GRAM","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",5,"HJ","COTR","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",6,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",6,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",7,"SL","COTR","ASPO","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",7,"COTR","ASPO","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",8,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",8,"ECTO","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",9,"COTR","ASPO","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",9,"COTR","CYPU","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",10,"HJ","COTR","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",10,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",11,"ASPO","COTR","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",11,"HJ","COTR","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",12,"COTR","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",12,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",13,"SL","COTR","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",13,"COTR","HJ","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",14,"SL","CHPA","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",14,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",15,"COTR","UFR","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",15,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",16,"COTR","GRAM","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",16,"COTR","CYPU","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",17,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",17,"COTR","UT","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",18,"COTR","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",18,"GRAM","ASPO","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",19,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",19,"HJ","GRAM","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",20,"CHCR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",20,"SL","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",21,"GRAM","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",21,"CHCR","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",22,"ASPO","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",22,"GRAM","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",23,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",23,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",24,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",24,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",25,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",25,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",26,"HJ","COTR","MYED","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",26,"COTR","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",27,"COTR","RAT","MYED","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",27,"HJ","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",28,"ASPO","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",28,"RAT","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",29,"MYED","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",29,"MYED","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",30,"UT","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",30,"ASPO","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",31,"MYED","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",31,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",32,"MYED","RAT","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",32,"MYED","RAT","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",33,"ASPO","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",33,"RAT","CHPA","MYED","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",34,"MYED","HJ","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",34,"MYED","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",35,"COTR","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",35,"RAT","HJ","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",36,"","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",36,"COTR","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",37,"COTR","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",37,"CHCR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",38,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",38,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",39,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",39,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"I",40,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,31,2017-08-31,"O",40,"COTR","","","","","","SS"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",1,"SL","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",1,"COTR","CHPA","MYED","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",2,"PAPA","","","","","","P"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",2,"COTR","MYED","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",3,"COTR","","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",3,"COTR","MYED","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",4,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",4,"COTR","MYED","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",5,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",5,"GRAM","MYED","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",6,"CLSP","","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",6,"COTR","","","","","","C"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",7,"SL","","","","","","P"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",7,"COTR","CHPA","","","","","C"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",8,"CYPU","RAT","COTR","MYED","","",""
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",8,"","","","","","","P"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",9,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",9,"SL","MYED","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",10,"COTR","MYED","RAT","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",10,"MYED","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",11,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",11,"SL","","","","","","P"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",12,"SL","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",12,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",13,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",13,"MYED","COTR","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",14,"SL","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",14,"MYED","","","","","","P"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",15,"CYPU","MYED","","","","",""
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",15,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",16,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",16,"HJ","MYED","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",17,"HJ","COTR","MYED","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",17,"COTR","MYED","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",18,"COTR","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",18,"HJ","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",19,"COTR","MYED","CHPA","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",19,"COTR","RAT","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",20,"COTR","","","","","","SS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",20,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",21,"GRAM","HJ","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",21,"HJ","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",22,"CHPA","CYPU","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",22,"RAT","CHPA","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",23,"COTR","RAT","HJ","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",23,"LADI","GRAM","","","","","BM"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",24,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",24,"COTR","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",25,"COTR","LADI","","","","","BS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",25,"COTR","","","","","","SS"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",26,"COTR","ASPO","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",26,"COTR","ASPO","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",27,"CLSP","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",27,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",28,"CLSP","ASPO","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",28,"ASPO","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",29,"MYED","COTR","LADI","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",29,"SL","COTR","ASPO","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",30,"MYED","COTR","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",30,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",31,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",31,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",32,"CHCR","SL","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",32,"COTR","RAT","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",33,"CYPU","PAPA","COTR","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",33,"HJ","MYED","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",34,"COTR","RAT","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",34,"COTR","RAT","MYED","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",35,"COTR","CLSP","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",35,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",36,"COTR","HIRU","LADI","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",36,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",37,"COTR","ASPO","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",37,"COTR","HJ","ASPO","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",38,"","","","","","","SH"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",38,"COTR","","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",39,"COTR","RAT","HJ","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",39,"GRAM","POLS","","","","","C"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"I",40,"COTR","RAT","","","","","BL"
+2017,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,31,2017-08-31,"O",40,"COTR","SL","","","","","BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",1,"COTR","ASDA","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",1,"ASDA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",2,"COTR","UFR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",2,"CHCR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",3,".","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",3,"CRSP","ASDA","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",4,"COTR","SL","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",4,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",5,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",5,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",6,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",6,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",7,"LDAT","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",7,"SL","COTR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",8,"UFR","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",8,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",9,"UFR","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",9,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",10,".","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",10,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",11,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",11,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",12,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",12,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",13,"ASDA","EC","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",13,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",14,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",14,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",15,"SL","COTR","",NA,NA,NA,"B"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",15,".","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",16,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",16,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",17,"MEMA","COTR","",NA,NA,NA,"B"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",17,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",18,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",18,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",19,"SL","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",19,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",20,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",20,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",21,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",21,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",22,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",22,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",23,"COTR","ASDA","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",23,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",24,"COTR","UFR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",24,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",25,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",25,"UFB","COTR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",26,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",26,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",27,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",27,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",28,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",28,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",29,"COTR","SL","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",29,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",30,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",30,"COTR","UFR","OBSP",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",31,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",31,"UFR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",32,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",32,"COTR","UFR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",33,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",33,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",34,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",34,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",35,"SL","COTR","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",35,".","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",36,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",36,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",37,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",37,"SL","COTR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",38,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",38,"ASDA","MYED","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",39,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",39,"MYED","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"I",40,"COTR","UFR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,1,NA,NA,9,10,2018-09-10,"O",40,"COTR","UFR","",NA,NA,NA,"BL"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","",NA,NA,NA,""
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",1,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",1,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",2,"LADI","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",2,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",3,"ARVI","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",3,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",4,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",4,"CHCR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",5,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",5,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",6,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",6,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",7,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",7,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",8,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",8,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",9,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",9,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",10,"PORO","EC","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",10,"CHCR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",11,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",11,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",12,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",12,"ASDA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",13,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",13,"CHCR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",14,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",14,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",15,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",15,"SL","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",16,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",16,"UFR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",17,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",17,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",18,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",18,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",19,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",19,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",20,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",20,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",21,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",21,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",22,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",22,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",23,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",23,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",24,"UV","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",24,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",25,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",25,"UFR","EC","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",26,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",26,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",27,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",27,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",28,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",28,"COTR","LADI","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",29,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",29,"COTR","EC","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",30,"SL","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",30,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",31,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",31,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",32,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",32,"PAPA","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",33,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",33,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",34,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",34,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",35,"UFR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",35,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",36,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",36,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",37,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",37,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",38,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",38,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",39,"COTR","","",NA,NA,NA,"B"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",39,"UV","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"I",40,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,2,NA,NA,9,10,2018-09-10,"O",40,"COTR","","",NA,NA,NA,"BL"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","",NA,NA,NA,""
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",1,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",1,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",2,"SL","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",2,"SL","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",3,"PAPA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",3,"PAPA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",4,"COTR","EC","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",4,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",5,"MYED","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",5,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",6,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",6,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",7,"MYED","SL","UFR",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",7,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",8,"MYED","UFR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",8,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",9,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",9,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",10,".","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",10,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",11,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",11,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",12,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",12,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",13,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",13,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",14,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",14,"LADI","COTR","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",15,"ASDA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",15,"MYED","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",16,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",16,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",17,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",17,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",18,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",18,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",19,"PAPA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",19,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",20,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",20,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",21,"LADI","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",21,"SL","COTR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",22,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",22,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",23,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",23,"UFR","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",24,"LADI","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",24,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",25,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",25,"LADI","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",26,"ASDA","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",26,".","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",27,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",27,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",28,"MYED","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",28,"MYED","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",29,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",29,"MYED","SL","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",30,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",30,"MYED","LADI","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",31,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",31,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",32,"MYED","UFR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",32,"MYED","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",33,"UFR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",33,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",34,"","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",34,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",35,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",35,"FUSP","MYED","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",36,"MYED","PAPA","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",36,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",37,"UFR","COTR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",37,"MYED","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",38,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",38,"MYED","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",39,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",39,"SL","UAB","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"I",40,"MYED","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,3,NA,NA,9,7,2018-09-07,"O",40,"MYED","","",NA,NA,NA,"BS"
+NA,NA,NA,"",NA,NA,NA,NA,NA,NA,NA,"",NA,"","","",NA,NA,NA,""
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",1,"MYED","COTR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",1,"COTR","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",2,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",2,".","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",3,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",3,"ASDA","LADI","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",4,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",4,"ASDA","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",5,"CHCR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",5,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",6,"ASDA","DIVE","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",6,"ASDA","COTR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",7,"COTR","CLSP","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",7,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",8,"COTR","EC","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",8,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",9,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",9,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",10,"COTR","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",10,"ASDA","COTR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",11,"COTR","CLSP","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",11,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",12,"COTR","","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",12,"COTR","SL","",NA,NA,NA,"C"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",13,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",13,"DIVE","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",14,"COTR","UFR","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",14,"UFR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",15,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",15,".","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",16,"SL","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",16,"SL","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",17,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",17,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",18,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",18,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",19,"COTR","LDAT","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",19,"CLSP","COTR","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",20,"MYED","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",20,"COTR","TETE","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",21,"BUUN","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",21,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",22,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",22,"COTR","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",23,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",23,"ASDA","SL","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",24,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",24,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",25,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",25,".","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",26,"ASDA","SL","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",26,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",27,"ASDA","SCAU","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",27,".","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",28,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",28,"ASDA","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",29,"ASDA","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",29,".","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",30,"ASDA","SL","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",30,".","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",31,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",31,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",32,"COTR","EC","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",32,"COTR","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",33,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",33,"ASDA","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",34,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",34,"UIH","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",35,"ASDA","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",35,"ASDA","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",36,"DEVI","","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",36,"HESA","DIVE","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",37,"ASDA","","",NA,NA,NA," S "
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",37,".","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",38,"DEVI","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",38,"COTR","","",NA,NA,NA,"BM"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",39,".","","",NA,NA,NA,"SH"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",39,"ASDA","","",NA,NA,NA,"BS"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"I",40,"ASDA","COTR","",NA,NA,NA,"BL"
+2018,NA,NA,"Fort Wetherill",NA,4,NA,NA,9,24,2018-09-24,"O",40,".","","",NA,NA,NA," S "
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",1,NA,"PAPA","SL","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",1,NA,"PAPA","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",2,NA,"HIRU","CHCR","SL",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",2,NA,"CHCR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",3,NA,"","","",NA,NA,"P"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",3,NA,"UAE","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",4,NA,"CHCR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",4,NA,"PAPA","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",5,NA,"CHPA","","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",5,NA,"CHCR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",6,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",6,NA,"","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",7,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",7,NA,"SL","PAPA","BOVI",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",8,NA,"PAPA","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",8,NA,"ECTO","PORS","COTR",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",9,NA,"ECTO","PORS","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",9,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",10,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",10,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",11,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",11,NA,"PAPA","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",12,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",12,NA,"SL","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",13,NA,"COTR","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",13,NA,"PORS","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",14,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",14,NA,"ECTO","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",15,NA,"CYPU","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",15,NA,"ECTO","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",16,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",16,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",17,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",17,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",18,NA,"PAPA","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",18,NA,"COTR","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",19,NA,"PAPA","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",19,NA,"BOVI","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",20,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",20,NA,"","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",21,NA,"BUNE","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",21,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",22,NA,"COTR","CYPU","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",22,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",23,NA,"COTR","CYPU","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",23,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",24,NA,"","","",NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",24,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",25,NA,"ECTO","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",25,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",26,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",26,NA,"COTR","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",27,NA,"LADI","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",27,NA,"","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",28,NA,"ASPO","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",28,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",29,NA,"PAPA","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",29,NA,"SL","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",30,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",30,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",31,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",31,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",32,NA,"BUNE","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",32,NA,"ECTO","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",33,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",33,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",34,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",34,NA,"COTR","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",35,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",35,NA,"COTR","PAPA","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",36,NA,"","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",36,NA,"","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",37,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",37,NA,"COTR","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",38,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",38,NA,"SL","","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",39,NA,"COTR","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",39,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"I",40,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,1,NA,NA,8,23,2016-08-23,"O",40,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",1,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",1,NA,"GRAM","","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",2,NA,"COTR","CF","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",2,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",3,NA,"BOVI","COTR","ASPO",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",3,NA,"SL","COTR","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",4,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",4,NA,"SL","COTR","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",5,NA,"SL","COTR","CF",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",5,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",6,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",6,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",7,NA,"","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",7,NA,"CF","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",8,NA,"ASPO","COTR","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",8,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",9,NA,"ASPO","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",9,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",10,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",10,NA,"PAPA","COTR","ASPO",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",11,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",11,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",12,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",12,NA,"COTR","","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",13,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",13,NA,"COTR","","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",14,NA,"COF","SL","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",14,NA,"COTR","PAPA","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",15,NA,"COTR","SL","ASPO",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",15,NA,"","","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",16,NA,"SL","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",16,NA,"SL","COTR","",NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",17,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",17,NA,"SL","PAPA","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",18,NA,"HIRU","","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",18,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",19,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",19,NA,"SL","COTR","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",20,NA,"SL","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",20,NA,"ASPO","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",21,NA,"SL","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",21,NA,"SL","COTR","",NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",22,NA,"ASPO","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",22,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",23,NA,"SL","ASPO","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",23,NA,"HYDI","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",24,NA,"COTR","CYPU","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",24,NA,"SL","COTR","",NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",25,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",25,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",26,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",26,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",27,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",27,NA,"COTR","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",28,NA,"COTR","SL","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",28,NA,"PAPA","COTR","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",29,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",29,NA,"SL","COTR","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",30,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",30,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",31,NA,"SL","","",NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",31,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",32,NA,"RAT","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",32,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",33,NA,"","","",NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",33,NA,"RAT","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",34,NA,"RAT","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",34,NA,"RAT","","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",35,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",35,NA,"","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",36,NA,"COTR","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",36,NA,"SL","","",NA,NA,"SH"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",37,NA,"ECTO","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",37,NA,"BUNE","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",38,NA,"GRAM","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",38,NA,"GRAM","ECTO","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",39,NA,"COTR","GRAM","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",39,NA,"COTR","UAB","",NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"I",40,NA,"SL","","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,2,NA,NA,8,23,2016-08-23,"O",40,NA,"COTR","ASPO","",NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",1,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",1,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",2,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",2,NA,"POLS",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",3,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",3,NA,".",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",4,NA,"GRAM",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",4,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",5,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",5,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",6,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",6,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",7,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",7,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",8,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",8,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",9,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",9,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",10,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",10,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",11,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",11,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",12,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",12,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",13,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",13,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",14,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",14,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",15,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",15,NA,"",NA,NA,NA,NA,""
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",16,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",16,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",17,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",17,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",18,NA,"SL",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",18,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",19,NA,"SL",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",19,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",20,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",20,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",21,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",21,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",22,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",22,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",23,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",23,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",24,NA,"CHCR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",24,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",25,NA,"LS",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",25,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",26,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",26,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",27,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",27,NA,"CHCR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",28,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",28,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",29,NA,".",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",29,NA,".",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",30,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",30,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",31,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",31,NA,"PHRU",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",32,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",32,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",33,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",33,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",34,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",34,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",35,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",35,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",36,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",36,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",37,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",37,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",38,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",38,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",39,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",39,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"I",40,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,3,NA,NA,8,NA,2016-08-24,"O",40,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",1,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",1,NA,"CHCR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",2,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",2,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",3,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",3,NA,"FIBR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",4,NA,"FIBR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",4,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",5,NA,"PAPA",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",5,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",6,NA,"PAPA",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",6,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",7,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",7,NA,"PAPA",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",8,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",8,NA,"SL",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",9,NA,"PORO",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",9,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",10,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",10,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",11,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",11,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",12,NA,"GRAM",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",12,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",13,NA,"CHCR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",13,NA,"BUSP",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",14,NA,"GRAM",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",14,NA,"CHCR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",15,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",15,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",16,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",16,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",17,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",17,NA,"PORO",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",18,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",18,NA,"FALI",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",19,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",19,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",20,NA,"BUSP",NA,NA,NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",20,NA,"BUSP",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",21,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",21,NA,"ES",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",22,NA,"COTR",NA,NA,NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",22,NA,"BUSP",NA,NA,NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",23,NA,"CYPU",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",23,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",24,NA,"GRAM",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",24,NA,"BUSP",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",25,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",25,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",26,NA,"BUSP",NA,NA,NA,NA,"BL"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",26,NA,"BUSP",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",27,NA,"COTR",NA,NA,NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",27,NA,"GRAM",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",28,NA,"HJ",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",28,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",29,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",29,NA,"COTR",NA,NA,NA,NA,"S"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",30,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",30,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",31,NA,"FALI",NA,NA,NA,NA,"C"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",31,NA,"BUSP",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",32,NA,"BUSP",NA,NA,NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",32,NA,"FALI",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",33,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",33,NA,"COTR",NA,NA,NA,NA,"BM"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",34,NA,"COTR",NA,NA,NA,NA,"BS"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",34,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",35,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",35,NA,"PTSE",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",36,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",36,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",37,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",37,NA,"GRAM",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",38,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",38,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",39,NA,"ES",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",39,NA,"COTR",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"I",40,NA,"PAPA",NA,NA,NA,NA,"B"
+2016,NA,NA,"Fort Wetherill",NA,4,NA,NA,8,NA,2016-08-24,"O",40,NA,"ES",NA,NA,NA,NA,"B"

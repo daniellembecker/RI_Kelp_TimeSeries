@@ -59,6 +59,9 @@ kelp_data$DATE <- mdy(kelp_data$DATE)
 # Rename King's Beach to Kings Beach
 kelp_data$SITE[kelp_data$SITE == "King's Beach"] <- "Kings Beach"
 
+# Rename ft. weatherill to fort wetherill
+kelp_data$SITE[kelp_data$SITE == "Ft Weatherill"] <- "Fort Wetherill"
+
 # output updated dataframe
 write.csv(kelp_data, "output/cleaned_data/kelp.data.clean.csv", row.names = FALSE)
 ```
@@ -124,8 +127,22 @@ UPC_data <- rbind.fill(UPC, UPC_2017, UPC_2018, FtWeatherill_UPC_2016, FtWeather
 # Rename ft. wetherill to fort wetherill
 UPC_data$SITE[UPC_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
 
+# Rename fort weatherill
+UPC_data$SITE[UPC_data$SITE == "Fort Weatherill"] <- "Fort Wetherill"
+
 # remove columns with observer and unneeded data
 UPC_data <- UPC_data[ -c(21:24) ]
+
+# Make all columns capitalized
+colnames(UPC_data) <- toupper(colnames(UPC_data))
+
+# Use lubridate to format date to be consistent
+UPC_data$DATE <- mdy(UPC_data$DATE)
+
+# output updated dataframe
+write.csv(UPC_data, "output/cleaned_data/UPC.data.clean.csv", row.names = FALSE)
+
+#UPC dataframe does not have month and day so that is why it isn't connecting fully
 ```
 
 # Combine swath dataframes
@@ -137,6 +154,7 @@ swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016
 # Rename ft. wetherill to fort wetherill
 swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 
+
 # the one swath data.frame has 115 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
 
 ```
@@ -144,8 +162,13 @@ swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 # Combine site.info dataframes
 ```{r}
 
-# use rbind.fill() method in R to combine data frames with different columns
+# Make all columns capitalized
+colnames(Site_info_2018) <- toupper(colnames(Site_info_2018))
+
+# combine site collection data
 site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
+
+# Austin - the site info for 2018 has a start and stop latitude so don't know what to do here
 
 ```
 
