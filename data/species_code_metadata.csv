@@ -1,123 +1,123 @@
 code,species.substrate,type
-ABAB,Abietinaria abietina (coarse corticated),hydroids
-ECSP,Ectopleura sp.,hydroids
-OBSP,Obelia spp. (delicate),hydroids
-SESP,Sertularia sp. (bushy corticated),hydroids
-UIH,Unidentified Hydroid spp.,hydroids
+ABAB,Abietinaria abietina,hydroids
+AGCL,Agarum clathratum,brown algae
+AHPL,Ahnfeltia plicata,erect red algae
+ALES,Alaria esculenta,brown algae
+ATM,Amphipod tube mat,other
+ANSP,Anomia sp.,molluscs
+APPA,Aplidium pallidum,tunicates
+ARVI,Arthrocladia villosa,brown algae
+ASAS,Ascidiella aspersa,tunicates
+ASDI,Ascophyllum nodosum,brown algae
+BA,Barnacle sp.,other
+B,Bedrock         ,substrate
+UV,Blady Ulvoid,green algae
+BOEC,Boltenia echinata,tunicates
+BOOV,Boltenia ovefera,tunicates
+BOHA,Bonnemasonia hamifera,erect red algae
+BOVI,Botrylloides violaceus,tunicates
+BOSC,Botryllus schlosseri,tunicates
+BL,Boulder  (>100cm),substrate
+BS,Boulder (25-50cm),substrate
+BM,Boulder (50-100cm),substrate
+BUNE,Bugula neritina,bryozoans
+BUSP,Bugula sp.,bryozoans
+BUTU,Bugula turrita,bryozoans
+CRSP,Ceramium spp.,erect red algae
+CEBO,Cereanthus borealis,anemones
+CHCR,Chondrus crispus,erect red algae
+CHFI,Chorda filum,brown algae
+CIIN,Ciona intestinalis,tunicates
+CISA,Ciona savingyi,tunicates
+CLSP,Clathromorphum spp.,encrusting red algae (smooth to bumpy)
+CLSP,Cliona sp.,sponges
+C,Cobble (<25cm),substrate
+COTR,Coccotylus truncatus,erect red algae
+COF,Codium fragile,green algae
+COPE,Colpomenia peregrina,brown algae
+CO,Corralina officinalis,erect red algae
 CF,Crepidula fornicata,molluscs
+CREB,"Crisia eburnea (fuzzy, fine)",bryozoans
+CYPU,Cystoclonium purpureum (bristly),erect red algae
+DEMU,Dendrobeania murrayana (leafy),bryozoans
+DECA,Dendrodoa carnea (small pink),tunicates
+DEAC,"Desmerestia aculeata (coarse, alternating branches)",brown algae
+DEVI,"Desmerestia viridis  (fine, opposite branches)",brown algae
+DILI,Diadumene lineata (orange lined),anemones
+DIAT,Diatom Tube Mat,brown algae
+DIAL,Didemnum albidum,tunicates
+DIVE,Didemnum vexillum,tunicates
+DIP,Diplosoma listerianum,tunicates
+DUCO,Dumontia contorta (flat cylanders),erect red algae
+ECSP,Ectopleura sp.,hydroids
+ELPI,Electra pilosa,bryozoans
+ES,Encrusting Sponge,sponges
+EUCR,"Euthoria cristata (flat branching blades, lacy)",erect red algae
+FALI,Fagesia lineata (tiny white),anemones
+FG,Filamentous Green (fine hairs),green algae
+FUSP,Fucus sp.,brown algae
+HAPA,Halichondria panicea (crumbs),sponges
+HAOC,Haliclona oculata (few fingers),sponges
+HADU,Halisarca dujardini (slimy sheet),sponges
+HATO,Halosiphon tomentosus (long and furry),brown algae
+HAPY,Halycynthia pyriformis,tunicates
+HJ,"Heterosiphonia japonica (bright, fuffy, solid midrib)",erect red algae
+HIRU,Hildenbrandia rubra (not calcified crust),encrusting red algae (smooth to bumpy)
+HYSP,Hymedesmia sp. (blue),sponges
 ISAL,Isochiton albus (white chiton),molluscs
 ISRU,Isochiton ruber (red chiton),molluscs
-MOMO,Modiolus modiolus (blunt),molluscs
-MYED,Mytilus edulis,molluscs
-TETE,Tectura testudinalis (limpet),molluscs
-SE,Serpulorbis (worm-tube),molluscs
-ANSP,Anomia sp. (Jingle Shell),molluscs
-SABW,Sabellid worm (feather duster),other
-ATM,Amphipod tube mat,other
-OPAC,Ophiopholis aculeata (brittlestar),other
-BA,Barnacle sp.,other
-ZOMA,Zostera,grass
-CEBO,Cereanthus borealis (buried),anemones
-DILI,Diadumene lineata (orange lined),anemones
-MESE,Metridium senile (fine frill),anemones
-UNAN,Unidentified Anemone,anemones
-URFE,Urticina felina (bands),anemones
-FALI,Fagesia lineata (tiny white),anemones
-COF,Codium fragile (fingers),green algae
-FG,Filamentous Green (fine hairs),green algae
-UV,Blady Ulvoid (ulva & enteromorpha),green algae
-TUV,Tubular Ulvoid (ulva & enteromorpha),green algae
-BOHA,Bonnemasonia hamifera (hooks),erect red algae
-CRSP,"Ceramium spp. (pincers, corticated)",erect red algae
-CHCR,Chondrus crispus,erect red algae
-CYPU,Cystoclonium purpureum (bristly),erect red algae
-DUCO,Dumontia contorta (flat cylanders),erect red algae
-EUCR,"Euthoria cristata (flat branching blades, lacy)",erect red algae
-HJ,"Heterosiphonia japonica (bright, fuffy, solid midrib)",erect red algae
+ISPA,Isodictya palmata (palmate),sponges
+LADI,Laminaria digitata  (hand-like),brown algae
+LEMA,"Leathsia marina (stiffer, brain-like)",brown algae
+LESP,"Leptophytum spp. (smooth, very thin, no band)",encrusting red algae (smooth to bumpy)
+LEUC,Leucosolenia sp (many small vases),sponges
+LIVE,"Lichenopora verrucaria (thick in middle, white)",bryozoans
+LISP,"Lithophyllum sp. (smooth, chalky)",encrusting red algae (smooth to bumpy)
+LIGL,Lithothamnion glaciale (bumpy),encrusting red algae (smooth to bumpy)
 MAST,Mastocarpus stellatus (channeled blades pappilate),erect red algae
-PAPA,Palmaria palmata (hand-like blades),erect red algae
+MEMA,Membranipora membranacea (lacy epizootic),bryozoans
+MESE,Metridium senile (fine frill),anemones
+MIPR,"Microciona prolifera (red, finger/beard)",sponges
+MOMO,Modiolus modiolus (blunt),molluscs
+MOCI,Molgula citrina,tunicates
+MOMA,Molgula manhattensis,tunicates
+MYED,Mytilus edulis,molluscs
+OBSP,Obelia spp.,hydroids
+OPAC,Ophiopholis aculeata,other
+PAPA,Palmaria palmata,erect red algae
+P,Pebbles (<5cm),substrate
 PHRU,Phycodrys rubens (oak leaves),erect red algae
-POLS,Polysiphonia sp. (variable fluffy),erect red algae
+PHSP,"Phymatolithion spp. (rough surface, white swirls)",encrusting red algae (smooth to bumpy)
 PORO,Polyides rotundus (regular thick branches),erect red algae
+POLS,Polysiphonia sp. (variable fluffy),erect red algae
 PORS,Porphyra spp. (thin sheet),erect red algae
 PTSE,Ptilota serrata (branches w/ branchletts),erect red algae
 RAT,Red Algal Turf (thin UNID mat many spp.),erect red algae
-SPRE,"Spermothamnion repens (bushy tufts, epiphytic)",erect red algae
-CO,Corralina officinalis (erect corraline),erect red algae
-URB,Unidentified Red Blade,erect red algae
-UFR,Unidentified Filamentous Red,erect red algae
-AHPL,Ahnfeltia plicata,erect red algae
-COTR,Coccotylus truncatus (Blade with small lobes),erect red algae
-HIRU,Hildenbrandia rubra (not calcified crust),encrusting red algae (smooth to bumpy)
-CLSP,Clathromorphum spp. (smooth and thick),encrusting red algae (smooth to bumpy)
-LISP,"Lithophyllum sp. (smooth, chalky)",encrusting red algae (smooth to bumpy)
-LESP,"Leptophytum spp. (smooth, very thin, no band)",encrusting red algae (smooth to bumpy)
-PHSP,"Phymatolithion spp. (rough surface, white swirls)",encrusting red algae (smooth to bumpy)
-LIGL,Lithothamnion glaciale (bumpy),encrusting red algae (smooth to bumpy)
-EC,Unidentified Encrusting coralline  ,encrusting red algae (smooth to bumpy)
-UENC,Unidentified Encrusting Non-Corraline,encrusting red algae (smooth to bumpy)
-AGCL,Agarum clathratum (shotgun),brown algae
-ALES,Alaria esculenta (midrib),brown algae
-ARVI,"Arthrocladia villosa (branching, tublar, hairs)",brown algae
-ASDI,Ascophyllum nodosum,brown algae
-BLD,Unid Laminariales Blade,brown algae
-CHFI,Chorda filum (long smooth rope),brown algae
-COPE,Colpomenia peregrina  (sea potato),brown algae
-DEAC,"Desmerestia aculeata (coarse, alternating branches)",brown algae
-DEVI,"Desmerestia viridis  (fine, opposite branches)",brown algae
-DIAT,Diatom Tube Mat,brown algae
-HATO,Halosiphon tomentosus (long and furry),brown algae
-LADI,Laminaria digitata  (hand-like),brown algae
-LEMA,"Leathsia marina (stiffer, brain-like)",brown algae
-SADE,"Sacchoriza dermatodea (oar-like, scuzzy)",brown algae
+SABW,Sabellid worm (feather duster),other
 SL,Saccharina latissima  (lasagna blade),brown algae
 SALO,Saccharina longicuris (very long & hollow stipe),brown algae
-FUSP,Fucus sp.,brown algae
-BUSP,Bugula sp.,bryozoans
-BUTU,Bugula turrita (xmas tree),bryozoans
-BUNE,Bugula neritina (purple),bryozoans
-CREB,"Crisia eburnea (fuzzy, fine)",bryozoans
-DEMU,Dendrobeania murrayana (leafy),bryozoans
-ELPI,Electra pilosa,bryozoans
-LIVE,"Lichenopora verrucaria (thick in middle, white)",bryozoans
-MEMA,Membranipora membranacea (lacy epizootic),bryozoans
-SCUN,"Schizoporella unicornis (bumpy, orange & white, round zooids)",bryozoans
+SADE,"Sacchoriza dermatodea (oar-like, scuzzy)",brown algae
+ S ,Sand (>1cm)    ,substrate
 SCAU,"Schizomavella auriculata (bumpy, solid orange, round zooids)",bryozoans
-TRIN,Tricellaria inpinata (crunchy arborescent),bryozoans
-UAB,Unidentified Arborescent Bryozoans,bryozoans
-ES,Encrusting Sponge,sponges
-CLSP,Cliona sp. (large osculum),sponges
-HADU,Halisarca dujardini (slimy sheet),sponges
-HAOC,Haliclona oculata (few fingers),sponges
-HAPA,Halichondria panicea (crumbs),sponges
-HYSP,Hymedesmia sp. (blue),sponges
-ISPA,Isodictya palmata (palmate),sponges
-LEUC,Leucosolenia sp (many small vases),sponges
-MIPR,"Microciona prolifera (red, finger/beard)",sponges
+SCUN,"Schizoporella unicornis (bumpy, orange & white, round zooids)",bryozoans
 SCSP,Scypha sp. (little vases),sponges
-APPA,Aplidium pallidum,tunicates
-ASAS,Ascidiella aspersa,tunicates
-BOEC,Boltenia echinata,tunicates
-BOSC,Botryllus schlosseri (stars),tunicates
-BOVI,Botrylloides violaceus,tunicates
-CIIN,Ciona intestinalis,tunicates
-CISA,Ciona savingyi,tunicates
-DECA,Dendrodoa carnea (small pink),tunicates
-DIAL,Didemnum albidum,tunicates
-DIP,Diplosoma listerianum,tunicates
-DIVE,Didemnum vexillum,tunicates
-HAPY,Halycynthia pyriformis,tunicates
-STCL,Styela clava,tunicates
-UT,Unid. Colonial tunicate                    ,tunicates
-MOMA,Molgula manhattensis,tunicates
-MOCI,Molgula citrina,tunicates
-BOOV,Boltenia ovefera,tunicates
-P,Pebbles (<5cm),substrate
-C,Cobble (<25cm),substrate
-BS,Boulder (25-50cm),substrate
-BM,Boulder (50-100cm),substrate
-BL,Boulder  (>100cm),substrate
-B,Bedrock         ,substrate
+SE,Serpulorbis (worm-tube),molluscs
+SESP,Sertularia sp. (bushy corticated),hydroids
 SS,Shallow Sand (<1cm ),substrate
 SH,Shell Debris,substrate
- S ,Sand (>1cm)    ,substrate
+SPRE,Spermothamnion repens,erect red algae
+STCL,Styela clava,tunicates
+TETE,Tectura testudinalis,molluscs
+TRIN,Tricellaria inpinata,bryozoans
+TUV,Tubular Ulvoid,green algae
+BLD,Unid Laminariales Blade,brown algae
+UT,Unid. Colonial tunicate                    ,tunicates
+UNAN,Unidentified Anemone,anemones
+UAB,Unidentified Arborescent Bryozoans,bryozoans
+EC,Unidentified Encrusting coralline  ,encrusting red algae (smooth to bumpy)
+UENC,Unidentified Encrusting Non-Corraline,encrusting red algae (smooth to bumpy)
+UFR,Unidentified Filamentous Red,erect red algae
+UIH,Unidentified Hydroid spp.,hydroids
+URB,Unidentified Red Blade,erect red algae
+URFE,Urticina felina,anemones
+ZOMA,Zostera,grass

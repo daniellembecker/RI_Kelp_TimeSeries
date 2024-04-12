@@ -121,6 +121,8 @@ write.csv(fish_data, "output/cleaned_data/fish.data.clean.csv", row.names = FALS
 # Combine UPC dataframes
 ```{r}
 
+# UPC data is cleaned and ready
+
 # use rbind.fill() method in R to combine data frames with different columns
 UPC_data <- rbind.fill(UPC, UPC_2017, UPC_2018, FtWeatherill_UPC_2016, FtWeatherill_UPC_2016_CT)
 
@@ -142,7 +144,28 @@ UPC_data$DATE <- mdy(UPC_data$DATE)
 # output updated dataframe
 write.csv(UPC_data, "output/cleaned_data/UPC.data.clean.csv", row.names = FALSE)
 
-#UPC dataframe does not have month and day so that is why it isn't connecting fully
+#UPC data frame does not have month and day so that is why it isn't connecting fully
+```
+
+# Combine site.info dataframes
+```{r}
+
+# site information data is cleaned and ready
+
+# Make all columns capitalized
+colnames(Site_info_2018) <- toupper(colnames(Site_info_2018))
+
+# combine site collection data
+site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
+
+# remove columns with observer and unneeded data
+site.info.dat <- site.info.dat[ -c(12:15) ]
+
+# output updated dataframe
+write.csv(site.info.dat, "output/cleaned_data/site.info.data.clean.csv", row.names = FALSE)
+
+# Austin - the site info for 2018 has a start and stop latitude so don't know what to do here
+
 ```
 
 # Combine swath dataframes
@@ -154,23 +177,20 @@ swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016
 # Rename ft. wetherill to fort wetherill
 swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 
+# swath dataframe has species names as columns in wide format, need to change names to species codes to combine with other dataframes
 
-# the one swath data.frame has 115 variables because each species is listed instead of its code, fo you want me to replace with the code and make it wide to long format?
+# load species names and species code dataframe
+species.metadata <- read.csv("data/species_code_metadata.csv")
 
-```
+# Convert species names to codes
+for (col in names(swath)) {
+  swath[, col] <- species.metadata$code[match(swath[, col], species.metadata$species.substrate)]
+}
 
-# Combine site.info dataframes
-```{r}
-
-# Make all columns capitalized
-colnames(Site_info_2018) <- toupper(colnames(Site_info_2018))
-
-# combine site collection data
-site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
-
-# Austin - the site info for 2018 has a start and stop latitude so don't know what to do here
+#some of the species in swath dataframe are common names and species metadata in species names
 
 ```
+
 
 # Combine QUAD dataframes
 ```{r}
