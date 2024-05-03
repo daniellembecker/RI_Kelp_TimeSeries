@@ -171,23 +171,104 @@ write.csv(site.info.dat, "output/cleaned_data/site.info.data.clean.csv", row.nam
 # Combine swath dataframes
 ```{r}
 
+# swath dataframe has species names as columns in wide format, need to change names to species codes to combine with other dataframes
+
+# Load species names and species code data frame
+species.metadata <- read.csv("data/species_code_metadata.csv")
+
+# Function to rename columns using metadata
+# Get the unique column names from the swath dataframe
+column_names <- colnames(swath)
+  
+# Create a lookup table with name-to-code mappings
+name_to_code <- setNames(species.metadata$code, species.metadata$name)
+  
+# Rename the columns using the lookup table
+  new_column_names <- sapply(column_names, function(name) {
+    if (name %in% names(name_to_code)) {
+      return(name_to_code[name])
+    } else {
+      return(name)
+    }
+  })
+  
+# Rename the columns
+colnames(swath) <- new_column_names
+
+# Convert data in numeric columns to numeric
+swath.con <- swath %>%
+  mutate(across(AGH:BLOA, as.numeric)) 
+
+# Melt only columns AGH:WHEL into long format
+swath_long <- swath.con %>%
+  pivot_longer(cols = AGH:BLOA, names_to = "SP_CODE", values_to = "value") 
+
+# Need to now move values to binned swatch categories as columns
+# Pivot the dataframe into wide format
+swath_binned <- swath_long %>%
+  pivot_wider(names_from = swath, values_from = value)
+
+# make columns lowercase
+# Get the current column names
+current_names <- colnames(swath_binned)
+
+# Convert the column names to lowercase while preserving the first letter
+new_names <- sapply(current_names[1:6], function(x) {
+  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
+})
+
+# Assign the new column names to the first six columns of the dataframe
+colnames(swath_binned)[1:6] <- new_names
+
+# rename swatch category columns in swath count and swath 208 dataframe
+swath_2018 <- swath_2018 %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+swath_count <- swath_count %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+
+# Remove four columns in a specific order swath_2018
+swath_2018 <- swath_2018 %>%
+  select(-12:-15)
+
+# Remove four columns in a specific order swath_count
+swath_count <- swath_count %>%
+  select(-12:-15)
+
+# Remove four columns in a specific order FtWeatherill_swath_2016
+FtWeatherill_swath_2016 <- FtWeatherill_swath_2016 %>%
+  select(-9:-14)
+
+# make columns lowercase
+# Get the current column names
+current_names <- colnames(FtWeatherill_swath_2016)
+
+# Convert the column names to lowercase while preserving the first letter
+new_names <- sapply(current_names[1:6], function(x) {
+  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
+})
+
+# Assign the new column names to the first six columns of the dataframe
+colnames(FtWeatherill_swath_2016)[1:6] <- new_names
+
 # use rbind.fill() method in R to combine data frames with different columns
-swath_data <- rbind.fill(swath, swath_2018, swath_count, FtWeatherill_swath_2016)
+swath_data <- rbind.fill(swath_binned, swath_2018, swath_count, FtWeatherill_swath_2016)
 
 # Rename ft. wetherill to fort wetherill
 swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 
-# swath dataframe has species names as columns in wide format, need to change names to species codes to combine with other dataframes
-
-# load species names and species code dataframe
-species.metadata <- read.csv("data/species_code_metadata.csv")
-
-# Convert species names to codes
-updated.swath <- for (col in names(swath)) {
-  swath[, col] <- species.metadata$code[match(swath[, col], species.metadata$species.substrate)]
-}
-
-#some of the species in swath dataframe are common names and species metadata in species names
+#still need to edit ft.wetherill dataframe
 
 ```
 

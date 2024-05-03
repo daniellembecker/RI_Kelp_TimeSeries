@@ -1,3 +1,4 @@
+code,name,type
 AGH,Agardhiella,erect red algae
 CEBO,Cereanthus borealis,anemones
 DILI,Diadumene lineata (orange lined),anemones
@@ -121,7 +122,6 @@ MOCI,Molgula citrina,tunicates
 MOMA,Molgula manhattensis,tunicates
 STCL,Styela clava,tunicates
 UT,Unid. Colonial tunicate                    ,tunicates
-code,species.substrate,type
 AML,American.Lobster,crustacean
 ATS,Atlantic.Silverside,fishes
 BSB_0_10,Black.Sea.Bass.0_10,fishes
@@ -136,7 +136,7 @@ FIN,Finger.Sponge,sponges
 FOR,Forbes.Star,ecinoderms
 GRAC,Gracillaria,encrusting red algae (smooth to bumpy)
 GRUB,Grubby,fishes
-HOR,Horseshoe.Crab,arthropod
+HOR,Horseshoe.Crab,arthropods
 JING,Jingle.Shell,molluscs
 JOH,Jonah.Crab,crustacean
 LIM,Limpet,molluscs
@@ -157,68 +157,69 @@ MON,Moon.Snail,molluscs
 OSC,Orange.soft.coral,coral
 STAC,Star.Coral,coral
 WHEL,Unid..Whelk,molluscs
-,Dead.Man.s.Fingers,
-,Northwen.Cerainthid,
-,Orange.Sheath.Tunicate,
-,Naked.Goby,
-,Naked.Goby.0_10,
-,Didemnum.Sponge,
-,Blue.Crab.10_20,
-,Blue.Mussel,
-,Unid..Bryzoan,
-,Unid..Red.Algae,
-,Fluke.30_40,
-,Northern.Puffer 0_10,
-,Grubby.0_10,
-,Atlantic.Silverside 0_10,
-,Bay.Scallop,
-,Brown.Algal.Mat,
-,Mantis Shrimp 0_10,
-,Winter Flounder 0_10,
-,Spider Crab,
-,Bugula sp.,
-,Star Tunicate,
-,Fourspine Stickleback 0_10,
-,Rainwater Killifish,
-,Purple Sea Urchin,
-,Black Sea Bass,
-,Green Sea Urchin,
-,Sculpin,
-,HELE,
-,Serpublorbis,
-,Blood Star,
-,Fluke,
-,Black Fingered Mud Crab,
-,Blue Crab 0_10,
-,Codium,
-,Rock Crab 0_10,
-,Breadcrumb Sponge,
-,Rainwater Killifish 0_10,
-,Sea Grape,
-,Eurypanopeus herbstii,
-,Whelk Cassing,
-,Horseshoe Crab 20_30,
-,Shell,
-,Mantis Shrimp Burrow,
-,fish_nest,
-,Barnacle sp.,
-,Devil's Tongue,
-,Dog Whelk,
-,AGMO,
-,Tube Worm,
-,Grinnelia americana,
-,Irish Moss,
-,Shrimp burrow,
-,Sugar Kelp,
-,Sargassum,
-,American Eel,
-,Horseshoe Crab 30_40,
-,Mantis Shrimp,
-,Oyster Toadfish 0_10,
-,Bugula neritina,
-,Spotfin Butterflyfish 0_10,
-,Spaghetti Worm,
-,NA,
-,Cunner,
-,Club Tunicate,
-,Blood Ark,
+COFD,Dead.Man.s.Fingers,green algae
+NOR,Northwen.Cerainthid,NA
+OST,Orange.Sheath.Tunicate,tunicates
+NG,Naked.Goby,fishes
+NG_0_10,Naked.Goby.0_10,fishes
+DIAD,Didemnum.Sponge,sponges
+BLUC_10_20,Blue.Crab.10_20,crustacean
+BMUS,Blue.Mussel,molluscs
+UBRY,Unid..Bryzoan,bryozoans
+URA,Unid..Red.Algae,red algae
+FLUK_30_40,Fluke.30_40,fishes
+NP_0_10,Northern.Puffer 0_10,fishes
+GRUB_0_10,Grubby.0_10,fishes
+ATS_0_10,Atlantic.Silverside 0_10,fishes
+BAYS,Bay.Scallop,molluscs
+BRAM,Brown.Algal.Mat,brown algae
+MAN_0_10,Mantis.Shrimp.0_10,crustacean
+FLOU_0_10,Winter.Flounder.0_10,fishes
+SC,Spider.Crab,crustacean
+BUG,Bugula.sp.,bryozoans
+STAT,Star.Tunicate,tunicates
+FOST_0_10,Fourspine.Stickleback.0_10,fishes
+RK,Rainwater.Killifish,fishes
+PSU,Purple.Sea.Urchin,ecinoderms
+BSB,Black.Sea.Bass,fishes
+GSU,Green.Sea.Urchin,ecinoderms
+SCUL,Sculpin,fishes
+HELE,HELE,other
+SERP,Serpublorbis,molluscs
+BLST,Blood.Star,ecinoderms
+FLUK,Fluke,fishes
+BFMC,Black.Fingered.Mud.Crab,crustacean
+BLC_0_10,Blue.Crab.0_10,crustacean
+COF,Codium,green algae
+RC_0_10,Rock.Crab.0_10,crustacean
+BCS,Breadcrumb.Sponge,sponges
+RAKI_0_10,Rainwater.Killifish.0_10,fishes
+SG,Sea.Grape,plant
+EURY,Eurypanopeus.herbstii,crustacean
+WHELC,Whelk.Cassing,molluscs
+HOR_20_30,Horseshoe.Crab.20_30,arthropods
+SHE,Shell,shell
+MANBUR,Mantis.Shrimp.Burrow,substrate
+FISN,fish_nest,other
+BAR,Barnacle.sp.,arthropods
+DEV,Devil.s.Tongue,red algae
+DWHEL,Dog.Whelk,molluscs
+AGMO,AGMO,other
+TUB,Tube.Worm,annelids
+GRIN,Grinnelia.americana,red algae
+IRM,Irish.Moss,plant
+SHRB,Shrimp.burrow,substrate
+SUGK,Sugar.Kelp,plant
+SAR,Sargassum,brown algae
+AME,American.Eel,fishes
+HOR_30_40,Horseshoe.Crab.30_40,arthropods
+MAN,Mantis.Shrimp,arthropods
+TOAD,Oyster.Toadfish.0_10,fishes
+BUGN,Bugula.neritina,bryozoans
+SPOT,Spotfin.Butterflyfish.0_10,fishes
+SPAG,Spaghetti.Worm,polychaetes
+NA,NA,NA
+CUNN,Cunner,fishes
+CLT,Club.Tunicate,tunicates
+BLOA,Blood.Ark,molluscs
+BORS,Boring.Sponge,sponges
