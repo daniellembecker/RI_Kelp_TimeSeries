@@ -183,7 +183,7 @@ swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
 species.metadata <- read.csv("data/species_code_metadata.csv")
 
 # Convert species names to codes
-for (col in names(swath)) {
+updated.swath <- for (col in names(swath)) {
   swath[, col] <- species.metadata$code[match(swath[, col], species.metadata$species.substrate)]
 }
 
