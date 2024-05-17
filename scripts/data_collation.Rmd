@@ -83,6 +83,22 @@ colnames(morph_data) <- toupper(colnames(morph_data))
 # Use lubridate to format date to be consistent
 morph_data$DATE <- mdy(morph_data$DATE)
 
+# rename moprph category columns in morph and kelp data
+morph_data <- morph_data %>%
+  rename(
+    "BLADE_WIDTH_CM" = "WIDTH_CM")
+
+kelp_data <- kelp_data %>%
+  rename(
+    "BLADE_WIDTH_CM" = "WIDTH_CM",
+    "BLADE_LENGTH_CM" = "LENGTH_CM")
+
+#MAKE STIPE LENGTH NUMERICAL INSTEAD OF CHARACTER in morph data
+morph_data$STIPE_LENGTH_CM <- as.numeric(morph_data$STIPE_LENGTH_CM)
+
+#combine kelp and morph daat
+morph_data <- left_join(morph_data, kelp_data)
+
 # output updated dataframe
 write.csv(morph_data, "output/cleaned_data/morph.data.clean.csv", row.names = FALSE)
 ```
@@ -283,6 +299,9 @@ swath_data <- rbind.fill(swath_binned, swath_2018, swath_count, FtWeatherill_swa
 
 # Rename ft. wetherill to fort wetherill
 swath_data$Site[swath_data$Site == "Ft.Weatherill"] <- "Fort Wetherill"
+
+# output updated dataframe
+write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FALSE)
 
 
 ```
