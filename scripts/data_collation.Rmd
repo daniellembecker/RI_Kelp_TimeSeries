@@ -133,7 +133,7 @@ UPC_data$SITE[UPC_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
 UPC_data$SITE[UPC_data$SITE == "Fort Weatherill"] <- "Fort Wetherill"
 
 # remove columns with observer and unneeded data
-UPC_data <- UPC_data[ -c(21:24) ]
+UPC_data <- UPC_data[ -c(20:24) ]
 
 # Make all columns capitalized
 colnames(UPC_data) <- toupper(colnames(UPC_data))
@@ -141,10 +141,23 @@ colnames(UPC_data) <- toupper(colnames(UPC_data))
 # Use lubridate to format date to be consistent
 UPC_data$DATE <- mdy(UPC_data$DATE)
 
+# make columns lowercase
+# Get the current column names
+current_names <- colnames(UPC_data)
+
+# Convert the column names to lowercase while preserving the first letter
+new_names <- sapply(current_names[1:13], function(x) {
+  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
+})
+
+# Assign the new column names to the first six columns of the dataframe
+colnames(UPC_data)[1:13] <- new_names
+
 # output updated dataframe
 write.csv(UPC_data, "output/cleaned_data/UPC.data.clean.csv", row.names = FALSE)
 
-#UPC data frame does not have month and day so that is why it isn't connecting fully
+
+
 ```
 
 # Combine site.info dataframes
@@ -237,6 +250,13 @@ swath_count <- swath_count %>%
     "20-0 OFF" = "X20.0.OFF"
   )
 
+FtWeatherill_swath_2016 <- FtWeatherill_swath_2016 %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF")
+
 
 # Remove four columns in a specific order swath_2018
 swath_2018 <- swath_2018 %>%
@@ -246,29 +266,24 @@ swath_2018 <- swath_2018 %>%
 swath_count <- swath_count %>%
   select(-12:-15)
 
-# Remove four columns in a specific order FtWeatherill_swath_2016
-FtWeatherill_swath_2016 <- FtWeatherill_swath_2016 %>%
-  select(-9:-14)
-
 # make columns lowercase
 # Get the current column names
-current_names <- colnames(FtWeatherill_swath_2016)
+#current_names <- colnames(FtWeatherill_swath_2016)
 
 # Convert the column names to lowercase while preserving the first letter
-new_names <- sapply(current_names[1:6], function(x) {
-  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
-})
+#new_names <- sapply(current_names[1:6], function(x) {
+#  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
+#})
 
 # Assign the new column names to the first six columns of the dataframe
-colnames(FtWeatherill_swath_2016)[1:6] <- new_names
+#colnames(FtWeatherill_swath_2016)[1:6] <- new_names
 
 # use rbind.fill() method in R to combine data frames with different columns
 swath_data <- rbind.fill(swath_binned, swath_2018, swath_count, FtWeatherill_swath_2016)
 
 # Rename ft. wetherill to fort wetherill
-swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
+swath_data$Site[swath_data$Site == "Ft.Weatherill"] <- "Fort Wetherill"
 
-#still need to edit ft.wetherill dataframe
 
 ```
 
