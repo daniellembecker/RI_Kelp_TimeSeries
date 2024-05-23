@@ -1,225 +1,299 @@
 code,name,type
+ABAB,Abietinaria abietina,hydroids
 AGH,Agardhiella,erect red algae
-CEBO,Cereanthus borealis,anemones
-DILI,Diadumene lineata (orange lined),anemones
-FALI,Fagesia lineata (tiny white),anemones
-MESE,Metridium senile (fine frill),anemones
-UNAN,Unidentified Anemone,anemones
-URFE,Urticina felina,anemones
 AGCL,Agarum clathratum,brown algae
+AGMO,AGMO,other
+AHPL,Ahnfeltia plicata,erect red algae
 ALES,Alaria esculenta,brown algae
+AME,American.Eel,fishes
+SKEL,Shotgun.Kelp,brown algae
+CSS,Common.Sea.Star,ecinoderms
+AML,American.Lobster,crustacean
+CHAM,Champia.parvula,erect red algae
+ATM,Amphipod tube mat,other
+ANSP,Anomia sp.,molluscs
+APPA,Aplidium pallidum,tunicates
 ARVI,Arthrocladia villosa,brown algae
+ASAS,Ascidiella aspersa,tunicates
 ASDI,Ascophyllum,brown algae
-CHFI,Chorda filum,brown algae
-COPE,Colpomenia peregrina,brown algae
-DEAC,"Desmerestia aculeata (coarse, alternating branches)",brown algae
-DEVI,"Desmerestia viridis  (fine, opposite branches)",brown algae
-DIAT,Diatom Tube Mat,brown algae
-FUSP,Fucus.sp.,brown algae
-HATO,Halosiphon tomentosus (long and furry),brown algae
-LADI,Laminaria digitata  (hand-like),brown algae
-LEMA,"Leathsia marina (stiffer, brain-like)",brown algae
-SL,Saccharina latissima  (lasagna blade),brown algae
-SALO,Saccharina longicuris (very long & hollow stipe),brown algae
-SADE,"Sacchoriza dermatodea (oar-like, scuzzy)",brown algae
-BLD,Unid Laminariales Blade,brown algae
+ATS,Atlantic.Silverside,fishes
+ATS,Atlantic.Silverside 0_10,fishes
+BA,Barnacle.sp._.,other
+BA,Barnacle sp.,other
+BAR,Barnacle.sp.,arthropods
+BAYS,Bay.Scallop,molluscs
+B,Bedrock         ,substrate
+BFMC,Black.Fingered.Mud.Crab,crustacean
+BSB,Black.Sea.Bass,fishes
+BSB,Black.Sea.Bass.0_10,fishes
+BSB,Black.Sea.Bass.10_20,fishes
+UV,Blady Ulvoid,green algae
+BLOA,Blood.Ark,molluscs
+BLST,Blood.Star,ecinoderms
+BLC,Blue.Crab,crustacean
+BLC,Blue.Crab.0_10,crustacean
+BLC,Blue.Crab.10_20,crustacean
+BMUS,Blue.Mussel,molluscs
+BOEC,Boltenia echinata,tunicates
+BOOV,Boltenia ovefera,tunicates
+HW,Hooked.Weed,brown algae
+BOHA,Bonnemasonia hamifera,erect red algae
+BORS,Boring.Sponge._.,sponges
+TIRE,Tire._.,substrate
+RW,X10.ring.Whelk,molluscs
+BORS,Boring.Sponge,sponges
+BOVI,Botrylloides violaceus,tunicates
+BOSC,Botryllus schlosseri,tunicates
+BL,Boulder  (>100cm),substrate
+BS,Boulder (25-50cm),substrate
+BM,Boulder (50-100cm),substrate
+BCS,Breadcrumb.Sponge,sponges
+BRAM,Brown.Algal.Mat._.,brown algae
+BRAM,Brown.Algal.Mat,brown algae
 BUNE,Bugula neritina,bryozoans
 BUSP,Bugula sp.,bryozoans
 BUTU,Bugula turrita,bryozoans
-CREB,"Crisia eburnea (fuzzy, fine)",bryozoans
-DEMU,Dendrobeania murrayana (leafy),bryozoans
-ELPI,Electra pilosa,bryozoans
-LIVE,"Lichenopora verrucaria (thick in middle, white)",bryozoans
-MEMA,Membranipora membranacea (lacy epizootic),bryozoans
-SCAU,"Schizomavella auriculata (bumpy, solid orange, round zooids)",bryozoans
-SCUN,"Schizoporella unicornis (bumpy, orange & white, round zooids)",bryozoans
-TRIN,Tricellaria inpinata,bryozoans
-UAB,Unidentified Arborescent Bryozoans,bryozoans
+BUGN,Bugula.neritina,bryozoans
+BUG,Bugula.sp.,bryozoans
+CRSP,Ceramium spp.,erect red algae
+CRSP,Ceramium.sp.,erect red algae
+CEBO,Cereanthus borealis,anemones
+CHW,Channeled.Whelk,molluscs
+CHCR,Chondrus.sp.,erect red algae
+CHCR,Chondrus.truncatus._.,erect red algae
+CHCR,Chondrus.truncatus,erect red algae
+CHFI,Chorda filum,brown algae
+CIIN,Ciona intestinalis,tunicates
+CISA,Ciona savingyi,tunicates
 CLSP,Clathromorphum spp.,encrusting red algae (smooth to bumpy)
+CLSP,Cliona sp.,sponges
+EPI,Epiphytic.Coralline.Aglae,red algae
+GC,Green.Crab,crustacean
+RATUF,Red.Algal.Tuft,substrate
+CLT,Club.Tunicate,tunicates
+C,Cobble (<25cm),substrate
+C,Cobble._.,substrate
+COTR,Coccotylus truncatus,erect red algae
+CORA,Coralline.Red.Algae._.,red algae
+CORA,Coralline.Red.Algae,red algae
+COF,Codium,green algae
+COF,Codium fragile,green algae
+COPE,Colpomenia peregrina,brown algae
+CO,Corralina officinalis,erect red algae
+CF,Crepidula,molluscs
+CRIS,Crisularia.turrita,bryozoans
+CREB,"Crisia eburnea (fuzzy, fine)",bryozoans
+CUNN,Cunner,fishes
+OAR,Oar.Weed,brown algae
+OAR,Oar.Weed.Juv.,brown algae
+CUNN,Cunner.0_10,fishes
+CUNN,Cunner.10_20,fishes
+CYPU,Cystoclonium purpureum (bristly),erect red algae
+DASY,Dasysiphonia.japonica,erect red algae
+COFD,Dead.Man.s.Fingers,green algae
+DEMU,Dendrobeania murrayana (leafy),bryozoans
+DECA,Dendrodoa carnea (small pink),tunicates
+DEAC,"Desmerestia aculeata (coarse, alternating branches)",brown algae
+DEVI,"Desmerestia viridis  (fine, opposite branches)",brown algae
+DEV,Devil.s.Tongue,red algae
+DILI,Diadumene lineata (orange lined),anemones
+DIAT,Diatom Tube Mat,brown algae
+DIAL,Didemnum albidum,tunicates
+DIVE,Didemnum vexillum,tunicates
+DIAD,Didemnum.Sponge,sponges
+DIP,Diplosoma listerianum,tunicates
+DWHEL,Dog.Whelk,molluscs
+REFB,Reef.Ball._.,substrate
+DUCO,Dumontia contorta (flat cylanders),erect red algae
+MUD,Mud._.,substrate
+EMS,Eastern.Mud.Snail,molluscs
+EOYS,Eastern.Oyster,molluscs
+ECSP,Ectopleura sp.,hydroids
+ECSP,Ectocarpus,brown algae
+ELPI,Electra pilosa,bryozoans
+ES,Encrusting Sponge,sponges
+EURY,Eurypanopeus.herbstii,crustacean
+EUCR,"Euthoria cristata (flat branching blades, lacy)",erect red algae
+FALI,Fagesia lineata (tiny white),anemones
+FG,Filamentous Green (fine hairs),green algae
+FIN,Finger.Sponge,sponges
+FISN,fish_nest,other
+FLUK,Fluke,fishes
+FLUK,Fluke.30_40,fishes
+FOR,Forbes.Star,ecinoderms
+FOST,Fourspine.Stickleback.0_10,fishes
+GRAC,Gracillaria._.,encrusting red algae (smooth to bumpy)
+FUSP,Fucus.sp._.,brown algae
+FUSP,Fucus.sp.,brown algae
+GRAC,Gracillaria,encrusting red algae (smooth to bumpy)
+GSU,Green.Sea.Urchin,ecinoderms
+GSUJ,Green.Sea.Urchin.Juv,ecinoderms
+GRIN,Grinnelia.americana,red algae
+GRIN,Grinnelia.americana._.,red algae
+GRUB,Grubby,fishes
+GRUB,Grubby.0_10,fishes
+HAPA,Halichondria panicea (crumbs),sponges
+HAOC,Haliclona oculata (few fingers),sponges
+HADU,Halisarca dujardini (slimy sheet),sponges
+HATO,Halosiphon tomentosus (long and furry),brown algae
+HAPY,Halycynthia pyriformis,tunicates
+HELE,HELE,other
+HJ,Heterosiphonia.sp._.,erect red algae
+HJ,"Heterosiphonia japonica (bright, fuffy, solid midrib)",erect red algae
 HIRU,Hildenbrandia rubra (not calcified crust),encrusting red algae (smooth to bumpy)
+HOR,Horseshoe.Crab,arthropods
+HOR,Horseshoe.Crab.20_30,arthropods
+HOR,Horseshoe.Crab.30_40,arthropods
+HYSP,Hymedesmia sp. (blue),sponges
+IRM,Irish.Moss._.,plant
+IRM,Irish.Moss,plant
+GOT,Goat.Tang,fishes
+SEA,Sea.Oak,brown algae
+CHI,Chiton,molluscs
+ISAL,Isochiton albus (white chiton),molluscs
+ISRU,Isochiton ruber (red chiton),molluscs
+ISPA,Isodictya palmata (palmate),sponges
+JING,Jingle.Shell,molluscs
+JOH,Jonah.Crab,crustacean
+SWD,Sour.Weed,green algae
+SEAP,Sea.Potato,ecinoderms
+SEAV,Sea.Vase,anemones
+STIW,Stink.Weed,green algae
+AHN,Ahnfeltia,red algae
+SPER,Spermathoamnion.sp.,red algae
+KNW,Knobbed.Whelk,molluscs
+DASEL,Dasya.elegans,red algae
+CLPLIMA,Clonal.Plumose.Anemone,anemones
+PLUM,Plumaria.sp.,red algae
+CHON,Chondrus.Bryzoan,bryozoans
+RAT,Red.Turf.Algae,red algae
+EEL,Eelgrass_height,plant
+EEL,Eelgrass_shoots,plant
+ASC,Asian.Shore.Crab,crustacean
+SQU,Squid.eggs,NA
+EEL,Eelgrass._.,plant
+EEL,Eelgrass,plant
+WANE,White.Anemone,anemones
+POLY,Polysiphonia.sp.,red algae
+POLY,Polysiphonia.sp._.,red algae
+NSF,Northern.Sea.Fern,red algae
+SLIC,Sea.Lice,crustacean
+PURS,Purple.Sponge,sponges
+SEALA,Sea.Lace,red algae
+PURPCL,Purple.Claw.Weed,red algae
+LADI,Laminaria digitata  (hand-like),brown algae
+LEMA,"Leathsia marina (stiffer, brain-like)",brown algae
 LESP,"Leptophytum spp. (smooth, very thin, no band)",encrusting red algae (smooth to bumpy)
+LEUC,Leucosolenia sp (many small vases),sponges
+LIVE,"Lichenopora verrucaria (thick in middle, white)",bryozoans
+LIM,Limpet,molluscs
 LISP,"Lithophyllum sp. (smooth, chalky)",encrusting red algae (smooth to bumpy)
 LIGL,Lithothamnion glaciale (bumpy),encrusting red algae (smooth to bumpy)
-PHSP,"Phymatolithion spp. (rough surface, white swirls)",encrusting red algae (smooth to bumpy)
-EC,Unidentified Encrusting coralline  ,encrusting red algae (smooth to bumpy)
-UENC,Unidentified Encrusting Non-Corraline,encrusting red algae (smooth to bumpy)
-AHPL,Ahnfeltia plicata,erect red algae
-BOHA,Bonnemasonia hamifera,erect red algae
-CRSP,Ceramium spp.,erect red algae
-CHCR,Chondrus.sp.,erect red algae
-COTR,Coccotylus truncatus,erect red algae
-CO,Corralina officinalis,erect red algae
-CYPU,Cystoclonium purpureum (bristly),erect red algae
-DUCO,Dumontia contorta (flat cylanders),erect red algae
-EUCR,"Euthoria cristata (flat branching blades, lacy)",erect red algae
-HJ,"Heterosiphonia japonica (bright, fuffy, solid midrib)",erect red algae
+LON,Long.clawed.Hermit,crustacean
+MAN,Mantis.Shrimp,arthropods
+MAN,Mantis.Shrimp.0_10,crustacean
+UNBUR,Unid..Burrow,substrate
+MANBUR,Mantis.Shrimp.Burrow,substrate
 MAST,Mastocarpus stellatus (channeled blades pappilate),erect red algae
+MAST,Mastocarpus,erect red algae
+MEMA,Membranipora membranacea (lacy epizootic),bryozoans
+MESE,Metridium senile (fine frill),anemones
+MIPR,"Microciona prolifera (red, finger/beard)",sponges
+MOMO,Modiolus modiolus (blunt),molluscs
+MOCI,Molgula citrina,tunicates
+MOMA,Molgula manhattensis,tunicates
+MON,Moon.Snail,molluscs
+MYED,Mytilus edulis,molluscs
+NA,NA,NA
+NG,Naked.Goby,fishes
+NG,Naked.Goby.0_10,fishes
+NP,Northern.Puffer,fishes
+NP,Northern.Puffer 0_10,fishes
+NOR,Northwen.Cerainthid,NA
+OBSP,Obelia spp.,hydroids
+OBSP,Obelia.sp.,hydroids
+OPAC,Ophiopholis aculeata,other
+OST,Orange.Sheath.Tunicate,tunicates
+OSC,Orange.soft.coral,coral
+OYS,Oyster.Drill,molluscs
+TOAD,Oyster.Toadfish.0_10,fishes
 PAPA,Palmaria palmata,erect red algae
+PAN,Panopeus.sp.,crustacean
+P,Pebbles (<5cm),substrate
 PHRU,Phycodrys rubens (oak leaves),erect red algae
+PHSP,"Phymatolithion spp. (rough surface, white swirls)",encrusting red algae (smooth to bumpy)
 PORO,Polyides rotundus (regular thick branches),erect red algae
 POLS,Polysiphonia sp. (variable fluffy),erect red algae
 PORS,Porphyra,erect red algae
 PTSE,Ptilota serrata (branches w/ branchletts),erect red algae
-RAT,Red Algal Turf (thin UNID mat many spp.),erect red algae
-SPRE,Spermothamnion repens,erect red algae
-UFR,Unidentified Filamentous Red,erect red algae
-URB,Unidentified Red Blade,erect red algae
-ZOMA,Zostera,grass
-UV,Blady Ulvoid,green algae
-COF,Codium fragile,green algae
-FG,Filamentous Green (fine hairs),green algae
-TUV,Tubular Ulvoid,green algae
-ABAB,Abietinaria abietina,hydroids
-ECSP,Ectopleura sp.,hydroids
-OBSP,Obelia spp.,hydroids
-SESP,Sertularia sp. (bushy corticated),hydroids
-UIH,Unidentified Hydroid spp.,hydroids
-ANSP,Anomia sp.,molluscs
-CF,Crepidula,molluscs
-ISAL,Isochiton albus (white chiton),molluscs
-ISRU,Isochiton ruber (red chiton),molluscs
-MOMO,Modiolus modiolus (blunt),molluscs
-MYED,Mytilus edulis,molluscs
-SE,Serpulorbis (worm-tube),molluscs
-TETE,Tectura testudinalis,molluscs
-ATM,Amphipod tube mat,other
-BA,Barnacle sp.,other
-OPAC,Ophiopholis aculeata,other
-SABW,Sabellid worm (feather duster),other
-CLSP,Cliona sp.,sponges
-ES,Encrusting Sponge,sponges
-HAPA,Halichondria panicea (crumbs),sponges
-HAOC,Haliclona oculata (few fingers),sponges
-HADU,Halisarca dujardini (slimy sheet),sponges
-HYSP,Hymedesmia sp. (blue),sponges
-ISPA,Isodictya palmata (palmate),sponges
-LEUC,Leucosolenia sp (many small vases),sponges
-MIPR,"Microciona prolifera (red, finger/beard)",sponges
-SCSP,Scypha sp. (little vases),sponges
-B,Bedrock         ,substrate
-BL,Boulder  (>100cm),substrate
-BS,Boulder (25-50cm),substrate
-BM,Boulder (50-100cm),substrate
-C,Cobble (<25cm),substrate
-P,Pebbles (<5cm),substrate
- S ,Sand (>1cm)    ,substrate
-SS,Shallow Sand (<1cm ),substrate
-SH,Shell Debris,substrate
-APPA,Aplidium pallidum,tunicates
-ASAS,Ascidiella aspersa,tunicates
-BOEC,Boltenia echinata,tunicates
-BOOV,Boltenia ovefera,tunicates
-BOVI,Botrylloides violaceus,tunicates
-BOSC,Botryllus schlosseri,tunicates
-CIIN,Ciona intestinalis,tunicates
-CISA,Ciona savingyi,tunicates
-DECA,Dendrodoa carnea (small pink),tunicates
-DIAL,Didemnum albidum,tunicates
-DIVE,Didemnum vexillum,tunicates
-DIP,Diplosoma listerianum,tunicates
-HAPY,Halycynthia pyriformis,tunicates
-MOCI,Molgula citrina,tunicates
-MOMA,Molgula manhattensis,tunicates
-STCL,Styela clava,tunicates
-UT,Unid. Colonial tunicate                    ,tunicates
-AML,American.Lobster,crustacean
-ATS,Atlantic.Silverside,fishes
-BSB_0_10,Black.Sea.Bass.0_10,fishes
-BSB_10_20,Black.Sea.Bass.10_20,fishes
-BLC,Blue.Crab,crustacean
-CHW,Channeled.Whelk,molluscs
-CUNN_0_10,Cunner.0_10,fishes
-CUNN_10_20,Cunner.10_20,fishes
-EMS,Eastern.Mud.Snail,molluscs
-EOYS,Eastern.Oyster,molluscs
-FIN,Finger.Sponge,sponges
-FOR,Forbes.Star,ecinoderms
-GRAC,Gracillaria,encrusting red algae (smooth to bumpy)
-GRUB,Grubby,fishes
-HOR,Horseshoe.Crab,arthropods
-JING,Jingle.Shell,molluscs
-JOH,Jonah.Crab,crustacean
-LIM,Limpet,molluscs
-LON,Long.clawed.Hermit,crustacean
-OYS,Oyster.Drill,molluscs
-PAN,Panopeus.sp.,crustacean
-QUA,Quahog,molluscs
-RBS,Red.Beard.Sponge,sponges
-ROC,Rock.Crab,crustacean
-GUNN,Rock.Gunnel,fishes
-SCUP_0_10,Scup.0_10,fishes
-SCUP_10_20,Scup.10_20,fishes
-LETT,Sea.Lettuce,green algae
-TAU_0_10,Tautog.0_10,fishes
-TAU_10_20,Tautog.10_20,fishes
-GSUJ,Green.Sea.Urchin.Juv,ecinoderms
-MON,Moon.Snail,molluscs
-OSC,Orange.soft.coral,coral
-STAC,Star.Coral,coral
-WHEL,Unid..Whelk,molluscs
-COFD,Dead.Man.s.Fingers,green algae
-NOR,Northwen.Cerainthid,NA
-OST,Orange.Sheath.Tunicate,tunicates
-NG,Naked.Goby,fishes
-NG_0_10,Naked.Goby.0_10,fishes
-DIAD,Didemnum.Sponge,sponges
-BLUC_10_20,Blue.Crab.10_20,crustacean
-BMUS,Blue.Mussel,molluscs
-UBRY,Unid..Bryzoan,bryozoans
-URA,Unid..Red.Algae,red algae
-FLUK_30_40,Fluke.30_40,fishes
-NP_0_10,Northern.Puffer 0_10,fishes
-GRUB_0_10,Grubby.0_10,fishes
-ATS_0_10,Atlantic.Silverside 0_10,fishes
-BAYS,Bay.Scallop,molluscs
-BRAM,Brown.Algal.Mat,brown algae
-MAN_0_10,Mantis.Shrimp.0_10,crustacean
-FLOU_0_10,Winter.Flounder.0_10,fishes
-SC,Spider.Crab,crustacean
-BUG,Bugula.sp.,bryozoans
-STAT,Star.Tunicate,tunicates
-FOST_0_10,Fourspine.Stickleback.0_10,fishes
-RK,Rainwater.Killifish,fishes
 PSU,Purple.Sea.Urchin,ecinoderms
-BSB,Black.Sea.Bass,fishes
-GSU,Green.Sea.Urchin,ecinoderms
-SCUL,Sculpin,fishes
-HELE,HELE,other
-SERP,Serpublorbis,molluscs
-BLST,Blood.Star,ecinoderms
-FLUK,Fluke,fishes
-BFMC,Black.Fingered.Mud.Crab,crustacean
-BLC_0_10,Blue.Crab.0_10,crustacean
-COF,Codium,green algae
-RC_0_10,Rock.Crab.0_10,crustacean
-BCS,Breadcrumb.Sponge,sponges
-RAKI_0_10,Rainwater.Killifish.0_10,fishes
-SG,Sea.Grape,plant
-EURY,Eurypanopeus.herbstii,crustacean
-WHELC,Whelk.Cassing,molluscs
-HOR_20_30,Horseshoe.Crab.20_30,arthropods
-SHE,Shell,shell
-MANBUR,Mantis.Shrimp.Burrow,substrate
-FISN,fish_nest,other
-BAR,Barnacle.sp.,arthropods
-DEV,Devil.s.Tongue,red algae
-DWHEL,Dog.Whelk,molluscs
-AGMO,AGMO,other
-TUB,Tube.Worm,annelids
-GRIN,Grinnelia.americana,red algae
-IRM,Irish.Moss,plant
-SHRB,Shrimp.burrow,substrate
-SUGK,Sugar.Kelp,plant
+QUA,Quahog,molluscs
+RK,Rainwater.Killifish,fishes
+RAKI,Rainwater.Killifish.0_10,fishes
+RAT,Red Algal Turf (thin UNID mat many spp.),erect red algae
+RBS,Red.Beard.Sponge,sponges
+ROC,Rock.Crab.Juv,crustacean
+ROC,Rock.Crab,crustacean
+ROC,Rock.Crab.0_10,crustacean
+GUNN,Rock.Gunnel,fishes
+SABW,Sabellid worm (feather duster),other
+SL,Saccharina latissima  (lasagna blade),brown algae
+SALO,Saccharina longicuris (very long & hollow stipe),brown algae
+SADE,"Sacchoriza dermatodea (oar-like, scuzzy)",brown algae
+ S ,Sand ,substrate
+ S ,Sand._.,substrate
 SAR,Sargassum,brown algae
-AME,American.Eel,fishes
-HOR_30_40,Horseshoe.Crab.30_40,arthropods
-MAN,Mantis.Shrimp,arthropods
-TOAD,Oyster.Toadfish.0_10,fishes
-BUGN,Bugula.neritina,bryozoans
-SPOT,Spotfin.Butterflyfish.0_10,fishes
+SCAU,"Schizomavella auriculata (bumpy, solid orange, round zooids)",bryozoans
+SCUN,"Schizoporella unicornis (bumpy, orange & white, round zooids)",bryozoans
+SCUL,Sculpin,fishes
+SCUP,Scup.0_10,fishes
+SCUP,Scup.10_20,fishes
+SCSP,Scypha sp. (little vases),sponges
+DNSF,Delicate.Nortern.Sea.Fan,cnidarian
+SG,Sea.Grape,plant
+LETT,Sea.Lettuce._.,green algae
+LETT,Sea.Lettuce,green algae
+SERP,Serpublorbis,molluscs
+SE,Serpulorbis (worm-tube),molluscs
+SESP,Sertularia sp. (bushy corticated),hydroids
+SS,Shallow Sand (<1cm ),substrate
+SHE,Shell,shell
+SH,Shell Debris,substrate
+SHRB,Shrimp.burrow,substrate
 SPAG,Spaghetti.Worm,polychaetes
-NA,NA,NA
-CUNN,Cunner,fishes
-CLT,Club.Tunicate,tunicates
-BLOA,Blood.Ark,molluscs
-BORS,Boring.Sponge,sponges
+SPRE,Spermothamnion repens,erect red algae
+SC,Spider.Crab,crustacean
+SPOT,Spotfin.Butterflyfish.0_10,fishes
+STAC,Star.Coral,coral
+STAT,Star.Tunicate,tunicates
+STCL,Styela clava,tunicates
+KELP,Kelp,brown algae
+SUGK,Sugar.Kelp,brown algae
+XMAS,Xmas.Tree.Byryzoan,bryozoans
+SUGK,Sugar.Kelp.Juv.,brown algae
+TAU,Tautog.0_10,fishes
+TAU,Tautog.10_20,fishes
+TETE,Tectura testudinalis,molluscs
+TRIN,Tricellaria inpinata,bryozoans
+TUB,Tube.Worm,annelids
+TUV,Tubular Ulvoid,green algae
+TUB,Tubular.Weed,green algae
+BLD,Unid Laminariales Blade,brown algae
+COLT,Colonial.Tunicate                    ,tunicates
+UT,Unid. Colonial tunicate                    ,tunicates
+UBRY,Unid..Bryzoan,bryozoans
+UNTUN,Unid..Tunicate,tunicates
+URA,Unid..Red.Algae,red algae
+UHYD,Unid..Hydroid.sp.,hydroids
+WHEL,Unid..Whelk,molluscs
+UNAN,Unidentified Anemone,anemones
+UAB,Unidentified Arborescent Bryozoans,bryozoans
+EC,Unidentified Encrusting coralline  ,encrusting red algae (smooth to bumpy)
+UENC,Unidentified Encrusting Non-Corraline,encrusting red algae (smooth to bumpy)
+UFR,Unidentified Filamentous Red,erect red algae
+UIH,Unidentified Hydroid spp.,hydroids
+URB,Unidentified Red Blade,erect red algae
+URFE,Urticina felina,anemones
+WHELC,Whelk.Cassing,molluscs
+FLOU,Winter.Flounder.0_10,fishes
+ZOMA,Zost+B211era,grass

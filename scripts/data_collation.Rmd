@@ -62,8 +62,6 @@ kelp_data$SITE[kelp_data$SITE == "King's Beach"] <- "Kings Beach"
 # Rename ft. weatherill to fort wetherill
 kelp_data$SITE[kelp_data$SITE == "Ft Weatherill"] <- "Fort Wetherill"
 
-# output updated dataframe
-write.csv(kelp_data, "output/cleaned_data/kelp.data.clean.csv", row.names = FALSE)
 ```
 
 # Combine Kelp_Morph dataframes
@@ -97,16 +95,54 @@ kelp_data <- kelp_data %>%
 morph_data$STIPE_LENGTH_CM <- as.numeric(morph_data$STIPE_LENGTH_CM)
 
 #combine kelp and morph daat
-morph_data <- left_join(morph_data, kelp_data)
+morph_data <- rbind.fill(morph_data, kelp_data)
 
 # output updated dataframe
 write.csv(morph_data, "output/cleaned_data/morph.data.clean.csv", row.names = FALSE)
 ```
 
+# Kelp COVER data 
+```{r}
+# kelp cover dataframe has species names as columns in wide format, need to change names to species codes to combine with other dataframes
+# Load species names and species code data frame
+species.metadata <- read.csv("data/species_code_metadata.csv")
+
+# Remove the first column from Kelp_COVER if it's unnecessary
+Kelp_COVER <- Kelp_COVER[ , -1 ]
+
+# Function to rename columns using metadata
+# Get the unique column names from the Kelp_COVER dataframe
+column_names.kelp <- colnames(Kelp_COVER)
+
+# Create a lookup table with name-to-code mappings
+name_to_code.kelp <- setNames(species.metadata$code, species.metadata$name)
+
+# Rename the columns using the lookup table
+new_column_names.kelp <- sapply(column_names.kelp, function(name) {
+  if (name %in% names(name_to_code.kelp)) {
+    return(name_to_code.kelp[name])
+  } else {
+    return(name)
+  }
+})
+
+# Rename the columns in Kelp_COVER
+colnames(Kelp_COVER) <- new_column_names.kelp
+
+# Melt only columns AGH:WHEL into long format
+Kelp_COVER_long <- Kelp_COVER %>%
+  pivot_longer(cols = AGH:CLT, names_to = "SP_CODE", values_to = "value")
+
+# output updated dataframe
+write.csv(Kelp_COVER_long, "output/cleaned_data/kelp.cover.data.clean.csv", row.names = FALSE)
+
+```
+
+
+
+
 # Combine fish dataframes
 ```{r}
-
-# Fish data is cleaned and ready
 
 # use rbind.fill() method in R to combine data frames with different columns
 fish_data <- rbind.fill(FtWeatherill_fish_2016, FtWeatherill_fish_2017, fish_2018_Hump_Lab_size_classes)
@@ -119,7 +155,7 @@ fish$SIZE <- cut(fish$actual_size, breaks = c(0, 10, 20, 30, 40, 50, 70, 100, In
                labels = c("< 10", "10_20", "20_30", "30_40", "40_50", "50_70", "70_100", "> 100"),include.lowest = TRUE, right = FALSE)
 
 # combine updated dataframes
-fish_data <- left_join(fish, fish_data)
+fish_data <- rbind.fill(fish, fish_data)
 
 # remove columns with VIS
 fish_data <- fish_data[ -c(14) ]
@@ -130,7 +166,6 @@ fish_data$DATE <- mdy(fish_data$DATE)
 # output updated dataframe
 write.csv(fish_data, "output/cleaned_data/fish.data.clean.csv", row.names = FALSE)
 
-# look at fish_Aggregated later - Austin, this is kelp density possibly?
 
 ```
 
@@ -157,22 +192,9 @@ colnames(UPC_data) <- toupper(colnames(UPC_data))
 # Use lubridate to format date to be consistent
 UPC_data$DATE <- mdy(UPC_data$DATE)
 
-# make columns lowercase
-# Get the current column names
-current_names <- colnames(UPC_data)
-
-# Convert the column names to lowercase while preserving the first letter
-new_names <- sapply(current_names[1:13], function(x) {
-  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
-})
-
-# Assign the new column names to the first six columns of the dataframe
-colnames(UPC_data)[1:13] <- new_names
 
 # output updated dataframe
 write.csv(UPC_data, "output/cleaned_data/UPC.data.clean.csv", row.names = FALSE)
-
-
 
 ```
 
@@ -185,60 +207,10 @@ site.info.dat <- kelp_siteinfo_MASTER
 # output updated dataframe
 write.csv(site.info.dat, "output/cleaned_data/site.info.data.clean.csv", row.names = FALSE)
 
-
 ```
 
 # Combine swath dataframes
 ```{r}
-
-# swath dataframe has species names as columns in wide format, need to change names to species codes to combine with other dataframes
-
-# Load species names and species code data frame
-species.metadata <- read.csv("data/species_code_metadata.csv")
-
-# Function to rename columns using metadata
-# Get the unique column names from the swath dataframe
-column_names <- colnames(swath)
-  
-# Create a lookup table with name-to-code mappings
-name_to_code <- setNames(species.metadata$code, species.metadata$name)
-  
-# Rename the columns using the lookup table
-  new_column_names <- sapply(column_names, function(name) {
-    if (name %in% names(name_to_code)) {
-      return(name_to_code[name])
-    } else {
-      return(name)
-    }
-  })
-  
-# Rename the columns
-colnames(swath) <- new_column_names
-
-# Convert data in numeric columns to numeric
-swath.con <- swath %>%
-  mutate(across(AGH:BLOA, as.numeric)) 
-
-# Melt only columns AGH:WHEL into long format
-swath_long <- swath.con %>%
-  pivot_longer(cols = AGH:BLOA, names_to = "SP_CODE", values_to = "value") 
-
-# Need to now move values to binned swatch categories as columns
-# Pivot the dataframe into wide format
-swath_binned <- swath_long %>%
-  pivot_wider(names_from = swath, values_from = value)
-
-# make columns lowercase
-# Get the current column names
-current_names <- colnames(swath_binned)
-
-# Convert the column names to lowercase while preserving the first letter
-new_names <- sapply(current_names[1:6], function(x) {
-  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
-})
-
-# Assign the new column names to the first six columns of the dataframe
-colnames(swath_binned)[1:6] <- new_names
 
 # rename swatch category columns in swath count and swath 208 dataframe
 swath_2018 <- swath_2018 %>%
@@ -249,7 +221,14 @@ swath_2018 <- swath_2018 %>%
     "20-0 OFF" = "X20.0.OFF"
   )
 
-swath_count <- swath_count %>%
+# remove columns with observer and unneeded data
+swath_2018 <- swath_2018[ -c(12:15) ]
+
+# Make all columns capitalized
+colnames(swath_2018) <- toupper(colnames(swath_2018))
+
+#rename in and out size classes
+Swath_count <- Swath_count %>%
   rename(
     "0-20 IN" = "X0.20.IN",
     "20-40 IN" = "X20.40.IN",
@@ -257,43 +236,41 @@ swath_count <- swath_count %>%
     "20-0 OFF" = "X20.0.OFF"
   )
 
-FtWeatherill_swath_2016 <- FtWeatherill_swath_2016 %>%
-  rename(
-    "0-20 IN" = "X0.20.IN",
-    "20-40 IN" = "X20.40.IN",
-    "40-20 OFF" = "X40.20.OFF",
-    "20-0 OFF" = "X20.0.OFF")
+# remove columns with observer and unneeded data
+Swath_count <- Swath_count[ -c(12:15) ]
 
+# Make all columns capitalized
+colnames(Swath_count) <- toupper(colnames(Swath_count))
 
-# Remove four columns in a specific order swath_2018
-swath_2018 <- swath_2018 %>%
-  select(-12:-15)
+# remove columns with observer and unneeded data
+FtWeatherill_Swath_2016 <- FtWeatherill_Swath_2016[ -c(9:14) ]
 
-# Remove four columns in a specific order swath_count
-swath_count <- swath_count %>%
-  select(-12:-15)
+# Renaming values in the 'SIDE' column
+FtWeatherill_Swath_2016 <- FtWeatherill_Swath_2016 %>%
+  mutate(SIDE = case_when(
+    SIDE == "IN 20" ~ "0-20 IN",
+    SIDE == "OFF 40" ~ "40-20 OFF",
+    SIDE == "IN 40" ~ "20-40 IN",
+    SIDE == "OFF 20" ~ "20-0 OFF",
+    TRUE ~ SIDE))  # Keep other values unchanged
 
-# make columns lowercase
-# Get the current column names
-#current_names <- colnames(FtWeatherill_swath_2016)
-
-# Convert the column names to lowercase while preserving the first letter
-#new_names <- sapply(current_names[1:6], function(x) {
-#  paste0(toupper(substring(x, 1, 1)), tolower(substring(x, 2)))
-#})
-
-# Assign the new column names to the first six columns of the dataframe
-#colnames(FtWeatherill_swath_2016)[1:6] <- new_names
+# Pivoting the data from long to wide format
+FtWeatherill_Swath_2016_wide <- FtWeatherill_Swath_2016 %>%
+  pivot_wider(
+    names_from = SIDE,
+    values_from = COUNT)
 
 # use rbind.fill() method in R to combine data frames with different columns
-swath_data <- rbind.fill(swath_binned, swath_2018, swath_count, FtWeatherill_swath_2016)
+swath_data <- rbind.fill(swath_2018, Swath_count, FtWeatherill_Swath_2016_wide)
 
 # Rename ft. wetherill to fort wetherill
-swath_data$Site[swath_data$Site == "Ft.Weatherill"] <- "Fort Wetherill"
+swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
+
+# Rename ft. wetherill to fort wetherill
+swath_data$SITE[swath_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
 
 # output updated dataframe
 write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FALSE)
-
 
 ```
 
@@ -301,14 +278,44 @@ write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FA
 # Combine QUAD dataframes
 ```{r}
 
-# To do: species codes transform
+#make QUAD data long
+# Function to rename columns using metadata
+# Get the unique column names from the QUAD ataframe
+column_names.quad <- colnames(QUAD)
+
+# Create a lookup table with name-to-code mappings
+name_to_code.quad <- setNames(species.metadata$code, species.metadata$name)
+
+# Rename the columns using the lookup table
+new_column_names.quad <- sapply(column_names.quad, function(name) {
+  if (name %in% names(name_to_code.quad)) {
+    return(name_to_code.quad[name])
+  } else {
+    return(name)
+  }
+})
+
+# Rename the columns in Kelp_COVER
+colnames(QUAD) <- new_column_names.quad
+
+# Melt only columns AGH:WHEL into long format
+QUAD_long <- QUAD %>%
+  pivot_longer(cols = AGH:Oar.Weed.Total, names_to = "SP_CODE", values_to = "COUNT")
 
 # use rbind.fill() method in R to combine data frames with different columns
-QUAD_data <- rbind.fill(QUAD, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
+QUAD_data <- rbind.fill(QUAD_long, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
+
+#remove 131-138 columns for observers not needed information
+QUAD_data <- QUAD_data[ -c(14:17) ]
 
 # Rename ft. wetherill to fort wetherill
 QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
 
+# Rename Kings Beach to King's Beach
+QUAD_data$SITE[QUAD_data$SITE == "Kings Beach"] <- "King's Beach"
+
+# output updated dataframe
+write.csv(QUAD_data, "output/cleaned_data/QUAD.data.clean.csv", row.names = FALSE)
 
 ```
 
