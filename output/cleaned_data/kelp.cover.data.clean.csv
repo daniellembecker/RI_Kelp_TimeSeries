@@ -1,4 +1,4 @@
-"YEAR","HABITAT","REGION","SITE","CONTROL","TRANSECT","TOTAL","SP_CODE","value"
+"YEAR","HABITAT","REGION","SITE","CONTROL","TRANSECT","TOTAL","SP_CODE","COVER"
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,2.459459459,"AGH",0
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,2.459459459,"BORS",0.027027027
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,2.459459459,"CHW",0
