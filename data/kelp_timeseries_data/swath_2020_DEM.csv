@@ -1,0 +1,11 @@
+YEAR,MONTH,DAY,DATE,SITE,TRANSECT,SP_CODE,0-20 IN,20-40 IN,40-20 OFF,20-0 OFF
+2020,7,15,7/15/20,Fort Wetherill,1,CAIR,,1,,
+2020,7,15,7/15/20,Fort Wetherill,1,ASDA,7,6,12,14
+2020,7,15,7/15/20,Fort Wetherill,1,HOAM,,,,1
+2020,7,15,7/15/20,Fort Wetherill,1,ASRU,,,,1
+2020,7,15,7/15/20,Fort Wetherill,1,LUHE,,,1,
+2020,7,15,7/15/20,Fort Wetherill,1,CEBO,,,3,
+2020,7,15,7/15/20,Fort Wetherill,2,ASDA,14,12,12,16
+2020,7,15,7/15/20,Fort Wetherill,2,ASRU,,,1,
+2020,7,15,7/15/20,Fort Wetherill,Control 2,ASDA,14,7,4,7
+2020,7,15,7/15/20,Fort Wetherill,Control 2,HOAM,,,1,

@@ -1,52 +1,224 @@
-"YEAR","MONTH","DAY","DATE","SITE","TRANSECT","SP_CODE","0-20 IN","20-40 IN","40-20 OFF","20-0 OFF"
-2018,9,10,"9/10/18","Fort Wetherill",1,"ASFO",NA,"4",NA,"2"
-2018,9,10,"9/10/18","Fort Wetherill",1,"BUUN","3","12","4","5"
-2018,9,10,"9/10/18","Fort Wetherill",1,"ASDA","12","10","15","21"
-2018,9,10,"9/10/18","Fort Wetherill",1,"BUCA","2","2",NA,NA
-2018,9,10,"9/10/18","Fort Wetherill",1,"NEDE",NA,"2","1",NA
-2018,9,10,"9/10/18","Fort Wetherill",1,"HESA","1",NA,"1",NA
-2018,9,10,"9/10/18","Fort Wetherill",2,"CABO",NA,"1",NA,"1"
-2018,9,10,"9/10/18","Fort Wetherill",2,"HOAM","1",NA,NA,NA
-2018,9,10,"9/10/18","Fort Wetherill",2,"ASFO",NA,"1",NA,"1"
-2018,9,10,"9/10/18","Fort Wetherill",2,"BUUN","13","31","53","6"
-2018,9,10,"9/10/18","Fort Wetherill",2,"ASDA","20","25","21","35"
-2018,9,10,"9/10/18","Fort Wetherill",2,"BUCA","2","3","1",NA
-2018,9,10,"9/10/18","Fort Wetherill",2,"CEBO","13","14","6",NA
-2018,9,10,"9/10/18","Fort Wetherill",2,"HESA",NA,"3",NA,"1"
-2018,9,7,"9/7/18","Fort Wetherill",3,"HOAM","3","2",NA,NA
-2018,9,7,"9/7/18","Fort Wetherill",3,"ASFO",NA,"1",NA,NA
-2018,9,7,"9/7/18","Fort Wetherill",3,"ASDA","7","5","9","5"
-2018,9,7,"9/7/18","Fort Wetherill",3,"BUUN","2","2","1",NA
-2018,9,7,"9/7/18","Fort Wetherill",3,"LUHE","2",NA,NA,NA
-2018,9,7,"9/7/18","Fort Wetherill",3,"HESA","1",NA,NA,NA
-2018,9,24,"9/24/18","Fort Wetherill",4,"ASDA","7","11","5","7"
-2018,9,24,"9/24/18","Fort Wetherill",4,"HESA","1","6","5",NA
-2018,9,24,"9/24/18","Fort Wetherill",4,"BUUN","3","15","14",NA
-2018,9,24,"9/24/18","Fort Wetherill",4,"BUCA","3","7","1",NA
-2018,9,24,"9/24/18","Fort Wetherill",4,"ASFO","1",NA,"1",NA
-2018,9,24,"9/24/18","Fort Wetherill",4,"LUHE","12","3","4","12"
-2017,8,29,"8/29/17","Fort Wetherill",1,"ASFO","2","3","1","2"
-2017,8,29,"8/29/17","Fort Wetherill",1,"ASDA","20","15","25","40+"
-2017,8,29,"8/29/17","Fort Wetherill",1," ","10","7","20","8"
-2017,8,29,"8/29/17","Fort Wetherill",1,"HESA","4","4","2","4"
-2017,8,29,"8/29/17","Fort Wetherill",2,"HOAM","1","2","1","0"
-2017,8,29,"8/29/17","Fort Wetherill",2,"","13","8","0","0"
-2017,8,29,"8/29/17","Fort Wetherill",2,"ASDA","40+","40+","40+","40+"
-2017,8,29,"8/29/17","Fort Wetherill",2,"","9","12","4","5"
-2017,8,31,"8/31/17","Fort Wetherill",3,"HOAM","1","2","0","0"
-2017,8,31,"8/31/17","Fort Wetherill",3,"ASFO","0","3","0","0"
-2017,8,31,"8/31/17","Fort Wetherill",3,"HESA","2","3","0","0"
-2017,8,31,"8/31/17","Fort Wetherill",3,"ASDA","40+","40+","40+","40+"
-2017,8,31,"8/31/17","Fort Wetherill",4,"ASRU","0","0","1","0"
-2017,8,31,"8/31/17","Fort Wetherill",4,"HESA","0","1","1","0"
-2017,8,31,"8/31/17","Fort Wetherill",4,"","1","4","9","0"
-2017,8,31,"8/31/17","Fort Wetherill",4,"ASDA","40+","40+","40+","40+"
-2016,9,NA,"9/23/16","Fort Wetherill",1,"ASFO","1",NA,NA,NA
-2016,9,NA,"9/23/16","Fort Wetherill",1,"HESA",NA,"1",NA,NA
-2016,9,NA,"9/23/16","Fort Wetherill",1,"CASA",NA,NA,"1",NA
-2016,9,NA,"9/23/16","Fort Wetherill",1,"HOAM",NA,NA,NA,"1"
-2016,9,NA,"9/23/16","Fort Wetherill",2,"HOAM","1",NA,"1",NA
-2016,9,NA,"9/24/16","Fort Wetherill",3,"HOAM","2",NA,NA,NA
-2016,9,NA,"9/24/16","Fort Wetherill",3,"ASFO",NA,NA,"1","1"
-2016,9,NA,"9/24/16","Fort Wetherill",3,"MYSP",NA,NA,NA,"1"
-2016,9,NA,"9/24/16","Fort Wetherill",4,"HOAM","1","1",NA,NA
+"YEAR","MONTH","DAY","DATE","SITE","TRANSECT","SP_CODE","0-20 IN","20-40 IN","40-20 OFF","20-0 OFF","HABITAT","CONTROL","REGION"
+2018,9,10,"9/10/18","Fort Wetherill","1","ASFO",NA,"4",NA,"2",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","1","BUUN","3","12","4","5",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","1","ASDA","12","10","15","21",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","1","BUCA","2","2",NA,NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","1","NEDE",NA,"2","1",NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","1","HESA","1",NA,"1",NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","CABO",NA,"1",NA,"1",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","HOAM","1",NA,NA,NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","ASFO",NA,"1",NA,"1",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","BUUN","13","31","53","6",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","ASDA","20","25","21","35",NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","BUCA","2","3","1",NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","CEBO","13","14","6",NA,NA,NA,NA
+2018,9,10,"9/10/18","Fort Wetherill","2","HESA",NA,"3",NA,"1",NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","HOAM","3","2",NA,NA,NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","ASFO",NA,"1",NA,NA,NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","ASDA","7","5","9","5",NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","BUUN","2","2","1",NA,NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","LUHE","2",NA,NA,NA,NA,NA,NA
+2018,9,7,"9/7/18","Fort Wetherill","3","HESA","1",NA,NA,NA,NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","ASDA","7","11","5","7",NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","HESA","1","6","5",NA,NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","BUUN","3","15","14",NA,NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","BUCA","3","7","1",NA,NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","ASFO","1",NA,"1",NA,NA,NA,NA
+2018,9,24,"9/24/18","Fort Wetherill","4","LUHE","12","3","4","12",NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","3","ASDA","4","1","5",NA,NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","3","LUHE","2",NA,NA,NA,NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","3","ALDI",NA,"1",NA,NA,NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","5","ASDA","5","2","5","7",NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","5","LUHE",NA,"2","3","3",NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","5","GERU",NA,NA,"5",NA,NA,NA,NA
+2019,9,6,"9/6/19","Fort Wetherill","5","SDS",NA,NA,NA,"1",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","ASDA","19","55","14","29",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","HOAM",NA,NA,"1",NA,NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","CAIR",NA,NA,NA,"2",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","BUUN",NA,"12","12","29",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","SDS",NA,NA,"5",NA,NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","1","ASRU","1",NA,NA,NA,NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","2","HOAM",NA,NA,NA,"1",NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","2","ASDA","4","20","9",NA,NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","2","MYSP",NA,"1",NA,NA,NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","2","BUUN",NA,"59","22",NA,NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","6","BUUN","4","2",NA,"2",NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","6","ASDA","61","118","155","37",NA,NA,NA
+2019,9,11,"9/11/19","Fort Wetherill","6","CAIR",NA,NA,NA,"1",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","4","ASRU","1",NA,NA,NA,NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","4","ASDA","22","13","14","21",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","4","BUUN","22","1","1","26",NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","4","LUHE",NA,"1",NA,NA,NA,NA,NA
+2019,9,16,"9/16/19","Fort Wetherill","4","CEBO",NA,NA,NA,"40",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","ASFO","3",NA,"2","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","CLSP","7","1","7","9",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","BUUN","9","7","13","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","ASDA","1",NA,"2","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","CEBO",NA,"1","15","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","BOVI",NA,"1","2","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","CAIR",NA,NA,NA,"1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","3","ALDI",NA,NA,"1",NA,NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","4","ASFO",NA,"1","1","1",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","4","BUUN","2","4","9","3",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","4","CLSP","7","1",NA,"5",NA,NA,NA
+2019,9,30,"9/30/19","King's Beach","4","ASDA","3",NA,NA,"8",NA,NA,NA
+2019,9,26,"9/26/19","King's Beach","1","CAIR",NA,NA,"1",NA,NA,NA,NA
+2019,9,26,"9/26/19","King's Beach","1","ASDA","5","3","3","7",NA,NA,NA
+2019,9,26,"9/26/19","King's Beach","1","ALDI",NA,NA,"1",NA,NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","CAIR",NA,"1",NA,NA,NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","ASDA","7","6","12","14",NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","HOAM",NA,NA,NA,"1",NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","ASRU",NA,NA,NA,"1",NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","LUHE",NA,NA,"1",NA,NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","1","CEBO",NA,NA,"3",NA,NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","2","ASDA","14","12","12","16",NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","2","ASRU",NA,NA,"1",NA,NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","Control 2","ASDA","14","7","4","7",NA,NA,NA
+2020,7,15,"7/15/20","Fort Wetherill","Control 2","HOAM",NA,NA,"1",NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","ASFO",NA,"1","5","3",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","CLSP",NA,"4","3","5",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","BUUN","2","4","1","14",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","ASDA",NA,"2",NA,NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","CEBO","1","5","6","1",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","3","BOVI","1",NA,"2",NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","4","BUUN","1",NA,"7","2",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","4","CLSP","10",NA,"2","2",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","4","ASDA",NA,NA,"2","5",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","4","ALDI","1","1",NA,NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","2","ASDA",NA,"5","2",NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","2","ALDI","3","7","1","2",NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","2","CEBO","3",NA,"2",NA,NA,NA,NA
+2021,8,26,"8/26/21","King's Beach","2","CLSP",NA,"9",NA,"3",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","1","ASDA","12","6","13","21",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","1","ALDI","2","1","11","10",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","1","CEBO",NA,"1",NA,"1",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","1","BUUN","2","11",NA,"7",NA,NA,NA
+2021,8,12,"8/12/21","Fort Wetherill","3","ASDA","27","11","15","19",NA,NA,NA
+2021,8,12,"8/12/21","Fort Wetherill","3","HOAM",NA,"1","2",NA,NA,NA,NA
+2021,8,12,"8/12/21","Fort Wetherill","3","ALDI","2",NA,"1",NA,NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","4","ASFO","1",NA,"1","1",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","4","ASDA","4","5","7","10",NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","4","ALDI","1","2","3",NA,NA,NA,NA
+2021,8,13,"8/13/21","Fort Wetherill","4","HOAM",NA,NA,"1",NA,NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","1","ASFO","2","3","1","2",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","1","ASDA","20","15","25","40+",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","1"," ","10","7","20","8",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","1","HESA","4","4","2","4",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","2","HOAM","1","2","1","0",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","2","","13","8","0","0",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","2","ASDA","40+","40+","40+","40+",NA,NA,NA
+2017,8,29,"8/29/17","Fort Wetherill","2","","9","12","4","5",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","3","HOAM","1","2","0","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","3","ASFO","0","3","0","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","3","HESA","2","3","0","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","3","ASDA","40+","40+","40+","40+",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","4","ASRU","0","0","1","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","4","HESA","0","1","1","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","4","","1","4","9","0",NA,NA,NA
+2017,8,31,"8/31/17","Fort Wetherill","4","ASDA","40+","40+","40+","40+",NA,NA,NA
+2016,9,NA,"9/23/16","Fort Wetherill","1","ASFO","1",NA,NA,NA,NA,NA,NA
+2016,9,NA,"9/23/16","Fort Wetherill","1","HESA",NA,"1",NA,NA,NA,NA,NA
+2016,9,NA,"9/23/16","Fort Wetherill","1","CASA",NA,NA,"1",NA,NA,NA,NA
+2016,9,NA,"9/23/16","Fort Wetherill","1","HOAM",NA,NA,NA,"1",NA,NA,NA
+2016,9,NA,"9/23/16","Fort Wetherill","2","HOAM","1",NA,"1",NA,NA,NA,NA
+2016,9,NA,"9/24/16","Fort Wetherill","3","HOAM","2",NA,NA,NA,NA,NA,NA
+2016,9,NA,"9/24/16","Fort Wetherill","3","ASFO",NA,NA,"1","1",NA,NA,NA
+2016,9,NA,"9/24/16","Fort Wetherill","3","MYSP",NA,NA,NA,"1",NA,NA,NA
+2016,9,NA,"9/24/16","Fort Wetherill","4","HOAM","1","1",NA,NA,NA,NA,NA
+2021,9,20,"9/20/21","King's Beach","5","ASDA",NA,NA,NA,NA,"Kelp",1,"Narragansett Bay"
+2021,9,20,"9/20/21","King's Beach","1","ASDA","9","6","12","10","Kelp",1,"Narragansett Bay"
+2021,9,20,"9/20/21","King's Beach","1","URCI","2",NA,NA,"2","Kelp",1,"Narragansett Bay"
+2021,9,20,"9/20/21","King's Beach","1","ARPU","9","7","1","4","Kelp",1,"Narragansett Bay"
+2021,9,20,"9/20/21","King's Beach","1","HESA","1",NA,NA,"3","Kelp",1,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","ASDA","7","2","5","1","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","BUUN",NA,"3","2",NA,"",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","ASFO","2","1",NA,"1","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","HOAM",NA,"1",NA,NA,"",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","ALDI","7",NA,NA,NA,"",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","5","GERU","2",NA,"5","2","",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","3","ASFO","2",NA,NA,NA,"",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","3","ASDA","7","30","12","10","",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","3","BUUN","4","3","4","8","",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","3","GERU","1","6",NA,NA,"",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","ASDA","24","15","20","28","",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","MEME","2",NA,NA,NA,"",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","BUUN","1",NA,"1","5","",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","HESA",NA,NA,"1",NA,"",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","GERU","4","4","1",NA,"",NA,"Narragansett Bay"
+2022,7,5,"7/5/22","Fort Wetherill","4","LUHE",NA,NA,NA,"2","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","6","ASDA","7","8","2","7","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","6","ASFO","1",NA,"3",NA,"",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","6","BUUN","1",NA,NA,"3","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","6","GERU","5","7","4","2","",NA,"Narragansett Bay"
+2022,7,6,"7/6/22","Fort Wetherill","6","purple sea urchin",NA,"1",NA,NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","4","ASDA","5","2","1","3","",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","4","ALDI","2","5","3",NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","4","BUUN",NA,"1","1",NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","4","HOAM",NA,"1",NA,NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","1","ASDA","5","2","5","10","",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","1","ASFO",NA,"1",NA,NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","1","BUCA","2",NA,"1",NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","1","GERU","5","7",NA,NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","1","ALDI",NA,"7","3",NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","3","ASDA","6","3","2","6","",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","3","GERU","10","7","4","7","",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","2","ASDA","2","3","1","1","",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","2","BUUN",NA,"1","1",NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","2","ALDI","5","2",NA,"3","",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","2","HOAM","1",NA,NA,NA,"",NA,"Narragansett Bay"
+2022,7,8,"7/8/22","King's Beach","2","purple sea urchin",NA,NA,"1",NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","2","ASDA","15","10","3","2","",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","2","BUCA",NA,"2",NA,NA,"",NA,"Narragansett Bay"
+2022,7,11,"7/11/22","Fort Wetherill","2","GERU","7","3",NA,NA,"",NA,"Narragansett Bay"
+2023,6,26,"6/26/23","Fort Wetherill","3","HATO","10","5","5","15",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","ASDA","17","0","10","10",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","CHFI","1","1","2","2",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","TAAD","20","15","10","20",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","ALDI","0","5","0","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","LUHE","2","0","0","2",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","CEST","2","1","1","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","HESA","1","0","0","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","3","ASFO","1","0","0","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","5","CHFI","2","0","0","3",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","5","ASDA","4","10","4","5",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","5","CEBO","2","0","0","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","5","TAAD","20","15","10","30",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","5","CEST","0","0","0","2",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","ALDI","5","0","15","10",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","ASDA","15","10","25","7",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","TAAD","30","20","30","40",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","ASRU","2","0","0","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","HESA","2","0","2","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","CEBO","0","5","10","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","LUHE","0","5","3","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","CEST","0","0","2","0",NA,NA,NA
+2023,6,26,"6/26/23","Fort Wetherill","4","HESA","0","0","2","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","ALDI","15","15","0","15",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","ASDA","30","10","0","10",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","CEBO","10","5","0","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","GERU","33","10","5","5",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","TAAD","35","38","39","52",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","CEST","3","0","0","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","2","LUHE","0","0","0","3",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","CHFI","3","0","5","3",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","ALDI","2","0","0","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","ASDA","0","0","3","2",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","CEBO","0","0","2","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","GERU","0","0","3","0",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","TAAD","3","14","10","15",NA,NA,NA
+2023,6,29,"6/29/23","Fort Wetherill","6","CEST","0","0","1","0",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","3","ASDA","80","15","10","86",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","3","CEBO","76","20","0","40",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","3","GERU","30","20","0","24",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","3","TAAD","20","15","5","15",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","3","CEST","5","3","2","1",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","2","ASDA","0","0","40","35",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","2","CEBO","40","0","0","0",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","2","GERU","0","10","4","4",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","2","LUHE","0","4","0","0",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","2","TAAD","13","10","18","17",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","4","ASDA","0","4","7","30",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","4","CEBO","0","0","0","41",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","4","GERU","0","3","0","12",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","4","TAAD","16","6","20","18",NA,NA,NA
+2023,6,30,"6/30/23","King's Beach","4","ASRO","0","0","1","0",NA,NA,NA

@@ -1,4 +1,4 @@
-"Year","Habitat","Region","Site","Control","Transect","Substrate","Cover","Month","Day","Date","Side","Distance","SP_CODE_0","SP_CODE_1","SP_CODE_2","SP_CODE_3","SP_CODE_4","SP_CODE_5"
+"YEAR","HABITAT","REGION","SITE","CONTROL","TRANSECT","SUBSTRATE","COVER","MONTH","DAY","DATE","SIDE","DISTANCE","SP_CODE_0","SP_CODE_1","SP_CODE_2","SP_CODE_3","SP_CODE_4","SP_CODE_5"
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"B",0.040540541,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BM",0.216216216,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2019,"Kelp","Narragansett Bay","Fort Wetherill",0,1,"BS",0.337837838,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

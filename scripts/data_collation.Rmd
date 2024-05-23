@@ -260,8 +260,75 @@ FtWeatherill_Swath_2016_wide <- FtWeatherill_Swath_2016 %>%
     names_from = SIDE,
     values_from = COUNT)
 
+
+# rename swatch category columns in kelp_swath 2023 and kelp swath 2022
+kelp_swath_2022 <- kelp_swath_2022 %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+# remove columns with observer and unneeded data
+kelp_swath_2022 <- kelp_swath_2022[ -c(15:22) ]
+
+# rename KB to King's Beach and FW to Fort Wetherill
+kelp_swath_2022$SITE[kelp_swath_2022$SITE == "FW"] <- "Fort Wetherill"
+kelp_swath_2022$SITE[kelp_swath_2022$SITE == "KB"] <- "King's Beach"
+
+# rename swatch category columns in kelp_swath 2023 and kelp swath 2022
+kelp_swath_2023 <- kelp_swath_2023 %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+# remove columns with observer and unneeded data
+kelp_swath_2023 <- kelp_swath_2023[ -c(12) ]
+
+# rename KB to King's Beach and FW to Fort Wetherill
+kelp_swath_2023$SITE[kelp_swath_2023$SITE == "FW"] <- "Fort Wetherill"
+kelp_swath_2023$SITE[kelp_swath_2023$SITE == "KB"] <- "King's Beach"
+
+# rename swatch category columns in 2019, 2020, and 2021 swath
+swath_2021 <- swath_2021_DEM %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+# rename KB to King's Beach and FW to Fort Wetherill
+swath_2021$SITE[swath_2021$SITE == "Fort Weatherill"] <- "Fort Wetherill"
+swath_2021$SITE[swath_2021$SITE == "Kings Beach"] <- "King's Beach"
+
+# rename swatch category columns in 2019, 2020, and 2021 swath
+swath_2020 <- swath_2020_DEM %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
+# rename Fort weatherill to Fort Wetherill
+swath_2020$SITE[swath_2020$SITE == "Fort Weatherill"] <- "Fort Wetherill"
+
+# rename swatch category columns in 2019, 2020, and 2021 swath
+swath_2019 <- swath_2019_DEM %>%
+  rename(
+    "0-20 IN" = "X0.20.IN",
+    "20-40 IN" = "X20.40.IN",
+    "40-20 OFF" = "X40.20.OFF",
+    "20-0 OFF" = "X20.0.OFF"
+  )
+
 # use rbind.fill() method in R to combine data frames with different columns
-swath_data <- rbind.fill(swath_2018, Swath_count, FtWeatherill_Swath_2016_wide)
+swath_data <- rbind.fill(swath_2018, swath_2019, swath_2020, swath_2021, Swath_count, FtWeatherill_Swath_2016_wide, kelp_swath_2022, kelp_swath_2023)
 
 # Rename ft. wetherill to fort wetherill
 swath_data$SITE[swath_data$SITE == "Ft.Weatherill"] <- "Fort Wetherill"
@@ -320,6 +387,49 @@ write.csv(QUAD_data, "output/cleaned_data/QUAD.data.clean.csv", row.names = FALS
 ```
 
 
+# Combine rugosity dataframes
+```{r}
+
+#make QUAD data long
+# Function to rename columns using metadata
+# Get the unique column names from the QUAD ataframe
+column_names.quad <- colnames(QUAD)
+
+# Create a lookup table with name-to-code mappings
+name_to_code.quad <- setNames(species.metadata$code, species.metadata$name)
+
+# Rename the columns using the lookup table
+new_column_names.quad <- sapply(column_names.quad, function(name) {
+  if (name %in% names(name_to_code.quad)) {
+    return(name_to_code.quad[name])
+  } else {
+    return(name)
+  }
+})
+
+# Rename the columns in Kelp_COVER
+colnames(QUAD) <- new_column_names.quad
+
+# Melt only columns AGH:WHEL into long format
+QUAD_long <- QUAD %>%
+  pivot_longer(cols = AGH:Oar.Weed.Total, names_to = "SP_CODE", values_to = "COUNT")
+
+# use rbind.fill() method in R to combine data frames with different columns
+QUAD_data <- rbind.fill(QUAD_long, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
+
+#remove 131-138 columns for observers not needed information
+QUAD_data <- QUAD_data[ -c(14:17) ]
+
+# Rename ft. wetherill to fort wetherill
+QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
+
+# Rename Kings Beach to King's Beach
+QUAD_data$SITE[QUAD_data$SITE == "Kings Beach"] <- "King's Beach"
+
+# output updated dataframe
+write.csv(QUAD_data, "output/cleaned_data/QUAD.data.clean.csv", row.names = FALSE)
+
+```
 
 
 
