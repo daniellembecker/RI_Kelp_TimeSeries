@@ -178,22 +178,13 @@ write.csv(UPC_data, "output/cleaned_data/UPC.data.clean.csv", row.names = FALSE)
 
 # Combine site.info dataframes
 ```{r}
-
-# site information data is cleaned and ready
-
-# Make all columns capitalized
-colnames(Site_info_2018) <- toupper(colnames(Site_info_2018))
-
+#site info cleaned metadta
 # combine site collection data
-site.info.dat <- rbind.fill(Site_info_2017, Site_info_2018, Site_info_template_v1)
-
-# remove columns with observer and unneeded data
-site.info.dat <- site.info.dat[ -c(12:15) ]
+site.info.dat <- kelp_siteinfo_MASTER
 
 # output updated dataframe
 write.csv(site.info.dat, "output/cleaned_data/site.info.data.clean.csv", row.names = FALSE)
 
-# Austin - the site info for 2018 has a start and stop latitude so don't know what to do here
 
 ```
 
