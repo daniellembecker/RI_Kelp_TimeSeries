@@ -86,8 +86,8 @@ merged.dat <- left_join(fish.filt, kelp.filt)
 # Aggregate the data by year, site, and transect and compute mean values
 aggregated_data <- merged.dat %>%
   group_by(year, site, transect) %>%
-  summarize(mean_fish_biomass = mean(fish_biomass, na.rm = TRUE),
-            mean_kelp_cover = mean(kelp_cover, na.rm = TRUE)) %>%
+  summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
+            mean_kelp_cover = mean(COVER, na.rm = TRUE)) %>%
   ungroup()
 
 # Perform linear regression
@@ -95,18 +95,15 @@ lm_model <- lm(mean_fish_biomass ~ mean_kelp_cover, data = aggregated_data)
 lm_summary <- tidy(lm_model)
 
 # Create scatter plot
-scatter_plot <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
+figure.2 <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
   geom_text(data = lm_summary, aes(label = paste("R² =", round(r.squared, 2), ", p =", signif(p.value, 2))),
             x = Inf, y = Inf, hjust = 1, vjust = 1, size = 4, parse = TRUE) +
   labs(x = "Kelp cover (%)", y = "Fish biomass (g/m2)",
-       title = "Fish Biomass vs Kelp Cover",
-       caption = "Linear regression with 95% CI bands") +
-  theme_minimal()
+       title = "Fish Biomass vs Kelp Cover") +
+  theme_minimal();figure.2
 
-# Display the plot
-print(scatter_plot)
 
 ```
 
