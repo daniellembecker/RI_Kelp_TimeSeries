@@ -19,6 +19,8 @@ library(tidyverse)
 library(lubridate)
 library(ggplot2)
 library(patchwork)
+library(broom)
+
 ```
 
 # load cleaned dataframes
@@ -75,6 +77,36 @@ fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
 # Assuming you want to join by the 'transect' column
 merged.dat <- left_join(fish.filt, kelp.filt)
 
+
+```
+# Make Figure 2
+
+```{r}
+
+# Aggregate the data by year, site, and transect and compute mean values
+aggregated_data <- merged.dat %>%
+  group_by(year, site, transect) %>%
+  summarize(mean_fish_biomass = mean(fish_biomass, na.rm = TRUE),
+            mean_kelp_cover = mean(kelp_cover, na.rm = TRUE)) %>%
+  ungroup()
+
+# Perform linear regression
+lm_model <- lm(mean_fish_biomass ~ mean_kelp_cover, data = aggregated_data)
+lm_summary <- tidy(lm_model)
+
+# Create scatter plot
+scatter_plot <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
+  geom_text(data = lm_summary, aes(label = paste("R² =", round(r.squared, 2), ", p =", signif(p.value, 2))),
+            x = Inf, y = Inf, hjust = 1, vjust = 1, size = 4, parse = TRUE) +
+  labs(x = "Kelp cover (%)", y = "Fish biomass (g/m2)",
+       title = "Fish Biomass vs Kelp Cover",
+       caption = "Linear regression with 95% CI bands") +
+  theme_minimal()
+
+# Display the plot
+print(scatter_plot)
 
 ```
 
