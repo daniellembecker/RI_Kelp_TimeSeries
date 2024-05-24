@@ -1,0 +1,89 @@
+---
+title: "manuscript_figures"
+author: "daniellembecker"
+date: "2024-05-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Use this script to use cleaned data and make plots for RI kelp data manuscript
+
+# Load libraries 
+```{r}
+library(plyr)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(patchwork)
+```
+
+# load cleaned dataframes
+
+```{r}
+# Set your directory path
+directory <- "output/cleaned_data/"
+
+# List files in the directory
+files <- list.files(directory)
+
+# Initialize an empty list to store data frames
+data_frames <- list()
+
+# Loop through each file
+for (file in files) {
+    # Read the file into a data frame
+    # Adjust the read function according to your file type (e.g., read.csv, read.table)
+    # Specify other parameters as needed (e.g., header = TRUE)
+    file_path <- file.path(directory, file)
+    df_name <- gsub("\\..*", "", file)  # Extract file name without extension
+    assign(df_name, read.csv(file_path, stringsAsFactors = FALSE))
+}
+
+# Now, each file is a separate data frame with its own variable name
+
+```
+
+# Figure 2: Fish biomass (g/m2) on y-axis and Kelp cover (%) on the x-axis. Point scatter plot with a linear regression and 95% CI bands. For all data points, you will have one value for fish biomass and a corresponding value for kelp cover. So it will be by: year x site x transect.
+
+```{r}
+# take kelp cover long and just extract data for sugar kelp 2019-2023
+kelp.filt <- kelp %>%
+        filter(SP_CODE == "SUGK")
+
+# Convert the integer column to character
+kelp.filt$CONTROL <- as.character(kelp.filt$CONTROL)
+kelp.filt$TRANSECT <- as.character(kelp.filt$TRANSECT)
+
+# Read the fish aggregated CSV file 2019-2023 and skip the first column
+fish <- read.csv("data/kelp_timeseries_data/fish_Aggregated.csv") %>%
+          select(-1)
+
+# Remove "KB", "FW", and space, keep only numbers
+fish.filt <- fish %>%
+  mutate(TRANSECT = gsub("KB |FW ", "", TRANSECT))
+
+# Convert the integer column to character
+fish.filt$TRANSECT <- as.character(fish.filt$TRANSECT)
+
+# Rename fort weatherill
+fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
+
+# Assuming you want to join by the 'transect' column
+merged.dat <- left_join(fish.filt, kelp.filt)
+
+
+```
+
+
+
+
+
+
+
+
+
+
