@@ -134,6 +134,67 @@ ggsave("output/figures/figure_2.png", plot = figure.2, width = 8, height = 6)
 
 # Figure 3: Make the saame regression figure for fish biomass and kelp biomass (g/m2). To get kelp biomass, you will use the quad data which counts the number of kelp blades, and convert to biomass using the morphometric data. Take stipe length, blade width, blade length and convert to biomass. Then get a mean and SE of kelp frond biomass at that transect and multiply that by the number of fronds counted in quad. We want units to be g/m2 (I think). 
 
+```{r}
+# read in quad data with filtered for just kelp
+quad.filt <- QUAD %>%
+        filter(SP_CODE == "SUGK")
+
+# remove control column and two last columns, not needed
+quad.filt <- quad.filt[ -c(13:14) ] 
+quad.filt <- quad.filt[ -c(8) ] 
+quad.filt <- quad.filt[ -c(5:6) ] 
+
+# I noticed that 06/30/23 dates were accidentily labeled 06/30/29
+# Replace "29" with "23" in the DATE column
+quad.filt$DATE <- sub("29$", "23", quad.filt$DATE)
+
+# Convert DATE to Date format
+quad.filt$DATE <- as.Date(quad.filt$DATE, format = "%m/%d/%y")
+
+# Convert Date format to "YYYY-MM-DD"
+quad.filt$DATE <- format(quad.filt$DATE, "%Y-%m-%d")
+
+# combine quad data with morph data to calculate kelp biomass
+
+#load in morph data and select for SUGK
+morph.filt <- morph %>%
+        filter(SP_CODE == "SL")
+
+#rename SL to SUGK
+morph.filt$SP_CODE[morph.filt$SP_CODE == "SL"] <- "SUGK"
+
+# Convert the integer column to character
+morph.filt$TRANSECT <- as.character(morph.filt$TRANSECT)
+
+# merge morph filt and quad.filt to calculate biomass
+merge.morph.quad <- left_join(morph.filt, quad.filt)
+
+#notice some dates and data missing, Austin has to look this over!
+
+#calculate kelp biomass
+# To get wet weight in grams (biomass) you use the equation: y=0.00421*x^1.951 where x is kelp blade + stipe length.
+
+# Calculate the kelp blade length
+merge.morph.quad$kelp_blade_length <- merge.morph.quad$BLADE_WIDTH_CM * merge.morph.quad$BLADE_LENGTH_CM
+
+# Calculate the sum of blade length and stipe length
+merge.morph.quad$sum_length <- merge.morph.quad$kelp_blade_length + merge.morph.quad$STIPE_LENGTH_CM
+
+# Define a function to calculate kelp biomass
+calculate_kelp_biomass <- function(x) {
+  y <- 0.00421 * x^1.951
+  return(y)
+}
+
+# Calculate kelp biomass using the sum of blade length and stipe length
+merge.morph.quad$kelp_biomass <- calculate_kelp_biomass(merge.morph.quad$sum_length)
+
+# Remove the intermediate columns if no longer needed
+merge.morph.quad$kelp_blade_length <- NULL
+merge.morph.quad$sum_length <- NULL
+
+
+```
 
 
 
