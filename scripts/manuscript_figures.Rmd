@@ -15,7 +15,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(plyr)
 library(dplyr)
+library(MuMIn)
 library(tidyverse)
+library(lme4)
+library(broom.mixed)
 library(lubridate)
 library(ggplot2)
 library(patchwork)
@@ -90,35 +93,36 @@ merged.dat <- left_join(fish.filt, kelp.filt)
 # Make Figure 2
 ```{r}
 
-# Aggregate the data by year, site, and transect and compute mean values
-aggregated_data <- merged.dat %>%
-  group_by(YEAR, SITE, TRANSECT) %>%
-  summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
-            mean_kelp_cover = mean(COVER, na.rm = TRUE)) %>%
-  ungroup()
+# Fit the linear mixed effects model
+lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data)
 
-# Perform linear regression
-lm_model <- lm(mean_fish_biomass ~ mean_kelp_cover, data = aggregated_data)
-lm_summary <- tidy(lm_model)
-lm_summary_stats <- summary(lm_model)  # Get model summary
+# Summarize the model
+lmm_summary <- summary(lmm_model)
+lmm_tidy <- tidy(lmm_model)
 
-# Extract R-squared and p-value
-r_squared <- round(lm_summary_stats$r.squared, 2)
-p_value <- signif(lm_summary$p.value[2], 2)
+# Calculate R-squared for the mixed model
+r_squared <- r.squaredGLMM(lmm_model)
+
+# Extract marginal and conditional R-squared
+marginal_r2 <- round(r_squared[1], 2)
+conditional_r2 <- round(r_squared[2], 2)
+p_value <- signif(lmm_tidy$p.value[lmm_tidy$term == "mean_kelp_cover"], 2)
 
 # Create scatter plot
 figure.2 <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-  annotate("text", x = Inf, y = Inf, label = paste0("R^2 = ", r_squared, ", p = ", p_value), 
-           hjust = 2, vjust = 4, size = 4, parse = FALSE) +
+  annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", p_value), 
+           hjust = 1.1, vjust = 1.1, size = 4, parse = FALSE) +
   labs(x = "Kelp cover (%)", y = "Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Cover") +
-  theme_classic(); figure.2
+  theme_classic();figure.2
 
 
 ```
 
+
+# Figure 3: Make the saame regression figure for fish biomass and kelp biomass (g/m2). To get kelp biomass, you will use the quad data which counts the number of kelp blades, and convert to biomass using the morphometric data. Take stipe length, blade width, blade length and convert to biomass. Then get a mean and SE of kelp frond biomass at that transect and multiply that by the number of fronds counted in quad. We want units to be g/m2 (I think). 
 
 
 
