@@ -60,6 +60,9 @@ kelp.filt <- kelp %>%
 kelp.filt$CONTROL <- as.character(kelp.filt$CONTROL)
 kelp.filt$TRANSECT <- as.character(kelp.filt$TRANSECT)
 
+# remove control column, not needed
+kelp.filt <- kelp.filt[ -c(5) ]
+
 # Read the fish aggregated CSV file 2019-2023 and skip the first column
 fish <- read.csv("data/kelp_timeseries_data/fish_Aggregated.csv") %>%
           select(-1)
@@ -74,18 +77,22 @@ fish.filt$TRANSECT <- as.character(fish.filt$TRANSECT)
 # Rename fort weatherill
 fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
 
+# remove control column, not needed
+fish.filt <- fish.filt[ -c(5) ]
+
 # Assuming you want to join by the 'transect' column
 merged.dat <- left_join(fish.filt, kelp.filt)
 
 
 ```
-# Make Figure 2
 
+
+# Make Figure 2
 ```{r}
 
 # Aggregate the data by year, site, and transect and compute mean values
 aggregated_data <- merged.dat %>%
-  group_by(year, site, transect) %>%
+  group_by(YEAR, SITE, TRANSECT) %>%
   summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
             mean_kelp_cover = mean(COVER, na.rm = TRUE)) %>%
   ungroup()
@@ -93,16 +100,21 @@ aggregated_data <- merged.dat %>%
 # Perform linear regression
 lm_model <- lm(mean_fish_biomass ~ mean_kelp_cover, data = aggregated_data)
 lm_summary <- tidy(lm_model)
+lm_summary_stats <- summary(lm_model)  # Get model summary
+
+# Extract R-squared and p-value
+r_squared <- round(lm_summary_stats$r.squared, 2)
+p_value <- signif(lm_summary$p.value[2], 2)
 
 # Create scatter plot
 figure.2 <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-  geom_text(data = lm_summary, aes(label = paste("R² =", round(r.squared, 2), ", p =", signif(p.value, 2))),
-            x = Inf, y = Inf, hjust = 1, vjust = 1, size = 4, parse = TRUE) +
+  annotate("text", x = Inf, y = Inf, label = paste0("R^2 = ", r_squared, ", p = ", p_value), 
+           hjust = 2, vjust = 4, size = 4, parse = FALSE) +
   labs(x = "Kelp cover (%)", y = "Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Cover") +
-  theme_minimal();figure.2
+  theme_classic(); figure.2
 
 
 ```
