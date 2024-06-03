@@ -3,6 +3,8 @@ title: "manuscript_figures"
 author: "daniellembecker"
 date: "2024-05-23"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(plyr)
 library(dplyr)
+library(car)
 library(MuMIn)
 library(lmerTest)
 library(tidyverse)
@@ -53,8 +56,7 @@ for (file in files) {
 
 ```
 
-# Figure 2: Fish biomass (g/m2) on y-axis and Kelp cover (%) on the x-axis. Point scatter plot with a linear regression and 95% CI bands. For all data points, you will have one value for fish biomass and a corresponding value for kelp cover. So it will be by: year x site x transect.
-
+# Figure 2: organize data to make fish biomass (g/m2) on y-axis and Kelp cover (%) figure
 ```{r}
 # take kelp cover long and just extract data for sugar kelp 2019-2023
 kelp.filt <- kelp %>%
@@ -85,24 +87,37 @@ fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
 fish.filt <- fish.filt[ -c(5) ]
 
 # Assuming you want to join by the 'transect' column
-merged.dat <- left_join(fish.filt, kelp.filt)
+merged.dat.cover <- left_join(fish.filt, kelp.filt)
 
 
 ```
 
 
-# Make Figure 2
+# Make Figure 2 and run statistical analysis
 ```{r}
-
 # Aggregate the data by year, site, and transect and compute mean values
-aggregated_data <- merged.dat %>%
+aggregated_data_cover <- merged.dat %>%
   group_by(YEAR, SITE, TRANSECT) %>%
   summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
             mean_kelp_cover = mean(COVER, na.rm = TRUE)) %>%
   ungroup()
 
+# Filter dataframe for six top fish biomass above 150
+filt_data <- aggregated_data_cover %>%
+  filter(mean_fish_biomass > 150)
+
+# Make biomass a percent so * 100
+aggregated_data_cover$mean_kelp_cover <- aggregated_data_cover$mean_kelp_cover * 100
+
 # Fit the linear mixed effects model
-lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data)
+lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
+#check normality
+qqPlot(residuals(lmm_model)) #slightly non normal values, log transform to improve
+
+# Fit the linear mixed effects model with log transformation
+lmm_model <- lmer(log(mean_fish_biomass) ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
+#check normality
+qqPlot(residuals(lmm_model)) #improved to normal
 
 # Summarize the model
 lmm_summary <- summary(lmm_model)
@@ -119,7 +134,7 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_cover", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.2 <- ggplot(aggregated_data, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
+figure.2 <- ggplot(aggregated_data_cover, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
 annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
@@ -132,8 +147,7 @@ ggsave("output/figures/figure_2.png", plot = figure.2, width = 8, height = 6)
 ```
 
 
-# Figure 3: Make the saame regression figure for fish biomass and kelp biomass (g/m2). To get kelp biomass, you will use the quad data which counts the number of kelp blades, and convert to biomass using the morphometric data. Take stipe length, blade width, blade length and convert to biomass. Then get a mean and SE of kelp frond biomass at that transect and multiply that by the number of fronds counted in quad. We want units to be g/m2 (I think). 
-
+# Figure 3: organize and calculate kelp biomass data to make fish biomass/kelp biomass (g/m2) linear regression figure
 ```{r}
 # read in quad data with filtered for just kelp
 quad.filt <- QUAD %>%
@@ -169,16 +183,10 @@ morph.filt$TRANSECT <- as.character(morph.filt$TRANSECT)
 # merge morph filt and quad.filt to calculate biomass
 merge.morph.quad <- left_join(morph.filt, quad.filt)
 
-#notice some dates and data missing, Austin has to look this over!
-
 #calculate kelp biomass
 # To get wet weight in grams (biomass) you use the equation: y=0.00421*x^1.951 where x is kelp blade + stipe length.
-
-# Calculate the kelp blade length
-merge.morph.quad$kelp_blade_length <- merge.morph.quad$BLADE_WIDTH_CM * merge.morph.quad$BLADE_LENGTH_CM
-
 # Calculate the sum of blade length and stipe length
-merge.morph.quad$sum_length <- merge.morph.quad$kelp_blade_length + merge.morph.quad$STIPE_LENGTH_CM
+merge.morph.quad$sum_length <- merge.morph.quad$BLADE_LENGTH_CM + merge.morph.quad$STIPE_LENGTH_CM
 
 # Define a function to calculate kelp biomass
 calculate_kelp_biomass <- function(x) {
@@ -193,11 +201,68 @@ merge.morph.quad$kelp_biomass <- calculate_kelp_biomass(merge.morph.quad$sum_len
 merge.morph.quad$kelp_blade_length <- NULL
 merge.morph.quad$sum_length <- NULL
 
+# Replace NA values with 0
+merge.morph.quad$kelp_biomass <- ifelse(is.na(merge.morph.quad$kelp_biomass), 0, merge.morph.quad$kelp_biomass)
+
+# Sum kelp biomass at the transect level
+morph.filt <- merge.morph.quad %>%
+  group_by(TRANSECT, YEAR, SITE) %>%
+  summarize(total_kelp_biomass = sum(kelp_biomass))
+
+# Divide by 6 quadrats for correct g/m2 calculation
+morph.filt$average_kelp_biomass <- morph.filt$total_kelp_biomass / 6
 
 ```
 
 
+# Make figure 3 and run statistical analysis
+```{r}
+# Aggregate the data by year, site, and transect and compute mean values
+merged.dat.morph <- left_join(morph.filt, fish.filt)
+  
+# Aggregate the data by year, site, and transect and compute mean values
+aggregated.data.morph <- merged.dat.morph %>%
+  group_by(YEAR, SITE, TRANSECT) %>%
+  summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
+            mean_kelp_biomass = mean(average_kelp_biomass, na.rm = TRUE)) %>%
+  ungroup()
 
+# Fit the linear mixed effects model
+lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_biomass + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
+#check normality
+qqPlot(residuals(lmm_model)) #slightly non normal values, log transform to improve
+
+# Fit the linear mixed effects model with log transformation
+lmm_model <- lmer(log(mean_fish_biomass) ~ mean_kelp_biomass + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
+#check normality
+qqPlot(residuals(lmm_model)) #improved to normal
+
+# Summarize the model
+lmm_summary <- summary(lmm_model)
+lmm_tidy <- tidy(lmm_model)
+
+# Calculate R-squared for the mixed model
+r_squared <- r.squaredGLMM(lmm_model)
+
+# Extract marginal and conditional R-squared
+marginal_r2 <- round(r_squared[1], 2)
+conditional_r2 <- round(r_squared[2], 2)
+
+# Extract p-value for mean_kelp_cover
+p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
+
+# Create scatter plot
+figure.3 <- ggplot(aggregated.data.morph, aes(x = mean_kelp_biomass, y = mean_fish_biomass)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
+annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
+  labs(x = "Kelp Biomass (g/m2)", y = "Fish biomass (g/m2)",
+       title = "Fish Biomass vs Kelp Biomass") +
+  theme_classic();figure.3
+
+# Save the plot to a file
+ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
+```
 
 
 
