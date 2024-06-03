@@ -97,6 +97,9 @@ morph_data$STIPE_LENGTH_CM <- as.numeric(morph_data$STIPE_LENGTH_CM)
 #combine kelp and morph daat
 morph_data <- rbind.fill(morph_data, kelp_data)
 
+#edit kings beach
+morph_data$SITE[morph_data$SITE == "Kings Beach"] <- "King's Beach"
+
 # output updated dataframe
 write.csv(morph_data, "output/cleaned_data/morph.data.clean.csv", row.names = FALSE)
 ```
@@ -131,7 +134,7 @@ colnames(Kelp_COVER) <- new_column_names.kelp
 
 # Melt only columns AGH:WHEL into long format
 Kelp_COVER_long <- Kelp_COVER %>%
-  pivot_longer(cols = AGH:CLT, names_to = "SP_CODE", values_to = "value")
+  pivot_longer(cols = AGH:CLT, names_to = "SP_CODE", values_to = "COVER")
 
 # output updated dataframe
 write.csv(Kelp_COVER_long, "output/cleaned_data/kelp.cover.data.clean.csv", row.names = FALSE)
