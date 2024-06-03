@@ -212,14 +212,14 @@ morph.filt <- merge.morph.quad %>%
 # Divide by 6 quadrats for correct g/m2 calculation
 morph.filt$average_kelp_biomass <- morph.filt$total_kelp_biomass / 6
 
+# Merge fish and morph data
+merged.dat.morph <- left_join(morph.filt, fish.filt)
+
 ```
 
 
 # Make figure 3 and run statistical analysis
 ```{r}
-# Aggregate the data by year, site, and transect and compute mean values
-merged.dat.morph <- left_join(morph.filt, fish.filt)
-  
 # Aggregate the data by year, site, and transect and compute mean values
 aggregated.data.morph <- merged.dat.morph %>%
   group_by(YEAR, SITE, TRANSECT) %>%
@@ -249,13 +249,13 @@ marginal_r2 <- round(r_squared[1], 2)
 conditional_r2 <- round(r_squared[2], 2)
 
 # Extract p-value for mean_kelp_cover
-p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
+p_value_kelp_biomass <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
 
 # Create scatter plot
 figure.3 <- ggplot(aggregated.data.morph, aes(x = mean_kelp_biomass, y = mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
+annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_biomass, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
   labs(x = "Kelp Biomass (g/m2)", y = "Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Biomass") +
   theme_classic();figure.3
@@ -264,6 +264,64 @@ annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2
 ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
 ```
 
+
+# Figure 4: organize rugosity data and make linear regression figure for fish biomass and rugosity
+```{r}
+# Calculate mean rugosity complexity scores across depths for each transect, grouped by site and year
+mean_rugosity <- rugosity %>%
+  group_by(SITE, YEAR, TRANSECT) %>%
+  summarize(mean_rugosity = mean(c(X0M, X4M, X8M, X12M, X16M, X20M, X24M, X28M, X32M, X36M, X40M), na.rm = TRUE))
+
+# change transect from integer to chr
+mean_rugosity$TRANSECT <- as.character(mean_rugosity$TRANSECT)
+
+# Left jon fish and rugosity data
+merged.dat.rug <- left_join(mean_rugosity, fish.filt)
+
+```
+
+
+# Make figure 4 and run statistical analysis
+```{r}
+# Aggregate the data by year, site, and transect and compute mean values
+aggregated.data.rug <- merged.dat.rug %>%
+  group_by(YEAR, SITE, TRANSECT) %>%
+  summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
+            mean_rugosity = mean(mean_rugosity, na.rm = TRUE)) %>%
+  ungroup()
+
+# Fit the linear mixed effects model
+lmm_model <- lmer(mean_fish_biomass ~ mean_rugosity + SITE + (1 | SITE/YEAR), data = aggregated.data.rug)
+#check normality
+qqPlot(residuals(lmm_model)) #data is normal no need to transform
+
+# Summarize the model
+lmm_summary <- summary(lmm_model)
+lmm_tidy <- tidy(lmm_model)
+
+# Calculate R-squared for the mixed model
+r_squared <- r.squaredGLMM(lmm_model)
+
+# Extract marginal and conditional R-squared
+marginal_r2 <- round(r_squared[1], 2)
+conditional_r2 <- round(r_squared[2], 2)
+
+# Extract p-value for mean_kelp_cover
+p_value_rugosity <- summary(lmm_model)$coefficients["mean_rugosity", "Pr(>|t|)"]
+
+# Create scatter plot
+figure.4 <- ggplot(aggregated.data.rug, aes(x = mean_rugosity, y = mean_fish_biomass)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
+  annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_rugosity, 2)), 
+           hjust = 2.1, vjust = 1.1, size = 4, parse = FALSE) +
+  labs(x = "Rugosity Complexity", y = "Fish biomass (g/m2)",
+       title = "Fish Biomass vs Rugosity Complexity") +
+  theme_classic();figure.4
+
+# Save the plot to a file
+ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
+```
 
 
 
