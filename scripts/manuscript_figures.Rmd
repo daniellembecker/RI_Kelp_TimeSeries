@@ -17,17 +17,25 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(plyr)
 library(dplyr)
+library(tigris)
 library(car)
 library(MuMIn)
 library(lmerTest)
 library(tidyverse)
 library(lme4)
 library(broom.mixed)
+library(ggmap)
 library(lubridate)
 library(ggplot2)
 library(patchwork)
 library(broom)
-
+library(ggspatial)
+if ("ggsn" %in% rownames(installed.packages()) == 'FALSE') BiocManager::install("ggsn")
+library(ggsn)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(ggspatial)
 ```
 
 # load cleaned dataframes
@@ -55,6 +63,73 @@ for (file in files) {
 # Now, each file is a separate data frame with its own variable name
 
 ```
+
+
+# Figure 1: organize data and make study site map of a) larger RI and NarrBay with Ft Weatherill and Kings Beach areas in boxes; b) zoom in of the Ft Weatherill box with specific transects as dots; c) zoom in of the Kings Beach box with specific transects as dots.
+```{r}
+# Create a dataframe with site coordinates
+sites <- data.frame(
+  Site = c("Fort Weatherill", "King's Beach"),
+  Latitude = c(41.477, 41.452),  # Adjusted approximate values for the sites
+  Longitude = c(-71.364, -71.326) # Adjusted approximate values for the sites
+)
+
+# Convert sites dataframe to an sf object with CRS 4326
+sites_sf <- st_as_sf(sites, coords = c("Longitude", "Latitude"), crs = 4326)
+
+# Get Rhode Island state boundaries and set CRS to 4326
+ri_state <- st_as_sf(map("state", plot = FALSE, fill = TRUE)) %>%
+  filter(ID == "rhode island")
+
+# Define your rectangle sizes (adjust as needed)
+rect_size1 <- 0.01 # Smaller rectangle
+rect_size2 <- 0.02 # Larger rectangle
+
+# Function to create rectangles around each site
+create_rectangle <- function(site, rect_size) {
+  lon <- st_coordinates(site)[1]
+  lat <- st_coordinates(site)[2]
+  st_as_sf(st_sfc(st_polygon(list(rbind(
+    c(lon - rect_size, lat - rect_size), 
+    c(lon - rect_size, lat + rect_size), 
+    c(lon + rect_size, lat + rect_size), 
+    c(lon + rect_size, lat - rect_size), 
+    c(lon - rect_size, lat - rect_size)
+  )))), crs = st_crs(site))
+}
+
+# Apply the create_rectangle function to each site for both rectangle sizes
+site_rectangles <- lapply(st_geometry(sites_sf), function(site) {
+  rectangle1 <- create_rectangle(site, rect_size1)
+  rectangle2 <- create_rectangle(site, rect_size2)
+  list(rectangle1, rectangle2)
+})
+
+# Combine all rectangles into one sf object
+site_rectangles <- do.call(rbind, unlist(site_rectangles, recursive = FALSE))
+
+# Set CRS for combined rectangles
+st_crs(site_rectangles) <- st_crs(sites_sf)
+
+# Plot
+panelA <- ggplot() +
+  geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
+  geom_sf(data = site_rectangles, color = "red2", fill = NA, size = 1) + # Add rectangles around sites
+  geom_sf(data = sites_sf, color = "blue", size = 3) + # Add site points for reference
+  coord_sf(xlim = c(-72, -71.0), ylim = c(41.1, 42.1), expand = FALSE) + # Zoom level
+  annotation_scale(location = "bl", width_hint = 0.5) +
+  annotation_north_arrow(location = "bl", which_north = "true", 
+                         pad_x = unit(1.1, "in"), pad_y = unit(0.4, "in"),
+                         style = north_arrow_fancy_orienteering) +
+  theme_classic() # Remove axes and background
+
+panelA
+```
+
+
+
+
+
 
 # Figure 2: organize data to make fish biomass (g/m2) on y-axis and Kelp cover (%) figure
 ```{r}
