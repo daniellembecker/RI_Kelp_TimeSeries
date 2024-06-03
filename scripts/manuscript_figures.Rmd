@@ -74,16 +74,16 @@ sites <- data.frame(
   Longitude = c(-71.364, -71.326) # Adjusted approximate values for the sites
 )
 
-# Convert sites dataframe to an sf object with CRS 4326
+# Convert sites dataframe to an sf object
 sites_sf <- st_as_sf(sites, coords = c("Longitude", "Latitude"), crs = 4326)
 
-# Get Rhode Island state boundaries and set CRS to 4326
-ri_state <- st_as_sf(map("state", plot = FALSE, fill = TRUE)) %>%
-  filter(ID == "rhode island")
+# Get Rhode Island state boundaries
+ri_state <- states(cb = TRUE) %>% 
+  filter(STUSPS == "RI") %>%
+  st_transform(crs = 4326)
 
-# Define your rectangle sizes (adjust as needed)
-rect_size1 <- 0.01 # Smaller rectangle
-rect_size2 <- 0.02 # Larger rectangle
+# Define the larger rectangle size (adjust as needed)
+rect_size <- 0.02 
 
 # Function to create rectangles around each site
 create_rectangle <- function(site, rect_size) {
@@ -98,24 +98,28 @@ create_rectangle <- function(site, rect_size) {
   )))), crs = st_crs(site))
 }
 
-# Apply the create_rectangle function to each site for both rectangle sizes
+# Apply the create_rectangle function to each site
 site_rectangles <- lapply(st_geometry(sites_sf), function(site) {
-  rectangle1 <- create_rectangle(site, rect_size1)
-  rectangle2 <- create_rectangle(site, rect_size2)
-  list(rectangle1, rectangle2)
+  create_rectangle(site, rect_size)
 })
 
 # Combine all rectangles into one sf object
-site_rectangles <- do.call(rbind, unlist(site_rectangles, recursive = FALSE))
+site_rectangles <- do.call(rbind, site_rectangles)
+st_crs(site_rectangles) <- st_crs(sites_sf) # Ensure CRS is set for combined rectangles
 
-# Set CRS for combined rectangles
-st_crs(site_rectangles) <- st_crs(sites_sf)
+# Define label data
+labels <- data.frame(
+  name = c("Narragansett\nBay", "Atlantic\nOcean"),
+  lat = c(41.6, 41.3),
+  lon = c(-71.35, -71.2)
+)
 
 # Plot
 panelA <- ggplot() +
   geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
-  geom_sf(data = site_rectangles, color = "red2", fill = NA, size = 1) + # Add rectangles around sites
-  geom_sf(data = sites_sf, color = "blue", size = 3) + # Add site points for reference
+  geom_sf(data = site_rectangles, color = "red2", fill = NA, size = 2) + # Add rectangles around sites
+  #geom_sf(data = sites_sf, color = "blue", size = 3) + # Add site points for reference
+  geom_text(data = labels, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
   coord_sf(xlim = c(-72, -71.0), ylim = c(41.1, 42.1), expand = FALSE) + # Zoom level
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
@@ -124,6 +128,42 @@ panelA <- ggplot() +
   theme_classic() # Remove axes and background
 
 panelA
+
+# Save the plot to a file
+ggsave("output/figures/figure_1A.png", plot = panelA, width = 8, height = 6)
+
+
+# Filter transect data by site
+transect_fw <- filter(site, Site == "Fort Wetherill")
+
+# Define label data
+labels <- data.frame(
+  name = c("Fort\nWetherill"),
+  lat = c(41.485),
+  lon = c(-71.368)
+)
+
+# Plot
+panelB <- ggplot() +
+  geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
+  geom_point(data = transect_fw,
+             aes(x = Start.Longitude, y = Start.Latitude),
+            color = "red", size = 3) + # Add start points of transects
+  annotation_scale(location = "bl", width_hint = 0.5) +
+  annotation_north_arrow(location = "bl", which_north = "true", 
+                         pad_x = unit(1.5, "in"), pad_y = unit(0.2, "in"),
+                         style = north_arrow_fancy_orienteering) +
+    geom_text(data = labels, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
+  theme_classic() + # Remove axes and background
+  xlim(c(-71.45, -71.3)) + # Set longitude range
+  ylim(c(41.42, 41.5))   # Set latitude range
+
+
+panelB
+
+# Save the plot to a file
+ggsave("output/figures/figure_1B.png", plot = panelB, width = 8, height = 6)
+
 ```
 
 
