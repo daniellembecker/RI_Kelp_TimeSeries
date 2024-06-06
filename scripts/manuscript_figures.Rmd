@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(plyr)
 library(dplyr)
 library(tigris)
+library(htmlwidgets)
 library(car)
 library(MuMIn)
 library(lmerTest)
@@ -26,6 +27,7 @@ library(lme4)
 library(broom.mixed)
 library(ggmap)
 library(lubridate)
+library(cowplot)
 library(ggplot2)
 library(PerformanceAnalytics)
 library(reshape2)
@@ -505,7 +507,7 @@ figure.4 <- ggplot(aggregated.data.rug, aes(x = mean_rugosity, y = mean_fish_bio
 ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
 ```
 
-# Figure 5: Multiple regression (correlation analysis) between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
+# Figure 5: Correlation analysis between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
 # combine all dataframes
 ```{r}
 # left join can only combine two at a time
@@ -661,8 +663,64 @@ ggheatmap +
 
 
 
-ggsave(filename = "output/figures/figure_5.png", device = "png", width = 10, height = 10)
+ggsave(filename = "output/figures/correlation_analysis_figure.png", device = "png", width = 10, height = 10)
+
+
 ```
 
+# Figure 5: Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
+# combine all dataframes
+```{r}
+install.packages("devtools")
+devtools::install_github("cardiomoon/ggiraphExtra", force = TRUE)
+library(ggiraphExtra)
 
+# Rename columns to remove spaces and special characters
+names(all.params.data) <- c("Fish_Biomass", "Rugosity", "Kelp_Cover", "Kelp_Biomass", "predictions")
+
+# Fit a multiple regression model
+fit4 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover, data = all.params.data)
+
+# Diagnostic plots for the regression model
+par(mfrow=c(2,2))
+plot(fit4)
+
+# Use ggPredict to visualize the multiple regression plot interactively
+interactive_plot <- ggPredict(fit4, interactive = TRUE) 
+
+# Save the interactive plot as an HTML file
+htmlwidgets::saveWidget(interactive_plot, file = "output/figures/interactive_regression_plot.html")
+
+
+```
+
+Coefficients:
+                                                   Estimate Std. Error t value Pr(>|t|)  
+(Intercept)                                      -199.41221   96.09880  -2.075   0.0473 *
+Rugosity                                           98.82780   36.09379   2.738   0.0106 *
+`Kelp Biomass (g/cm2)`                              0.41643    0.18683   2.229   0.0340 *
+`Kelp Cover (%)`                                 -765.82428  612.85640  -1.250   0.2218  
+Rugosity:`Kelp Biomass (g/cm2)`                    -0.12496    0.05199  -2.403   0.0231 *
+Rugosity:`Kelp Cover (%)`                         375.38109  244.24549   1.537   0.1355  
+`Kelp Biomass (g/cm2)`:`Kelp Cover (%)`            -0.24978    0.91866  -0.272   0.7877  
+Rugosity:`Kelp Biomass (g/cm2)`:`Kelp Cover (%)`   -0.05647    0.24991  -0.226   0.8229  
+
+# Try another type of multiple regession plot
+
+```{r}
+#fit multiple linear regression model
+model2 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover, data = all.params.data)
+
+#view results of model
+summary_text <- capture.output(summary(model2))
+writeLines(summary_text, "output/figures/summary_model.txt")
+
+# Produce added variable plots
+av_plots <- avPlots(model2)
+
+
+#The x-axis displays a single predictor variable and the y-axis displays the response variable.
+#The blue line shows the association between the predictor variable and the response variable, while holding the value of all other predictor variables constant.
+#The points that are labelled in each plot represent the 2 observations with the largest residuals and the 2 observations with the largest partial leverage.
+```
 

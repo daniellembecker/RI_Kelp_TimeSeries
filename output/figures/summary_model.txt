@@ -1,0 +1,26 @@
+
+Call:
+lm(formula = Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover, 
+    data = all.params.data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-96.448 -46.241  -1.186  28.222 111.581 
+
+Coefficients:
+                                   Estimate Std. Error t value Pr(>|t|)  
+(Intercept)                      -199.41221   96.09880  -2.075   0.0473 *
+Rugosity                           98.82780   36.09379   2.738   0.0106 *
+Kelp_Biomass                        0.41643    0.18683   2.229   0.0340 *
+Kelp_Cover                       -765.82428  612.85640  -1.250   0.2218  
+Rugosity:Kelp_Biomass              -0.12496    0.05199  -2.403   0.0231 *
+Rugosity:Kelp_Cover               375.38109  244.24549   1.537   0.1355  
+Kelp_Biomass:Kelp_Cover            -0.24978    0.91866  -0.272   0.7877  
+Rugosity:Kelp_Biomass:Kelp_Cover   -0.05647    0.24991  -0.226   0.8229  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 62.07 on 28 degrees of freedom
+Multiple R-squared:  0.4799,	Adjusted R-squared:  0.3499 
+F-statistic: 3.691 on 7 and 28 DF,  p-value: 0.005989
+
