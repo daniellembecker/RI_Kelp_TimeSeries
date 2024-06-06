@@ -27,6 +27,11 @@ library(broom.mixed)
 library(ggmap)
 library(lubridate)
 library(ggplot2)
+library(PerformanceAnalytics)
+library(reshape2)
+library(viridis)
+library(GGally)
+library(corrplot)
 library(patchwork)
 library(broom)
 library(ggspatial)
@@ -273,7 +278,7 @@ merged.dat.cover <- left_join(fish.filt, kelp.filt)
 # Make Figure 2 and run statistical analysis
 ```{r}
 # Aggregate the data by year, site, and transect and compute mean values
-aggregated_data_cover <- merged.dat %>%
+aggregated_data_cover <- merged.dat.cover %>%
   group_by(YEAR, SITE, TRANSECT) %>%
   summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
             mean_kelp_cover = mean(COVER, na.rm = TRUE)) %>%
@@ -500,6 +505,164 @@ figure.4 <- ggplot(aggregated.data.rug, aes(x = mean_rugosity, y = mean_fish_bio
 ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
 ```
 
+# Figure 5: Multiple regression (correlation analysis) between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
+# combine all dataframes
+```{r}
+# left join can only combine two at a time
+# combing kelp cover and fish biomass
+master.dat1 <- left_join(kelp.filt, fish.filt)
+
+#combine rugosity and kelp biomass
+master.dat2 <- left_join(mean_rugosity, morph.filt)
+
+# combine for final dataframe
+master.dat <- left_join(master.dat1, master.dat2)
+
+#delete unnecessary columns from the new joined data sheet 
+all.params.data <- master.dat[, -c(1:7, 9:11, 14)] 
+
+#rename various columns in data frame
+names(all.params.data)[1] <- "Kelp Cover (%)"
+names(all.params.data)[2] <- "Fish Biomass (g/cm2)"
+names(all.params.data)[3] <- "Rugosity"
+names(all.params.data)[4] <- "Kelp Biomass (g/cm2)"
+
+
+#reorder columns to show biomass by eaxchother
+all.params.data <- all.params.data[, c(3, 1, 2, 4)]
+
+view(all.params.data)
+
+# Check for missing values
+any_missing <- any(is.na(all.params.data))
+if (any_missing) {
+  # Handle missing values
+  all.params.data <- na.omit(all.params.data)
+}
+
+# Compute the correlation matrix using Spearman correlation
+cormat <- round(cor(all.params.data, method = "spearman"), 4)
+head(cormat)
+
+#melt the correlation matrix means it reassembles data frame to be more effective to complete corr matrix
+#to long format
+melted_cormat <- melt(cormat)
+head(melted_cormat)
+
+#visulaize the correlation matrix in general
+ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile()
+
+# Get lower and upper triangle of the correlation matrix
+#Note that, a correlation matrix has redundant information. We’ll use the functions below to set half of it to NA
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+# Get upper triangle of the correlation matrix
+get_upper_tri <- function(cormat){
+  cormat[lower.tri(cormat)]<- NA
+  return(cormat)
+}
+
+#apply upper tri calculation to graphc
+upper_tri <- get_upper_tri(cormat)
+upper_tri
+
+#melt the correlation matrix
+#melt the correlation data and drop the rows with NA values 
+melted_cormat <- melt(upper_tri, na.rm = TRUE)
+
+#heatmap of correlation matrix
+#negative correlations are in purple color and positive correlations in red
+#scale_fill_gradient2 is used with the argument limit = c(-1,1) as correlation coefficients range from -1 to 1
+#coord_fixed() : this function ensures that one unit on the x-axis is the same length as one unit on the y-axis
+ggplot(data = melted_cormat, aes(Var2, Var1, fill = value))+
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "midnightblue", high = "firebrick4", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman's\nCorrelation") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 12, hjust = 1))+
+  coord_fixed()
+
+
+
+#edit the number of sig figs listed in the value column
+melted_cormat <- melted_cormat %>% mutate_at(vars(starts_with("value")), funs(round(., 2)))
+
+# Create a ggheatmap with basic characteristics, etc. 
+ggheatmap <- ggplot(melted_cormat, aes(Var2, Var1, fill = value))+
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "firebrick3", mid = "white", high = "dodgerblue3", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman's\nCorrelation") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 12, hjust = 1))+
+  coord_fixed()
+
+
+# Print the heatmap
+print(ggheatmap)
+
+
+# Check for normality
+shapiro.test(all.params.data$`Kelp Cover (%)`)
+shapiro.test(all.params.data$`Fish Biomass (g/cm2)`) 
+shapiro.test(all.params.data$Rugosity)
+shapiro.test(all.params.data$`Kelp Biomass (g/cm2)`)
+
+# data is not normal so move forward using aa spearmans rank correlation test
+
+## Calculate p-values
+p_values <- cor.mtest(all.params.data, method = "spearman")$p
+
+## Convert the correlation matrix to a data frame
+cormat_df <- reshape2::melt(cormat)
+
+## Add p-values to the data frame
+cormat_df$p_value <- p_values[cbind(cormat_df$Var1, cormat_df$Var2)]
+
+## Create a new column to display stars based on p-values
+cormat_df$sig <- apply_rules(cormat_df$p_value, rules = c(0.001, 0.01, 0.05), symbols = c("***", "**", "*"))
+
+# Remove repeating rows
+corузыdated_cormat_df <- cormat_df[!duplicated(cormat_df[, c("Var1", "Var2")]), ]
+
+# Replace non-significant p-узыdues with "ns"
+cormat_df$sig[cormat_df$p_value > 0.05] <- "ns"
+
+# Print the modified data
+print(cormat_df)
+
+# Add correlation coefficients to the heatmap
+ggheatmap +
+  geom_text(data = cormat_df, aes(Var1, Var2, label = ifelse(Var1 == Var2, value, 
+                                                             ifelse(sig == "", paste0(value, "\nns"), 
+                                                             ifelse(duplicated(paste0(value, "\n", sig)), "", paste0(value, "\n", sig))))), 
+            color = "black", size = 6) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.x = element_text(size = 18, face="bold", color="black"),
+        axis.text.y = element_text(size = 18, face="bold", color="black"),
+        panel.grid.major = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        axis.ticks = element_blank(),
+        legend.justification = c(0.8, 0),
+        legend.title = element_text(size = 18, face="bold", color="black"),
+        legend.text = element_text(size = 20, face="bold", color="black"),
+        legend.position = c(0.48, 0.75),
+        legend.direction = "horizontal") +
+  guides(fill = guide_colorbar(barwidth = 12, barheight = 2,
+                               title.position = "top", title.hjust = 0.5, title.vjust = 1.0))
+
+
+
+ggsave(filename = "output/figures/figure_5.png", device = "png", width = 10, height = 10)
+```
 
 
 
