@@ -30,12 +30,11 @@ library(ggplot2)
 library(patchwork)
 library(broom)
 library(ggspatial)
-if ("ggsn" %in% rownames(installed.packages()) == 'FALSE') BiocManager::install("ggsn")
-library(ggsn)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(ggspatial)
+
 ```
 
 # load cleaned dataframes
@@ -108,23 +107,24 @@ site_rectangles <- do.call(rbind, site_rectangles)
 st_crs(site_rectangles) <- st_crs(sites_sf) # Ensure CRS is set for combined rectangles
 
 # Define label data
-labels <- data.frame(
+labels_tot <- data.frame(
   name = c("Narragansett\nBay", "Atlantic\nOcean"),
   lat = c(41.6, 41.3),
   lon = c(-71.35, -71.2)
 )
 
-# Plot
+# Plot panel A zoommed out RI and sites in rectangles
 panelA <- ggplot() +
   geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
   geom_sf(data = site_rectangles, color = "red2", fill = NA, size = 2) + # Add rectangles around sites
-  #geom_sf(data = sites_sf, color = "blue", size = 3) + # Add site points for reference
-  geom_text(data = labels, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
+  geom_text(data = labels_tot, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
   coord_sf(xlim = c(-72, -71.0), ylim = c(41.1, 42.1), expand = FALSE) + # Zoom level
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(1.1, "in"), pad_y = unit(0.4, "in"),
+                         pad_x = unit(0.8, "in"), pad_y = unit(0.4, "in"),
                          style = north_arrow_fancy_orienteering) +
+    # Change x and y axes names
+  labs(x = "Longitude", y = "Latitude") +
   theme_classic() # Remove axes and background
 
 panelA
@@ -136,24 +136,32 @@ ggsave("output/figures/figure_1A.png", plot = panelA, width = 8, height = 6)
 # Filter transect data by site
 transect_fw <- filter(site, Site == "Fort Wetherill")
 
+# Adjust latitude values by subtracting 0.0013
+transect_fw <- transect_fw %>%
+  mutate(
+    Start.Latitude = Start.Latitude - 0.0013
+  )
+
 # Define label data
 labels <- data.frame(
   name = c("Fort\nWetherill"),
-  lat = c(41.485),
+  lat = c(41.486),
   lon = c(-71.368)
 )
 
-# Plot
+# Plot panel B for fort wetherill transects
 panelB <- ggplot() +
   geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
   geom_point(data = transect_fw,
              aes(x = Start.Longitude, y = Start.Latitude),
-            color = "red", size = 3) + # Add start points of transects
+             color = "black", fill = "red", size = 3, shape = 21) + # Add start points of transects
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(1.5, "in"), pad_y = unit(0.2, "in"),
+                         pad_x = unit(0.9, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
     geom_text(data = labels, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
+  # Change x and y axes names
+  labs(x = "Longitude", y = "Latitude") +
   theme_classic() + # Remove axes and background
   xlim(c(-71.45, -71.3)) + # Set longitude range
   ylim(c(41.42, 41.5))   # Set latitude range
@@ -164,11 +172,65 @@ panelB
 # Save the plot to a file
 ggsave("output/figures/figure_1B.png", plot = panelB, width = 8, height = 6)
 
+
+# Filter transect data by site
+transect_kb <- filter(site, Site == "King's Beach")
+
+# Define label data
+labels_kb <- data.frame(
+  name = c("King's\nBeach"),
+  lat = c(41.463),
+  lon = c(-71.33)
+)
+
+# Adjust latitude values by subtracting 0.0011
+transect_kb <- transect_kb %>%
+  mutate(
+    Start.Latitude = Start.Latitude - 0.0001
+  )
+
+# Plot panel C for kings beach transects
+panelC <- ggplot() +
+  geom_sf(data = ri_state, fill = "lightgray") + # State boundaries
+  geom_point(data = transect_kb,
+             aes(x = Start.Longitude, y = Start.Latitude),
+             color = "black", fill = "red", size = 3, shape = 21) + # Add start points of transects
+  annotation_scale(location = "bl", width_hint = 0.5) +
+  annotation_north_arrow(location = "bl", which_north = "true", 
+                         pad_x = unit(0.8, "in"), pad_y = unit(0.2, "in"),
+                         style = north_arrow_fancy_orienteering) +
+    geom_text(data = labels_kb, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
+  # Change x and y axes names
+  labs(x = "Longitude", y = "Latitude") +
+  theme_classic() + # Remove axes and background
+  xlim(c(-71.45, -71.3)) + # Set longitude range
+  ylim(c(41.42, 41.5))   # Set latitude range
+
+
+panelC
+
+# Save the plot to a file
+ggsave("output/figures/figure_1C.png", plot = panelC, width = 8, height = 6)
+
+
 ```
 
+# Plot all three panels together using patchwork
+```{r}
 
+# Adjust width for individual plots
+panelB <- panelB + theme(plot.margin = margin(r = 0))  # Remove right margin
+panelC <- panelC + theme(plot.margin = margin(l = 0))  # Remove left margin
 
+# Combine the plots with patchwork
+combined_plot <- (panelA | (panelB / panelC)) +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"))
 
+# Save the combined plot
+ggsave("output/figures/figure_1.png", combined_plot, width = 10, height = 6, units = "in", dpi = 300)
+
+```
 
 
 # Figure 2: organize data to make fish biomass (g/m2) on y-axis and Kelp cover (%) figure
