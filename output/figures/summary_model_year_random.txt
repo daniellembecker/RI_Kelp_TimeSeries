@@ -1,0 +1,38 @@
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) +      (1 | YEAR)
+   Data: all.params.data
+
+REML criterion at convergence: 39.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.91061 -0.29393  0.01134  0.36239  1.42697 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ YEAR     (Intercept) 0.08982  0.2997  
+ Residual             0.64097  0.8006  
+Number of obs: 19, groups:  YEAR, 3
+
+Fixed effects:
+                                                Estimate Std. Error       df t value Pr(>|t|)  
+(Intercept)                                     -10.1717     7.6855  10.9123  -1.323   0.2127  
+log(Rugosity)                                     2.1869     1.3910  10.9949   1.572   0.1442  
+log(Kelp_Biomass)                                -4.4753     4.0315  10.4183  -1.110   0.2919  
+log(Kelp_Cover)                                  16.5280     7.2593  10.5535   2.277   0.0447 *
+log(Rugosity):log(Kelp_Biomass)                   0.9279     0.7936  10.6713   1.169   0.2678  
+log(Rugosity):log(Kelp_Cover)                    -2.6812     1.2746  10.8438  -2.104   0.0596 .
+log(Kelp_Biomass):log(Kelp_Cover)                 5.6297     3.7257  10.4221   1.511   0.1605  
+log(Rugosity):log(Kelp_Biomass):log(Kelp_Cover)  -1.2238     0.7665  10.5846  -1.597   0.1397  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) lg(Rg) lg(K_B) l(K_C) lg(R):(K_B) l(R):(K_C l(K_B):
+log(Rugsty) -0.962                                                    
+lg(Klp_Bms)  0.903 -0.904                                             
+lg(Klp_Cvr) -0.978  0.924 -0.866                                      
+lg(R):(K_B) -0.820  0.885 -0.962   0.784                              
+lg(R):(K_C)  0.944 -0.973  0.889  -0.951 -0.883                       
+l(K_B):(K_C -0.886  0.885 -0.984   0.880  0.958      -0.907           
+l(R):(K_B):  0.754 -0.824  0.910  -0.751 -0.974       0.867    -0.943 

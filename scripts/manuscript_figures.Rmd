@@ -20,6 +20,7 @@ library(dplyr)
 library(tigris)
 library(htmlwidgets)
 library(car)
+library(ggiraphExtra)
 library(MuMIn)
 library(lmerTest)
 library(tidyverse)
@@ -37,6 +38,7 @@ library(corrplot)
 library(patchwork)
 library(broom)
 library(ggspatial)
+library(rslp)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
@@ -128,7 +130,7 @@ panelA <- ggplot() +
   coord_sf(xlim = c(-72, -71.0), ylim = c(41.1, 42.1), expand = FALSE) + # Zoom level
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(0.8, "in"), pad_y = unit(0.4, "in"),
+                         pad_x = unit(1.0, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
     # Change x and y axes names
   labs(x = "Longitude", y = "Latitude") +
@@ -153,7 +155,7 @@ transect_fw <- transect_fw %>%
 labels <- data.frame(
   name = c("Fort\nWetherill"),
   lat = c(41.486),
-  lon = c(-71.368)
+  lon = c(-71.37)
 )
 
 # Plot panel B for fort wetherill transects
@@ -164,20 +166,20 @@ panelB <- ggplot() +
              color = "black", fill = "red", size = 3, shape = 21) + # Add start points of transects
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(0.9, "in"), pad_y = unit(0.2, "in"),
+                         pad_x = unit(0.5, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
     geom_text(data = labels, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
   # Change x and y axes names
   labs(x = "Longitude", y = "Latitude") +
   theme_classic() + # Remove axes and background
-  xlim(c(-71.45, -71.3)) + # Set longitude range
-  ylim(c(41.42, 41.5))   # Set latitude range
+  xlim(c(-71.40, -71.35)) + # Set longitude range
+  ylim(c(41.46, 41.5))   # Set latitude range
 
 
 panelB
 
 # Save the plot to a file
-ggsave("output/figures/figure_1B.png", plot = panelB, width = 8, height = 6)
+ggsave("output/figures/figure_1B.png", plot = panelB, width = 8, height = 8)
 
 
 # Filter transect data by site
@@ -193,7 +195,7 @@ labels_kb <- data.frame(
 # Adjust latitude values by subtracting 0.0011
 transect_kb <- transect_kb %>%
   mutate(
-    Start.Latitude = Start.Latitude - 0.0001
+    Start.Latitude = Start.Latitude - 0.0003
   )
 
 # Plot panel C for kings beach transects
@@ -204,14 +206,14 @@ panelC <- ggplot() +
              color = "black", fill = "red", size = 3, shape = 21) + # Add start points of transects
   annotation_scale(location = "bl", width_hint = 0.5) +
   annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(0.8, "in"), pad_y = unit(0.2, "in"),
+                         pad_x = unit(0.6, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
     geom_text(data = labels_kb, aes(x = lon, y = lat, label = name), size = 5, color = "black") + # Add labels
   # Change x and y axes names
   labs(x = "Longitude", y = "Latitude") +
   theme_classic() + # Remove axes and background
-  xlim(c(-71.45, -71.3)) + # Set longitude range
-  ylim(c(41.42, 41.5))   # Set latitude range
+  xlim(c(-71.40, -71.3)) + # Set longitude range
+  ylim(c(41.44, 41.5))   # Set latitude range
 
 
 panelC
@@ -232,10 +234,10 @@ panelC <- panelC + theme(plot.margin = margin(l = 0))  # Remove left margin
 # Combine the plots with patchwork
 combined_plot <- (panelA | (panelB / panelC)) +
   plot_annotation(tag_levels = 'A') + 
-  theme(plot.tag = element_text(size = 20, face = "bold"))
+  theme(plot.tag = element_text(size = 20, face = "bold"));combined_plot
 
 # Save the combined plot
-ggsave("output/figures/figure_1.png", combined_plot, width = 10, height = 6, units = "in", dpi = 300)
+ggsave("output/figures/figure_1.png", combined_plot, width = 12, height = 8, units = "in", dpi = 300)
 
 ```
 
@@ -318,11 +320,11 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_cover", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.2 <- ggplot(aggregated_data_cover, aes(x = mean_kelp_cover, y = mean_fish_biomass)) +
+figure.2 <- ggplot(aggregated_data_cover, aes(x = log(mean_kelp_cover), y = log(mean_fish_biomass))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
 annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
-  labs(x = "Kelp cover (%)", y = "Fish biomass (g/m2)",
+  labs(x = "Log Kelp cover (%)", y = "Log Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Cover") +
   theme_classic();figure.2
 
@@ -436,11 +438,11 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_kelp_biomass <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.3 <- ggplot(aggregated.data.morph, aes(x = mean_kelp_biomass, y = mean_fish_biomass)) +
+figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass), y = log(mean_fish_biomass))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
 annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_biomass, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
-  labs(x = "Kelp Biomass (g/m2)", y = "Fish biomass (g/m2)",
+  labs(x = "Log Kelp Biomass (g/m2)", y = "Log Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Biomass") +
   theme_classic();figure.3
 
@@ -520,18 +522,17 @@ master.dat2 <- left_join(mean_rugosity, morph.filt)
 # combine for final dataframe
 master.dat <- left_join(master.dat1, master.dat2)
 
-#delete unnecessary columns from the new joined data sheet 
-all.params.data <- master.dat[, -c(1:7, 9:11, 14)] 
+#select necessary columns
+all.params.data <- master.dat %>% select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
 
 #rename various columns in data frame
-names(all.params.data)[1] <- "Kelp Cover (%)"
-names(all.params.data)[2] <- "Fish Biomass (g/cm2)"
-names(all.params.data)[3] <- "Rugosity"
-names(all.params.data)[4] <- "Kelp Biomass (g/cm2)"
+names(all.params.data)[3] <- "Kelp Cover (%)"
+names(all.params.data)[4] <- "Fish Biomass (g/cm2)"
+names(all.params.data)[5] <- "Rugosity"
+names(all.params.data)[6] <- "Kelp Biomass (g/cm2)"
 
-
-#reorder columns to show biomass by eaxchother
-all.params.data <- all.params.data[, c(3, 1, 2, 4)]
+#reorder columns to show biomass by eachother
+all.params.data <- all.params.data[, c(1,2, 4, 6, 5, 3)]
 
 view(all.params.data)
 
@@ -627,6 +628,15 @@ cormat_df <- reshape2::melt(cormat)
 ## Add p-values to the data frame
 cormat_df$p_value <- p_values[cbind(cormat_df$Var1, cormat_df$Var2)]
 
+# Define the custom apply_rules function
+apply_rules <- function(p_values, rules = c(0.001, 0.01, 0.05), symbols = c("***", "**", "*")) {
+  result <- rep("", length(p_values))
+  for (i in seq_along(rules)) {
+    result[p_values < rules[i]] <- symbols[i]
+  }
+  return(result)
+}
+
 ## Create a new column to display stars based on p-values
 cormat_df$sig <- apply_rules(cormat_df$p_value, rules = c(0.001, 0.01, 0.05), symbols = c("***", "**", "*"))
 
@@ -671,56 +681,94 @@ ggsave(filename = "output/figures/correlation_analysis_figure.png", device = "pn
 # Figure 5: Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
 # combine all dataframes
 ```{r}
-install.packages("devtools")
-devtools::install_github("cardiomoon/ggiraphExtra", force = TRUE)
-library(ggiraphExtra)
-
 # Rename columns to remove spaces and special characters
-names(all.params.data) <- c("Fish_Biomass", "Rugosity", "Kelp_Cover", "Kelp_Biomass", "predictions")
+names(all.params.data) <- c("YEAR", "SITE", "Fish_Biomass", "Rugosity", "Kelp_Cover", "Kelp_Biomass")
+
+# was getting an error: qr.default(X, tol = tol, LAPACK = FALSE) when running model below which indicates that there are still problematic values (NA, NaN, or Inf) in the data used for the model fitting
+
+# Check for zero or negative values
+zero_or_negative <- sapply(all.params.data[, c("Fish_Biomass", "Rugosity", "Kelp_Biomass", "Kelp_Cover")], function(x) sum(x <= 0))
+zero_or_negative
+
+# Remove rows with zero or negative values in relevant columns
+all.params.data <- all.params.data[all.params.data$Fish_Biomass > 0 & 
+                                   all.params.data$Rugosity > 0 & 
+                                   all.params.data$Kelp_Biomass > 0 & 
+                                   all.params.data$Kelp_Cover > 0, ]
 
 # Fit a multiple regression model
-fit4 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover, data = all.params.data)
+fit1 <- lm(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover), data = all.params.data)
 
 # Diagnostic plots for the regression model
 par(mfrow=c(2,2))
-plot(fit4)
+plot(fit1)
 
-# Use ggPredict to visualize the multiple regression plot interactively
-interactive_plot <- ggPredict(fit4, interactive = TRUE) 
-
-# Save the interactive plot as an HTML file
-htmlwidgets::saveWidget(interactive_plot, file = "output/figures/interactive_regression_plot.html")
-
-
-```
-
-Coefficients:
-                                                   Estimate Std. Error t value Pr(>|t|)  
-(Intercept)                                      -199.41221   96.09880  -2.075   0.0473 *
-Rugosity                                           98.82780   36.09379   2.738   0.0106 *
-`Kelp Biomass (g/cm2)`                              0.41643    0.18683   2.229   0.0340 *
-`Kelp Cover (%)`                                 -765.82428  612.85640  -1.250   0.2218  
-Rugosity:`Kelp Biomass (g/cm2)`                    -0.12496    0.05199  -2.403   0.0231 *
-Rugosity:`Kelp Cover (%)`                         375.38109  244.24549   1.537   0.1355  
-`Kelp Biomass (g/cm2)`:`Kelp Cover (%)`            -0.24978    0.91866  -0.272   0.7877  
-Rugosity:`Kelp Biomass (g/cm2)`:`Kelp Cover (%)`   -0.05647    0.24991  -0.226   0.8229  
-
-# Try another type of multiple regession plot
-
-```{r}
-#fit multiple linear regression model
-model2 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover, data = all.params.data)
-
-#view results of model
-summary_text <- capture.output(summary(model2))
-writeLines(summary_text, "output/figures/summary_model.txt")
-
-# Produce added variable plots
-av_plots <- avPlots(model2)
-
+# Produce added multivariable plots
+av_plots <- avPlots(fit1)
 
 #The x-axis displays a single predictor variable and the y-axis displays the response variable.
 #The blue line shows the association between the predictor variable and the response variable, while holding the value of all other predictor variables constant.
 #The points that are labelled in each plot represent the 2 observations with the largest residuals and the 2 observations with the largest partial leverage.
+
+#view results of model
+summary_text1 <- capture.output(summary(fit1))
+writeLines(summary_text1, "output/figures/summary_original_model.txt")
+
+# Fit a multiple regression model with site and year as interactions
+fit2 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover * SITE * YEAR, data = all.params.data)
+
+# Diagnostic plots for the regression model
+par(mfrow=c(2,2))
+plot(fit2)
+
+#view results of model
+summary_text2 <- capture.output(summary(fit2))
+writeLines(summary_text2, "output/figures/summary_model_site_year_fixed.txt")
+
+```
+
+
+# Try another type of multiple regession plot
+```{r}
+#fit multiple linear regression model WITH SITE AND YEAR
+fit3 <- lm(Fish_Biomass ~ SITE*YEAR, data = all.params.data)
+
+#view results of model
+summary_text3 <- capture.output(summary(fit3))
+writeLines(summary_text3, "output/figures/summary_model_site_year_fixed_fishbiomass.txt")
+
+
+# Fit the mixed-effects model
+fit4 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+              (1 | SITE) + (1 | YEAR), data = all.params.data)
+
+#view results of model
+summary_text4 <- capture.output(summary(fit4))
+writeLines(summary_text4, "output/figures/summary_model_site_year_random.txt")
+
+# site and year no significant interaction or significant main effects
+
+# run with just site as random effect
+# Fit the mixed-effects model
+fit5 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+              (1 | SITE), data = all.params.data)
+
+#view results of model
+summary_text5 <- capture.output(summary(fit5))
+writeLines(summary_text5, "output/figures/summary_model_site_random.txt")
+
+# site and year no significant main effects
+
+# run with just year as random effect
+# Fit the mixed-effects model
+fit6 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+              (1 | YEAR), data = all.params.data)
+
+#view results of model
+summary_text6 <- capture.output(summary(fit6))
+writeLines(summary_text6, "output/figures/summary_model_year_random.txt")
+
+#year is significantly different for kelp cover
+
 ```
 
