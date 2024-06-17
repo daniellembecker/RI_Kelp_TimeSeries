@@ -458,6 +458,9 @@ mean_rugosity <- rugosity %>%
   group_by(SITE, YEAR, TRANSECT) %>%
   summarize(mean_rugosity = mean(c(X0M, X4M, X8M, X12M, X16M, X20M, X24M, X28M, X32M, X36M, X40M), na.rm = TRUE))
 
+# edited control transcet name
+mean_rugosity$TRANSECT[mean_rugosity$TRANSECT == "Control 2"] <- "2"
+
 # change transect from integer to chr
 mean_rugosity$TRANSECT <- as.character(mean_rugosity$TRANSECT)
 
@@ -509,6 +512,23 @@ figure.4 <- ggplot(aggregated.data.rug, aes(x = mean_rugosity, y = mean_fish_bio
 ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
 ```
 
+
+# Filter quad data for all inverts and use to correlate to fish biomass
+```{r}
+
+
+
+
+ 
+```
+
+
+
+
+
+
+
+
 # Figure 5: Correlation analysis between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
 # combine all dataframes
 ```{r}
@@ -543,8 +563,11 @@ if (any_missing) {
   all.params.data <- na.omit(all.params.data)
 }
 
-# Compute the correlation matrix using Spearman correlation
-cormat <- round(cor(all.params.data, method = "spearman"), 4)
+# Select the relevant columns
+selected_columns <- all.params.data[, c("Fish Biomass (g/cm2)", "Kelp Biomass (g/cm2)", "Rugosity", "Kelp Cover (%)")]
+
+# Calculate the Spearman correlation matrix
+cormat <- round(cor(selected_columns, method = "spearman", use = "complete.obs"), 4)
 head(cormat)
 
 #melt the correlation matrix means it reassembles data frame to be more effective to complete corr matrix
@@ -620,7 +643,7 @@ shapiro.test(all.params.data$`Kelp Biomass (g/cm2)`)
 # data is not normal so move forward using aa spearmans rank correlation test
 
 ## Calculate p-values
-p_values <- cor.mtest(all.params.data, method = "spearman")$p
+p_values <- cor.mtest(selected_columns, method = "spearman")$p
 
 ## Convert the correlation matrix to a data frame
 cormat_df <- reshape2::melt(cormat)
@@ -712,18 +735,7 @@ av_plots <- avPlots(fit1)
 
 #view results of model
 summary_text1 <- capture.output(summary(fit1))
-writeLines(summary_text1, "output/figures/summary_original_model.txt")
-
-# Fit a multiple regression model with site and year as interactions
-fit2 <- lm(Fish_Biomass ~ Rugosity * Kelp_Biomass * Kelp_Cover * SITE * YEAR, data = all.params.data)
-
-# Diagnostic plots for the regression model
-par(mfrow=c(2,2))
-plot(fit2)
-
-#view results of model
-summary_text2 <- capture.output(summary(fit2))
-writeLines(summary_text2, "output/figures/summary_model_site_year_fixed.txt")
+writeLines(summary_text1, "output/figures/summary_original.model.txt")
 
 ```
 
@@ -731,42 +743,42 @@ writeLines(summary_text2, "output/figures/summary_model_site_year_fixed.txt")
 # Try another type of multiple regession plot
 ```{r}
 #fit multiple linear regression model WITH SITE AND YEAR
-fit3 <- lm(Fish_Biomass ~ SITE*YEAR, data = all.params.data)
+fit2 <- lm(Fish_Biomass ~ SITE*YEAR, data = all.params.data)
 
 #view results of model
-summary_text3 <- capture.output(summary(fit3))
-writeLines(summary_text3, "output/figures/summary_model_site_year_fixed_fishbiomass.txt")
+summary_text2 <- capture.output(summary(fit2))
+writeLines(summary_text2, "output/figures/summary_model_site_year_fixed_fishbiomass.txt")
 
 
 # Fit the mixed-effects model
-fit4 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+fit3 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
               (1 | SITE) + (1 | YEAR), data = all.params.data)
 
 #view results of model
-summary_text4 <- capture.output(summary(fit4))
-writeLines(summary_text4, "output/figures/summary_model_site_year_random.txt")
+summary_text3 <- capture.output(summary(fit3))
+writeLines(summary_text3, "output/figures/summary_model_site_year_random.txt")
 
 # site and year no significant interaction or significant main effects
 
 # run with just site as random effect
 # Fit the mixed-effects model
-fit5 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+fit4 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
               (1 | SITE), data = all.params.data)
 
 #view results of model
-summary_text5 <- capture.output(summary(fit5))
-writeLines(summary_text5, "output/figures/summary_model_site_random.txt")
+summary_text4 <- capture.output(summary(fit4))
+writeLines(summary_text4, "output/figures/summary_model_site_random.txt")
 
 # site and year no significant main effects
 
 # run with just year as random effect
 # Fit the mixed-effects model
-fit6 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+fit5 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
               (1 | YEAR), data = all.params.data)
 
 #view results of model
-summary_text6 <- capture.output(summary(fit6))
-writeLines(summary_text6, "output/figures/summary_model_year_random.txt")
+summary_text5 <- capture.output(summary(fit5))
+writeLines(summary_text5, "output/figures/summary_model_year_random.txt")
 
 #year is significantly different for kelp cover
 

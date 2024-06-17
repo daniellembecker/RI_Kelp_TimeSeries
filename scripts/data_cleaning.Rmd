@@ -372,7 +372,7 @@ colnames(QUAD) <- new_column_names.quad
 QUAD_long <- QUAD %>%
   pivot_longer(cols = AGH:Oar.Weed.Total, names_to = "SP_CODE", values_to = "COUNT")
 
-# use rbind.fill() method in R to combine data frames with different columns
+)# use rbind.fill() method in R to combine data frames with different columns
 QUAD_data <- rbind.fill(QUAD_long, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
 
 #remove 131-138 columns for observers not needed information
@@ -396,15 +396,23 @@ write.csv(QUAD_data, "output/cleaned_data/QUAD.data.clean.csv", row.names = FALS
 # Add a new column named "year" with all values set to 2021
 rugosity_2021_DEM <- data.frame(YEAR = 2021, rugosity_2021_DEM)
 
+kelp_rug_2022 <- data.frame(YEAR = 2022, kelp_rugosity_2022)
+
+kelp_rug_2023 <- data.frame(YEAR = 2023, kelp_rugosity_2022)
+
 # use rbind.fill() method in R to combine data frames with different columns
-rug_data <- rbind.fill(rugosity_2019_DEM, rugosity_2020_DEM, rugosity_2021_DEM)
+rug_data <- rbind.fill(rugosity_2019_DEM, rugosity_2020_DEM, rugosity_2021_DEM, kelp_rug_2022, kelp_rug_2023)
 
 #remove 22-25 columns for observers not needed information
-rug_data <- rug_data[ -c(22:25) ]
+rug_data <- rug_data[ -c(21:25) ]
 
 # Rename Kings Beach to King's Beach
 rug_data$SITE[rug_data$SITE == "Kings Beach"] <- "King's Beach"
 rug_data$SITE[rug_data$SITE == "KB"] <- "King's Beach"
+rug_data$SITE[rug_data$SITE == "Fort Weatherill"] <- "Fort Wetherill"
+rug_data$SITE[rug_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
+rug_data$TRANSECT[rug_data$TRANSECT == "Control 1"] <- "1"
+rug_data$TRANSECT[rug_data$TRANSECT == "Control 2"] <- "2"
 
 # rename rugosity data columns
 rug_data <- rug_data %>%
@@ -429,9 +437,5 @@ rug_data <- rug_data %>%
 write.csv(rug_data, "output/cleaned_data/rugosity.data.clean.csv", row.names = FALSE)
  
 ```
-
-
-
-
 
 
