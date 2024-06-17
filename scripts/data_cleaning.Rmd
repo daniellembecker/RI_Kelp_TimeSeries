@@ -368,11 +368,21 @@ new_column_names.quad <- sapply(column_names.quad, function(name) {
 # Rename the columns in Kelp_COVER
 colnames(QUAD) <- new_column_names.quad
 
+# Remove last two rows with kelp and oar weed totals
+QUAD <- QUAD[ -c(128:130) ]
+
 # Melt only columns AGH:WHEL into long format
 QUAD_long <- QUAD %>%
-  pivot_longer(cols = AGH:Oar.Weed.Total, names_to = "SP_CODE", values_to = "COUNT")
+  pivot_longer(cols = AGH:NP, names_to = "SP_CODE", values_to = "COUNT")
 
-)# use rbind.fill() method in R to combine data frames with different columns
+
+# Select only the code and type columns from species.metadata
+species_metadata_type <- species.metadata[, c("code", "type")]
+
+# Merge quad_long dataframe with species.metadata to include type information
+quad_long_with_type <- merge(QUAD_long, species.metadata[, c("code", "type")], by.x = "SP_CODE", by.y = "code", all.x = TRUE)
+
+# use rbind.fill() method in R to combine data frames with different columns
 QUAD_data <- rbind.fill(QUAD_long, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
 
 #remove 131-138 columns for observers not needed information

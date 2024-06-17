@@ -296,9 +296,9 @@ filt_data <- aggregated_data_cover %>%
 aggregated_data_cover$mean_kelp_cover <- aggregated_data_cover$mean_kelp_cover * 100
 
 # Fit the linear mixed effects model
-lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
+lm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
 #check normality
-qqPlot(residuals(lmm_model)) #slightly non normal values, log transform to improve
+qqPlot(residuals(lm_model)) #slightly non normal values, log transform to improve
 
 # Fit the linear mixed effects model with log transformation
 lmm_model <- lmer(log(mean_fish_biomass) ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
@@ -515,17 +515,12 @@ ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
 
 # Filter quad data for all inverts and use to correlate to fish biomass
 ```{r}
-
+invert.filt <- 
 
 
 
  
 ```
-
-
-
-
-
 
 
 
@@ -541,6 +536,9 @@ master.dat2 <- left_join(mean_rugosity, morph.filt)
 
 # combine for final dataframe
 master.dat <- left_join(master.dat1, master.dat2)
+
+# output to .csv
+write.csv("output/cleaned_data/mast_output_dataframe.csv")
 
 #select necessary columns
 all.params.data <- master.dat %>% select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
@@ -783,4 +781,28 @@ writeLines(summary_text5, "output/figures/summary_model_year_random.txt")
 #year is significantly different for kelp cover
 
 ```
+
+# Run model on temperature by date between two sites 
+```{r}
+# Add a 'Site' column to each dataframe
+FW_temperature$Site <- "FW"
+KB_temperature$Site <- "KB"
+
+# Combine data frames
+temperature_data <- rbind(FW_temperature, KB_temperature)
+
+# Run normality on the temp data
+qqPlot(temperature_data$Temp, main = "QQ Plot of Temperature Data")
+
+# Data is not normal so log transform
+qqPlot(temperature_data$log(Temp), main = "QQ Plot of Temperature Data")
+
+# Fit linear model
+lm_model <- lm(log(Temp) ~ Date + Site, data = temperature_data)
+
+# Summary of the model
+summary(lm_model)
+
+```
+
 
