@@ -16,8 +16,11 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load libraries 
 ```{r}
 library(plyr)
+library(kableExtra)
+library(gt)
 library(dplyr)
 library(tigris)
+library(MASS)
 library(htmlwidgets)
 library(car)
 library(ggiraphExtra)
@@ -37,6 +40,7 @@ library(GGally)
 library(corrplot)
 library(patchwork)
 library(broom)
+library(knitr)
 library(ggspatial)
 library(rslp)
 library(sf)
@@ -256,8 +260,10 @@ kelp.filt$TRANSECT <- as.character(kelp.filt$TRANSECT)
 kelp.filt <- kelp.filt[ -c(5) ]
 
 # Read the fish aggregated CSV file 2019-2023 and skip the first column
-fish <- read.csv("data/kelp_timeseries_data/fish_Aggregated.csv") %>%
-          select(-1)
+fish <- read.csv("data/kelp_timeseries_data/fish_Aggregated.csv") 
+
+# remove Xcolumn, not needed
+fish <- fish[ -c(1) ]
 
 # Remove "KB", "FW", and space, keep only numbers
 fish.filt <- fish %>%
@@ -301,7 +307,7 @@ lm_model <- lmer(mean_fish_biomass ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), d
 qqPlot(residuals(lm_model)) #slightly non normal values, log transform to improve
 
 # Fit the linear mixed effects model with log transformation
-lmm_model <- lmer(log(mean_fish_biomass) ~ mean_kelp_cover + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_cover + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
 
@@ -320,7 +326,7 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_cover", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.2 <- ggplot(aggregated_data_cover, aes(x = log(mean_kelp_cover), y = log(mean_fish_biomass))) +
+figure.2 <- ggplot(aggregated_data_cover, aes(x = log(mean_kelp_cover + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
 annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
@@ -419,7 +425,7 @@ lmm_model <- lmer(mean_fish_biomass ~ mean_kelp_biomass + SITE + (1 | SITE/YEAR)
 qqPlot(residuals(lmm_model)) #slightly non normal values, log transform to improve
 
 # Fit the linear mixed effects model with log transformation
-lmm_model <- lmer(log(mean_fish_biomass) ~ mean_kelp_biomass + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
 
@@ -438,7 +444,7 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_kelp_biomass <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass), y = log(mean_fish_biomass))) +
+figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
 annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_biomass, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
@@ -484,6 +490,12 @@ lmm_model <- lmer(mean_fish_biomass ~ mean_rugosity + SITE + (1 | SITE/YEAR), da
 #check normality
 qqPlot(residuals(lmm_model)) #data is normal no need to transform
 
+# Fit the linear mixed effects model with log transformation
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
+
+#check normality
+qqPlot(residuals(lmm_model)) #improved to normal
+
 # Summarize the model
 lmm_summary <- summary(lmm_model)
 lmm_tidy <- tidy(lmm_model)
@@ -499,7 +511,7 @@ conditional_r2 <- round(r_squared[2], 2)
 p_value_rugosity <- summary(lmm_model)$coefficients["mean_rugosity", "Pr(>|t|)"]
 
 # Create scatter plot
-figure.4 <- ggplot(aggregated.data.rug, aes(x = mean_rugosity, y = mean_fish_biomass)) +
+figure.4 <- ggplot(aggregated.data.rug, aes(x = log(mean_rugosity + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
   annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_rugosity, 2)), 
@@ -538,7 +550,7 @@ master.dat2 <- left_join(mean_rugosity, morph.filt)
 master.dat <- left_join(master.dat1, master.dat2)
 
 # output to .csv
-write.csv("output/cleaned_data/mast_output_dataframe.csv")
+write.csv(master.dat, "output/cleaned_data/master_output_dataframe.csv")
 
 #select necessary columns
 all.params.data <- master.dat %>% select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
@@ -694,12 +706,11 @@ ggheatmap +
 
 
 
-ggsave(filename = "output/figures/correlation_analysis_figure.png", device = "png", width = 10, height = 10)
-
+ggsave(filename = "output/figures/figure_5.png", device = "png", width = 10, height = 10)
 
 ```
 
-# Figure 5: Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
+# Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
 # combine all dataframes
 ```{r}
 # Rename columns to remove spaces and special characters
@@ -718,7 +729,7 @@ all.params.data <- all.params.data[all.params.data$Fish_Biomass > 0 &
                                    all.params.data$Kelp_Cover > 0, ]
 
 # Fit a multiple regression model
-fit1 <- lm(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover), data = all.params.data)
+fit1 <- lm(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1), data = all.params.data)
 
 # Diagnostic plots for the regression model
 par(mfrow=c(2,2))
@@ -760,7 +771,7 @@ writeLines(summary_text3, "output/figures/summary_model_site_year_random.txt")
 
 # run with just site as random effect
 # Fit the mixed-effects model
-fit4 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+fit4 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
               (1 | SITE), data = all.params.data)
 
 #view results of model
@@ -771,7 +782,7 @@ writeLines(summary_text4, "output/figures/summary_model_site_random.txt")
 
 # run with just year as random effect
 # Fit the mixed-effects model
-fit5 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
+fit5 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
               (1 | YEAR), data = all.params.data)
 
 #view results of model
@@ -791,18 +802,105 @@ KB_temperature$Site <- "KB"
 # Combine data frames
 temperature_data <- rbind(FW_temperature, KB_temperature)
 
-# Run normality on the temp data
-qqPlot(temperature_data$Temp, main = "QQ Plot of Temperature Data")
+# Check normality for each site
+shapiro.test(temperature_data$Temp[temperature_data$Site == "KB"])
+shapiro.test(temperature_data$Temp[temperature_data$Site == "FW"])
 
-# Data is not normal so log transform
-qqPlot(temperature_data$log(Temp), main = "QQ Plot of Temperature Data")
+# data not normal
+
+# Perform Mann-Whitney U Test for site
+mann_whitney_test <- wilcox.test(Temp ~ Site, data = temperature_data, exact = FALSE)
+print(mann_whitney_test)
+
+# Convert Date column to Date class
+temperature_data$Date <- as.Date(temperature_data$Date, format = "%m/%d/%y")
+
+# Extract Year and Month
+temperature_data <- temperature_data %>%
+  mutate(
+    Year = year(Date),
+    Month = month(Date)
+  )
+
+# Calculate monthly averages
+monthly_averages <- temperature_data %>%
+  group_by(Year, Month, Site) %>%
+  summarize(AverageTemp = mean(Temp), .groups = 'drop')
 
 # Fit linear model
-lm_model <- lm(log(Temp) ~ Date + Site, data = temperature_data)
+model <- lm(log(AverageTemp +1.1) ~ Month + Year + Site, data = monthly_averages)
 
-# Summary of the model
-summary(lm_model)
+#check normality
+qqPlot(residuals(model)) #improved to normal
+
+#not normal
+
+# Remove specific outliers
+cleaned_data <- monthly_averages[-c(95, 96), ]
+
+# Refit the model without outliers
+cleaned_model <- lm(log(AverageTemp + 1.1) ~ Month + Year + Site, data = cleaned_data)
+qqPlot(residuals(cleaned_model))
+summary(cleaned_model)
+
+#month is sig different but year and site are not
+
+# make a table for temperature values (monthly mean plus/minus one standard error) for each site (for supplement)
+
+# Calculate monthly mean and standard error
+summary_table <- temperature_data %>%
+  group_by(Site, Month) %>%
+  summarize(
+    MeanTemp = mean(Temp),
+    StdDev = sd(Temp),
+    N = n(),
+    StdError = StdDev / sqrt(N)
+  ) %>%
+  mutate(
+    MeanPlusSE = MeanTemp + StdError,
+    MeanMinusSE = MeanTemp - StdError
+  ) %>%
+  ungroup() %>%
+  dplyr::select(Site, Month, MeanTemp, MeanPlusSE, MeanMinusSE)
+
+# Mapping month numbers to month names
+month_names <- c("January", "February", "March", "April", "May", "June", 
+                 "July", "August", "September", "October", "November", "December")
+
+# Mapping site abbreviations to full names
+site_names <- c("FW" = "Fort Wetherill", "KB" = "King's Beach")
+
+# Replace numeric month values with month names
+summary_table$Month <- month_names[summary_table$Month]
+
+# Replace site abbreviations with full names
+summary_table$Site <- site_names[summary_table$Site]
+
+# Create a gt table
+table_gt <- gt(summary_table) %>%
+  tab_header(
+    title = "Monthly Mean Temperatures by Site",
+    subtitle = "Summary Table"
+  ) %>%
+  fmt_number(
+    columns = vars(MeanTemp, MeanPlusSE, MeanMinusSE),
+    decimals = 1
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(color = "black", weight = "bold")
+    ),
+    locations = cells_body()
+  );table_gt
+
+# Save as HTML
+gtsave(table_gt, file = "output/temperature_table.html")
 
 ```
+Temperature between sites is not significantly different 
 
+	Wilcoxon rank sum test with continuity correction
 
+data:  Temp by Site
+W = 4273000, p-value = 0.9511
+alternative hypothesis: true location shift is not equal to 0

@@ -353,6 +353,7 @@ write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FA
 # Get the unique column names from the QUAD ataframe
 column_names.quad <- colnames(QUAD)
 
+
 # Create a lookup table with name-to-code mappings
 name_to_code.quad <- setNames(species.metadata$code, species.metadata$name)
 
