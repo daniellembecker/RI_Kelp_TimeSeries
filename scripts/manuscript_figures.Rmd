@@ -322,17 +322,29 @@ r_squared <- r.squaredGLMM(lmm_model)
 marginal_r2 <- round(r_squared[1], 2)
 conditional_r2 <- round(r_squared[2], 2)
 
-# Extract p-value for mean_kelp_cover
-p_value_kelp_cover <- summary(lmm_model)$coefficients["mean_kelp_cover", "Pr(>|t|)"]
+# Extract the p-value for the kelp biomass coefficient
+p_value_kelp_cover <- lmm_summary$coefficients["log(mean_kelp_cover + 1.1)", "Pr(>|t|)"]
 
 # Create scatter plot
 figure.2 <- ggplot(aggregated_data_cover, aes(x = log(mean_kelp_cover + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_cover, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
+  
+  # R-squared values
+  annotate("text", x = Inf, y = Inf, 
+           label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2), 
+           hjust = 1.1, vjust = 1.1, size = 4) +
+  
+  # p-value
+  annotate("text", x = Inf, y = -Inf, 
+           label = paste0("p = ", format(p_value_kelp_cover, scientific = FALSE, digits = 2)), 
+           hjust = 1.3, vjust = -38.5, size = 4) +
+  
   labs(x = "Log Kelp cover (%)", y = "Log Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Cover") +
-  theme_classic();figure.2
+  theme_classic() +
+  theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
+  coord_cartesian(clip = 'off');figure.2
 
 # Save the plot to a file
 ggsave("output/figures/figure_2.png", plot = figure.2, width = 8, height = 6)
@@ -350,7 +362,7 @@ quad.filt <- quad.filt[ -c(13:14) ]
 quad.filt <- quad.filt[ -c(8) ] 
 quad.filt <- quad.filt[ -c(5:6) ] 
 
-# I noticed that 06/30/23 dates were accidentily labeled 06/30/29
+# I noticed that 06/30/23 dates were accidentally labeled 06/30/29
 # Replace "29" with "23" in the DATE column
 quad.filt$DATE <- sub("29$", "23", quad.filt$DATE)
 
@@ -429,6 +441,17 @@ lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + 
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
 
+# Identify the outliers
+outliers <- c(45, 37, 25, 33)
+
+# remove outliers
+data_clean <- aggregated.data.morph[-outliers, ]
+
+# rerun model with log and without outliers
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + SITE + (1 | SITE/YEAR), data = data_clean)
+#check normality
+qqPlot(residuals(lmm_model)) #improved to normal
+
 # Summarize the model
 lmm_summary <- summary(lmm_model)
 lmm_tidy <- tidy(lmm_model)
@@ -440,17 +463,31 @@ r_squared <- r.squaredGLMM(lmm_model)
 marginal_r2 <- round(r_squared[1], 2)
 conditional_r2 <- round(r_squared[2], 2)
 
-# Extract p-value for mean_kelp_cover
-p_value_kelp_biomass <- summary(lmm_model)$coefficients["mean_kelp_biomass", "Pr(>|t|)"]
+# Extract the p-value for the kelp biomass coefficient
+p_value_kelp_biomass <- lmm_summary$coefficients["log(mean_kelp_biomass + 1.1)", "Pr(>|t|)"]
+
 
 # Create scatter plot
 figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_kelp_biomass, 3)), hjust = 1.4, vjust = 1.1, size = 4, parse = FALSE) + # Adjust vjust
+  
+  # R-squared values
+  annotate("text", x = Inf, y = Inf, 
+           label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2), 
+           hjust = 1.1, vjust = 1.1, size = 4) +
+  
+  # p-value
+  annotate("text", x = Inf, y = -Inf, 
+           label = paste0("p = ", format(p_value_kelp_biomass, scientific = FALSE, digits = 2)), 
+           hjust = 1.3, vjust = -38.5, size = 4) +
+  
   labs(x = "Log Kelp Biomass (g/m2)", y = "Log Fish biomass (g/m2)",
        title = "Fish Biomass vs Kelp Biomass") +
-  theme_classic();figure.3
+  theme_classic() +
+  theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
+  coord_cartesian(clip = 'off');figure.3
+
 
 # Save the plot to a file
 ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
@@ -491,8 +528,18 @@ lmm_model <- lmer(mean_fish_biomass ~ mean_rugosity + SITE + (1 | SITE/YEAR), da
 qqPlot(residuals(lmm_model)) #data is normal no need to transform
 
 # Fit the linear mixed effects model with log transformation
-lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.rug)
+#check normality
+qqPlot(residuals(lmm_model)) #improved to normal
 
+# Identify the outliers
+outliers <- c(25, 37, 24, 35)
+
+# remove outliers
+data_clean.rug <- aggregated.data.rug[-outliers, ]
+
+# rerun model with log and without outliers
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = data_clean.rug)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
 
@@ -507,18 +554,30 @@ r_squared <- r.squaredGLMM(lmm_model)
 marginal_r2 <- round(r_squared[1], 2)
 conditional_r2 <- round(r_squared[2], 2)
 
-# Extract p-value for mean_kelp_cover
-p_value_rugosity <- summary(lmm_model)$coefficients["mean_rugosity", "Pr(>|t|)"]
+# Extract the p-value for the rugosity
+p_value_rugosity <- lmm_summary$coefficients["log(mean_rugosity + 1.1)", "Pr(>|t|)"]
 
-# Create scatter plot
+#create scatter plot
 figure.4 <- ggplot(aggregated.data.rug, aes(x = log(mean_rugosity + 1.1), y = log(mean_fish_biomass + 1.1))) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-  annotate("text", x = Inf, y = Inf, label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2, "\np = ", signif(p_value_rugosity, 2)), 
-           hjust = 2.1, vjust = 1.1, size = 4, parse = FALSE) +
+  
+  # R-squared values
+  annotate("text", x = Inf, y = Inf, 
+           label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2), 
+           hjust = 1.1, vjust = 1.1, size = 4) +
+  
+  # p-value
+  annotate("text", x = Inf, y = -Inf, 
+           label = paste0("p = ", format(p_value_rugosity, scientific = FALSE, digits = 2)), 
+           hjust = 1.3, vjust = -38.5, size = 4) +
+  
   labs(x = "Rugosity Complexity", y = "Fish biomass (g/m2)",
        title = "Fish Biomass vs Rugosity Complexity") +
-  theme_classic();figure.4
+  theme_classic() +
+  theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
+  coord_cartesian(clip = 'off');figure.4
+
 
 # Save the plot to a file
 ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
@@ -527,11 +586,9 @@ ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
 
 # Filter quad data for all inverts and use to correlate to fish biomass
 ```{r}
-invert.filt <- 
+#invert.filt <- 
 
 
-
- 
 ```
 
 
@@ -553,7 +610,7 @@ master.dat <- left_join(master.dat1, master.dat2)
 write.csv(master.dat, "output/cleaned_data/master_output_dataframe.csv")
 
 #select necessary columns
-all.params.data <- master.dat %>% select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
+all.params.data <- master.dat %>% dplyr::select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
 
 #rename various columns in data frame
 names(all.params.data)[3] <- "Kelp Cover (%)"
@@ -730,6 +787,7 @@ all.params.data <- all.params.data[all.params.data$Fish_Biomass > 0 &
 
 # Fit a multiple regression model
 fit1 <- lm(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1), data = all.params.data)
+summary(fit1)
 
 # Diagnostic plots for the regression model
 par(mfrow=c(2,2))
@@ -744,7 +802,7 @@ av_plots <- avPlots(fit1)
 
 #view results of model
 summary_text1 <- capture.output(summary(fit1))
-writeLines(summary_text1, "output/figures/summary_original.model.txt")
+writeLines(summary_text1, "output/model.result.tables/rugosity.included/summary_original.model.txt")
 
 ```
 
@@ -753,19 +811,21 @@ writeLines(summary_text1, "output/figures/summary_original.model.txt")
 ```{r}
 #fit multiple linear regression model WITH SITE AND YEAR
 fit2 <- lm(Fish_Biomass ~ SITE*YEAR, data = all.params.data)
+summary(fit2)
 
 #view results of model
 summary_text2 <- capture.output(summary(fit2))
-writeLines(summary_text2, "output/figures/summary_model_site_year_fixed_fishbiomass.txt")
+writeLines(summary_text2, "output/model.result.tables/rugosity.included/summary_model_site_year_fixed_fishbiomass.txt")
 
 
 # Fit the mixed-effects model
 fit3 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
               (1 | SITE) + (1 | YEAR), data = all.params.data)
+summary(fit3)
 
 #view results of model
 summary_text3 <- capture.output(summary(fit3))
-writeLines(summary_text3, "output/figures/summary_model_site_year_random.txt")
+writeLines(summary_text3, "output/model.result.tables/rugosity.included/summary_model_site_year_random.txt")
 
 # site and year no significant interaction or significant main effects
 
@@ -773,10 +833,11 @@ writeLines(summary_text3, "output/figures/summary_model_site_year_random.txt")
 # Fit the mixed-effects model
 fit4 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
               (1 | SITE), data = all.params.data)
+summary(fit4)
 
 #view results of model
 summary_text4 <- capture.output(summary(fit4))
-writeLines(summary_text4, "output/figures/summary_model_site_random.txt")
+writeLines(summary_text4, "output/model.result.tables/rugosity.included/summary_model_site_random.txt")
 
 # site and year no significant main effects
 
@@ -784,14 +845,69 @@ writeLines(summary_text4, "output/figures/summary_model_site_random.txt")
 # Fit the mixed-effects model
 fit5 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
               (1 | YEAR), data = all.params.data)
+summary(fit5)
 
 #view results of model
 summary_text5 <- capture.output(summary(fit5))
-writeLines(summary_text5, "output/figures/summary_model_year_random.txt")
+writeLines(summary_text5, "output/model.result.tables/rugosity.included/summary_model_year_random.txt")
 
 #year is significantly different for kelp cover
 
 ```
+
+
+# Run all above models without rugosity
+
+```{r}
+
+# Fit a multiple regression model
+fit6 <- lm(log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1), data = all.params.data)
+summary(fit6)
+
+#view results of model
+summary_text6 <- capture.output(summary(fit6))
+writeLines(summary_text6, "output/model.result.tables/rugosity.not.included/summary_original.model.txt")
+
+#no sig diff effects
+
+# Fit the mixed-effects model
+fit7 <- lmer(log(Fish_Biomass) ~ log(Kelp_Biomass) * log(Kelp_Cover) + (1 | SITE) + (1 | YEAR), data = all.params.data)
+summary(fit7)
+
+#view results of model
+summary_text7 <- capture.output(summary(fit7))
+writeLines(summary_text7, "output/model.result.tables/rugosity.not.included/summary_model_site_year_random.txt")
+
+# site and year no significant interaction or significant main effects
+
+# run with just site as random effect
+# Fit the mixed-effects model
+fit8 <- lmer(log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + (1 | SITE), data = all.params.data)
+summary(fit8)
+
+#view results of model
+summary_text8 <- capture.output(summary(fit8))
+writeLines(summary_text8, "output/model.result.tables/rugosity.not.included/summary_model_site_random.txt")
+
+# site not sig different
+
+# run with just year as random effect
+# Fit the mixed-effects model
+fit9 <- lmer(log(Fish_Biomass + 1.1) ~  log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + (1 | YEAR), data = all.params.data)
+summary(fit9)
+
+#view results of model
+summary_text9 <- capture.output(summary(fit9))
+writeLines(summary_text9, "output/model.result.tables/rugosity.not.included/summary_model_year_random.txt")
+
+#year is not sig different
+
+```
+
+
+
+
+
 
 # Run model on temperature by date between two sites 
 ```{r}
@@ -845,8 +961,11 @@ summary(cleaned_model)
 
 #month is sig different but year and site are not
 
-# make a table for temperature values (monthly mean plus/minus one standard error) for each site (for supplement)
+```
 
+
+# Make a table for temperature values (monthly mean plus/minus one standard error) for each site (for supplement)
+```{r}
 # Calculate monthly mean and standard error
 summary_table <- temperature_data %>%
   group_by(Site, Month) %>%

@@ -1,0 +1,28 @@
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass + 1.1) * log(Kelp_Cover +      1.1) + (1 | SITE)
+   Data: all.params.data
+
+REML criterion at convergence: 94.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.12952 -0.65108  0.00655  0.63826  1.70790 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ SITE     (Intercept) 0.1517   0.3895  
+ Residual             0.9637   0.9817  
+Number of obs: 38, groups:  SITE, 2
+
+Fixed effects:
+                                              Estimate Std. Error      df t value Pr(>|t|)
+(Intercept)                                     2.1741     3.6928 33.4461   0.589    0.560
+log(Kelp_Biomass + 1.1)                         1.3882    13.2808 33.1440   0.105    0.917
+log(Kelp_Cover + 1.1)                           0.6625     2.6103 33.0090   0.254    0.801
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   0.5852     9.3909 33.0668   0.062    0.951
+
+Correlation of Fixed Effects:
+            (Intr) l(K_B+1 l(K_C+1
+lg(K_B+1.1) -0.920                
+lg(K_C+1.1) -0.991  0.915         
+l(K_B+1.1+1  0.916 -0.994  -0.922 
