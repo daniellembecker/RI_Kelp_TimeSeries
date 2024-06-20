@@ -501,9 +501,6 @@ mean_rugosity <- rugosity %>%
   group_by(SITE, YEAR, TRANSECT) %>%
   summarize(mean_rugosity = mean(c(X0M, X4M, X8M, X12M, X16M, X20M, X24M, X28M, X32M, X36M, X40M), na.rm = TRUE))
 
-# edited control transcet name
-mean_rugosity$TRANSECT[mean_rugosity$TRANSECT == "Control 2"] <- "2"
-
 # change transect from integer to chr
 mean_rugosity$TRANSECT <- as.character(mean_rugosity$TRANSECT)
 

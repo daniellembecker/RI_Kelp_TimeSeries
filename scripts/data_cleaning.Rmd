@@ -422,8 +422,8 @@ rug_data$SITE[rug_data$SITE == "Kings Beach"] <- "King's Beach"
 rug_data$SITE[rug_data$SITE == "KB"] <- "King's Beach"
 rug_data$SITE[rug_data$SITE == "Fort Weatherill"] <- "Fort Wetherill"
 rug_data$SITE[rug_data$SITE == "Ft. Weatherill"] <- "Fort Wetherill"
-rug_data$TRANSECT[rug_data$TRANSECT == "Control 1"] <- "1"
-rug_data$TRANSECT[rug_data$TRANSECT == "Control 2"] <- "2"
+rug_data$TRANSECT[rug_data$TRANSECT == "Control 1"] <- "5"
+rug_data$TRANSECT[rug_data$TRANSECT == "Control 2"] <- "6"
 
 # rename rugosity data columns
 rug_data <- rug_data %>%
