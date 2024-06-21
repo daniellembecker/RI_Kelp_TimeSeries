@@ -1,36 +1,36 @@
 Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
-Formula: log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) +      (1 | SITE)
+Formula: log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass +      1.1) * log(Kelp_Cover + 1.1) + (1 | SITE)
    Data: all.params.data
 
-REML criterion at convergence: 109
+REML criterion at convergence: 77.1
 
 Scaled residuals: 
-    Min      1Q  Median      3Q     Max 
--2.3994 -0.4772  0.1112  0.4449  2.5622 
+     Min       1Q   Median       3Q      Max 
+-2.03899 -0.52036 -0.02387  0.51054  2.47435 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- SITE     (Intercept) 0.2247   0.4740  
- Residual             0.9300   0.9644  
-Number of obs: 39, groups:  SITE, 2
+ SITE     (Intercept) 0.2562   0.5062  
+ Residual             0.7286   0.8536  
+Number of obs: 38, groups:  SITE, 2
 
 Fixed effects:
-                                                Estimate Std. Error      df t value Pr(>|t|)
-(Intercept)                                       0.5460     4.0274 30.5768   0.136    0.893
-log(Rugosity)                                     0.9045     0.8990 30.0052   1.006    0.322
-log(Kelp_Biomass)                                -1.0028     1.9144 30.2364  -0.524    0.604
-log(Kelp_Cover)                                   2.5957     3.5883 30.1424   0.723    0.475
-log(Rugosity):log(Kelp_Biomass)                   0.4433     0.5058 30.5984   0.876    0.388
-log(Rugosity):log(Kelp_Cover)                    -0.7736     0.8239 30.0114  -0.939    0.355
-log(Kelp_Biomass):log(Kelp_Cover)                 1.2398     1.7848 30.3101   0.695    0.493
-log(Rugosity):log(Kelp_Biomass):log(Kelp_Cover)  -0.5212     0.5149 30.6471  -1.012    0.319
+                                                                  Estimate Std. Error     df t value Pr(>|t|)
+(Intercept)                                                          6.075      8.896 29.289   0.683    0.500
+log(Rugosity + 1.1)                                                 -2.287      2.545 29.340  -0.899    0.376
+log(Kelp_Biomass + 1.1)                                             -9.900     31.110 29.000  -0.318    0.753
+log(Kelp_Cover + 1.1)                                               -3.482      6.246 29.219  -0.558    0.581
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                          6.283      8.120 29.071   0.774    0.445
+log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                            2.204      1.829 29.352   1.205    0.238
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                       11.412     21.648 29.000   0.527    0.602
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   -5.814      5.682 29.077  -1.023    0.315
 
 Correlation of Fixed Effects:
-            (Intr) lg(Rg) lg(K_B) l(K_C) lg(R):(K_B) l(R):(K_C l(K_B):
-log(Rugsty) -0.904                                                    
-lg(Klp_Bms)  0.819 -0.821                                             
-lg(Klp_Cvr) -0.981  0.892 -0.825                                      
-lg(R):(K_B) -0.666  0.815 -0.920   0.678                              
-lg(R):(K_C)  0.874 -0.978  0.840  -0.892 -0.852                       
-l(K_B):(K_C -0.783  0.797 -0.989   0.811  0.930      -0.842           
-l(R):(K_B):  0.598 -0.752  0.883  -0.629 -0.983       0.822    -0.916 
+                (Intr) l(R+1. l(K_B+1 l(K_C+1 l(R+1.1):(K_B+1 l(R+1.1):(K_C+1 l(K+1+1
+lg(Rgs+1.1)     -0.921                                                               
+lg(K_B+1.1)     -0.909  0.791                                                        
+lg(K_C+1.1)     -0.995  0.925  0.899                                                 
+l(R+1.1):(K_B+1  0.888 -0.922 -0.913  -0.882                                         
+l(R+1.1):(K_C+1  0.905 -0.994 -0.766  -0.918   0.903                                 
+l(K_B+1.1+1      0.911 -0.797 -0.995  -0.909   0.909           0.780                 
+l(R+1.1+1+1     -0.890  0.934  0.901   0.893  -0.993          -0.927          -0.906 

@@ -4,16 +4,16 @@ lm(formula = Fish_Biomass ~ SITE * YEAR, data = all.params.data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--106.67  -34.02  -20.99   20.30  245.50 
+-106.67  -31.78  -17.47   17.50  247.00 
 
 Coefficients:
                        Estimate Std. Error t value Pr(>|t|)
-(Intercept)           10879.398  21238.472   0.512    0.612
-SITEKing's Beach      46539.010  30752.021   1.513    0.139
-YEAR                     -5.358     10.508  -0.510    0.613
-SITEKing's Beach:YEAR   -23.009     15.214  -1.512    0.139
+(Intercept)            7251.487  21703.464   0.334    0.740
+SITEKing's Beach      50166.921  31126.866   1.612    0.116
+YEAR                     -3.564     10.738  -0.332    0.742
+SITEKing's Beach:YEAR   -24.803     15.400  -1.611    0.117
 
-Residual standard error: 67.48 on 35 degrees of freedom
-Multiple R-squared:  0.2018,	Adjusted R-squared:  0.1334 
-F-statistic:  2.95 on 3 and 35 DF,  p-value: 0.04601
+Residual standard error: 67.7 on 34 degrees of freedom
+Multiple R-squared:  0.2097,	Adjusted R-squared:  0.1399 
+F-statistic: 3.006 on 3 and 34 DF,  p-value: 0.04372
 

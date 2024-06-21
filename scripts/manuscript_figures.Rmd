@@ -1020,3 +1020,84 @@ Temperature between sites is not significantly different
 data:  Temp by Site
 W = 4273000, p-value = 0.9511
 alternative hypothesis: true location shift is not equal to 0
+
+
+Production to biomass ratios (P:B) for each fish species
+```{r}
+
+```
+
+
+Proportional change per year in kelp cover on y-axis, year on x-axis (by site; one graph for KB and one graph for FW)
+```{r}
+# use kelp filt dataframe that was filtered from quad data for sugar kelp
+# Convert COVER to percent and make new dataaframe
+prop.dat <- kelp.filt %>% mutate(COVER = COVER * 100)
+
+# Function to calculate proportional change and standard error per year
+calculate_proportional_change <- function(data) {
+  data <- data %>%
+    # First, aggregate data by SITE and YEAR
+    group_by(SITE, YEAR) %>%
+    summarise(COVER = mean(COVER, na.rm = TRUE), .groups = "drop") %>%
+    
+    # Then calculate proportional change
+    arrange(SITE, YEAR) %>%
+    group_by(SITE) %>%
+    mutate(Proportional_Change = ifelse(lag(COVER) == 0, NA, (COVER - lag(COVER)) / lag(COVER))) %>%
+    
+    # Calculate standard error for each site
+    mutate(Proportional_Change_SE = sd(Proportional_Change, na.rm = TRUE) / sqrt(sum(!is.na(Proportional_Change)))) %>%
+    ungroup()
+  
+  return(data)
+}
+
+# Calculate proportional change for each site
+prop.dat <- calculate_proportional_change(prop.dat)
+
+# Filter the data for each site
+data_kb <- prop.dat %>% filter(SITE == "King's Beach")
+data_fw <- prop.dat %>% filter(SITE == "Fort Wetherill")
+
+# function to plot
+plot_proportional_change <- function(data, site_name, x_limits = c(-2, 20), y_limits = c(0, 30)) {
+  ggplot(data, aes(x = Proportional_Change, y = COVER)) +
+    geom_point() +
+    geom_errorbarh(aes(xmin = Proportional_Change - Proportional_Change_SE, 
+                       xmax = Proportional_Change + Proportional_Change_SE),
+                  height = 0) +
+    # geom_smooth(method = "lm", se = FALSE, color = "blue") +  # Add trend line
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    geom_text(aes(label = YEAR), vjust = -0.5, size = 3) +
+    scale_x_continuous(limits = x_limits) +
+    scale_y_continuous(limits = y_limits) +
+    labs(title = paste("Proportional Change in Kelp Cover at", site_name),
+         x = expression("Proportional change " ~ yr^-1),
+         y = "Mean Percent Cover (%)") +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5))
+}
+
+# Assuming data_kb and data_fw are already filtered datasets for each site
+data_kb <- prop.dat %>% filter(SITE == "King's Beach")
+data_fw <- prop.dat %>% filter(SITE == "Fort Wetherill")
+
+# Plot for King's Beach with customized settings
+plot_kb <- plot_proportional_change(data_kb, site_name = "King's Beach", x_limits = c(-1.2, 1.2), y_limits = c(0, 10))
+print(plot_kb)
+
+# Plot for Fort Wetherill with customized settings
+plot_fw <- plot_proportional_change(data_fw, site_name = "Fort Wetherill", x_limits = c(-0.6, 0.6), y_limits = c(7, 12))
+print(plot_fw)
+
+# Save the plots as PNG files
+ggsave("output/figures/Kings_Beach_proportional_change.png", plot = plot_kb, width = 10, height = 6, dpi = 300)
+ggsave("output/figures/Fort_Wetherill_proportional_change.png", plot = plot_fw, width = 10, height = 6, dpi = 300)
+
+
+```
+
+
+
+
