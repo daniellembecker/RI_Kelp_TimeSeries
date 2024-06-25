@@ -442,19 +442,23 @@ lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + 
 qqPlot(residuals(lmm_model)) #improved to normal
 
 # Identify the outliers
-outliers <- c(45, 37, 25, 33)
+outliers <- c(45, 37, 25, 33, 37, 22)
 
 # remove outliers
 data_clean <- aggregated.data.morph[-outliers, ]
 
 # rerun model with log and without outliers
-lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + SITE + (1 | SITE/YEAR), data = data_clean)
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) * YEAR + (1 | SITE), data = data_clean)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
 
 # Summarize the model
 lmm_summary <- summary(lmm_model)
 lmm_tidy <- tidy(lmm_model)
+
+# Export to CSV file
+write.csv(lmm_tidy, "output/lmm_model_results.csv", row.names = FALSE)
+
 
 # Calculate R-squared for the mixed model
 r_squared <- r.squaredGLMM(lmm_model)
@@ -1055,6 +1059,28 @@ summary_text9 <- capture.output(summary(fit9))
 writeLines(summary_text9, "output/model.result.tables/rugosity.not.included/summary_model_year_random.txt")
 
 #year is not sig different
+
+
+# site not sig different
+```
+
+# Run model for fish_biomass ~ kelp_biomass * year (randomize site)
+```{r}
+# Fit the mixed-effects model
+fit10 <- lmer(log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass + 1.1) * YEAR + (1 | SITE), data = all.params.data)
+summary(fit10)
+
+# Example: Standardizing numeric variables in your dataset
+all.params.data$Kelp_Biomass_standardized <- scale(all.params.data$Kelp_Biomass)
+all.params.data$YEAR_standardized <- scale(all.params.data$YEAR)
+
+# Fit the model with standardized predictors
+fit10 <- lmer(log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass_standardized + 1.1) * YEAR_standardized + (1 | SITE), data = all.params.data)
+summary(fit10)
+
+#view results of model
+summary_text10 <- capture.output(summary(fit10))
+writeLines(summary_text9, "output/model.result.tables/rugosity.not.included/summary_model_year_random.txt")
 
 ```
 
