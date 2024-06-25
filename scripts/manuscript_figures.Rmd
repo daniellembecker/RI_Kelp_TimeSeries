@@ -422,7 +422,7 @@ merged.dat.morph <- left_join(morph.filt, fish.filt)
 ```
 
 
-# Make figure 3 and run statistical analysis
+# Make figure 3 fish biomass x kelp biomass and run statistical analysis
 ```{r}
 # Aggregate the data by year, site, and transect and compute mean values
 aggregated.data.morph <- merged.dat.morph %>%
@@ -482,19 +482,177 @@ figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), 
            label = paste0("p = ", format(p_value_kelp_biomass, scientific = FALSE, digits = 2)), 
            hjust = 1.3, vjust = -38.5, size = 4) +
   
-  labs(x = "Log Kelp Biomass (g/m2)", y = "Log Fish biomass (g/m2)",
-       title = "Fish Biomass vs Kelp Biomass") +
+  labs(x = expression("Log Kelp Biomass (g/" ~ m^2 ~ ")"), y = expression("Log Fish Biomass (g/" ~ m^2 ~ ")")) +
   theme_classic() +
   theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
-  coord_cartesian(clip = 'off');figure.3
+  coord_cartesian(clip = 'off') +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18));figure.3
 
 
 # Save the plot to a file
 ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
 ```
 
+# Make kelp biomass time series (a) 
+```{r}
+# Function to calculate standard error
+std_error <- function(x) {
+  sd(x, na.rm = TRUE) / sqrt(length(na.omit(x)))
+}
 
-# Figure 4: organize rugosity data and make linear regression figure for fish biomass and rugosity
+# Aggregate the data by year and site and compute mean values and standard error
+aggregated.kelp.morph <- morph.filt %>%
+  group_by(YEAR, SITE) %>%
+  summarize(
+    mean_kelp_biomass = mean(average_kelp_biomass, na.rm = TRUE),
+    se_kelp_biomass = std_error(average_kelp_biomass)
+  ) %>%
+  ungroup()
+
+# Transform mean kelp biomass and standard error to log scale
+aggregated.kelp.morph <- aggregated.kelp.morph %>%
+  mutate(
+    log_mean_kelp_biomass = log(mean_kelp_biomass + 1.1),
+    log_se_kelp_biomass = log(mean_kelp_biomass + 1.1 + se_kelp_biomass) - log(mean_kelp_biomass + 1.1)
+  )
+
+# Define shapes for sites
+shape_values <- c("Fort Wetherill" = 16, "King's Beach" = 17) # Circle for Fort Wetherill, Triangle for King's Beach
+
+# Time series plot for kelp biomass with standard error bars from 2016-2023
+kelp.timeseries.2016 <- ggplot(aggregated.kelp.morph, aes(x = YEAR, y = log_mean_kelp_biomass, shape = SITE)) +
+  geom_line(aes(group = SITE), color = "black") +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = log_mean_kelp_biomass - log_se_kelp_biomass, 
+                    ymax = log_mean_kelp_biomass + log_se_kelp_biomass), 
+                width = 0.2) +
+  scale_shape_manual(values = shape_values) +
+  labs(x = "Year", y = expression("Log Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
+  theme_bw() +
+  scale_x_continuous(breaks = unique(aggregated.kelp.morph$YEAR)) +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18)
+  );kelp.timeseries.2016
+
+# Save the plot to a file
+ggsave("output/figures/kelp_timeseries_2016.png", plot = kelp.timeseries.2016, width = 8, height = 6)
+
+# Filter for the years 2019-2023
+filtered_data <- aggregated.kelp.morph %>%
+  filter(YEAR >= 2019 & YEAR <= 2023)
+
+# Time series plot for kelp biomass with standard error bars for 2019-2023
+kelp.timeseries.2019_2023 <- ggplot(filtered_data, aes(x = YEAR, y = log_mean_kelp_biomass, shape = SITE)) +
+  geom_line(aes(group = SITE), color = "black") +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = log_mean_kelp_biomass - log_se_kelp_biomass, 
+                    ymax = log_mean_kelp_biomass + log_se_kelp_biomass), 
+                width = 0.2) +
+  scale_shape_manual(values = shape_values) +
+  labs(x = "Year", y = expression("Log Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18)
+  );kelp.timeseries.2019_2023
+
+# Save the plot to a file
+ggsave("output/figures/kelp_timeseries_2019.png", plot = kelp.timeseries.2019_2023, width = 8, height = 6)
+
+
+```
+
+# Rate of change (b) by site figure
+```{r}
+# Fit the linear model
+lm_model <- lm(average_kelp_biomass ~ YEAR, data = morph.filt)
+#check normality
+qqPlot(residuals(lm_model)) #data is normal no need to transform
+
+# Fit log transformed linear model
+lm_model <- lm(log(average_kelp_biomass + 1.1) ~ YEAR, data = morph.filt)
+#check normality
+qqPlot(residuals(lm_model)) #data is normal no need to transform
+
+# Convert YEAR to numeric (if necessary)
+morph.filt$YEAR <- as.numeric(as.character(morph.filt$YEAR))
+
+# Define shapes for sites
+shape_values <- c("Fort Wetherill" = 16, "King's Beach" = 17)  # Circle for Fort Wetherill, Triangle for King's Beach
+
+# Fit linear regression models for each SITE separately
+slope_results <- morph.filt %>%
+  mutate(log_avg_kelp_biomass = log(average_kelp_biomass + 1.1)) %>%
+  group_by(SITE) %>%
+  summarize(
+    mean_slope = coef(lm(log_avg_kelp_biomass ~ YEAR))[2],  # Mean slope
+    se_slope = summary(lm(log_avg_kelp_biomass ~ YEAR))$coefficients[2, "Std. Error"],  # Standard error of slope
+    mean_log_avg_kelp_biomass = mean(log_avg_kelp_biomass)  # Mean log average kelp biomass
+  )
+
+# Calculate rate of change per year
+slope_results <- slope_results %>%
+  mutate(
+    rate_of_change_per_year = mean_slope / mean_log_avg_kelp_biomass,  # Rate of change per year
+    se_rate_of_change = se_slope / mean_log_avg_kelp_biomass  # Standard error of rate of change per year
+  )
+
+# Plotting the mean rates of change with error bars (standard error horizontally)
+rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mean_log_avg_kelp_biomass, shape = SITE)) +
+  geom_point(size = 3) +
+  geom_errorbarh(aes(xmin = rate_of_change_per_year - se_rate_of_change, xmax = rate_of_change_per_year + se_rate_of_change), height = 0.2) +
+  labs(
+    x = expression("Rate of Change ("~yr^-1 ~")"),
+    y = expression("Log Mean Kelp Biomass (g/"~m^2~")"), shape = "Site") +
+  theme_bw() +
+  scale_shape_manual(values = shape_values, guide = guide_legend(title = "Site")) +   # Use shape values and customize legend
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18));rate_of_change
+
+
+```
+
+
+# Plot two panels together using patchwork
+```{r}
+# Combine the plots with patchwork for all years of kelp and rate of change
+kelp.rate.2016 <- kelp.timeseries.2016 | rate_of_change +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"));kelp.rate.2016
+
+# Save the combined plot
+ggsave("output/figures/kelp.2016.rate.png", kelp.rate.2016, width = 20, height = 8, units = "in", dpi = 300)
+
+# Combine the plots with patchwork for all years of kelp and rate of change
+kelp.rate.2019 <- kelp.timeseries.2019_2023 | rate_of_change +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"));kelp.rate.2019
+
+# Save the combined plot
+ggsave("output/figures/kelp.2019.rate.png", kelp.rate.2019, width = 20, height = 8, units = "in", dpi = 300)
+
+```
+
+
+# Organize rugosity data and make linear regression figure for fish biomass and rugosity
 ```{r}
 # Calculate mean rugosity complexity scores across depths for each transect, grouped by site and year
 mean_rugosity <- rugosity %>%
@@ -854,7 +1012,6 @@ writeLines(summary_text5, "output/model.result.tables/rugosity.included/summary_
 
 
 # Run all above models without rugosity
-
 ```{r}
 
 # Fit a multiple regression model
@@ -900,10 +1057,6 @@ writeLines(summary_text9, "output/model.result.tables/rugosity.not.included/summ
 #year is not sig different
 
 ```
-
-
-
-
 
 
 # Run model on temperature by date between two sites 
@@ -958,6 +1111,36 @@ summary(cleaned_model)
 
 #month is sig different but year and site are not
 
+```
+
+# Make line plot for temperature time series by site per month
+```{r}
+# Calculate average temperature per month and site
+avg_temp <- temperature_data %>%
+  mutate(MonthAbbrev = month.abb[Month]) %>%  # Add month abbreviations
+  group_by(MonthAbbrev, Site) %>%
+  summarize(avg_temp = mean(Temp))
+
+# Map site codes to full names
+avg_temp$Site <- ifelse(avg_temp$Site == "FW", "Fort Wetherill", "King's Beach")
+
+# Plotting average temperature by site as lines and points per month
+temperature_plot <- ggplot(avg_temp, aes(x = MonthAbbrev, y = avg_temp, color = Site, group = Site)) +
+  geom_line(size = 1.5) +  # Lines for average temperature by site
+  geom_point(size = 3) +  # Points for mean values by site
+  labs(x = "Month", y = expression("Average Temperature (°C)"), color = "Site") +
+  scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +  # Custom colors
+  theme_bw()+
+    theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18));temperature_plot
+
+# Save the plot to a file
+ggsave("output/figures/temp.plot.png", plot = temperature_plot, width = 20, height = 10)
 ```
 
 
@@ -1028,75 +1211,6 @@ Production to biomass ratios (P:B) for each fish species
 ```
 
 
-Proportional change per year in kelp cover on y-axis, year on x-axis (by site; one graph for KB and one graph for FW)
-```{r}
-# use kelp filt dataframe that was filtered from quad data for sugar kelp
-# Convert COVER to percent and make new dataaframe
-prop.dat <- kelp.filt %>% mutate(COVER = COVER * 100)
-
-# Function to calculate proportional change and standard error per year
-calculate_proportional_change <- function(data) {
-  data <- data %>%
-    # First, aggregate data by SITE and YEAR
-    group_by(SITE, YEAR) %>%
-    summarise(COVER = mean(COVER, na.rm = TRUE), .groups = "drop") %>%
-    
-    # Then calculate proportional change
-    arrange(SITE, YEAR) %>%
-    group_by(SITE) %>%
-    mutate(Proportional_Change = ifelse(lag(COVER) == 0, NA, (COVER - lag(COVER)) / lag(COVER))) %>%
-    
-    # Calculate standard error for each site
-    mutate(Proportional_Change_SE = sd(Proportional_Change, na.rm = TRUE) / sqrt(sum(!is.na(Proportional_Change)))) %>%
-    ungroup()
-  
-  return(data)
-}
-
-# Calculate proportional change for each site
-prop.dat <- calculate_proportional_change(prop.dat)
-
-# Filter the data for each site
-data_kb <- prop.dat %>% filter(SITE == "King's Beach")
-data_fw <- prop.dat %>% filter(SITE == "Fort Wetherill")
-
-# function to plot
-plot_proportional_change <- function(data, site_name, x_limits = c(-2, 20), y_limits = c(0, 30)) {
-  ggplot(data, aes(x = Proportional_Change, y = COVER)) +
-    geom_point() +
-    geom_errorbarh(aes(xmin = Proportional_Change - Proportional_Change_SE, 
-                       xmax = Proportional_Change + Proportional_Change_SE),
-                  height = 0) +
-    # geom_smooth(method = "lm", se = FALSE, color = "blue") +  # Add trend line
-    geom_vline(xintercept = 0, linetype = "dashed") +
-    geom_text(aes(label = YEAR), vjust = -0.5, size = 3) +
-    scale_x_continuous(limits = x_limits) +
-    scale_y_continuous(limits = y_limits) +
-    labs(title = paste("Proportional Change in Kelp Cover at", site_name),
-         x = expression("Proportional change " ~ yr^-1),
-         y = "Mean Percent Cover (%)") +
-    theme_bw() +
-    theme(plot.title = element_text(hjust = 0.5))
-}
-
-# Assuming data_kb and data_fw are already filtered datasets for each site
-data_kb <- prop.dat %>% filter(SITE == "King's Beach")
-data_fw <- prop.dat %>% filter(SITE == "Fort Wetherill")
-
-# Plot for King's Beach with customized settings
-plot_kb <- plot_proportional_change(data_kb, site_name = "King's Beach", x_limits = c(-1.2, 1.2), y_limits = c(0, 10))
-print(plot_kb)
-
-# Plot for Fort Wetherill with customized settings
-plot_fw <- plot_proportional_change(data_fw, site_name = "Fort Wetherill", x_limits = c(-0.6, 0.6), y_limits = c(7, 12))
-print(plot_fw)
-
-# Save the plots as PNG files
-ggsave("output/figures/Kings_Beach_proportional_change.png", plot = plot_kb, width = 10, height = 6, dpi = 300)
-ggsave("output/figures/Fort_Wetherill_proportional_change.png", plot = plot_fw, width = 10, height = 6, dpi = 300)
-
-
-```
 
 
 
