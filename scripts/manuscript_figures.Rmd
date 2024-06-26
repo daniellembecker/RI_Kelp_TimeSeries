@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(plyr)
 library(kableExtra)
+library(flextable)
 library(gt)
 library(dplyr)
 library(tigris)
@@ -310,6 +311,81 @@ qqPlot(residuals(lm_model)) #slightly non normal values, log transform to improv
 lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_cover + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated_data_cover)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
+
+# Identify the outliers
+outliers <- c(27,7)
+
+# remove outliers
+data_clean <- aggregated_data_cover[-outliers, ]
+
+# rerun model with log and without outliers
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_cover + 1.1) + YEAR + (1 | SITE), data = data_clean)
+qqPlot(residuals(lmm_model)) #improved to normal
+summary(lmm_model)
+
+# Extract coefficients and their standard errors
+model_summary <- tidy(lmm_model)
+
+# Create a data frame with coefficients, standard errors, and p-values
+df <- data.frame(
+  Coefficient = model_summary$term,
+  Estimate = model_summary$estimate,
+  Std.Error = model_summary$std.error,
+  P.Value = model_summary$p.value
+)
+
+# Create flextable object
+flex <- flextable(df)
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/rugosity.not.included/summary_fish_kelp_cover_year_fixed.png"
+save_as_image(flex, png_file)
+
+# rerun model with log and without outliers
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_cover + 1.1) * YEAR + (1 | SITE), data = data_clean)
+qqPlot(residuals(lmm_model)) #improved to normal
+summary(lmm_model)
+
+# Extract coefficients and their standard errors
+model_summary <- tidy(lmm_model)
+
+# Create a data frame with coefficients, standard errors, and p-values
+df <- data.frame(
+  Coefficient = model_summary$term,
+  Estimate = model_summary$estimate,
+  Std.Error = model_summary$std.error,
+  P.Value = model_summary$p.value
+)
+
+# Create flextable object
+flex <- flextable(df)
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/rugosity.not.included/summary_fish_kelp_cover_year_interaction.png"
+save_as_image(flex, png_file)
+
+# rerun model with log and without outliers
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_cover + 1.1) + SITE + (1 | SITE/YEAR), data = data_clean)
+qqPlot(residuals(lmm_model)) #improved to normal
+summary(lmm_model)
+
+# Extract coefficients and their standard errors
+model_summary <- tidy(lmm_model)
+
+# Create a data frame with coefficients, standard errors, and p-values
+df <- data.frame(
+  Coefficient = model_summary$term,
+  Estimate = model_summary$estimate,
+  Std.Error = model_summary$std.error,
+  P.Value = model_summary$p.value
+)
+
+# Create flextable object
+flex <- flextable(df)
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/rugosity.not.included/summary_fish_kelp_cover.png"
+save_as_image(flex, png_file)
 
 # Summarize the model
 lmm_summary <- summary(lmm_model)
@@ -1141,23 +1217,26 @@ summary(cleaned_model)
 
 # Make line plot for temperature time series by site per month
 ```{r}
-# Calculate average temperature per month and site
+# Calculate mean and standard error of temperature by month and site
 avg_temp <- temperature_data %>%
   mutate(MonthAbbrev = month.abb[Month]) %>%  # Add month abbreviations
   group_by(MonthAbbrev, Site) %>%
-  summarize(avg_temp = mean(Temp))
+  summarize(
+    avg_temp = mean(Temp),
+    std_error = sd(Temp) / sqrt(n()))  # Calculate standard error
 
 # Map site codes to full names
 avg_temp$Site <- ifelse(avg_temp$Site == "FW", "Fort Wetherill", "King's Beach")
 
-# Plotting average temperature by site as lines and points per month
+# Plotting average temperature by site as lines and points per month with error bars
 temperature_plot <- ggplot(avg_temp, aes(x = MonthAbbrev, y = avg_temp, color = Site, group = Site)) +
   geom_line(size = 1.5) +  # Lines for average temperature by site
   geom_point(size = 3) +  # Points for mean values by site
+  geom_errorbar(aes(ymin = avg_temp - std_error, ymax = avg_temp + std_error), width = 0.2) +  # Error bars for SEM
   labs(x = "Month", y = expression("Average Temperature (°C)"), color = "Site") +
   scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +  # Custom colors
-  theme_bw()+
-    theme(
+  theme_bw() +
+  theme(
     axis.title.x = element_text(size = 18),
     axis.title.y = element_text(size = 18),
     axis.text.x = element_text(size = 18),
@@ -1233,6 +1312,41 @@ alternative hypothesis: true location shift is not equal to 0
 
 Production to biomass ratios (P:B) for each fish species
 ```{r}
+# load fish data from 2016
+PB <- read.csv("data/fish.data.clean.calc.csv")
+
+# remove habitat and control, month, day, date, not needed
+PB <- PB[ -c(1:2, 4:7) ]
+
+# Calculate fish biomass 'W' using the length-weight relationship
+PB$biomass <- with(PB, coef.a * (actual_size)^coef.b)
+
+# Divide biomass by 80 m to get g/m2
+#calculate biomass/m2
+PB$biomass.g.m2 <- PB$biomass / 80
+
+# Constants from the P/B ratio equation
+coefficient <- 2.64
+exponent <- -0.35
+
+# Calculate P/B ratio
+PB$P_B_ratio <- coefficient * PB$biomass.g.m2^exponent
+
+# Calculate Habitat Productivity Index (HPI)
+PB$HPI <- PB$biomass.g.m2 * PB$P_B_ratio
+
+# Aggregate by Transect, Site, Year and calculate mean HPI
+hpi_summary <- PB %>%
+  group_by(TRANSECT, SITE, YEAR) %>%
+  summarise(mean_HPI = mean(HPI))
+
+
+ggplot(hpi_summary, aes(x = paste(TRANSECT, SITE, sep = " - "), y = mean_HPI, fill = as.factor(YEAR))) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  labs(x = "Transect - Site", y = "Mean Habitat Productivity Index (HPI)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 
 ```
 
