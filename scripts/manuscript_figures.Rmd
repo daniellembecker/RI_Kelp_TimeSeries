@@ -1329,23 +1329,23 @@ PB$biomass.g.m2 <- PB$biomass / 80
 coefficient <- 2.64
 exponent <- -0.35
 
-# Calculate P/B ratio
+# Calculate P/B ratio, the predictive equation is P/B (per year) = 2.64*Wmat^-035 , where Wmat is weight-at-maturity (Randall and Minns 2000)
 PB$P_B_ratio <- coefficient * PB$biomass.g.m2^exponent
 
-# Calculate Habitat Productivity Index (HPI)
+# Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)
 PB$HPI <- PB$biomass.g.m2 * PB$P_B_ratio
 
 # Aggregate by Transect, Site, Year and calculate mean HPI
 hpi_summary <- PB %>%
   group_by(TRANSECT, SITE, YEAR) %>%
-  summarise(mean_HPI = mean(HPI))
+  summarise(mean_HPI = mean(HPI, na.rm = TRUE))
 
-
-ggplot(hpi_summary, aes(x = paste(TRANSECT, SITE, sep = " - "), y = mean_HPI, fill = as.factor(YEAR))) +
+# Make faceted line plot of HPI index over the years
+hpi.plot < - ggplot(hpi_summary, aes(x = interaction(TRANSECT, SITE, sep = " - "), y = mean_HPI, fill = as.factor(YEAR))) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
-  labs(x = "Transect - Site", y = "Mean Habitat Productivity Index (HPI)") +
+  labs(x = "Transect - Site", y = "Mean Habitat Productivity Index (HPI)", fill = "Year") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1));hpi.plot
 
 
 ```
