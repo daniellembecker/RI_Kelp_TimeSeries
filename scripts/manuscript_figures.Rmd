@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(plyr)
 library(kableExtra)
+library(vegan)
 library(flextable)
 library(gt)
 library(dplyr)
@@ -273,7 +274,7 @@ fish.filt <- fish %>%
 # Convert the integer column to character
 fish.filt$TRANSECT <- as.character(fish.filt$TRANSECT)
 
-# Rename fort weatherill
+# Rename kings beach
 fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
 
 # remove control column, not needed
@@ -1310,7 +1311,7 @@ W = 4273000, p-value = 0.9511
 alternative hypothesis: true location shift is not equal to 0
 
 
-Production to biomass ratios (P:B) for each fish species
+Production to biomass ratios (P:B) and habitat productivity index for each fish species
 ```{r}
 # load fish data from 2016
 PB <- read.csv("data/fish.data.clean.calc.csv")
@@ -1348,6 +1349,70 @@ hpi.plot < - ggplot(hpi_summary, aes(x = interaction(TRANSECT, SITE, sep = " - "
   theme(axis.text.x = element_text(angle = 45, hjust = 1));hpi.plot
 
 
+```
+
+
+nMDS or PCA on benthic community structure
+```{r}
+# Load in QUAD data and filter for invertebrates
+invert.filt <- QUAD %>%
+  filter(type %in% c("molluscs", "echinoderms", "crustacean"))
+
+# I noticed that 06/30/23 dates were accidentally labeled 06/30/29
+# Replace "29" with "23" in the DATE column
+invert.filt$DATE <- sub("29$", "23", invert.filt$DATE)
+
+# Rename KB q to transect 6
+invert.filt$TRANSECT[invert.filt$TRANSECT == "KB q"] <- "6"
+
+# Sum count data at the transect level
+invert.count <- invert.filt %>%
+  group_by(TRANSECT, YEAR, SITE, type) %>%
+  summarize(count.sum = sum(COUNT))
+
+# Divide by 6 quadrats for correct abundance g/m2 calculation
+invert.count$abundance <- invert.count$count.sum / 6
+
+# Check for normality
+shapiro.test(invert.count$abundance) #not normal so use nMDS
+
+#make community matrix - extract columns with abundance information
+com = invert.count[,6:ncol(invert.count)]
+
+# Calculate Bray-Curtis dissimilarity
+m_com <- vegdist(com, method = "bray")
+
+# Check for warnings and errors
+if (any(warnings())) {
+  warning("Warnings during distance calculation:", warnings())
+}
+
+# Remove empty rows (if applicable)
+m_com <- as.matrix(m_com[complete.cases(m_com), ])
+
+# Check dimensions of m_com after removing empty rows
+dim(m_com)
+
+# Perform nMDS with Bray-Curtis dissimilarity
+nmds <- metaMDS(m_com, distance = "bray")
+
+# Create a dataframe for plotting
+plot_data <- data.frame(
+  NMDS1 = nmds$points[, 1],  # NMDS dimension 1
+  NMDS2 = nmds$points[, 2],  # NMDS dimension 2
+  type = invert.count$type,  # Type of invertebrate
+  abundance = invert.count$abundance  # Abundance of invertebrate
+)
+
+# Plot nMDS with type labels and scaled points by abundance
+ggplot(plot_data, aes(x = NMDS1, y = NMDS2, color = type, size = abundance)) +
+  geom_point(alpha = 0.8) +
+  scale_size_continuous(range = c(2, 8)) +  # Adjust point size range as needed
+  labs(title = "nMDS Plot of Invertebrate Types by Abundance",
+       x = "NMDS 1", y = "NMDS 2") +
+  theme_minimal() +
+  theme(legend.position = "right") +
+  geom_text(aes(label = type), nudge_x = 0.05, nudge_y = 0.05, size = 3)  # Add type labels
 ```
 
 

@@ -49,6 +49,7 @@ BUNE,Bugula neritina,bryozoans
 BUSP,Bugula sp.,bryozoans
 BUTU,Bugula turrita,bryozoans
 BUGN,Bugula.neritina,bryozoans
+CRFO,Crepidula fornicada,molluscs
 BUG,Bugula.sp.,bryozoans
 CRIS,Crisularia.turrita,bryozoans
 CREB,"Crisia eburnea (fuzzy, fine)",bryozoans
@@ -83,13 +84,13 @@ ROC,Rock.Crab.Juv,crustacean
 ROC,Rock.Crab,crustacean
 ROC,Rock.Crab.0_10,crustacean
 SC,Spider.Crab,crustacean
-CSS,Common.Sea.Star,ecinoderms
-BLST,Blood.Star,ecinoderms
-FOR,Forbes.Star,ecinoderms
-GSU,Green.Sea.Urchin,ecinoderms
-GSUJ,Green.Sea.Urchin.Juv,ecinoderms
-SEAP,Sea.Potato,ecinoderms
-PSU,Purple.Sea.Urchin,ecinoderms
+CSS,Common.Sea.Star,echinoderms
+BLST,Blood.Star,echinoderms
+FOR,Forbes.Star,echinoderms
+GSU,Green.Sea.Urchin,echinoderms
+GSUJ,Green.Sea.Urchin.Juv,echinoderms
+SEAP,Sea.Potato,echinoderms
+PSU,Purple.Sea.Urchin,echinoderms
 CLSP,Clathromorphum spp.,encrusting red algae (smooth to bumpy)
 GRAC,Gracillaria_.,encrusting red algae (smooth to bumpy)
 GRAC,Gracillaria,encrusting red algae (smooth to bumpy)

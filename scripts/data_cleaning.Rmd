@@ -350,10 +350,8 @@ write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FA
 
 #make QUAD data long
 # Function to rename columns using metadata
-# Get the unique column names from the QUAD ataframe
+# Get the unique column names from the QUAD dataframe
 column_names.quad <- colnames(QUAD)
-
-
 # Create a lookup table with name-to-code mappings
 name_to_code.quad <- setNames(species.metadata$code, species.metadata$name)
 
@@ -376,18 +374,20 @@ QUAD <- QUAD[ -c(128:130) ]
 QUAD_long <- QUAD %>%
   pivot_longer(cols = AGH:NP, names_to = "SP_CODE", values_to = "COUNT")
 
-
 # Select only the code and type columns from species.metadata
 species_metadata_type <- species.metadata[, c("code", "type")]
 
 # Merge quad_long dataframe with species.metadata to include type information
 quad_long_with_type <- merge(QUAD_long, species.metadata[, c("code", "type")], by.x = "SP_CODE", by.y = "code", all.x = TRUE)
 
+# Rename Kings Beach to King's Beach
+quad_long_with_type$SITE[quad_long_with_type$SITE == "Kings Beach"] <- "King's Beach"
+
 # use rbind.fill() method in R to combine data frames with different columns
-QUAD_data <- rbind.fill(QUAD_long, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
+QUAD_data <- rbind.fill(quad_long_with_type, QUAD_2018, FtWeatherill_QUAD_2017, FtWeatherill_QUAD_2016_TALBENHORIN)
 
 #remove 131-138 columns for observers not needed information
-QUAD_data <- QUAD_data[ -c(14:17) ]
+QUAD_data <- QUAD_data[ -c(14:19) ]
 
 # Rename ft. wetherill to fort wetherill
 QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
