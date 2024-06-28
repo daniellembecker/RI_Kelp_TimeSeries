@@ -1463,8 +1463,88 @@ nmds_plot <- ggplot(scores, aes(x = NMDS1, y = NMDS2, color = SITE, shape = as.f
     legend.text = element_text(size = 16),
     legend.title = element_text(size = 18));nmds_plot
 
+# Save the plot to a file
+ggsave("output/figures/nmds.plot.png", plot = nmds_plot, width = 15, height = 10)
+
 
 ```
 
+PERMANOVA and SIMPER analysis
+```{r}
+# Remove rows where all abundance values are zero
+non_zero_rows <- rowSums(community_data) > 0
+community_data <- community_data[non_zero_rows, ]
+environmental_data <- environmental_data[non_zero_rows, ]
+
+# Convert YEAR to factor
+environmental_data$YEAR <- as.factor(environmental_data$YEAR)
+
+# Perform PERMANOVA
+permanova_result <- adonis2(community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = "bray")
+
+# View the results
+print(permanova_result)
+
+# For the SIMPER analysis, we'll use the original (non-transformed) data, but still excluding the all-zero rows
+simper_result <- simper(community_data, group = environmental_data$SITE, permutations = 999)
+
+# View summary of results
+summary(simper_result)
+
+# Extract the relevant information from the SIMPER results
+simper_data <- data.frame(
+  Species = simper_result$`Fort Wetherill_King's Beach`$species,
+  Contribution = simper_result$`Fort Wetherill_King's Beach`$average,
+  Fort_Wetherill = simper_result$`Fort Wetherill_King's Beach`$ava,
+  Kings_Beach = simper_result$`Fort Wetherill_King's Beach`$avb
+)
+
+# Calculate the percentage contribution
+simper_data$Percentage <- simper_data$Contribution / sum(simper_data$Contribution) * 100
+
+# Reshape the data for plotting
+simper_long <- tidyr::pivot_longer(simper_data, 
+                                   cols = c(Fort_Wetherill, Kings_Beach),
+                                   names_to = "Site", 
+                                   values_to = "Abundance")
+
+# Create the plot
+ggplot(simper_long, aes(x = Species, y = Abundance, fill = Site)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(data = simper_data, 
+            aes(x = Species, y = max(simper_long$Abundance) + 0.5, 
+                label = sprintf("%.1f%%", Percentage)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.5) +
+  labs(title = "Species Contributions to Differences Between Sites",
+       subtitle = "Based on SIMPER analysis",
+       y = "Average Abundance",
+       x = "Species") +
+  scale_fill_manual(values = c("Fort_Wetherill" = "grey", "Kings_Beach" = "black")) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.title = element_blank())
+
+```
+
+PERMANOVA results:
+adonis2(formula = community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = "bray")
+         Df SumOfSqs      R2      F Pr(>F)    
+SITE      1   0.2632 0.02501 1.3160  0.235    
+YEAR      4   2.8619 0.27191 3.5774  0.001 ***
+Residual 37   7.4000 0.70308                  
+Total    42  10.5251 1.00000  
+
+
+SIMPER results:
+Contrast: Fort Wetherill_King's Beach 
+            average      sd   ratio     ava     avb cumsum     p  
+molluscs    0.56710 0.30146 1.88120 7.64700 5.84300  0.894 0.803  
+echinoderms 0.04820 0.10148 0.47480 0.14700 0.34300  0.970 0.067 .
+crustacean  0.01920 0.04652 0.41350 0.30000 0.03700  1.000 0.713  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Permutation: free
+Number of permutations: 999
 
 
