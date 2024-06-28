@@ -2,38 +2,35 @@ Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmer
 Formula: log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass +      1.1) * log(Kelp_Cover + 1.1) + (1 | YEAR)
    Data: all.params.data
 
-REML criterion at convergence: 80
+REML criterion at convergence: 80.9
 
 Scaled residuals: 
      Min       1Q   Median       3Q      Max 
--1.68352 -0.59453 -0.04798  0.68311  2.17353 
+-1.84666 -0.55147 -0.09635  0.62035  2.14055 
 
 Random effects:
- Groups   Name        Variance  Std.Dev. 
- YEAR     (Intercept) 8.036e-17 8.964e-09
- Residual             8.551e-01 9.247e-01
+ Groups   Name        Variance Std.Dev.
+ YEAR     (Intercept) 0.08709  0.2951  
+ Residual             0.80737  0.8985  
 Number of obs: 38, groups:  YEAR, 5
 
 Fixed effects:
-                                                                  Estimate Std. Error      df t value Pr(>|t|)
-(Intercept)                                                          3.356      9.542  30.000   0.352    0.728
-log(Rugosity + 1.1)                                                 -1.226      2.711  30.000  -0.452    0.654
-log(Kelp_Biomass + 1.1)                                            -10.265     33.701  30.000  -0.305    0.763
-log(Kelp_Cover + 1.1)                                               -1.427      6.696  30.000  -0.213    0.833
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                          4.792      8.768  30.000   0.547    0.589
-log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                            1.426      1.947  30.000   0.732    0.470
-log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                       11.316     23.452  30.000   0.483    0.633
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   -4.726      6.134  30.000  -0.771    0.447
+                                                                  Estimate Std. Error       df t value Pr(>|t|)
+(Intercept)                                                        0.03037    9.09278 29.86840   0.003    0.997
+log(Rugosity + 1.1)                                               -0.16694    2.37925 28.69978  -0.070    0.945
+log(Kelp_Biomass + 1.1)                                            0.16175   31.43618 29.40406   0.005    0.996
+log(Kelp_Cover + 1.1)                                              0.88701    6.43997 29.94458   0.138    0.891
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                        1.18584    7.61176 28.75958   0.156    0.877
+log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                          0.62676    1.72388 29.00829   0.364    0.719
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                      4.61013   21.97188 29.32738   0.210    0.835
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1) -2.19665    5.35616 29.05259  -0.410    0.685
 
 Correlation of Fixed Effects:
                 (Intr) l(R+1. l(K_B+1 l(K_C+1 l(R+1.1):(K_B+1 l(R+1.1):(K_C+1 l(K+1+1
-lg(Rgs+1.1)     -0.921                                                               
-lg(K_B+1.1)     -0.918  0.806                                                        
-lg(K_C+1.1)     -0.996  0.924  0.909                                                 
-l(R+1.1):(K_B+1  0.888 -0.926 -0.916  -0.883                                         
-l(R+1.1):(K_C+1  0.905 -0.994 -0.780  -0.916   0.907                                 
-l(K_B+1.1+1      0.920 -0.810 -0.996  -0.919   0.911           0.793                 
-l(R+1.1+1+1     -0.890  0.938  0.904   0.894  -0.993          -0.931          -0.909 
-optimizer (nloptwrap) convergence code: 0 (OK)
-boundary (singular) fit: see help('isSingular')
-
+lg(Rgs+1.1)     -0.916                                                               
+lg(K_B+1.1)     -0.913  0.799                                                        
+lg(K_C+1.1)     -0.995  0.918  0.902                                                 
+l(R+1.1):(K_B+1  0.878 -0.928 -0.907  -0.871                                         
+l(R+1.1):(K_C+1  0.901 -0.993 -0.774  -0.914   0.908                                 
+l(K_B+1.1+1      0.916 -0.805 -0.995  -0.914   0.901           0.789                 
+l(R+1.1+1+1     -0.882  0.941  0.894   0.885  -0.993          -0.933          -0.900 

@@ -347,7 +347,6 @@ write.csv(swath_data, "output/cleaned_data/swath.data.clean.csv", row.names = FA
 
 # Combine QUAD dataframes
 ```{r}
-
 #make QUAD data long
 # Function to rename columns using metadata
 # Get the unique column names from the QUAD dataframe

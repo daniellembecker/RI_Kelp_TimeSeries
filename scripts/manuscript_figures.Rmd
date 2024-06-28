@@ -435,9 +435,9 @@ quad.filt <- QUAD %>%
         filter(SP_CODE == "SUGK")
 
 # remove control column and two last columns, not needed
-quad.filt <- quad.filt[ -c(13:14) ] 
-quad.filt <- quad.filt[ -c(8) ] 
-quad.filt <- quad.filt[ -c(5:6) ] 
+quad.filt <- quad.filt[ -c(9) ] 
+#quad.filt <- quad.filt[ -c(8) ] 
+#quad.filt <- quad.filt[ -c(5:6) ] 
 
 # I noticed that 06/30/23 dates were accidentally labeled 06/30/29
 # Replace "29" with "23" in the DATE column
@@ -1216,21 +1216,63 @@ summary(cleaned_model)
 
 ```
 
-# Make line plot for temperature time series by site per month
+# Make line plot for temperature time series by site per year
 ```{r}
-# Calculate mean and standard error of temperature by month and site
+# Calculate mean and standard error of temperature by month, site, and year
 avg_temp <- temperature_data %>%
   mutate(MonthAbbrev = month.abb[Month]) %>%  # Add month abbreviations
-  group_by(MonthAbbrev, Site) %>%
+  group_by(Year, MonthAbbrev, Site) %>%
   summarize(
     avg_temp = mean(Temp),
-    std_error = sd(Temp) / sqrt(n()))  # Calculate standard error
+    std_error = sd(Temp) / sqrt(n()),  # Calculate standard error
+    .groups = 'drop'  # Drop grouping after summarization
+  )
 
 # Map site codes to full names
 avg_temp$Site <- ifelse(avg_temp$Site == "FW", "Fort Wetherill", "King's Beach")
 
+# Ensure MonthAbbrev is a factor with levels in the correct chronological order
+avg_temp$MonthAbbrev <- factor(avg_temp$MonthAbbrev, levels = month.abb)
+
 # Plotting average temperature by site as lines and points per month with error bars
-temperature_plot <- ggplot(avg_temp, aes(x = MonthAbbrev, y = avg_temp, color = Site, group = Site)) +
+temperature_plot <- ggplot(avg_temp, aes(x = MonthAbbrev, y = avg_temp, color = Site, group = interaction(Site, Year))) +
+  geom_line(size = 1.5) +  # Lines for average temperature by site and year
+  geom_point(size = 3) +  # Points for mean values by site and year
+  geom_errorbar(aes(ymin = avg_temp - std_error, ymax = avg_temp + std_error), width = 0.2) +  # Error bars for SEM
+  labs(x = "Month", y = expression("Average Temperature (°C)"), color = "Site") +
+  facet_wrap(~ Year) +  # Facet by year
+  scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +  # Custom colors
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18));temperature_plot
+
+# Save the plot to a file
+ggsave("output/figures/temp.plot.year.png", plot = temperature_plot, width = 20, height = 10)
+```
+
+# Make line plot for temperature time series by site per month
+```{r}
+# Calculate mean and standard error of temperature by month, site, and year
+avg_temp_month <- temperature_data %>%
+  mutate(MonthAbbrev = month.abb[Month]) %>%  # Add month abbreviations
+  group_by(MonthAbbrev, Site) %>%
+  summarize(
+    avg_temp = mean(Temp),
+    std_error = sd(Temp) / sqrt(n()))  # Calculate standard error  # Drop grouping after summarization
+
+# Map site codes to full names
+avg_temp_month$Site <- ifelse(avg_temp_month$Site == "FW", "Fort Wetherill", "King's Beach")
+
+# Ensure MonthAbbrev is a factor with levels in the correct chronological order
+avg_temp_month$MonthAbbrev <- factor(avg_temp_month$MonthAbbrev, levels = month.abb)
+
+# Plotting average temperature by site as lines and points per month with error bars
+temperature_plot_month <- ggplot(avg_temp_month, aes(x = MonthAbbrev, y = avg_temp, color = Site, group = Site)) +
   geom_line(size = 1.5) +  # Lines for average temperature by site
   geom_point(size = 3) +  # Points for mean values by site
   geom_errorbar(aes(ymin = avg_temp - std_error, ymax = avg_temp + std_error), width = 0.2) +  # Error bars for SEM
@@ -1243,10 +1285,10 @@ temperature_plot <- ggplot(avg_temp, aes(x = MonthAbbrev, y = avg_temp, color = 
     axis.text.x = element_text(size = 18),
     axis.text.y = element_text(size = 18),
     legend.text = element_text(size = 16),
-    legend.title = element_text(size = 18));temperature_plot
+    legend.title = element_text(size = 18));temperature_plot_month
 
 # Save the plot to a file
-ggsave("output/figures/temp.plot.png", plot = temperature_plot, width = 20, height = 10)
+ggsave("output/figures/temp.plot.month.png", plot = temperature_plot_month, width = 20, height = 10)
 ```
 
 
@@ -1381,37 +1423,48 @@ wide_data <- invert.count %>%
   dplyr::select(TRANSECT, YEAR, SITE, type, abundance) %>%
   pivot_wider(names_from = type, values_from = abundance, values_fill = list(abundance = 0))
 
-# Ensure abundance columns are numeric
-wide_data <- wide_data %>%
-  mutate(across(crustacean:molluscs, as.numeric))
+# Ensure only numeric columns are selected for vegdist
+numeric_data <- wide_data[, c("crustacean", "echinoderms", "molluscs")]
+
+# Remove rows where all abundance values are zero
+numeric_data <- numeric_data[rowSums(numeric_data) > 0, ]
 
 # Calculate Bray-Curtis dissimilarity
-m_com <- vegdist(wide_data[, -c(4:6)], method = "bray")
+m_com <- vegdist(numeric_data, method = "bray")
 
 # Perform nMDS
 nmds <- metaMDS(m_com, distance = "bray")
 
-# Create a dataframe for plotting
-plot_data <- data.frame(
-  NMDS1 = nmds$points[, 1],  # NMDS dimension 1
-  NMDS2 = nmds$points[, 2],  # NMDS dimension 2
-  type = invert.count$type,  # Type of invertebrate
-  abundance = invert.count$abundance  # Abundance of invertebrate
-)
+# Extract scores
+scores <- as.data.frame(scores(nmds))
 
-# Plot nMDS with type labels and scaled points by abundance
-ggplot(plot_data, aes(x = NMDS1, y = NMDS2, color = type, size = abundance)) +
-  geom_point(alpha = 0.8) +
-  scale_size_continuous(range = c(2, 8)) +  # Adjust point size range as needed
-  labs(title = "nMDS Plot of Invertebrate Types by Abundance",
-       x = "NMDS 1", y = "NMDS 2") +
-  theme_minimal() +
-  theme(legend.position = "right") +
-  geom_text(aes(label = type), nudge_x = 0.05, nudge_y = 0.05, size = 3)  # Add type labels
+# Add row numbers as a unique identifier
+scores$ID <- row.names(scores)
+
+# Create a data frame with SITE and YEAR information
+site_year_info <- wide_data[rowSums(wide_data[, c("crustacean", "echinoderms", "molluscs")]) > 0, c("SITE", "YEAR")]
+site_year_info$ID <- row.names(site_year_info)
+
+# Merge SITE and YEAR information into scores
+scores <- merge(scores, site_year_info, by = "ID")
+
+# Plotting nMDS results
+nmds_plot <- ggplot(scores, aes(x = NMDS1, y = NMDS2, color = SITE, shape = as.factor(YEAR))) +
+  geom_point(size = 8) +
+  labs(x = "NMDS1", y = "NMDS2", color = "Site", shape = "Year") +
+  stat_ellipse(aes(group = YEAR), level = 0.95, linetype = 2, size = 1, alpha = 0.2)+
+  scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18));nmds_plot
+
+
 ```
-
-
-
 
 
 

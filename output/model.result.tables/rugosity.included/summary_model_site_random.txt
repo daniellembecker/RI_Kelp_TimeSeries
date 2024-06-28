@@ -2,35 +2,35 @@ Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmer
 Formula: log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass +      1.1) * log(Kelp_Cover + 1.1) + (1 | SITE)
    Data: all.params.data
 
-REML criterion at convergence: 77.1
+REML criterion at convergence: 78.5
 
 Scaled residuals: 
      Min       1Q   Median       3Q      Max 
--2.03899 -0.52036 -0.02387  0.51054  2.47435 
+-2.23673 -0.60101 -0.02351  0.50585  2.30681 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- SITE     (Intercept) 0.2562   0.5062  
- Residual             0.7286   0.8536  
+ SITE     (Intercept) 0.2349   0.4846  
+ Residual             0.7412   0.8609  
 Number of obs: 38, groups:  SITE, 2
 
 Fixed effects:
                                                                   Estimate Std. Error     df t value Pr(>|t|)
-(Intercept)                                                          6.075      8.896 29.289   0.683    0.500
-log(Rugosity + 1.1)                                                 -2.287      2.545 29.340  -0.899    0.376
-log(Kelp_Biomass + 1.1)                                             -9.900     31.110 29.000  -0.318    0.753
-log(Kelp_Cover + 1.1)                                               -3.482      6.246 29.219  -0.558    0.581
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                          6.283      8.120 29.071   0.774    0.445
-log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                            2.204      1.829 29.352   1.205    0.238
-log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                       11.412     21.648 29.000   0.527    0.602
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   -5.814      5.682 29.077  -1.023    0.315
+(Intercept)                                                          5.048      8.592 29.364   0.588    0.561
+log(Rugosity + 1.1)                                                 -1.727      2.223 29.438  -0.777    0.443
+log(Kelp_Biomass + 1.1)                                             -4.842     29.522 29.000  -0.164    0.871
+log(Kelp_Cover + 1.1)                                               -2.922      6.077 29.299  -0.481    0.634
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                          4.236      7.006 29.108   0.605    0.550
+log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                            1.791      1.613 29.439   1.110    0.276
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                        8.452     20.640 29.001   0.409    0.685
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   -4.394      4.938 29.109  -0.890    0.381
 
 Correlation of Fixed Effects:
                 (Intr) l(R+1. l(K_B+1 l(K_C+1 l(R+1.1):(K_B+1 l(R+1.1):(K_C+1 l(K+1+1
-lg(Rgs+1.1)     -0.921                                                               
-lg(K_B+1.1)     -0.909  0.791                                                        
-lg(K_C+1.1)     -0.995  0.925  0.899                                                 
-l(R+1.1):(K_B+1  0.888 -0.922 -0.913  -0.882                                         
-l(R+1.1):(K_C+1  0.905 -0.994 -0.766  -0.918   0.903                                 
-l(K_B+1.1+1      0.911 -0.797 -0.995  -0.909   0.909           0.780                 
-l(R+1.1+1+1     -0.890  0.934  0.901   0.893  -0.993          -0.927          -0.906 
+lg(Rgs+1.1)     -0.916                                                               
+lg(K_B+1.1)     -0.906  0.783                                                        
+lg(K_C+1.1)     -0.995  0.921  0.894                                                 
+l(R+1.1):(K_B+1  0.879 -0.922 -0.904  -0.874                                         
+l(R+1.1):(K_C+1  0.899 -0.994 -0.755  -0.914   0.901                                 
+l(K_B+1.1+1      0.909 -0.791 -0.995  -0.906   0.900           0.772                 
+l(R+1.1+1+1     -0.882  0.935  0.890   0.886  -0.992          -0.927          -0.897 
