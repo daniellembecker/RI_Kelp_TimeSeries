@@ -1487,11 +1487,83 @@ permanova_result <- adonis2(community_data ~ SITE + YEAR, data = environmental_d
 # View the results
 print(permanova_result)
 
+# Create dataframe from PERMANOVA results
+permanova_df <- data.frame(
+  Factor = c("SITE", "YEAR", "Residual", "Total"),
+  Df = c(1, 4, 37, 42),
+  SumOfSqs = c(0.2632, 2.8619, 7.4000, 10.5251),
+  R2 = c(0.02501, 0.27191, 0.70308, 1.00000),
+  F = c(1.3160, 3.5774, NA, NA),
+  Pr_F = c(0.235, 0.001, NA, NA)  # Changed column name to Pr_F
+)
+
+# Create flextable object
+flex_perm <- flextable(permanova_df)
+
+# Customize the flextable
+flex_perm <- flex_perm %>%
+  set_header_labels(
+    Factor = "Factor",
+    Df = "Df",
+    SumOfSqs = "Sum of Squares",
+    R2 = "R2",
+    F = "F",
+    Pr_F = "Pr(>F)"  # Changed to match the new column name
+  ) %>%
+  colformat_double(digits = 4) %>%
+  bold(i = ~ Factor == "YEAR", j = "Pr_F") %>%  # Changed to match the new column name
+  add_header_lines(values = c(
+    "Permutation test for adonis under reduced model",
+    "Terms added sequentially (first to last)",
+    "Permutation: free",
+    "Number of permutations: 999"
+  )) %>%
+  add_footer_lines(c(
+    "Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "adonis2(formula = community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = \"bray\")"
+  )) %>%
+  autofit() %>%
+  theme_box()
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/permanova.png"
+save_as_image(flex_perm, path = png_file)
+
+
 # For the SIMPER analysis, we'll use the original (non-transformed) data, but still excluding the all-zero rows
 simper_result <- simper(community_data, group = environmental_data$SITE, permutations = 999)
 
 # View summary of results
 summary(simper_result)
+
+# Create dataframe from SIMPER results
+simp <- data.frame(
+  Species = rownames(summary(simper_result)$`Fort Wetherill_King's Beach`),
+  Average = summary(simper_result)$`Fort Wetherill_King's Beach`$average,
+  Ratio = summary(simper_result)$`Fort Wetherill_King's Beach`$ratio,
+  Fort_Wetherill = summary(simper_result)$`Fort Wetherill_King's Beach`$ava,
+  Kings_Beach = summary(simper_result)$`Fort Wetherill_King's Beach`$avb,
+  Cumulative_Sum = summary(simper_result)$`Fort Wetherill_King's Beach`$cumsum,
+  p_value = summary(simper_result)$`Fort Wetherill_King's Beach`$p
+)
+
+# Customize the flextable
+flex_simp <- flex_simp %>%
+  set_header_labels(
+    Species = "Species",
+    Average = "Avg. Contribution",
+    Ratio = "Ratio",
+    Fort_Wetherill = "Fort Wetherill Abundance",
+    Kings_Beach = "King's Beach Abundance",
+    Cumulative_Sum = "Cumulative Sum",
+    p_value = "p-value"
+  ) %>%
+  autofit() %>%
+  theme_box()
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/simper_results.png"
+save_as_image(flex_simp, path = png_file)
 
 # Extract the relevant information from the SIMPER results
 simper_data <- data.frame(
