@@ -1376,24 +1376,19 @@ invert.count$abundance <- invert.count$count.sum / 6
 # Check for normality
 shapiro.test(invert.count$abundance) #not normal so use nMDS
 
-#make community matrix - extract columns with abundance information
-com = invert.count[,6:ncol(invert.count)]
+# Convert data from long to wide for nmds
+wide_data <- invert.count %>%
+  dplyr::select(TRANSECT, YEAR, SITE, type, abundance) %>%
+  pivot_wider(names_from = type, values_from = abundance, values_fill = list(abundance = 0))
+
+# Ensure abundance columns are numeric
+wide_data <- wide_data %>%
+  mutate(across(crustacean:molluscs, as.numeric))
 
 # Calculate Bray-Curtis dissimilarity
-m_com <- vegdist(com, method = "bray")
+m_com <- vegdist(wide_data[, -c(4:6)], method = "bray")
 
-# Check for warnings and errors
-if (any(warnings())) {
-  warning("Warnings during distance calculation:", warnings())
-}
-
-# Remove empty rows (if applicable)
-m_com <- as.matrix(m_com[complete.cases(m_com), ])
-
-# Check dimensions of m_com after removing empty rows
-dim(m_com)
-
-# Perform nMDS with Bray-Curtis dissimilarity
+# Perform nMDS
 nmds <- metaMDS(m_com, distance = "bray")
 
 # Create a dataframe for plotting
