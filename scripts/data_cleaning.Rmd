@@ -394,6 +394,19 @@ QUAD_data$SITE[QUAD_data$SITE == "Ft Wetherill"] <- "Fort Wetherill"
 # Rename Kings Beach to King's Beach
 QUAD_data$SITE[QUAD_data$SITE == "Kings Beach"] <- "King's Beach"
 
+# Rename columns in species_metadata_type to match those in QUAD_data
+colnames(species_metadata_type) <- c("SP_CODE", "type")
+
+# Perform a left join to update the type column in QUAD_data
+QUAD_data <- QUAD_data %>%
+  left_join(species_metadata_type, by = "SP_CODE", suffix = c("", ".new"))
+
+# Update the original type column with the new type values where the original type is NA
+QUAD_data$type <- ifelse(is.na(QUAD_data$type), QUAD_data$type.new, QUAD_data$type)
+
+# Remove the temporary new type column using base R
+QUAD_data$type.new <- NULL
+
 # output updated dataframe
 write.csv(QUAD_data, "output/cleaned_data/QUAD.data.clean.csv", row.names = FALSE)
 
