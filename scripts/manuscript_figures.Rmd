@@ -527,17 +527,32 @@ outliers <- c(45, 37, 25, 33, 37, 22)
 data_clean <- aggregated.data.morph[-outliers, ]
 
 # rerun model with log and without outliers
-lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) * YEAR + (1 | SITE), data = data_clean)
+lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + (1 | YEAR) + (1 | SITE), data = data_clean)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
+summary(lmm_model)
+
+# Extract coefficients and their standard errors
+model_summary <- tidy(lmm_model)
+
+# Create a data frame with coefficients, standard errors, and p-values
+df <- data.frame(
+  Coefficient = model_summary$term,
+  Estimate = model_summary$estimate,
+  Std.Error = model_summary$std.error,
+  P.Value = model_summary$p.value
+)
+
+# Create flextable object
+flex <- flextable(df)
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/rugosity.not.included/summary_fish_kelp_biomass.png"
+save_as_image(flex, png_file)
 
 # Summarize the model
 lmm_summary <- summary(lmm_model)
 lmm_tidy <- tidy(lmm_model)
-
-# Export to CSV file
-write.csv(lmm_tidy, "output/lmm_model_results.csv", row.names = FALSE)
-
 
 # Calculate R-squared for the mixed model
 r_squared <- r.squaredGLMM(lmm_model)
@@ -551,7 +566,7 @@ p_value_kelp_biomass <- lmm_summary$coefficients["log(mean_kelp_biomass + 1.1)",
 
 
 # Create scatter plot
-figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), y = log(mean_fish_biomass + 1.1))) +
+figure.3 <- ggplot(aggregated.data.morph, aes(mean_kelp_biomass, mean_fish_biomass)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
   
@@ -563,9 +578,9 @@ figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), 
   # p-value
   annotate("text", x = Inf, y = -Inf, 
            label = paste0("p = ", format(p_value_kelp_biomass, scientific = FALSE, digits = 2)), 
-           hjust = 1.3, vjust = -38.5, size = 4) +
+           hjust = 1.3, vjust = -39, size = 4) +
   
-  labs(x = expression("Log Kelp Biomass (g/" ~ m^2 ~ ")"), y = expression("Log Fish Biomass (g/" ~ m^2 ~ ")")) +
+  labs(x = expression("Kelp Biomass (g/" ~ m^2 ~ ")"), y = expression("Fish Biomass (g/" ~ m^2 ~ ")")) +
   theme_classic() +
   theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
   coord_cartesian(clip = 'off') +
@@ -578,6 +593,10 @@ figure.3 <- ggplot(aggregated.data.morph, aes(x = log(mean_kelp_biomass + 1.1), 
 
 # Save the plot to a file
 ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
+
+
+
+
 ```
 
 # Make kelp biomass time series (a) 
@@ -607,14 +626,14 @@ aggregated.kelp.morph <- aggregated.kelp.morph %>%
 shape_values <- c("Fort Wetherill" = 16, "King's Beach" = 17) # Circle for Fort Wetherill, Triangle for King's Beach
 
 # Time series plot for kelp biomass with standard error bars from 2016-2023
-kelp.timeseries.2016 <- ggplot(aggregated.kelp.morph, aes(x = YEAR, y = log_mean_kelp_biomass, shape = SITE)) +
+kelp.timeseries.2016 <- ggplot(aggregated.kelp.morph, aes(x = YEAR, y = mean_kelp_biomass, shape = SITE)) +
   geom_line(aes(group = SITE), color = "black") +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = log_mean_kelp_biomass - log_se_kelp_biomass, 
-                    ymax = log_mean_kelp_biomass + log_se_kelp_biomass), 
+  geom_point(size = 6) +
+  geom_errorbar(aes(ymin = mean_kelp_biomass - se_kelp_biomass, 
+                    ymax = mean_kelp_biomass + se_kelp_biomass), 
                 width = 0.2) +
   scale_shape_manual(values = shape_values) +
-  labs(x = "Year", y = expression("Log Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
+  labs(x = "Year", y = expression("Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
   theme_bw() +
   scale_x_continuous(breaks = unique(aggregated.kelp.morph$YEAR)) +
   theme(
@@ -623,7 +642,10 @@ kelp.timeseries.2016 <- ggplot(aggregated.kelp.morph, aes(x = YEAR, y = log_mean
     axis.text.x = element_text(size = 18),
     axis.text.y = element_text(size = 18),
     legend.text = element_text(size = 16),
-    legend.title = element_text(size = 18)
+    legend.title = element_text(size = 18),
+    legend.position = c(1, 1),  # Positioning legend inside the plot area at the top right
+    legend.justification = c(1, 1),  # Anchoring the legend to the top right corner
+    legend.background = element_rect(fill = "white", color = "black")  # Optional: adding a background for better visibility
   );kelp.timeseries.2016
 
 # Save the plot to a file
@@ -636,7 +658,7 @@ filtered_data <- aggregated.kelp.morph %>%
 # Time series plot for kelp biomass with standard error bars for 2019-2023
 kelp.timeseries.2019_2023 <- ggplot(filtered_data, aes(x = YEAR, y = log_mean_kelp_biomass, shape = SITE)) +
   geom_line(aes(group = SITE), color = "black") +
-  geom_point(size = 3) +
+  geom_point(size = 8) +
   geom_errorbar(aes(ymin = log_mean_kelp_biomass - log_se_kelp_biomass, 
                     ymax = log_mean_kelp_biomass + log_se_kelp_biomass), 
                 width = 0.2) +
@@ -683,7 +705,8 @@ slope_results <- morph.filt %>%
   summarize(
     mean_slope = coef(lm(log_avg_kelp_biomass ~ YEAR))[2],  # Mean slope
     se_slope = summary(lm(log_avg_kelp_biomass ~ YEAR))$coefficients[2, "Std. Error"],  # Standard error of slope
-    mean_log_avg_kelp_biomass = mean(log_avg_kelp_biomass)  # Mean log average kelp biomass
+    mean_log_avg_kelp_biomass = mean(log_avg_kelp_biomass),  # Mean log average kelp biomass
+    mean_nonlog_avg_kelp_biomass = mean(average_kelp_biomass)  # Mean non-log average kelp biomass
   )
 
 # Calculate rate of change per year
@@ -694,12 +717,12 @@ slope_results <- slope_results %>%
   )
 
 # Plotting the mean rates of change with error bars (standard error horizontally)
-rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mean_log_avg_kelp_biomass, shape = SITE)) +
-  geom_point(size = 3) +
-  geom_errorbarh(aes(xmin = rate_of_change_per_year - se_rate_of_change, xmax = rate_of_change_per_year + se_rate_of_change), height = 0.2) +
+rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mean_nonlog_avg_kelp_biomass, shape = SITE)) +
+  geom_point(size = 8) +
+  geom_errorbarh(aes(xmin = rate_of_change_per_year - se_rate_of_change, xmax = rate_of_change_per_year + se_rate_of_change), height = 0.9) +
   labs(
     x = expression("Rate of Change ("~yr^-1 ~")"),
-    y = expression("Log Mean Kelp Biomass (g/"~m^2~")"), shape = "Site") +
+    y = expression("Mean Kelp Biomass (g/"~m^2~")"), shape = "Site") +
   theme_bw() +
   scale_shape_manual(values = shape_values, guide = guide_legend(title = "Site")) +   # Use shape values and customize legend
   theme(
@@ -708,7 +731,8 @@ rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mea
     axis.text.x = element_text(size = 18),
     axis.text.y = element_text(size = 18),
     legend.text = element_text(size = 16),
-    legend.title = element_text(size = 18));rate_of_change
+    legend.title = element_text(size = 18), ,
+    legend.position = "none");rate_of_change
 
 
 ```
@@ -1363,8 +1387,12 @@ PB <- read.csv("data/fish.data.clean.calc.csv")
 # remove habitat and control, month, day, date, not needed
 PB <- PB[ -c(1:2, 4:7) ]
 
+#filter out data from 2016 and 2017 due to size bins
+PB_filtered <- PB %>%
+  filter(YEAR != 2016 & YEAR != 2017)
+
 # Calculate fish biomass 'W' using the length-weight relationship
-PB$biomass <- with(PB, coef.a * (actual_size)^coef.b)
+PB_filtered$biomass <- with(PB, coef.a * (actual_size)^coef.b)
 
 # Divide biomass by 80 m to get g/m2
 #calculate biomass/m2
@@ -1450,12 +1478,16 @@ site_year_info$ID <- row.names(site_year_info)
 # Merge SITE and YEAR information into scores
 scores <- merge(scores, site_year_info, by = "ID")
 
-# Plotting nMDS results
+# Define custom shape values for more than 8 categories
+custom_shape_values <- c(16, 17, 18, 19, 20, 21, 22, 23)
+
+# Use these custom shapes in your plot
 nmds_plot <- ggplot(scores, aes(x = NMDS1, y = NMDS2, color = SITE, shape = as.factor(YEAR))) +
   geom_point(size = 8) +
+  #stat_ellipse(aes(group = YEAR), level = 0.95, linetype = 2, size = 1, alpha = 0.5) + # Add ellipses
   labs(x = "NMDS1", y = "NMDS2", color = "Site", shape = "Year") +
-  stat_ellipse(aes(group = YEAR), level = 0.95, linetype = 2, size = 1, alpha = 0.2)+
   scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +
+  scale_shape_manual(values = custom_shape_values) +  # Specify the custom shapes
   theme_bw() +
   theme(
     axis.title.x = element_text(size = 18),
@@ -1463,7 +1495,8 @@ nmds_plot <- ggplot(scores, aes(x = NMDS1, y = NMDS2, color = SITE, shape = as.f
     axis.text.x = element_text(size = 18),
     axis.text.y = element_text(size = 18),
     legend.text = element_text(size = 16),
-    legend.title = element_text(size = 18));nmds_plot
+    legend.title = element_text(size = 18)
+  );nmds_plot
 
 # Save the plot to a file
 ggsave("output/figures/nmds.plot.png", plot = nmds_plot, width = 15, height = 10)
@@ -1473,10 +1506,15 @@ ggsave("output/figures/nmds.plot.png", plot = nmds_plot, width = 15, height = 10
 
 PERMANOVA and SIMPER analysis
 ```{r}
+# Ensure only numeric columns are selected for vegdist
+community_data <- wide_data[, c("crustacean", "echinoderms", "molluscs")]
+
 # Remove rows where all abundance values are zero
 non_zero_rows <- rowSums(community_data) > 0
 community_data <- community_data[non_zero_rows, ]
-environmental_data <- environmental_data[non_zero_rows, ]
+
+# Create environmental data frame
+environmental_data <- wide_data[non_zero_rows, c("TRANSECT", "YEAR", "SITE")]
 
 # Convert YEAR to factor
 environmental_data$YEAR <- as.factor(environmental_data$YEAR)
@@ -1490,11 +1528,11 @@ print(permanova_result)
 # Create dataframe from PERMANOVA results
 permanova_df <- data.frame(
   Factor = c("SITE", "YEAR", "Residual", "Total"),
-  Df = c(1, 4, 37, 42),
-  SumOfSqs = c(0.2632, 2.8619, 7.4000, 10.5251),
-  R2 = c(0.02501, 0.27191, 0.70308, 1.00000),
-  F = c(1.3160, 3.5774, NA, NA),
-  Pr_F = c(0.235, 0.001, NA, NA)  # Changed column name to Pr_F
+  Df = c(1, 7, 44, 52),
+  SumOfSqs = c(0.5649, 5.0492, 8.7778, 14.3919),
+  R2 = c(0.03925, 0.35084, 0.60991, 1.00000),
+  F = c(2.8317, 3.6157, NA, NA),
+  Pr_F = c(0.050, 0.001, NA, NA)  # Changed column name to Pr_F
 )
 
 # Create flextable object
@@ -1511,16 +1549,10 @@ flex_perm <- flex_perm %>%
     Pr_F = "Pr(>F)"  # Changed to match the new column name
   ) %>%
   colformat_double(digits = 4) %>%
-  bold(i = ~ Factor == "YEAR", j = "Pr_F") %>%  # Changed to match the new column name
+  bold(i = ~ Pr_F <= 0.05, j = "Pr_F") %>%  # Bold values if Pr_F is 0.05 or lower
   add_header_lines(values = c(
     "Permutation test for adonis under reduced model",
-    "Terms added sequentially (first to last)",
-    "Permutation: free",
     "Number of permutations: 999"
-  )) %>%
-  add_footer_lines(c(
-    "Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
-    "adonis2(formula = community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = \"bray\")"
   )) %>%
   autofit() %>%
   theme_box()
@@ -1529,8 +1561,7 @@ flex_perm <- flex_perm %>%
 png_file <- "output/model.result.tables/permanova.png"
 save_as_image(flex_perm, path = png_file)
 
-
-# For the SIMPER analysis, we'll use the original (non-transformed) data, but still excluding the all-zero rows
+# Perform SIMPER analysis
 simper_result <- simper(community_data, group = environmental_data$SITE, permutations = 999)
 
 # View summary of results
@@ -1546,6 +1577,10 @@ simp <- data.frame(
   Cumulative_Sum = summary(simper_result)$`Fort Wetherill_King's Beach`$cumsum,
   p_value = summary(simper_result)$`Fort Wetherill_King's Beach`$p
 )
+
+# Create flextable object
+flex_simp <- flextable(simp)
+
 
 # Customize the flextable
 flex_simp <- flex_simp %>%
@@ -1567,10 +1602,10 @@ save_as_image(flex_simp, path = png_file)
 
 # Extract the relevant information from the SIMPER results
 simper_data <- data.frame(
-  Species = simper_result$`Fort Wetherill_King's Beach`$species,
-  Contribution = simper_result$`Fort Wetherill_King's Beach`$average,
-  Fort_Wetherill = simper_result$`Fort Wetherill_King's Beach`$ava,
-  Kings_Beach = simper_result$`Fort Wetherill_King's Beach`$avb
+  Species = rownames(summary(simper_result)$`Fort Wetherill_King's Beach`),
+  Contribution = summary(simper_result)$`Fort Wetherill_King's Beach`$average,
+  Fort_Wetherill = summary(simper_result)$`Fort Wetherill_King's Beach`$ava,
+  Kings_Beach = summary(simper_result)$`Fort Wetherill_King's Beach`$avb
 )
 
 # Calculate the percentage contribution
@@ -1583,13 +1618,12 @@ simper_long <- tidyr::pivot_longer(simper_data,
                                    values_to = "Abundance")
 
 # Create the plot
-ggplot(simper_long, aes(x = Species, y = Abundance, fill = Site)) +
+simper_plot <- ggplot(simper_long, aes(x = Species, y = Abundance, fill = Site)) +
   geom_bar(stat = "identity", position = "dodge") +
-  geom_text(data = simper_data, 
-            aes(x = Species, y = max(simper_long$Abundance) + 0.5, 
-                label = sprintf("%.1f%%", Percentage)),
+  geom_text(aes(label = sprintf("%.1f%%", Percentage[match(Species, simper_data$Species)])),
             position = position_dodge(width = 0.9),
-            vjust = -0.5) +
+            vjust = -0.5, 
+            size = 3) +
   labs(title = "Species Contributions to Differences Between Sites",
        subtitle = "Based on SIMPER analysis",
        y = "Average Abundance",
@@ -1597,27 +1631,29 @@ ggplot(simper_long, aes(x = Species, y = Abundance, fill = Site)) +
   scale_fill_manual(values = c("Fort_Wetherill" = "grey", "Kings_Beach" = "black")) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.title = element_blank())
+        legend.title = element_blank());simper_plot
+
+# Save the plot to a file
+ggsave("output/figures/simper.plot.png", plot = simper_plot, width = 15, height = 10)
 
 ```
 
 PERMANOVA results:
 adonis2(formula = community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = "bray")
          Df SumOfSqs      R2      F Pr(>F)    
-SITE      1   0.2632 0.02501 1.3160  0.235    
-YEAR      4   2.8619 0.27191 3.5774  0.001 ***
-Residual 37   7.4000 0.70308                  
-Total    42  10.5251 1.00000  
+SITE      1   0.5649 0.03925 2.8317  0.043 *  
+YEAR      7   5.0492 0.35084 3.6157  0.001 ***
+Residual 44   8.7778 0.60991                  
+Total    52  14.3919 1.00000   
 
 
 SIMPER results:
-Contrast: Fort Wetherill_King's Beach 
-            average      sd   ratio     ava     avb cumsum     p  
-molluscs    0.56710 0.30146 1.88120 7.64700 5.84300  0.894 0.803  
-echinoderms 0.04820 0.10148 0.47480 0.14700 0.34300  0.970 0.067 .
-crustacean  0.01920 0.04652 0.41350 0.30000 0.03700  1.000 0.713  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+ontrast: Fort Wetherill_King's Beach 
+
+            average      sd   ratio     ava     avb cumsum     p
+molluscs    0.58750 0.29784 1.97250 5.57600 5.84300  0.863 0.576
+echinoderms 0.07140 0.12811 0.55760 0.21400 0.34300  0.968 0.547
+crustacean  0.02160 0.05018 0.43030 0.21900 0.09300  1.000 0.526
 Permutation: free
 Number of permutations: 999
 
