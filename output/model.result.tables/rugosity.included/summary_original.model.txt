@@ -4,21 +4,21 @@ lm(formula = log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) *
     log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1), data = all.params.data)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--1.7335 -0.5947 -0.0425  0.6453  1.8732 
+     Min       1Q   Median       3Q      Max 
+-1.90395 -0.63525 -0.03407  0.57957  1.83565 
 
 Coefficients:
                                                                   Estimate Std. Error t value Pr(>|t|)
-(Intercept)                                                         2.2618     9.1128   0.248    0.806
-log(Rugosity + 1.1)                                                -0.7827     2.3396  -0.335    0.740
-log(Kelp_Biomass + 1.1)                                            -4.5315    31.7031  -0.143    0.887
-log(Kelp_Cover + 1.1)                                              -0.8355     6.4422  -0.130    0.898
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                         2.8263     7.4899   0.377    0.709
-log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                           1.1045     1.6979   0.651    0.520
-log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                       7.9880    22.1633   0.360    0.721
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)  -3.3970     5.2797  -0.643    0.525
+(Intercept)                                                        0.90578    8.75608   0.103    0.918
+log(Rugosity + 1.1)                                               -0.28987    2.02936  -0.143    0.887
+log(Kelp_Biomass + 1.1)                                            0.36034   30.22728   0.012    0.991
+log(Kelp_Cover + 1.1)                                              0.07122    6.22065   0.011    0.991
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                        1.19070    6.48893   0.183    0.856
+log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                          0.70409    1.48090   0.475    0.638
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                      4.82401   21.20916   0.227    0.822
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1) -2.14614    4.59459  -0.467    0.644
 
-Residual standard error: 0.9245 on 30 degrees of freedom
-Multiple R-squared:  0.3224,	Adjusted R-squared:  0.1643 
-F-statistic: 2.039 on 7 and 30 DF,  p-value: 0.08257
+Residual standard error: 0.9326 on 30 degrees of freedom
+Multiple R-squared:  0.3105,	Adjusted R-squared:  0.1496 
+F-statistic:  1.93 on 7 and 30 DF,  p-value: 0.09945
 

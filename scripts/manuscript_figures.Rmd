@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(plyr)
 library(kableExtra)
 library(vegan)
+library(RColorBrewer)
 library(flextable)
 library(gt)
 library(dplyr)
@@ -282,9 +283,41 @@ fish.filt$SITE[fish.filt$SITE == "Kings Beach"] <- "King's Beach"
 # remove control column, not needed
 fish.filt <- fish.filt[ -c(5) ]
 
-# Assuming you want to join by the 'transect' column
-merged.dat.cover <- left_join(fish.filt, kelp.filt)
+# add 2018 fish data to fish.filt dataframe
+fish.2018 <- read.csv("data/fish.data.clean.calc.csv")
 
+# Filter for only 2018 data
+fish.2018.filtered <- subset(fish.2018, YEAR == 2018)
+
+# Rename kings beach and fort wetherill
+fish.2018.filtered$SITE[fish.2018.filtered$SITE == "Kings Beach"] <- "King's Beach"
+fish.2018.filtered$SITE[fish.2018.filtered$SITE == "Fort Weatherill"] <- "Fort Wetherill"
+
+# Calculate fish biomass 'W' using the length-weight relationship
+fish.2018.filtered$Wmat <- fish.2018.filtered$coef.a * (fish.2018.filtered$Lmat^fish.2018.filtered$coef.b)
+
+# Calculate fish biomass
+fish.2018.filtered$Fish.Biomass..g.80m2. <- fish.2018.filtered$Wmat * fish.2018.filtered$COUNT
+
+# Calculate biomass per m²
+fish.2018.filtered$Fish.Biomass..g.m2. <- fish.2018.filtered$Fish.Biomass..g.80m2. / 80
+
+# selcet specific columns needed to merge
+fish.2018.selected <- fish.2018.filtered[, c("YEAR", "HABITAT", "REGION", "SITE", "TRANSECT", "COUNT", "Fish.Biomass..g.m2.", "Fish.Biomass..g.80m2.")]
+
+# Convert the integer column to character
+fish.2018.selected$TRANSECT <- as.character(fish.2018.selected$TRANSECT)
+
+#add area and n column
+fish.2018.selected$AREA <- 80
+fish.2018.selected <- fish.2018.selected %>%
+  rename(n = COUNT)
+
+# Merge (rbind) fish.2018.selected with fish.filt
+fish.selected <- rbind(fish.filt, fish.2018.selected)
+
+# Assuming you want to join by the 'transect' column
+merged.dat.cover <- left_join(fish.selected, kelp.filt)
 
 ```
 
@@ -434,7 +467,7 @@ ggsave("output/figures/figure_2.png", plot = figure.2, width = 8, height = 6)
 ```{r}
 # read in quad data with filtered for just kelp
 quad.filt <- QUAD %>%
-        filter(SP_CODE == "SUGK")
+  filter(SP_CODE == "SUGK" | SP_CODE == "LADI")
 
 # remove control column and two last columns, not needed
 quad.filt <- quad.filt[ -c(9) ] 
@@ -496,7 +529,7 @@ morph.filt <- merge.morph.quad %>%
 morph.filt$average_kelp_biomass <- morph.filt$total_kelp_biomass / 6
 
 # Merge fish and morph data
-merged.dat.morph <- left_join(morph.filt, fish.filt)
+merged.dat.morph <- left_join(morph.filt, fish.selected)
 
 ```
 
@@ -519,9 +552,10 @@ qqPlot(residuals(lmm_model)) #slightly non normal values, log transform to impro
 lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_kelp_biomass + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.morph)
 #check normality
 qqPlot(residuals(lmm_model)) #improved to normal
+summary(lmm_model)
 
 # Identify the outliers
-outliers <- c(45, 37, 25, 33, 37, 22)
+outliers <- c(45, 37, 29,37)
 
 # remove outliers
 data_clean <- aggregated.data.morph[-outliers, ]
@@ -593,8 +627,6 @@ figure.3 <- ggplot(aggregated.data.morph, aes(mean_kelp_biomass, mean_fish_bioma
 
 # Save the plot to a file
 ggsave("output/figures/figure_3.png", plot = figure.3, width = 8, height = 6)
-
-
 
 
 ```
@@ -1411,21 +1443,40 @@ PB_filtered$biomass <- PB_filtered$Wmat * PB_filtered$COUNT
 # Calculate biomass per m²
 PB_filtered$biomass_per_m2 <- PB_filtered$biomass / 80
 
-# Plotting using ggplot2
-production.plot <- ggplot(PB_filtered, aes(x = YEAR, y = PB.ratio, fill = SP_CODE)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Species",
-       y = "P/B",
-       fill = "Species") +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
-        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
-        axis.title.y = element_text(vjust = 1.5, size = 18),
-        axis.text.y = element_text(size = 18),
-        legend.text = element_text(size = 16),
-        legend.title = element_text(size = 18)) + # Adjust y-axis title position
-  scale_y_continuous(limits = c(0, 4), expand = c(0, 0));production.plot  # Set y-axis limits and remove expansion
+# Convert YEAR to factor (if it's numeric)
+PB_filtered$YEAR <- factor(PB_filtered$YEAR)
 
+# Calculate production by multiplying biomass_per_m2 by PB raatio
+PB_filtered$Production <- PB_filtered$PB.ratio * PB_filtered$biomass_per_m2
+
+# make commmon name column
+PB_filtered <- PB_filtered %>%
+  mutate(Species = case_when(
+    SP_CODE == "BRTY" ~ "Atlantic menhaden",
+    SP_CODE == "CEST" ~ "Black sea bass",
+    SP_CODE == "MOSA" ~ "Striped bass",
+    SP_CODE == "PADE" ~ "Summer flounder",
+    SP_CODE == "STCH" ~ "Scup",
+    SP_CODE == "TAAD" ~ "Cunner",
+    SP_CODE == "TAON" ~ "Tautog",
+    TRUE ~ SP_CODE  # This will keep the original code if it doesn't match any of the above
+  ))
+
+# Now you can use this new 'Species' column in your ggplot
+production_plot <- ggplot(PB_filtered, aes(x = YEAR, y = Production, fill = Species)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Year",  # X-axis label
+       y = expression("Fish Production" ~ (g ~ m^-2 ~ yr^-1)),  # Y-axis label
+       fill = "Species") +  # This should now correctly set the legend title
+  scale_fill_viridis_d() +  # Use viridis colorblind-friendly palette
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),  # Rotate x-axis labels if needed
+        axis.title.x = element_text(vjust = -0.5, size = 14),  # Adjust x-axis title position
+        axis.title.y = element_text(vjust = 1.5, size = 14),
+        axis.text.y = element_text(size = 12),
+        legend.text = element_text(size = 12),
+        legend.title = element_text(size = 14)) +
+  scale_y_continuous(limits = c(0, 4), expand = c(0, 0));production_plot  # Additional attempt to change legend title  # Use viridis colorblind-friendly palette
 
 # Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)
 # Calculate HPI
@@ -1434,26 +1485,30 @@ HPI_calculated <- PB_filtered %>%
   summarise(HPI = sum(biomass_per_m2 * PB.ratio, na.rm = TRUE),
             .groups = 'drop')
 
-# We add a small constant (1e-6) to avoid issues with log(0)
+# Log transform HPI 
 HPI_calculated <- HPI_calculated %>%
   mutate(log_HPI = log(HPI + 1.1))
 
-# Now plot with the log-transformed HPI
-species.hpi.plot <- ggplot(HPI_calculated, aes(x = SITE, y = log_HPI, fill = factor(YEAR))) +
+# Define the color palette
+my_palette <- brewer.pal(n = 6, name = "Paired")  # Adjust 'n' as per the number of years in your data
+
+# Plotting code
+hpi.plot <- ggplot(HPI_calculated, aes(x = SITE, y = log_HPI, fill = factor(YEAR))) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(x = "Site", 
        y = "Log Habitat Productivity Index", 
        fill = "Year") +
+  scale_fill_manual(values = my_palette) +  # Use the colorblind-friendly palette
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
         axis.text.y = element_text(size = 18),
         axis.title.y = element_text(size = 18),
-         axis.title.x = element_text(size = 18),
+        axis.title.x = element_text(size = 18),
         legend.text = element_text(size = 16),
         legend.title = element_text(size = 18)) +
   scale_y_continuous(expand = expansion(mult = c(0, .05)),
-    labels = scales::label_number(accuracy = 0.1)) +
-  coord_cartesian(clip = "off"); species.hpi.plot
+                     labels = scales::label_number(accuracy = 0.1)) +
+  coord_cartesian(clip = "off");hpi.plot
 
 
 ```
@@ -1462,12 +1517,12 @@ species.hpi.plot <- ggplot(HPI_calculated, aes(x = SITE, y = log_HPI, fill = fac
 # Plot two plots together using patchwork for production and HPI
 ```{r}
 # Combine the plots with patchwork for all years of kelp and rate of change
-production.hpi <- production.plot | species_hpi.plot +
+production.hpi <- production_plot | hpi.plot +
   plot_annotation(tag_levels = 'A') + 
   theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi
 
 # Save the combined plot
-ggsave("output/figures/kelp.2016.rate.png", kelp.rate.2016, width = 20, height = 8, units = "in", dpi = 300)
+ggsave("output/figures/production.HPI.png", production.hpi, width = 20, height = 10, units = "in", dpi = 300)
 
 ```
 
