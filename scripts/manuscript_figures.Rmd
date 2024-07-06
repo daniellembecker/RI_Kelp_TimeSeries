@@ -1406,59 +1406,68 @@ exponent <- -0.35
 PB_filtered$PB.ratio <- coefficient * (PB_filtered$Wmat ^ exponent)
 
 # Calculate fish biomass
-# Calculate total weight for each fish species
 PB_filtered$biomass <- PB_filtered$Wmat * PB_filtered$COUNT
 
 # Calculate biomass per m²
 PB_filtered$biomass_per_m2 <- PB_filtered$biomass / 80
 
-# Calculate production for each species in each transect
-production_data <- PB_filtered %>%
-  group_by(TRANSECT, SP_CODE, YEAR) %>%
-  summarise(
-    Total_Biomass = sum(biomass_per_m2, na.rm = TRUE),  # Sum of biomass for the species in the transect
-    Total_Production = sum(biomass_per_m2 * PB.ratio, na.rm = TRUE)  # Total production for the species in the transect
-  )
-
-# Determine the maximum and minimum values for Total_Production
-max_prod <- max(production_data$Total_Production)
-min_prod <- min(production_data$Total_Production)
-
 # Plotting using ggplot2
-production.plot <- ggplot(production_data, aes(x = YEAR, y = Total_Production, fill = SP_CODE)) +
+production.plot <- ggplot(PB_filtered, aes(x = YEAR, y = PB.ratio, fill = SP_CODE)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Year",
-       y = "Fish Production",
+  labs(x = "Species",
+       y = "P/B",
        fill = "Species") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels if needed
-        axis.title.x = element_text(vjust = -0.5),  # Adjust x-axis title position
-        axis.title.y = element_text(vjust = 1.5)) + # Adjust y-axis title position
-  scale_y_continuous(limits = c(0, 650), expand = c(0, 0));production.plot  # Set y-axis limits and remove expansion
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
+        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
+        axis.title.y = element_text(vjust = 1.5, size = 18),
+        axis.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18)) + # Adjust y-axis title position
+  scale_y_continuous(limits = c(0, 4), expand = c(0, 0));production.plot  # Set y-axis limits and remove expansion
 
 
 # Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)
-# Calculate average biomass per SP_CODE
-average_biomass_df <- PB_filtered %>%
-  group_by(SP_CODE, PB.ratio, YEAR, TRANSECT, SITE) %>%
-  summarise(average_biomass = mean(biomass_per_m2, na.rm = TRUE))
+# Calculate HPI
+HPI_calculated <- PB_filtered %>%
+  group_by(YEAR, SITE, TRANSECT) %>%
+  summarise(HPI = sum(biomass_per_m2 * PB.ratio, na.rm = TRUE),
+            .groups = 'drop')
 
-# Calculate Habitat Productivity Index (HPI)
-average_biomass_df$HPI <- average_biomass_df$average_biomass * average_biomass_df$PB.ratio
+# We add a small constant (1e-6) to avoid issues with log(0)
+HPI_calculated <- HPI_calculated %>%
+  mutate(log_HPI = log(HPI + 1.1))
 
-# Aggregate by Transect, Site, Year and calculate mean HPI
-hpi_summary <- average_biomass_df %>%
-  group_by(SITE, YEAR) %>%
-  summarise(mean_HPI = mean(HPI, na.rm = TRUE))
+# Now plot with the log-transformed HPI
+species.hpi.plot <- ggplot(HPI_calculated, aes(x = SITE, y = log_HPI, fill = factor(YEAR))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Site", 
+       y = "Log Habitat Productivity Index", 
+       fill = "Year") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title.y = element_text(size = 18),
+         axis.title.x = element_text(size = 18),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18)) +
+  scale_y_continuous(expand = expansion(mult = c(0, .05)),
+    labels = scales::label_number(accuracy = 0.1)) +
+  coord_cartesian(clip = "off"); species.hpi.plot
 
-# Make faceted line plot of HPI index over the years as a area plot
-hpi.plot <- ggplot(hpi_summary, aes(x = YEAR, y = mean_HPI, fill = SITE)) +
-  geom_area(position = "stack") +
-  labs(x = "Year",
-       y = "Mean Habitat productivity index",
-       fill = "Site") +
-  theme_minimal(); hpi.plot
 
+```
+
+
+# Plot two plots together using patchwork for production and HPI
+```{r}
+# Combine the plots with patchwork for all years of kelp and rate of change
+production.hpi <- production.plot | species_hpi.plot +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi
+
+# Save the combined plot
+ggsave("output/figures/kelp.2016.rate.png", kelp.rate.2016, width = 20, height = 8, units = "in", dpi = 300)
 
 ```
 
