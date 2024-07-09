@@ -1,13 +1,13 @@
 code,name,type
-CEBO,Cereanthus borealis,anemones
-DILI,Diadumene lineata (orange lined),anemones
-FALI,Fagesia lineata (tiny white),anemones
-SEAV,Sea.Vase,anemones
-CLPLIMA,Clonal.Plumose.Anemone,anemones
-WANE,White.Anemone,anemones
-MESE,Metridium senile (fine frill),anemones
-UNAN,Unidentified Anemone,anemones
-URFE,Urticina felina,anemones
+CEBO,Cereanthus borealis,cnidarian
+DILI,Diadumene lineata (orange lined),cnidarian
+FALI,Fagesia lineata (tiny white),cnidarian
+SEAV,Sea.Vase,cnidarian
+CLPLIMA,Clonal.Plumose.Anemone,cnidarian
+WANE,White.Anemone,cnidarian
+MESE,Metridium senile (fine frill),cnidarian
+UNAN,Unidentified Anemone,cnidarian
+URFE,Urticina felina,cnidarian
 TUB,Tube.Worm,annelids
 BAR,Barnacle.sp.,arthropods
 HOR,Horseshoe.Crab,arthropods
@@ -65,8 +65,8 @@ TRIN,Tricellaria inpinata,bryozoans
 UBRY,Unid..Bryzoan,bryozoans
 UAB,Unidentified Arborescent Bryozoans,bryozoans
 DNSF,Delicate.Nortern.Sea.Fan,cnidarian
-OSC,Orange.soft.coral,coral
-STAC,Star.Coral,coral
+OSC,Orange.soft.coral,cnidarian
+STAC,Star.Coral,cnidarian
 AML,American.Lobster,crustacean
 BFMC,Black.Fingered.Mud.Crab,crustacean
 BLC,Blue.Crab,crustacean
@@ -305,18 +305,18 @@ UNTUN,Unid..Tunicate,tunicates
 ASFO,Asterias forbesii ,echinoderms
 BUCR,Busycon carica ,molluscs
 BUUN,Buccinum undatum,molluscs
-CAIS,,
+CAIS,cancer irroatus,crustacean
 CUFR,Cucumaria frondosa,echinoderms
-HOAS,,
+HOAS,Homarus americanus ,crustacean
 LDJ,Laminaria digitata,fishes
 MYSP,Myoxocephalus sp.,fishes
 PHGU,Pholis gunnelus,fishes
-PSFA,,
-SDS,,
+PSFA,NA,
+SDS,NA,
 SLJ,Saccharina latissima,fishes
-PLMA,,
-SDL,,
-URCI,,
+PLMA,NA,
+SDL,NA,
+URCI,Urticina felina,anemones
 BUCA,Busycon canaliculatum ,molluscs
-CABS,,
+CABS,Cancer borealis,crustacean
 HOAM,Homarus americanus ,crustacean

@@ -1470,12 +1470,12 @@ production_plot <- ggplot(PB_filtered, aes(x = YEAR, y = Production, fill = Spec
        fill = "Species") +  # This should now correctly set the legend title
   scale_fill_viridis_d() +  # Use viridis colorblind-friendly palette
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),  # Rotate x-axis labels if needed
-        axis.title.x = element_text(vjust = -0.5, size = 14),  # Adjust x-axis title position
-        axis.title.y = element_text(vjust = 1.5, size = 14),
-        axis.text.y = element_text(size = 12),
-        legend.text = element_text(size = 12),
-        legend.title = element_text(size = 14)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
+        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
+        axis.title.y = element_text(vjust = 1.5, size = 18),
+        axis.text.y = element_text(size = 18),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18)) +
   scale_y_continuous(limits = c(0, 4), expand = c(0, 0));production_plot  # Additional attempt to change legend title  # Use viridis colorblind-friendly palette
 
 # Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)
@@ -1485,44 +1485,101 @@ HPI_calculated <- PB_filtered %>%
   summarise(HPI = sum(biomass_per_m2 * PB.ratio, na.rm = TRUE),
             .groups = 'drop')
 
-# Log transform HPI 
+# Add log_HPI column to the dataframe
 HPI_calculated <- HPI_calculated %>%
-  mutate(log_HPI = log(HPI + 1.1))
+  mutate(log_HPI = log(HPI))
 
-# Define the color palette
-my_palette <- brewer.pal(n = 6, name = "Paired")  # Adjust 'n' as per the number of years in your data
+# Summarize by year and site for plot
+HPI_summary <- HPI_calculated %>%
+  group_by(YEAR, SITE) %>%
+  summarise(
+    mean_HPI = mean(HPI, na.rm = TRUE),
+    se_HPI = sd(HPI, na.rm = TRUE) / sqrt(n()),
+    mean_log_HPI = mean(log_HPI, na.rm = TRUE),
+    se_log_HPI = sd(log_HPI, na.rm = TRUE) / sqrt(n()),
+    .groups = 'drop'
+  )
 
-# Plotting code
-hpi.plot <- ggplot(HPI_calculated, aes(x = SITE, y = log_HPI, fill = factor(YEAR))) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Site", 
-       y = "Log Habitat Productivity Index", 
-       fill = "Year") +
-  scale_fill_manual(values = my_palette) +  # Use the colorblind-friendly palette
-  theme_minimal() +
+# Create the plot with nonlogged values
+hpi.plot.nonlog <- ggplot(HPI_summary, aes(x = factor(YEAR), y = mean_HPI, group = SITE)) +
+  geom_line() +
+  geom_point(aes(shape = SITE), size = 3) +
+  geom_errorbar(aes(ymin = mean_HPI - se_HPI, ymax = mean_HPI + se_HPI), width = 0.2) +
+  labs(x = "Year", 
+       y = "Habitat Productivity Index", 
+       shape = "Site") +
+  theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
         axis.text.y = element_text(size = 18),
-        axis.title.y = element_text(size = 18),
-        axis.title.x = element_text(size = 18),
+        axis.title = element_text(size = 18),
         legend.text = element_text(size = 16),
         legend.title = element_text(size = 18)) +
-  scale_y_continuous(expand = expansion(mult = c(0, .05)),
-                     labels = scales::label_number(accuracy = 0.1)) +
-  coord_cartesian(clip = "off");hpi.plot
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.05)),
+                     labels = scales::label_number(accuracy = 0.1));hpi.plot.nonlog
 
+# Create the plot with log_HPI values
+hpi_plot_log <- ggplot(HPI_summary, aes(x = factor(YEAR), y = mean_log_HPI, group = SITE)) +
+  geom_line() +
+  geom_point(aes(shape = SITE), size = 3) +
+  geom_errorbar(aes(ymin = mean_log_HPI - se_log_HPI, ymax = mean_log_HPI + se_log_HPI), width = 0.2) +
+  labs(x = "Year", 
+       y = "Log Habitat Productivity Index", 
+       shape = "Site") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title = element_text(size = 18),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18)) +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.05)),
+                     labels = scales::label_number(accuracy = 0.1));hpi_plot_log
 
+# Define the color palette
+#my_palette <- brewer.pal(n = 6, name = "Paired")  # Adjust 'n' as per the number of years in your data
+
+# Test for normality and perform appropriate statistical test
+# Check for normality using Shapiro-Wilk test for each site
+shapiro_test_fort_wetherill <- shapiro.test(HPI_calculated$HPI[HPI_calculated$SITE == "Fort Wetherill"])
+shapiro_test_kings_beach <- shapiro.test(HPI_calculated$HPI[HPI_calculated$SITE == "King's Beach"])
+
+# Print results of normality tests
+print(shapiro_test_fort_wetherill)
+print(shapiro_test_kings_beach)
+
+# Randomize the YEAR column
+set.seed(123)  # Set seed for reproducibility
+HPI_calculated$YEAR <- sample(HPI_calculated$YEAR)
+
+# Perform the Mann-Whitney U test on logged HPI values
+wilcox_test_log_result <- wilcox.test(HPI ~ SITE, data = HPI_calculated)
+
+# Print the result of the Wilcoxon rank-sum test
+print(wilcox_test_log_result)
 ```
+Wilcoxon rank sum exact test
+
+data:  HPI by SITE
+W = 527, p-value = 0.03417
+alternative hypothesis: true location shift is not equal to 0
 
 
 # Plot two plots together using patchwork for production and HPI
 ```{r}
 # Combine the plots with patchwork for all years of kelp and rate of change
-production.hpi <- production_plot | hpi.plot +
+production.hpi.nonlog <- production_plot | hpi.plot.nonlog +
   plot_annotation(tag_levels = 'A') + 
-  theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi
+  theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi.nonlog
 
 # Save the combined plot
-ggsave("output/figures/production.HPI.png", production.hpi, width = 20, height = 10, units = "in", dpi = 300)
+ggsave("output/figures/production.HPI.nonlog.png", production.hpi.nonlog, width = 20, height = 10, units = "in", dpi = 300)
+
+# Combine the plots with patchwork for all years of kelp and rate of change
+production.hpi.log <- production_plot | hpi_plot_log +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi.log
+
+# Save the combined plot
+ggsave("output/figures/production.HPI.log.png", production.hpi.log, width = 20, height = 10, units = "in", dpi = 300)
 
 ```
 
