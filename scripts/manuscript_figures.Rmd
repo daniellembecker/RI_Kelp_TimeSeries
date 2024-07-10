@@ -1469,6 +1469,18 @@ alternative hypothesis: true location shift is not equal to 0
 
 # Create box plot x axis as type (control and treatment) and y is HPI for kelp 
 ```{r}
+# First, need to designate control and kelp treatments in the data frame for each year at each site, first filter 2016-2018 years because no 5 and 6 transects where used
+# Filter out 2016-2018 YEAR data
+HPI.kelp <- subset(morph.filt, YEAR < 2016 | YEAR > 2018)
+
+# Rename KB q to transect 6
+HPI.kelp$TRANSECT[HPI.kelp$TRANSECT == "KB q"] <- "6"
+
+# Now create a treatment column that assigns TRANSECTs 5 and 6 from each year as TREATMENT = control and all other transectes TREATMENT = kelp
+HPI.kelp <- HPI.kelp %>%
+  mutate(TREATMENT = ifelse(TRANSECT %in% c(5, 6), "control", "kelp"))
+
+# Calculate habitat productivity index for all transects 
 
 ```
 
