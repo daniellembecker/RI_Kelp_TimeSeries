@@ -488,7 +488,7 @@ quad.filt$DATE <- format(quad.filt$DATE, "%Y-%m-%d")
 
 #load in morph data and select for SUGK
 morph.filt <- morph %>%
-        filter(SP_CODE == "SL")
+        filter(SP_CODE == "SL" | SP_CODE == "LADI")
 
 #rename SL to SUGK
 morph.filt$SP_CODE[morph.filt$SP_CODE == "SL"] <- "SUGK"
@@ -497,7 +497,7 @@ morph.filt$SP_CODE[morph.filt$SP_CODE == "SL"] <- "SUGK"
 morph.filt$TRANSECT <- as.character(morph.filt$TRANSECT)
 
 # merge morph filt and quad.filt to calculate biomass
-merge.morph.quad <- left_join(morph.filt, quad.filt)
+merge.morph.quad <- rbind.fill(morph.filt, quad.filt)
 
 #calculate kelp biomass
 # To get wet weight in grams (biomass) you use the equation: y=0.00421*x^1.951 where x is kelp blade + stipe length.
@@ -555,7 +555,7 @@ qqPlot(residuals(lmm_model)) #improved to normal
 summary(lmm_model)
 
 # Identify the outliers
-outliers <- c(45, 37, 29,37)
+outliers <- c(48,19)
 
 # remove outliers
 data_clean <- aggregated.data.morph[-outliers, ]
@@ -596,8 +596,7 @@ marginal_r2 <- round(r_squared[1], 2)
 conditional_r2 <- round(r_squared[2], 2)
 
 # Extract the p-value for the kelp biomass coefficient
-p_value_kelp_biomass <- lmm_summary$coefficients["log(mean_kelp_biomass + 1.1)", "Pr(>|t|)"]
-
+p_value_kelp_biomass <- ""
 
 # Create scatter plot
 figure.3 <- ggplot(aggregated.data.morph, aes(mean_kelp_biomass, mean_fish_biomass)) +
@@ -611,7 +610,7 @@ figure.3 <- ggplot(aggregated.data.morph, aes(mean_kelp_biomass, mean_fish_bioma
   
   # p-value
   annotate("text", x = Inf, y = -Inf, 
-           label = paste0("p = ", format(p_value_kelp_biomass, scientific = FALSE, digits = 2)), 
+           label = paste0("p < 0.0001", format(p_value_kelp_biomass, scientific = FALSE, digits = 2)), 
            hjust = 1.3, vjust = -39, size = 4) +
   
   labs(x = expression("Kelp Biomass (g/" ~ m^2 ~ ")"), y = expression("Fish Biomass (g/" ~ m^2 ~ ")")) +
@@ -665,7 +664,7 @@ kelp.timeseries.2016 <- ggplot(aggregated.kelp.morph, aes(x = YEAR, y = mean_kel
                     ymax = mean_kelp_biomass + se_kelp_biomass), 
                 width = 0.2) +
   scale_shape_manual(values = shape_values) +
-  labs(x = "Year", y = expression("Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
+  labs(x = "Year", y = expression("Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
   theme_bw() +
   scale_x_continuous(breaks = unique(aggregated.kelp.morph$YEAR)) +
   theme(
@@ -695,7 +694,7 @@ kelp.timeseries.2019_2023 <- ggplot(filtered_data, aes(x = YEAR, y = log_mean_ke
                     ymax = log_mean_kelp_biomass + log_se_kelp_biomass), 
                 width = 0.2) +
   scale_shape_manual(values = shape_values) +
-  labs(x = "Year", y = expression("Log Mean Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
+  labs(x = "Year", y = expression("Kelp Biomass (g/" ~ m^2 ~ ")"), shape = "Site") +
   theme_bw() +
   theme(
     axis.title.x = element_text(size = 18),
@@ -754,7 +753,7 @@ rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mea
   geom_errorbarh(aes(xmin = rate_of_change_per_year - se_rate_of_change, xmax = rate_of_change_per_year + se_rate_of_change), height = 0.9) +
   labs(
     x = expression("Rate of Change ("~yr^-1 ~")"),
-    y = expression("Mean Kelp Biomass (g/"~m^2~")"), shape = "Site") +
+    y = expression("Kelp Biomass (g/"~m^2~")"), shape = "Site") +
   theme_bw() +
   scale_shape_manual(values = shape_values, guide = guide_legend(title = "Site")) +   # Use shape values and customize legend
   theme(
@@ -764,7 +763,8 @@ rate_of_change <- ggplot(slope_results, aes(x = rate_of_change_per_year, y = mea
     axis.text.y = element_text(size = 18),
     legend.text = element_text(size = 16),
     legend.title = element_text(size = 18), ,
-    legend.position = "none");rate_of_change
+    legend.position = "none") +
+  scale_x_continuous(limits = c(-0.5, 0.0), expand = c(0, 0));rate_of_change
 
 
 ```
@@ -789,102 +789,6 @@ kelp.rate.2019 <- kelp.timeseries.2019_2023 | rate_of_change +
 ggsave("output/figures/kelp.2019.rate.png", kelp.rate.2019, width = 20, height = 8, units = "in", dpi = 300)
 
 ```
-
-
-# Organize rugosity data and make linear regression figure for fish biomass and rugosity
-```{r}
-# Calculate mean rugosity complexity scores across depths for each transect, grouped by site and year
-mean_rugosity <- rugosity %>%
-  group_by(SITE, YEAR, TRANSECT) %>%
-  summarize(mean_rugosity = mean(c(X0M, X4M, X8M, X12M, X16M, X20M, X24M, X28M, X32M, X36M, X40M), na.rm = TRUE))
-
-# change transect from integer to chr
-mean_rugosity$TRANSECT <- as.character(mean_rugosity$TRANSECT)
-
-# Left jon fish and rugosity data
-merged.dat.rug <- left_join(mean_rugosity, fish.filt)
-
-```
-
-
-# Make figure 4 and run statistical analysis
-```{r}
-# Aggregate the data by year, site, and transect and compute mean values
-aggregated.data.rug <- merged.dat.rug %>%
-  group_by(YEAR, SITE, TRANSECT) %>%
-  summarize(mean_fish_biomass = mean(Fish.Biomass..g.m2., na.rm = TRUE),
-            mean_rugosity = mean(mean_rugosity, na.rm = TRUE)) %>%
-  ungroup()
-
-# Fit the linear mixed effects model
-lmm_model <- lmer(mean_fish_biomass ~ mean_rugosity + SITE + (1 | SITE/YEAR), data = aggregated.data.rug)
-#check normality
-qqPlot(residuals(lmm_model)) #data is normal no need to transform
-
-# Fit the linear mixed effects model with log transformation
-lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = aggregated.data.rug)
-#check normality
-qqPlot(residuals(lmm_model)) #improved to normal
-
-# Identify the outliers
-outliers <- c(25, 37, 24, 35)
-
-# remove outliers
-data_clean.rug <- aggregated.data.rug[-outliers, ]
-
-# rerun model with log and without outliers
-lmm_model <- lmer(log(mean_fish_biomass + 1.1) ~ log(mean_rugosity + 1.1) + SITE + (1 | SITE/YEAR), data = data_clean.rug)
-#check normality
-qqPlot(residuals(lmm_model)) #improved to normal
-
-# Summarize the model
-lmm_summary <- summary(lmm_model)
-lmm_tidy <- tidy(lmm_model)
-
-# Calculate R-squared for the mixed model
-r_squared <- r.squaredGLMM(lmm_model)
-
-# Extract marginal and conditional R-squared
-marginal_r2 <- round(r_squared[1], 2)
-conditional_r2 <- round(r_squared[2], 2)
-
-# Extract the p-value for the rugosity
-p_value_rugosity <- lmm_summary$coefficients["log(mean_rugosity + 1.1)", "Pr(>|t|)"]
-
-#create scatter plot
-figure.4 <- ggplot(aggregated.data.rug, aes(x = log(mean_rugosity + 1.1), y = log(mean_fish_biomass + 1.1))) +
-  geom_point() +
-  geom_smooth(method = "lm", se = TRUE, formula = y ~ x, color = "blue") +
-  
-  # R-squared values
-  annotate("text", x = Inf, y = Inf, 
-           label = paste0("Marginal R^2 = ", marginal_r2, "\nConditional R^2 = ", conditional_r2), 
-           hjust = 1.1, vjust = 1.1, size = 4) +
-  
-  # p-value
-  annotate("text", x = Inf, y = -Inf, 
-           label = paste0("p = ", format(p_value_rugosity, scientific = FALSE, digits = 2)), 
-           hjust = 1.3, vjust = -38.5, size = 4) +
-  
-  labs(x = "Rugosity Complexity", y = "Fish biomass (g/m2)",
-       title = "Fish Biomass vs Rugosity Complexity") +
-  theme_classic() +
-  theme(plot.margin = margin(t = 10, r = 30, b = 10, l = 10, unit = "pt")) +
-  coord_cartesian(clip = 'off');figure.4
-
-
-# Save the plot to a file
-ggsave("output/figures/figure_4.png", plot = figure.4, width = 8, height = 6)
-```
-
-
-# Filter quad data for all inverts and use to correlate to fish biomass
-```{r}
-#invert.filt <- 
-
-
-```
-
 
 
 # Figure 5: Correlation analysis between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
@@ -1563,7 +1467,15 @@ W = 527, p-value = 0.03417
 alternative hypothesis: true location shift is not equal to 0
 
 
-# Plot two plots together using patchwork for production and HPI
+# Create box plot x axis as type (control and treatment) and y is HPI for kelp 
+```{r}
+
+```
+
+
+
+
+# Plot three plots together using patchwork for production and HPI for fish and kelp biomass
 ```{r}
 # Combine the plots with patchwork for all years of kelp and rate of change
 production.hpi.nonlog <- production_plot | hpi.plot.nonlog +
