@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load libraries 
 ```{r}
 library(plyr)
+library(dunn.test)
 library(kableExtra)
 library(vegan)
 library(RColorBrewer)
@@ -1480,7 +1481,35 @@ HPI.kelp$TRANSECT[HPI.kelp$TRANSECT == "KB q"] <- "6"
 HPI.kelp <- HPI.kelp %>%
   mutate(TREATMENT = ifelse(TRANSECT %in% c(5, 6), "control", "kelp"))
 
-# Calculate habitat productivity index for all transects 
+# Calculate habitat productivity index for all transects using HPI = average kelp biomass/area surveyed (80)
+# Define the area surveyed (80 square meters for each transects)
+area_surveyed <- 80
+
+# Calculate the HPI for each transect
+HPI.kelp <- HPI.kelp %>%
+  mutate(HPI = total_kelp_biomass / area_surveyed)
+
+# Summarize mean and standard error of HPI by treatment
+HPI_summary <- HPI.kelp %>%
+  group_by(TREATMENT) %>%
+  summarise(
+    mean_HPI = mean(HPI, na.rm = TRUE),
+    se_HPI = sd(HPI, na.rm = TRUE) / sqrt(n()),
+    .groups = 'drop'
+  )
+
+# Create the box plot
+hpi_box_plot <- ggplot(HPI.kelp, aes(x = TREATMENT, y = HPI, fill = TREATMENT)) +
+  geom_boxplot() +
+  geom_point(data = HPI_summary, aes(x = TREATMENT, y = mean_HPI), shape = 21, size = 3, position = position_dodge(0.75)) +
+  labs(x = "Treatment", y = "Habitat Productivity Index (HPI)") +  # Rename legend text
+  scale_fill_manual(values = c("Control" = "#4E79A7", "Kelp" = "#F28E2B")) +  # Manual fill colors and labels
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title = element_text(size = 18),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18));hpi_box_plot
 
 ```
 
@@ -1490,7 +1519,7 @@ HPI.kelp <- HPI.kelp %>%
 # Plot three plots together using patchwork for production and HPI for fish and kelp biomass
 ```{r}
 # Combine the plots with patchwork for all years of kelp and rate of change
-production.hpi.nonlog <- production_plot | hpi.plot.nonlog +
+production.hpi.nonlog <- (production_plot | hpi.plot.nonlog | hpi_box_plot) +
   plot_annotation(tag_levels = 'A') + 
   theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi.nonlog
 
@@ -1498,7 +1527,7 @@ production.hpi.nonlog <- production_plot | hpi.plot.nonlog +
 ggsave("output/figures/production.HPI.nonlog.png", production.hpi.nonlog, width = 20, height = 10, units = "in", dpi = 300)
 
 # Combine the plots with patchwork for all years of kelp and rate of change
-production.hpi.log <- production_plot | hpi_plot_log +
+production.hpi.log <- (production_plot | hpi_plot_log | hpi_box_plot) +
   plot_annotation(tag_levels = 'A') + 
   theme(plot.tag = element_text(size = 20, face = "bold"));production.hpi.log
 
@@ -1740,4 +1769,123 @@ echinoderms 0.07140 0.12811 0.55760 0.21400 0.34300  0.968 0.547
 crustacean  0.02160 0.05018 0.43030 0.21900 0.09300  1.000 0.526
 Permutation: free
 Number of permutations: 999
+
+
+# Figure for functional group change in abundance over time using invert count data
+```{r}
+# Check for normality of residuals
+# Log transform the abundance data
+invert.count$log_abundance <- log(invert.count$abundance + 1.1)
+
+# Check for normality of transformed data
+anova_model <- aov(log_abundance ~ type * YEAR, data = invert.count)
+residuals <- residuals(anova_model)
+
+# Plot Q-Q plot
+qqnorm(residuals)
+qqline(residuals, col = "blue")
+
+# Perform Shapiro-Wilk test
+shapiro_test <- shapiro.test(residuals)
+shapiro_test
+
+# still not normal, use non-parametric test
+
+# Perform Kruskal-Wallis test for interaction type and YEAR
+interaction_data <- invert.count %>%
+  mutate(interaction = interaction(type, YEAR))
+
+kruskal_test_interaction <- kruskal.test(abundance ~ interaction, data = interaction_data)
+print(kruskal_test_interaction)
+
+# Extract relevant information from the test result
+kruskal_summary <- data.frame(
+  Test = "Kruskal-Wallis",
+  Interaction = as.character(kruskal_test_interaction$method),
+  ChiSquare = kruskal_test_interaction$statistic,
+  DF = kruskal_test_interaction$parameter,
+  P.Value = kruskal_test_interaction$p.value
+)
+
+# Create flextable object
+flex <- flextable(kruskal_summary)
+
+# Save flextable as PNG
+png_file <- "output/model.result.tables/kruskal_test_interaction_summary.png"
+save_as_image(flex, png_file)
+
+# Assuming invert.count is your dataframe and abundance_g_per_m2 is already calculated
+total_abundance <- invert.count %>%
+  group_by(YEAR) %>%
+  summarise(total_abundance_g_per_m2 = sum(abundance))
+
+# merge total abundance with original data
+invert.abun <- merge(invert.count, total_abundance, by = "YEAR")
+
+# calculate relative abundance
+invert.abun <- invert.abun %>%
+  mutate(relative_abundance = (abundance / total_abundance_g_per_m2) * 100)
+
+# Calculate mean and standard error per functional group and year
+mean_std_data <- invert.abun %>%
+  group_by(YEAR, type) %>%
+  summarise(
+    mean_rel_abundance = mean(relative_abundance),
+    std_error = sd(relative_abundance) / sqrt(n()))
+
+# Convert YEAR to factor
+mean_std_data$YEAR <- factor(mean_std_data$YEAR)  
+
+# Example: Renaming groups in mean_std_data dataframe
+mean_std_data <- mean_std_data %>%
+  mutate(type = case_when(
+    type == "crustacean" ~ "Crustaceans",
+    type == "echinoderms" ~ "Echinoderms",
+    type == "molluscs" ~ "Molluscs",
+    TRUE ~ type  # Keep other cases unchanged
+  ))
+
+# Plot mean abundance with error bars
+func.group.plot.line <- ggplot(mean_std_data, aes(x = YEAR, y = mean_rel_abundance, color = type, group = type)) +
+  geom_errorbar(aes(ymin = mean_rel_abundance - std_error, ymax = mean_rel_abundance + std_error), width = 0.2) +
+  geom_line() +
+  geom_point(size = 3) +
+  labs(x = "Year", y = "Relative Abundance (%)", color = "Functional Group") +
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.text.y = element_text(size = 18),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 18));func.group.plot.line
+
+# Save the plot to a file
+ggsave("output/figures/functional.plot.line.png", plot = func.group.plot.line, width = 15, height = 10)
+
+# Plot stacked bar chart
+stacked_bar_plot <- ggplot(mean_std_data, aes(x = factor(YEAR), y = mean_rel_abundance, fill = type)) +
+  geom_bar(stat = "identity", position = "stack", color = "black") +
+  labs(x = "Year", y = "Relative Abundance (%)", fill = "Functional Group") +
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 18),
+    axis.title.y = element_text(size = 18),
+    axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
+    axis.text.y = element_text(size = 14),
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 16),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()) +
+  scale_y_continuous(limits = c(0, 50), expand = c(0, 0));stacked_bar_plot
+
+# Save the plot to a file
+ggsave("output/figures/functional.plot.stacked.png", plot = stacked_bar_plot, width = 15, height = 10)
+
+
+```
+	Kruskal-Wallis rank sum test
+
+data:  abundance by interaction
+Kruskal-Wallis chi-squared = 104.02, df = 23, p-value = 2.83e-12
 
