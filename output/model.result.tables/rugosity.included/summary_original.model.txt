@@ -5,20 +5,20 @@ lm(formula = log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) *
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--1.90395 -0.63525 -0.03407  0.57957  1.83565 
+-1.78627 -0.65034  0.06315  0.60263  1.93263 
 
 Coefficients:
                                                                   Estimate Std. Error t value Pr(>|t|)
-(Intercept)                                                        0.90578    8.75608   0.103    0.918
-log(Rugosity + 1.1)                                               -0.28987    2.02936  -0.143    0.887
-log(Kelp_Biomass + 1.1)                                            0.36034   30.22728   0.012    0.991
-log(Kelp_Cover + 1.1)                                              0.07122    6.22065   0.011    0.991
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                        1.19070    6.48893   0.183    0.856
-log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                          0.70409    1.48090   0.475    0.638
-log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                      4.82401   21.20916   0.227    0.822
-log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1) -2.14614    4.59459  -0.467    0.644
+(Intercept)                                                          7.674     10.845   0.708    0.485
+log(Rugosity + 1.1)                                                 -2.902      3.999  -0.726    0.474
+log(Kelp_Biomass + 1.1)                                            -33.215     40.008  -0.830    0.413
+log(Kelp_Cover + 1.1)                                               -3.714      7.488  -0.496    0.623
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1)                         13.472     13.384   1.007    0.322
+log(Rugosity + 1.1):log(Kelp_Cover + 1.1)                            2.438      2.785   0.875    0.388
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)                       24.671     27.741   0.889    0.381
+log(Rugosity + 1.1):log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)  -10.011      9.232  -1.084    0.287
 
-Residual standard error: 0.9326 on 30 degrees of freedom
-Multiple R-squared:  0.3105,	Adjusted R-squared:  0.1496 
-F-statistic:  1.93 on 7 and 30 DF,  p-value: 0.09945
+Residual standard error: 0.9566 on 30 degrees of freedom
+Multiple R-squared:  0.2747,	Adjusted R-squared:  0.1054 
+F-statistic: 1.623 on 7 and 30 DF,  p-value: 0.1672
 
