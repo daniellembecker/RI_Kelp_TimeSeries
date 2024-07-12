@@ -468,7 +468,7 @@ ggsave("output/figures/figure_2.png", plot = figure.2, width = 8, height = 6)
 ```{r}
 # read in quad data with filtered for just kelp
 quad.filt <- QUAD %>%
-  filter(SP_CODE == "SUGK" | SP_CODE == "LADI")
+  filter(SP_CODE == "SUGK" | SP_CODE == "SUGK.1")
 
 # remove control column and two last columns, not needed
 quad.filt <- quad.filt[ -c(9) ] 
@@ -489,7 +489,7 @@ quad.filt$DATE <- format(quad.filt$DATE, "%Y-%m-%d")
 
 #load in morph data and select for SUGK
 morph.filt <- morph %>%
-        filter(SP_CODE == "SL" | SP_CODE == "LADI")
+        filter(SP_CODE == "SL")
 
 #rename SL to SUGK
 morph.filt$SP_CODE[morph.filt$SP_CODE == "SL"] <- "SUGK"
@@ -1332,7 +1332,7 @@ PB$SITE[PB$SITE == "Fort Weatherill"] <- "Fort Wetherill"
 PB_filtered <- PB %>%
   filter(YEAR != 2016 & YEAR != 2017)
 
-# Calculate fish biomass 'W' using the length-weight relationship
+# Calculate fish weight at maturity using the length-weight relationship
 PB_filtered$Wmat <- PB_filtered$coef.a * (PB_filtered$Lmat^PB_filtered$coef.b)
 
 # Constants for the PB.ratio calculation
@@ -1342,11 +1342,20 @@ exponent <- -0.35
 # Calculate PB.ratio column
 PB_filtered$PB.ratio <- coefficient * (PB_filtered$Wmat ^ exponent)
 
-# Calculate fish biomass
-PB_filtered$biomass <- PB_filtered$Wmat * PB_filtered$COUNT
+# add an individual fish.mass column where we take (PB_filtered$coef.a * (PB_filtered$actual_size ^ PB_filtered$coef.b)
+PB_filtered$ind.fish.mass <- (PB_filtered$coef.a * (PB_filtered$actual_size ^ PB_filtered$coef.b))
+
+# Calculate fish biomass: coefa * actual size ^b * COUNT
+PB_filtered$biomass <- PB_filtered$ind.fish.mass * PB_filtered$COUNT
+
+# add total biomass for each transect per species
+PB.aggregated <- PB_filtered %>%
+  group_by(YEAR, SITE, TRANSECT, SP_CODE) %>%
+  summarise(tot.biomass = sum(biomass, na.rm = TRUE),
+            .groups = 'drop')
 
 # Calculate biomass per m²
-PB_filtered$biomass_per_m2 <- PB_filtered$biomass / 80
+PB.aggregated$biomass_per_m2 <- PB.aggregated$tot.biomass / 80
 
 # Convert YEAR to factor (if it's numeric)
 PB_filtered$YEAR <- factor(PB_filtered$YEAR)
