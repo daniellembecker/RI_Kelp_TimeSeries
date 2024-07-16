@@ -1316,7 +1316,7 @@ W = 4273000, p-value = 0.9511
 alternative hypothesis: true location shift is not equal to 0
 
 
-Production to biomass ratios (P:B) and habitat productivity index for each fish species
+Production to biomass ratios (P:B) and fish produciton plots
 ```{r}
 # load fish data from 2016
 PB <- read.csv("data/fish.data.clean.calc.csv")
@@ -1350,7 +1350,7 @@ PB_filtered$biomass <- PB_filtered$ind.fish.mass * PB_filtered$COUNT
 
 # add total biomass for each transect per species
 PB.aggregated <- PB_filtered %>%
-  group_by(YEAR, SITE, TRANSECT, SP_CODE) %>%
+  group_by(YEAR, SITE, TRANSECT, SP_CODE, PB.ratio, growth.coef) %>%
   summarise(tot.biomass = sum(biomass, na.rm = TRUE),
             .groups = 'drop')
 
@@ -1359,12 +1359,19 @@ PB.aggregated$biomass_per_m2 <- PB.aggregated$tot.biomass / 80
 
 # Convert YEAR to factor (if it's numeric)
 PB_filtered$YEAR <- factor(PB_filtered$YEAR)
+PB.aggregated$YEAR <- factor(PB.aggregated$YEAR)
 
-# Calculate production by multiplying biomass_per_m2 by PB raatio
-PB_filtered$Production <- PB_filtered$PB.ratio * PB_filtered$biomass_per_m2
+# Calculate production by methods of Ricker (1971) where P = G x B (P: production; G: instantaneous growth coefficient; B: average biomass)
+# Step 1: Calculate average biomass
+calc.prod <- PB.aggregated %>%
+  group_by(YEAR, SITE, TRANSECT, SP_CODE, PB.ratio, growth.coef) %>%
+  summarize(avg_biomass = mean(biomass_per_m2))
+
+# Step 2: Calculate production
+calc.prod$production <- calc.prod$growth.coef * calc.prod$avg_biomass
 
 # make commmon name column
-PB_filtered <- PB_filtered %>%
+calc.prod <- calc.prod %>%
   mutate(Species = case_when(
     SP_CODE == "BRTY" ~ "Atlantic menhaden",
     SP_CODE == "CEST" ~ "Black sea bass",
@@ -1376,13 +1383,24 @@ PB_filtered <- PB_filtered %>%
     TRUE ~ SP_CODE  # This will keep the original code if it doesn't match any of the above
   ))
 
+# Now create a treatment column that assigns TRANSECTs 5 and 6 from each year as TREATMENT = control and all other transectes TREATMENT = kelp
+calc.prod <- calc.prod %>%
+  mutate(TREATMENT = ifelse(TRANSECT %in% c(5, 6), "control", "kelp"))
+
+# create summary data for per year and treatment
+pb_summary <- calc.prod  %>%
+  group_by(YEAR, TREATMENT) %>%
+  summarize(mean_production = mean(production, na.rm = TRUE),
+            se_production = sd(production, na.rm = TRUE) / sqrt(n()))
+
 # Now you can use this new 'Species' column in your ggplot
-production_plot <- ggplot(PB_filtered, aes(x = YEAR, y = Production, fill = Species)) +
-  geom_bar(stat = "identity", position = "dodge") +
+production_plot <- ggplot(pb_summary, aes(x = YEAR, y = mean_production, color = TREATMENT, group = TREATMENT)) +
+  geom_point(size = 2) +         # Add points
+  geom_line() +          # Add lines
+  geom_errorbar(aes(ymin = mean_production - se_production, ymax = mean_production + se_production), width = 0.2) +  # Add error bars
   labs(x = "Year",  # X-axis label
        y = expression("Fish Production" ~ (g ~ m^-2 ~ yr^-1)),  # Y-axis label
-       fill = "Species") +  # This should now correctly set the legend title
-  scale_fill_viridis_d() +  # Use viridis colorblind-friendly palette
+       color = "Habitat") +  # Legend title
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
         axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
@@ -1390,9 +1408,69 @@ production_plot <- ggplot(PB_filtered, aes(x = YEAR, y = Production, fill = Spec
         axis.text.y = element_text(size = 18),
         legend.text = element_text(size = 16),
         legend.title = element_text(size = 18)) +
-  scale_y_continuous(limits = c(0, 4), expand = c(0, 0));production_plot  # Additional attempt to change legend title  # Use viridis colorblind-friendly palette
+  scale_y_continuous(limits = c(0, 8), expand = c(0, 0));production_plot # Additional attempt to change legend title  # Use viridis colorblind-friendly palette
+
+# Save the plot
+ggsave("output/figures/production.habitat.png", production_plot_A, width = 20, height = 10, units = "in", dpi = 300)
+
+
+# Subset the data for control and kelp treatments
+control_data <- subset(pb_summary, TREATMENT == "control")
+kelp_data <- subset(pb_summary, TREATMENT == "kelp")
+
+# Merge to align control and kelp data by year
+merged_data <- merge(control_data, kelp_data, by = "YEAR", suffixes = c("_control", "_kelp"))
+
+# Calculate the differences
+merged_data$production_difference <- merged_data$mean_production_kelp - merged_data$mean_production_control
+merged_data$se_difference <- sqrt(merged_data$se_production_kelp^2 + merged_data$se_production_control^2)
+
+
+# Step 4: Plot the data
+production_diff_plot <- ggplot(merged_data, aes(x = YEAR, y = production_difference, group = TREATMENT_kelp)) +
+  geom_point(size = 2) +  # Points with light blue outline
+  geom_line() +  # Lines with light blue color
+  geom_errorbar(aes(ymin = production_difference - se_difference, ymax = production_difference + se_difference), 
+                width = 0.2, color = "black", size = 0.7) +  # Error bars
+  labs(x = "Year",  # X-axis label
+       y = expression("Kelp Habitat Fish Production" ~ (g ~ m^-2 ~ yr^-1)),  # Y-axis label
+       color = "Treatment") +  # Legend title
+  theme_bw() +  # White background with black lines
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
+        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
+        axis.title.y = element_text(vjust = 1.5, size = 18),  # Adjust y-axis title position
+        axis.text.y = element_text(size = 18),  # Adjust y-axis text size
+        legend.text = element_text(size = 16),  # Legend text size
+        legend.title = element_text(size = 18));production_diff_plot
+
+# Save the plot
+ggsave("output/figures/kelp.fish.production.png", production_diff_plot, width = 20, height = 10, units = "in", dpi = 300)
+
+# Calculate the average of mean_production_kelp
+average_production_kelp <- mean(merged_data$mean_production_kelp)
+
+# Print the average
+average_production_kelp # 4.359285 g/m2/yr
+```
+
+
+# Plot all two panels together using patchwork
+```{r}
+# Combine the plots with patchwork
+prod_combined_plot <- (production_plot | production_diff_plot) +
+  plot_annotation(tag_levels = 'A') + 
+  theme(plot.tag = element_text(size = 20, face = "bold"));prod_combined_plot
+
+# Save the combined plot
+ggsave("output/figures/figure_1.png", combined_plot, width = 12, height = 8, units = "in", dpi = 300)
+
+```
+
+
+
 
 # Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)
+```{r}
 # Calculate HPI
 HPI_calculated <- PB_filtered %>%
   group_by(YEAR, SITE, TRANSECT) %>%
@@ -1448,8 +1526,6 @@ hpi_plot_log <- ggplot(HPI_summary, aes(x = factor(YEAR), y = mean_log_HPI, grou
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.05)),
                      labels = scales::label_number(accuracy = 0.1));hpi_plot_log
 
-# Define the color palette
-#my_palette <- brewer.pal(n = 6, name = "Paired")  # Adjust 'n' as per the number of years in your data
 
 # Test for normality and perform appropriate statistical test
 # Check for normality using Shapiro-Wilk test for each site
@@ -1475,8 +1551,6 @@ Wilcoxon rank sum exact test
 data:  HPI by SITE
 W = 527, p-value = 0.03417
 alternative hypothesis: true location shift is not equal to 0
-
-
 # Create box plot x axis as type (control and treatment) and y is HPI for kelp 
 ```{r}
 # First, need to designate control and kelp treatments in the data frame for each year at each site, first filter 2016-2018 years because no 5 and 6 transects where used
