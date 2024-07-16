@@ -1395,7 +1395,7 @@ pb_summary <- calc.prod  %>%
 
 # Now you can use this new 'Species' column in your ggplot
 production_plot <- ggplot(pb_summary, aes(x = YEAR, y = mean_production, color = TREATMENT, group = TREATMENT)) +
-  geom_point(size = 2) +         # Add points
+  geom_point(size = 3) +         # Add points
   geom_line() +          # Add lines
   geom_errorbar(aes(ymin = mean_production - se_production, ymax = mean_production + se_production), width = 0.2) +  # Add error bars
   labs(x = "Year",  # X-axis label
@@ -1408,7 +1408,11 @@ production_plot <- ggplot(pb_summary, aes(x = YEAR, y = mean_production, color =
         axis.text.y = element_text(size = 18),
         legend.text = element_text(size = 16),
         legend.title = element_text(size = 18)) +
-  scale_y_continuous(limits = c(0, 8), expand = c(0, 0));production_plot # Additional attempt to change legend title  # Use viridis colorblind-friendly palette
+  scale_y_continuous(limits = c(0, 8), expand = c(0, 0));production_plot # Additional attempt to change legend title 
+#blue color is #00BFC4
+
+
+
 
 # Save the plot
 ggsave("output/figures/production.habitat.png", production_plot_A, width = 20, height = 10, units = "in", dpi = 300)
@@ -1428,8 +1432,8 @@ merged_data$se_difference <- sqrt(merged_data$se_production_kelp^2 + merged_data
 
 # Step 4: Plot the data
 production_diff_plot <- ggplot(merged_data, aes(x = YEAR, y = production_difference, group = TREATMENT_kelp)) +
-  geom_point(size = 2) +  # Points with light blue outline
-  geom_line() +  # Lines with light blue color
+  geom_point(size = 3) +  # Points in skyblue color
+  geom_line() +  # Lines in skyblue color
   geom_errorbar(aes(ymin = production_difference - se_difference, ymax = production_difference + se_difference), 
                 width = 0.2, color = "black", size = 0.7) +  # Error bars
   labs(x = "Year",  # X-axis label
@@ -1442,6 +1446,11 @@ production_diff_plot <- ggplot(merged_data, aes(x = YEAR, y = production_differe
         axis.text.y = element_text(size = 18),  # Adjust y-axis text size
         legend.text = element_text(size = 16),  # Legend text size
         legend.title = element_text(size = 18));production_diff_plot
+
+# Update production_diff_plot with annotations
+production_diff_plot_annot <- production_diff_plot +
+  geom_text(aes(label = sprintf("%.2f", production_difference), y = production_difference),
+            color = "black", size = 4, vjust = 2.42, hjust = 1.06, check_overlap = TRUE);production_diff_plot_annot
 
 # Save the plot
 ggsave("output/figures/kelp.fish.production.png", production_diff_plot, width = 20, height = 10, units = "in", dpi = 300)
@@ -1462,7 +1471,7 @@ prod_combined_plot <- (production_plot | production_diff_plot) +
   theme(plot.tag = element_text(size = 20, face = "bold"));prod_combined_plot
 
 # Save the combined plot
-ggsave("output/figures/figure_1.png", combined_plot, width = 12, height = 8, units = "in", dpi = 300)
+ggsave("output/figures/fish_production.png", prod_combined_plot, width = 12, height = 8, units = "in", dpi = 300)
 
 ```
 
