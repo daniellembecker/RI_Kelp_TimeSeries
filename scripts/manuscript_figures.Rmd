@@ -570,6 +570,13 @@ summary(lmm_model)
 # Extract coefficients and their standard errors
 model_summary <- tidy(lmm_model)
 
+# Perform ANOVA on the mixed model
+anova_results <- Anova(lmm_model, type = 3)
+print(anova_results)
+
+# Extract coefficients and their standard errors
+model_summary <- broom.mixed::tidy(lmm_model)
+
 # Create a data frame with coefficients, standard errors, and p-values
 df <- data.frame(
   Coefficient = model_summary$term,
@@ -578,8 +585,8 @@ df <- data.frame(
   P.Value = model_summary$p.value
 )
 
-# Create flextable object
-flex <- flextable(df)
+# Display the coefficients table
+print(df)
 
 # Save flextable as PNG
 png_file <- "output/model.result.tables/rugosity.not.included/summary_fish_kelp_biomass.png"
@@ -1447,7 +1454,7 @@ kelp.treatment <- kelp.treatment + geom_text(aes(x = 1.5, y = max_y - 0.2 , labe
 # Combine the plots with patchwork
 prod_combined_plot <- (production_plot | kelp.treatment) +
   plot_annotation(tag_levels = 'A') + 
-  theme(plot.tag = element_text(size = 18, face = "bold"));prod_combined_plot
+   theme(plot.tag = element_text(face = "bold", size = 18));prod_combined_plot
 
 # Save the combined plot
 ggsave("output/figures/fish_production.png", prod_combined_plot, width = 20, height = 10, units = "in", dpi = 300)
@@ -1957,4 +1964,41 @@ ggsave("output/figures/functional.plot.stacked.png", plot = stacked_bar_plot, wi
 
 data:  abundance by interaction
 Kruskal-Wallis chi-squared = 104.02, df = 23, p-value = 2.83e-12
+
+
+# Make publishable table for fish production and life history information
+```{r}
+# read in data
+life.hist <- read.csv("data/fish.life.history.data.csv")
+
+# Create a gt table
+fish_table <- gt(life.hist) %>%
+  tab_header(
+    title = "Fish Species Life History Traits"
+  ) %>%
+  fmt_number(
+    columns = vars(ALPHA, BETA, Lmat, Wmat, P.B.ratio, K.growth.coefficient),
+    decimals = 2
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_title(groups = "title")
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  )
+
+# Save as HTML
+gtsave(fish_table, file = "output/figures/life_history_table.html")
+
+# Save as PDF (requires the webshot2 package)
+# webshot::install_phantomjs() # Run this once if you haven't installed PhantomJS
+gtsave(fish_table, file = "output/figures/life_history_table.pdf", expand = 2)
+
+```
 
