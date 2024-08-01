@@ -2,27 +2,29 @@ Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmer
 Formula: log(Fish_Biomass + 1.1) ~ log(Kelp_Biomass + 1.1) * log(Kelp_Cover +      1.1) + (1 | SITE)
    Data: all.params.data
 
-REML criterion at convergence: 94.5
+REML criterion at convergence: 103.8
 
 Scaled residuals: 
      Min       1Q   Median       3Q      Max 
--2.14926 -0.69168 -0.00293  0.61786  1.74159 
+-1.83666 -0.62525  0.07639  0.52915  2.31846 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- SITE     (Intercept) 0.1482   0.3850  
- Residual             0.9536   0.9765  
-Number of obs: 38, groups:  SITE, 2
+ SITE     (Intercept) 0.3135   0.5599  
+ Residual             0.7614   0.8726  
+Number of obs: 41, groups:  SITE, 2
 
 Fixed effects:
-                                              Estimate Std. Error      df t value Pr(>|t|)
-(Intercept)                                     2.0671     3.6710 33.4431   0.563    0.577
-log(Kelp_Biomass + 1.1)                         0.7332    13.2356 33.1317   0.055    0.956
-log(Kelp_Cover + 1.1)                           0.7392     2.5939 33.0044   0.285    0.777
-log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)   1.0416     9.3575 33.0584   0.111    0.912
+                                              Estimate Std. Error      df t value Pr(>|t|)  
+(Intercept)                                     2.2349     0.7947 10.5985   2.812   0.0175 *
+log(Kelp_Biomass + 1.1)                         2.6575     2.8278 36.1605   0.940   0.3536  
+log(Kelp_Cover + 1.1)                           0.4840     0.2798 36.0757   1.730   0.0922 .
+log(Kelp_Biomass + 1.1):log(Kelp_Cover + 1.1)  -0.6642     1.0135 36.0246  -0.655   0.5164  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Correlation of Fixed Effects:
             (Intr) l(K_B+1 l(K_C+1
-lg(K_B+1.1) -0.921                
-lg(K_C+1.1) -0.991  0.916         
-l(K_B+1.1+1  0.917 -0.994  -0.923 
+lg(K_B+1.1) -0.768                
+lg(K_C+1.1) -0.743  0.723         
+l(K_B+1.1+1  0.714 -0.878  -0.905 

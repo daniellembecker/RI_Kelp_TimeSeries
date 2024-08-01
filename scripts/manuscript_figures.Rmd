@@ -799,26 +799,22 @@ ggsave("output/figures/kelp.2019.rate.png", kelp.rate.2019, width = 20, height =
 # combing kelp cover and fish biomass
 master.dat1 <- left_join(kelp.filt, fish.filt)
 
-#combine rugosity and kelp biomass
-master.dat2 <- left_join(mean_rugosity, morph.filt)
-
 # combine for final dataframe
-master.dat <- left_join(master.dat1, master.dat2)
+master.dat <- left_join(master.dat1, morph.filt)
 
 # output to .csv
 write.csv(master.dat, "output/cleaned_data/master_output_dataframe.csv")
 
 #select necessary columns
-all.params.data <- master.dat %>% dplyr::select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "mean_rugosity", "average_kelp_biomass")
+all.params.data <- master.dat %>% dplyr::select("YEAR", "SITE", "COVER", "Fish.Biomass..g.m2.", "average_kelp_biomass")
 
 #rename various columns in data frame
 names(all.params.data)[3] <- "Kelp Cover (%)"
 names(all.params.data)[4] <- "Fish Biomass (g/cm2)"
-names(all.params.data)[5] <- "Rugosity"
-names(all.params.data)[6] <- "Kelp Biomass (g/cm2)"
+names(all.params.data)[5] <- "Kelp Biomass (g/cm2)"
 
 #reorder columns to show biomass by eachother
-all.params.data <- all.params.data[, c(1,2, 4, 6, 5, 3)]
+all.params.data <- all.params.data[, c(1,2, 4, 5, 3)]
 
 view(all.params.data)
 
@@ -830,7 +826,7 @@ if (any_missing) {
 }
 
 # Select the relevant columns
-selected_columns <- all.params.data[, c("Fish Biomass (g/cm2)", "Kelp Biomass (g/cm2)", "Rugosity", "Kelp Cover (%)")]
+selected_columns <- all.params.data[, c("Fish Biomass (g/cm2)", "Kelp Biomass (g/cm2)", "Kelp Cover (%)")]
 
 # Calculate the Spearman correlation matrix
 cormat <- round(cor(selected_columns, method = "spearman", use = "complete.obs"), 4)
@@ -903,7 +899,6 @@ print(ggheatmap)
 # Check for normality
 shapiro.test(all.params.data$`Kelp Cover (%)`)
 shapiro.test(all.params.data$`Fish Biomass (g/cm2)`) 
-shapiro.test(all.params.data$Rugosity)
 shapiro.test(all.params.data$`Kelp Biomass (g/cm2)`)
 
 # data is not normal so move forward using aa spearmans rank correlation test
@@ -966,96 +961,27 @@ ggsave(filename = "output/figures/figure_5.png", device = "png", width = 10, hei
 
 ```
 
-# Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover, rugosity, temperature in ggplot 
+# Multiple regression between fish biomass (g/m2), kelp biomass (g/m2), kelp cover,  temperature in ggplot 
 # combine all dataframes
 ```{r}
 # Rename columns to remove spaces and special characters
-names(all.params.data) <- c("YEAR", "SITE", "Fish_Biomass", "Rugosity", "Kelp_Cover", "Kelp_Biomass")
+names(all.params.data) <- c("YEAR", "SITE", "Fish_Biomass", "Kelp_Cover", "Kelp_Biomass")
 
 # was getting an error: qr.default(X, tol = tol, LAPACK = FALSE) when running model below which indicates that there are still problematic values (NA, NaN, or Inf) in the data used for the model fitting
 
 # Check for zero or negative values
-zero_or_negative <- sapply(all.params.data[, c("Fish_Biomass", "Rugosity", "Kelp_Biomass", "Kelp_Cover")], function(x) sum(x <= 0))
+zero_or_negative <- sapply(all.params.data[, c("Fish_Biomass", "Kelp_Biomass", "Kelp_Cover")], function(x) sum(x <= 0))
 zero_or_negative
 
 # Remove rows with zero or negative values in relevant columns
 all.params.data <- all.params.data[all.params.data$Fish_Biomass > 0 & 
-                                   all.params.data$Rugosity > 0 & 
                                    all.params.data$Kelp_Biomass > 0 & 
                                    all.params.data$Kelp_Cover > 0, ]
 
-# Fit a multiple regression model
-fit1 <- lm(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1), data = all.params.data)
-summary(fit1)
-
-# Diagnostic plots for the regression model
-par(mfrow=c(2,2))
-plot(fit1)
-
-# Produce added multivariable plots
-av_plots <- avPlots(fit1)
-
-#The x-axis displays a single predictor variable and the y-axis displays the response variable.
-#The blue line shows the association between the predictor variable and the response variable, while holding the value of all other predictor variables constant.
-#The points that are labelled in each plot represent the 2 observations with the largest residuals and the 2 observations with the largest partial leverage.
-
-#view results of model
-summary_text1 <- capture.output(summary(fit1))
-writeLines(summary_text1, "output/model.result.tables/rugosity.included/summary_original.model.txt")
-
 ```
 
 
-# Try another type of multiple regession plot
-```{r}
-#fit multiple linear regression model WITH SITE AND YEAR
-fit2 <- lm(Fish_Biomass ~ SITE*YEAR, data = all.params.data)
-summary(fit2)
-
-#view results of model
-summary_text2 <- capture.output(summary(fit2))
-writeLines(summary_text2, "output/model.result.tables/rugosity.included/summary_model_site_year_fixed_fishbiomass.txt")
-
-
-# Fit the mixed-effects model
-fit3 <- lmer(log(Fish_Biomass) ~ log(Rugosity) * log(Kelp_Biomass) * log(Kelp_Cover) + 
-              (1 | SITE) + (1 | YEAR), data = all.params.data)
-summary(fit3)
-
-#view results of model
-summary_text3 <- capture.output(summary(fit3))
-writeLines(summary_text3, "output/model.result.tables/rugosity.included/summary_model_site_year_random.txt")
-
-# site and year no significant interaction or significant main effects
-
-# run with just site as random effect
-# Fit the mixed-effects model
-fit4 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
-              (1 | SITE), data = all.params.data)
-summary(fit4)
-
-#view results of model
-summary_text4 <- capture.output(summary(fit4))
-writeLines(summary_text4, "output/model.result.tables/rugosity.included/summary_model_site_random.txt")
-
-# site and year no significant main effects
-
-# run with just year as random effect
-# Fit the mixed-effects model
-fit5 <- lmer(log(Fish_Biomass + 1.1) ~ log(Rugosity + 1.1) * log(Kelp_Biomass + 1.1) * log(Kelp_Cover + 1.1) + 
-              (1 | YEAR), data = all.params.data)
-summary(fit5)
-
-#view results of model
-summary_text5 <- capture.output(summary(fit5))
-writeLines(summary_text5, "output/model.result.tables/rugosity.included/summary_model_year_random.txt")
-
-#year is significantly different for kelp cover
-
-```
-
-
-# Run all above models without rugosity
+# Run all models without rugosity
 ```{r}
 
 # Fit a multiple regression model
@@ -1402,20 +1328,18 @@ production_plot <- ggplot(pb_summary, aes(x = YEAR, y = mean_production, color =
        y = expression("Fish Production" ~ (g ~ m^-2 ~ yr^-1)),  # Y-axis label
        color = "Habitat") +  # Legend title
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
-        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.title.x = element_text(vjust = -0.5, size = 18),
         axis.title.y = element_text(vjust = 1.5, size = 18),
         axis.text.y = element_text(size = 18),
         legend.text = element_text(size = 16),
-        legend.title = element_text(size = 18)) +
+        legend.title = element_text(size = 18),
+        legend.position = "top") +
   scale_y_continuous(limits = c(0, 8), expand = c(0, 0));production_plot # Additional attempt to change legend title 
 #blue color is #00BFC4
 
-
-
-
 # Save the plot
-ggsave("output/figures/production.habitat.png", production_plot_A, width = 20, height = 10, units = "in", dpi = 300)
+ggsave("output/figures/production.habitat.png", production_plot, width = 20, height = 10, units = "in", dpi = 300)
 
 
 # Subset the data for control and kelp treatments
@@ -1426,7 +1350,7 @@ kelp_data <- subset(pb_summary, TREATMENT == "kelp")
 merged_data <- merge(control_data, kelp_data, by = "YEAR", suffixes = c("_control", "_kelp"))
 
 # Calculate the differences
-merged_data$production_difference <- merged_data$mean_production_kelp - merged_data$mean_production_control
+merged_data$production_difference <- merged_data$mean_production_kelp + merged_data$mean_production_control
 merged_data$se_difference <- sqrt(merged_data$se_production_kelp^2 + merged_data$se_production_control^2)
 
 
@@ -1439,43 +1363,96 @@ production_diff_plot <- ggplot(merged_data, aes(x = YEAR, y = production_differe
   labs(x = "Year",  # X-axis label
        y = expression("Kelp Habitat Fish Production" ~ (g ~ m^-2 ~ yr^-1)),  # Y-axis label
        color = "Treatment") +  # Legend title
-  theme_bw() +  # White background with black lines
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),  # Rotate x-axis labels if needed
-        axis.title.x = element_text(vjust = -0.5, size = 18),  # Adjust x-axis title position
-        axis.title.y = element_text(vjust = 1.5, size = 18),  # Adjust y-axis title position
-        axis.text.y = element_text(size = 18),  # Adjust y-axis text size
-        legend.text = element_text(size = 16),  # Legend text size
-        legend.title = element_text(size = 18));production_diff_plot
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.title.x = element_text(vjust = -0.5, size = 18),
+        axis.title.y = element_text(vjust = 1.5, size = 18),
+        axis.text.y = element_text(size = 18),
+        legend.position = "none");production_diff_plot
 
 # Update production_diff_plot with annotations
 production_diff_plot_annot <- production_diff_plot +
   geom_text(aes(label = sprintf("%.2f", production_difference), y = production_difference),
-            color = "black", size = 4, vjust = 2.42, hjust = 1.06, check_overlap = TRUE);production_diff_plot_annot
+            color = "black", size = 4, vjust = 2.8, hjust = 1.06, check_overlap = TRUE);production_diff_plot_annot
 
 # Save the plot
-ggsave("output/figures/kelp.fish.production.png", production_diff_plot, width = 20, height = 10, units = "in", dpi = 300)
+ggsave("output/figures/kelp.fish.production.png", production_diff_plot_annot, width = 20, height = 10, units = "in", dpi = 300)
 
 # Calculate the average of mean_production_kelp
 average_production_kelp <- mean(merged_data$mean_production_kelp)
 
 # Print the average
 average_production_kelp # 4.359285 g/m2/yr
+
+# Check normality and run appropriate statistical test:
+
+# Separate data into kelp and control
+kelp_data <- calc.prod %>% filter(TREATMENT == "kelp") %>% pull(production)
+control_data <- calc.prod %>% filter(TREATMENT == "control") %>% pull(production)
+
+# Shapiro-Wilk normality test
+shapiro_kelp <- shapiro.test(kelp_data)
+shapiro_control <- shapiro.test(control_data)
+
+# Print results
+print(shapiro_kelp)
+print(shapiro_control)
+
+# Data is not normally distributed so run Mann-Whitney U Test (Wilcoxon Rank-Sum Test)
+# Perform Mann-Whitney U Test
+wilcox_test_result <- wilcox.test(kelp_data, control_data)
+
+# Print results
+print(wilcox_test_result)
+
+
+# Calculate mean and standard error for each treatment
+kelp.prod.dat <- calc.prod %>%
+  group_by(TREATMENT) %>%
+  summarize(mean_production = mean(production, na.rm = TRUE),
+            se_production = sqrt(sum(production^2)) / n())
+
+# Create the plot with mean adn st error
+# Create the base plot with point ranges
+kelp.treatment <- ggplot(kelp.prod.dat, aes(x = TREATMENT, y = mean_production, fill = TREATMENT)) +
+  geom_pointrange(aes(ymin = mean_production - se_production, ymax = mean_production + se_production), 
+                  size = 1.2, color = "black", shape = 21, fill = "white") +
+  labs(x = "Treatment",
+       y = expression("Fish Production" ~ (g ~ m^-2 ~ yr^-1))) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.title.x = element_text(vjust = -0.5, size = 18),
+        axis.title.y = element_text(vjust = 1.5, size = 18),
+        axis.text.y = element_text(size = 18),
+        legend.position = "none"); kelp.treatment
+
+# Calculate the maximum value for y-axis
+max_y <- max(kelp.prod.dat$mean_production + kelp.prod.dat$se_production)
+
+# Add the Wilcoxon test results as an annotation
+kelp.treatment <- kelp.treatment + annotate("text", x = 0.5, y = max_y, 
+                        label = "Wilcoxon test\np < 0.0001",
+                        hjust = 0, vjust = 1, size = 5, color = "black");kelp.treatment
+
+
+# Add significance asterisks
+kelp.treatment <- kelp.treatment + geom_text(aes(x = 1.5, y = max_y - 0.2 , label = "***"), size = 6, color = "black"); kelp.treatment
+
 ```
 
 
 # Plot all two panels together using patchwork
 ```{r}
+
 # Combine the plots with patchwork
-prod_combined_plot <- (production_plot | production_diff_plot) +
+prod_combined_plot <- (production_plot | kelp.treatment) +
   plot_annotation(tag_levels = 'A') + 
-  theme(plot.tag = element_text(size = 20, face = "bold"));prod_combined_plot
+  theme(plot.tag = element_text(size = 18, face = "bold"));prod_combined_plot
 
 # Save the combined plot
-ggsave("output/figures/fish_production.png", prod_combined_plot, width = 12, height = 8, units = "in", dpi = 300)
+ggsave("output/figures/fish_production.png", prod_combined_plot, width = 20, height = 10, units = "in", dpi = 300)
 
 ```
-
-
 
 
 # Calculate Habitat Productivity Index (HPI), habitat productivity index (HPI), a proposed measure of habitat suitability and productive capacity, can be calculated as the product of average fish biomass and the species P/B coefficient (HPI = B × P/B) (Randall and Minns 2000)

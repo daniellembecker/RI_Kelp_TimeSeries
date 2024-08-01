@@ -2,28 +2,33 @@ Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmer
 Formula: log(Fish_Biomass) ~ log(Kelp_Biomass) * log(Kelp_Cover) + (1 |      SITE) + (1 | YEAR)
    Data: all.params.data
 
-REML criterion at convergence: 105.5
+REML criterion at convergence: 118.6
 
 Scaled residuals: 
      Min       1Q   Median       3Q      Max 
--2.20797 -0.47400 -0.00115  0.50614  2.54681 
+-2.13491 -0.56257  0.09548  0.49647  2.33604 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- YEAR     (Intercept) 0.2322   0.4819  
- SITE     (Intercept) 0.1077   0.3281  
- Residual             0.8503   0.9221  
-Number of obs: 38, groups:  YEAR, 5; SITE, 2
+ YEAR     (Intercept) 0.000    0.0000  
+ SITE     (Intercept) 0.305    0.5523  
+ Residual             0.852    0.9230  
+Number of obs: 41, groups:  YEAR, 5; SITE, 2
 
 Fixed effects:
-                                   Estimate Std. Error        df t value Pr(>|t|)
-(Intercept)                        2.558186   1.630216 33.018400   1.569    0.126
-log(Kelp_Biomass)                  0.118746   0.683620 31.372729   0.174    0.863
-log(Kelp_Cover)                    1.267314   1.445621 31.454623   0.877    0.387
-log(Kelp_Biomass):log(Kelp_Cover) -0.001994   0.619126 31.489679  -0.003    0.997
+                                  Estimate Std. Error       df t value Pr(>|t|)   
+(Intercept)                        3.11573    0.72136  7.95996   4.319  0.00258 **
+log(Kelp_Biomass)                  0.03724    0.18464 36.19416   0.202  0.84129   
+log(Kelp_Cover)                    0.28848    0.20127 36.00001   1.433  0.16041   
+log(Kelp_Biomass):log(Kelp_Cover)  0.01573    0.06870 36.04910   0.229  0.82022   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Correlation of Fixed Effects:
             (Intr) lg(K_B) l(K_C)
-lg(Klp_Bms)  0.853               
-lg(Klp_Cvr) -0.963 -0.854        
-l(K_B):(K_C -0.831 -0.982   0.864
+lg(Klp_Bms)  0.767               
+lg(Klp_Cvr) -0.714 -0.743        
+l(K_B):(K_C -0.539 -0.664   0.866
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
