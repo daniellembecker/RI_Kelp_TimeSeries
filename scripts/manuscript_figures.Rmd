@@ -1613,7 +1613,7 @@ ggsave("output/figures/production.HPI.log.png", production.hpi.log, width = 20, 
 ```
 
 
-nMDS or PCA on benthic community structure
+Invertebrate community structure calculations
 ```{r}
 # Load in QUAD data and filter for invertebrates
 invert.filt <- QUAD %>%
@@ -1648,52 +1648,10 @@ numeric_data <- wide_data[, c("crustacean", "echinoderms", "molluscs")]
 # Remove rows where all abundance values are zero
 numeric_data <- numeric_data[rowSums(numeric_data) > 0, ]
 
-# Calculate Bray-Curtis dissimilarity
-m_com <- vegdist(numeric_data, method = "bray")
-
-# Perform nMDS
-nmds <- metaMDS(m_com, distance = "bray")
-
-# Extract scores
-scores <- as.data.frame(scores(nmds))
-
-# Add row numbers as a unique identifier
-scores$ID <- row.names(scores)
-
-# Create a data frame with SITE and YEAR information
-site_year_info <- wide_data[rowSums(wide_data[, c("crustacean", "echinoderms", "molluscs")]) > 0, c("SITE", "YEAR")]
-site_year_info$ID <- row.names(site_year_info)
-
-# Merge SITE and YEAR information into scores
-scores <- merge(scores, site_year_info, by = "ID")
-
-# Define custom shape values for more than 8 categories
-custom_shape_values <- c(0, 1, 2, 3, 4, 5, 6, 23)
-
-# Use these custom shapes in your plot
-nmds_plot <- ggplot(scores, aes(x = NMDS1, y = NMDS2, color = SITE, shape = as.factor(YEAR))) +
-  geom_point(size = 8) +
-  #stat_ellipse(aes(group = YEAR), level = 0.95, linetype = 2, size = 1, alpha = 0.5) + # Add ellipses
-  labs(x = "NMDS1", y = "NMDS2", color = "Site", shape = "Year") +
-  scale_color_manual(values = c("Fort Wetherill" = "grey", "King's Beach" = "black")) +
-  scale_shape_manual(values = custom_shape_values) +  # Specify the custom shapes
-  theme_bw() +
-  theme(
-    axis.title.x = element_text(size = 18),
-    axis.title.y = element_text(size = 18),
-    axis.text.x = element_text(size = 18),
-    axis.text.y = element_text(size = 18),
-    legend.text = element_text(size = 16),
-    legend.title = element_text(size = 18)
-  );nmds_plot
-
-# Save the plot to a file
-ggsave("output/figures/nmds.plot.png", plot = nmds_plot, width = 15, height = 10)
-
 
 ```
 
-PERMANOVA and SIMPER analysis
+Figure and calculations for functional group change in relative abundance over time using invert count data
 ```{r}
 # Ensure only numeric columns are selected for vegdist
 community_data <- wide_data[, c("crustacean", "echinoderms", "molluscs")]
@@ -1702,159 +1660,25 @@ community_data <- wide_data[, c("crustacean", "echinoderms", "molluscs")]
 non_zero_rows <- rowSums(community_data) > 0
 community_data <- community_data[non_zero_rows, ]
 
-# Create environmental data frame
-environmental_data <- wide_data[non_zero_rows, c("TRANSECT", "YEAR", "SITE")]
 
-# Convert YEAR to factor
-environmental_data$YEAR <- as.factor(environmental_data$YEAR)
+# Calculate total abundance 
+total_abundance <- invert.count %>%
+  group_by(YEAR) %>%
+  summarise(total_abundance_g_per_m2 = sum(abundance))
 
-# Perform PERMANOVA
-permanova_result <- adonis2(community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = "bray")
+# merge total abundance with original data
+invert.abun <- merge(invert.count, total_abundance, by = "YEAR")
 
-# View the results
-print(permanova_result)
+# calculate relative abundance
+invert.abun <- invert.abun %>%
+  mutate(relative_abundance = (abundance / total_abundance_g_per_m2) * 100)
 
-# Create dataframe from PERMANOVA results
-permanova_df <- data.frame(
-  Factor = c("SITE", "YEAR", "Residual", "Total"),
-  Df = c(1, 7, 44, 52),
-  SumOfSqs = c(0.5649, 5.0492, 8.7778, 14.3919),
-  R2 = c(0.03925, 0.35084, 0.60991, 1.00000),
-  F = c(2.8317, 3.6157, NA, NA),
-  Pr_F = c(0.050, 0.001, NA, NA)  # Changed column name to Pr_F
-)
-
-# Create flextable object
-flex_perm <- flextable(permanova_df)
-
-# Customize the flextable
-flex_perm <- flex_perm %>%
-  set_header_labels(
-    Factor = "Factor",
-    Df = "Df",
-    SumOfSqs = "Sum of Squares",
-    R2 = "R2",
-    F = "F",
-    Pr_F = "Pr(>F)"  # Changed to match the new column name
-  ) %>%
-  colformat_double(digits = 4) %>%
-  bold(i = ~ Pr_F <= 0.05, j = "Pr_F") %>%  # Bold values if Pr_F is 0.05 or lower
-  add_header_lines(values = c(
-    "Permutation test for adonis under reduced model",
-    "Number of permutations: 999"
-  )) %>%
-  autofit() %>%
-  theme_box()
-
-# Save flextable as PNG
-png_file <- "output/model.result.tables/permanova.png"
-save_as_image(flex_perm, path = png_file)
-
-# Perform SIMPER analysis
-simper_result <- simper(community_data, group = environmental_data$SITE, permutations = 999)
-
-# View summary of results
-summary(simper_result)
-
-# Create dataframe from SIMPER results
-simp <- data.frame(
-  Species = rownames(summary(simper_result)$`Fort Wetherill_King's Beach`),
-  Average = summary(simper_result)$`Fort Wetherill_King's Beach`$average,
-  Ratio = summary(simper_result)$`Fort Wetherill_King's Beach`$ratio,
-  Fort_Wetherill = summary(simper_result)$`Fort Wetherill_King's Beach`$ava,
-  Kings_Beach = summary(simper_result)$`Fort Wetherill_King's Beach`$avb,
-  Cumulative_Sum = summary(simper_result)$`Fort Wetherill_King's Beach`$cumsum,
-  p_value = summary(simper_result)$`Fort Wetherill_King's Beach`$p
-)
-
-# Create flextable object
-flex_simp <- flextable(simp)
-
-
-# Customize the flextable
-flex_simp <- flex_simp %>%
-  set_header_labels(
-    Species = "Species",
-    Average = "Avg. Contribution",
-    Ratio = "Ratio",
-    Fort_Wetherill = "Fort Wetherill Abundance",
-    Kings_Beach = "King's Beach Abundance",
-    Cumulative_Sum = "Cumulative Sum",
-    p_value = "p-value"
-  ) %>%
-  autofit() %>%
-  theme_box()
-
-# Save flextable as PNG
-png_file <- "output/model.result.tables/simper_results.png"
-save_as_image(flex_simp, path = png_file)
-
-# Extract the relevant information from the SIMPER results
-simper_data <- data.frame(
-  Species = rownames(summary(simper_result)$`Fort Wetherill_King's Beach`),
-  Contribution = summary(simper_result)$`Fort Wetherill_King's Beach`$average,
-  Fort_Wetherill = summary(simper_result)$`Fort Wetherill_King's Beach`$ava,
-  Kings_Beach = summary(simper_result)$`Fort Wetherill_King's Beach`$avb
-)
-
-# Calculate the percentage contribution
-simper_data$Percentage <- simper_data$Contribution / sum(simper_data$Contribution) * 100
-
-# Reshape the data for plotting
-simper_long <- tidyr::pivot_longer(simper_data, 
-                                   cols = c(Fort_Wetherill, Kings_Beach),
-                                   names_to = "Site", 
-                                   values_to = "Abundance")
-
-# Create the plot
-simper_plot <- ggplot(simper_long, aes(x = Species, y = Abundance, fill = Site)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  geom_text(aes(label = sprintf("%.1f%%", Percentage[match(Species, simper_data$Species)])),
-            position = position_dodge(width = 0.9),
-            vjust = -0.5, 
-            size = 3) +
-  labs(title = "Species Contributions to Differences Between Sites",
-       subtitle = "Based on SIMPER analysis",
-       y = "Average Abundance",
-       x = "Species") +
-  scale_fill_manual(values = c("Fort_Wetherill" = "grey", "Kings_Beach" = "black")) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.title = element_blank());simper_plot
-
-# Save the plot to a file
-ggsave("output/figures/simper.plot.png", plot = simper_plot, width = 15, height = 10)
-
-```
-
-PERMANOVA results:
-adonis2(formula = community_data ~ SITE + YEAR, data = environmental_data, permutations = 999, method = "bray")
-         Df SumOfSqs      R2      F Pr(>F)    
-SITE      1   0.5649 0.03925 2.8317  0.043 *  
-YEAR      7   5.0492 0.35084 3.6157  0.001 ***
-Residual 44   8.7778 0.60991                  
-Total    52  14.3919 1.00000   
-
-
-SIMPER results:
-ontrast: Fort Wetherill_King's Beach 
-
-            average      sd   ratio     ava     avb cumsum     p
-molluscs    0.58750 0.29784 1.97250 5.57600 5.84300  0.863 0.576
-echinoderms 0.07140 0.12811 0.55760 0.21400 0.34300  0.968 0.547
-crustacean  0.02160 0.05018 0.43030 0.21900 0.09300  1.000 0.526
-Permutation: free
-Number of permutations: 999
-
-
-# Figure for functional group change in abundance over time using invert count data
-```{r}
 # Check for normality of residuals
 # Log transform the abundance data
-invert.count$log_abundance <- log(invert.count$abundance + 1.1)
+invert.abun$log_rel_abundance <- log(invert.abun$abundance + 1.1)
 
 # Check for normality of transformed data
-anova_model <- aov(log_abundance ~ type * YEAR, data = invert.count)
+anova_model <- aov(log_rel_abundance ~ type * YEAR, data = invert.abun)
 residuals <- residuals(anova_model)
 
 # Plot Q-Q plot
@@ -1868,10 +1692,10 @@ shapiro_test
 # still not normal, use non-parametric test
 
 # Perform Kruskal-Wallis test for interaction type and YEAR
-interaction_data <- invert.count %>%
+interaction_data <- invert.abun %>%
   mutate(interaction = interaction(type, YEAR))
 
-kruskal_test_interaction <- kruskal.test(abundance ~ interaction, data = interaction_data)
+kruskal_test_interaction <- kruskal.test(log_rel_abundance ~ interaction, data = interaction_data)
 print(kruskal_test_interaction)
 
 # Extract relevant information from the test result
@@ -1889,18 +1713,6 @@ flex <- flextable(kruskal_summary)
 # Save flextable as PNG
 png_file <- "output/model.result.tables/kruskal_test_interaction_summary.png"
 save_as_image(flex, png_file)
-
-# Assuming invert.count is your dataframe and abundance_g_per_m2 is already calculated
-total_abundance <- invert.count %>%
-  group_by(YEAR) %>%
-  summarise(total_abundance_g_per_m2 = sum(abundance))
-
-# merge total abundance with original data
-invert.abun <- merge(invert.count, total_abundance, by = "YEAR")
-
-# calculate relative abundance
-invert.abun <- invert.abun %>%
-  mutate(relative_abundance = (abundance / total_abundance_g_per_m2) * 100)
 
 # Calculate mean and standard error per functional group and year
 mean_std_data <- invert.abun %>%
@@ -1960,9 +1772,9 @@ ggsave("output/figures/functional.plot.stacked.png", plot = stacked_bar_plot, wi
 
 
 ```
-	Kruskal-Wallis rank sum test
+Kruskal-Wallis rank sum test
 
-data:  abundance by interaction
+data:  log_rel_abundance by interaction
 Kruskal-Wallis chi-squared = 104.02, df = 23, p-value = 2.83e-12
 
 

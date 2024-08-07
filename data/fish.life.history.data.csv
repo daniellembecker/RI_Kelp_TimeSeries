@@ -1,0 +1,13 @@
+﻿Common Name,Scientific Name,Source,Species Code,ALPHA,BETA,Lmat,Wmat,P:B ratio,K growth coefficient
+Atlantic menhaden,Brevoortia tyrannus,RIDEM,BRTY,0.05606,2.861415,20.4,313.3635647,0.353172559,0.44
+Atlantic silverside,Menidia menidia,FishBase,ATSI,0.00602,3.023,9.3,5.097068202,1.492937996,1.38
+Black sea bass,Centropristis striata,FishBase,CEST,0.0199,2.9,20.7,130.3668219,0.480059921,0.43
+Cunner,Tautogolabrus adspersus,FishBase,TAAD,0.0028,3.378,17.6,45.13358416,0.695871402,0.22
+Oyster toadfish,Opsanus tau,FishBase,OPTA,0.0085,3.104,21.9,123.0714899,0.489833876,0.16
+Pollock,Pollachius virens,FishBase,POVI,0.0074,3.04,52.7,1269.21732,0.216454356,0.2
+Scup,Stenotomus chrysops,FishBase,STCH,0.02261,3,22.2,247.3770953,0.383643732,0.27
+Striped bass,Morone saxatilis,FishBase,MOSA,0.0061,3.153,53.2,1687.054885,0.195933503,0.2
+Summer flounder,Paralichthys dentatus,FishBase,PADE,0.0054,3.117,45.6,800.5476268,0.254342196,0.21
+Tautog,Tautoga onitis,FishBase,TAON,0.0275,2.95,39.5,1410.243563,0.208617618,0.09
+Winter flounder,Pseudopleuronectes americanus,FishBase,PSAM,0.0213,3,22.8,252.4550976,0.380925,0.38
+Winter skate,Leucoraja ocellata,FishBase,LEOC,0.0022,3.295,51.2,942.903401,0.240181972,0.16
